@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Engine;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -12,7 +13,11 @@ namespace AdekAdventure
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        private AnimatedPlayer animatedPlayer;
+        
+
         private Texture2D background;
+        private Texture2D player;
 
         private int borderRight = 1600;
         private int borderDown = 600;
@@ -47,7 +52,8 @@ namespace AdekAdventure
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             background = this.Content.Load<Texture2D>("background");
-
+            Texture2D texture = Content.Load<Texture2D>("SmileyWalk");
+            animatedPlayer = new AnimatedPlayer(texture, 4, 4);
             // TODO: use this.Content to load your game content here
         }
 
@@ -72,7 +78,7 @@ namespace AdekAdventure
                 Exit();
 
             // TODO: Add your update logic here
-
+            animatedPlayer.Update();
             base.Update(gameTime);
         }
 
@@ -85,6 +91,7 @@ namespace AdekAdventure
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
             spriteBatch.Draw(background, new Rectangle(0, 0, borderRight, borderDown), Color.White);
+            animatedPlayer.Draw(spriteBatch, new Vector2(400, 200));
             spriteBatch.End();
             // TODO: Add your drawing code here
 

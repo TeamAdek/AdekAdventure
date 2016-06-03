@@ -4,6 +4,7 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/AdvancedCSharp/HomeWorks/06 REGEX/AdekAdventure/Engine/Content/background.jpg</File>
+    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/AdekAdventure/Engine/Content/background.jpg</File>
+    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/AdekAdventure/Engine/Content/SmileyWalk.png</File>
   </SourceFiles>
 </SourceFileCollection>
