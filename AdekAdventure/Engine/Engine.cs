@@ -1,4 +1,5 @@
 ﻿using Engine;
+using Engine.Enemies;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -14,10 +15,12 @@ namespace AdekAdventure
         SpriteBatch spriteBatch;
 
         private AnimatedPlayer animatedPlayer;
+        private Enemy1 enemy1;
         
 
         private Texture2D background;
         private Texture2D player;
+        private Texture2D enemy1Texture2D;
 
         private int borderRight = 1600;
         private int borderDown = 600;
@@ -52,8 +55,10 @@ namespace AdekAdventure
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             background = this.Content.Load<Texture2D>("background");
-            Texture2D texture = Content.Load<Texture2D>("SmileyWalk");
-            animatedPlayer = new AnimatedPlayer(texture, 4, 4);
+            Texture2D playerTexture = Content.Load<Texture2D>("SmileyWalk");
+            animatedPlayer = new AnimatedPlayer(playerTexture, 4, 4);
+            Texture2D enemyTexture2D = Content.Load<Texture2D>("enemy1");
+            enemy1 = new Enemy1(enemyTexture2D,2,4);
             // TODO: use this.Content to load your game content here
         }
 
@@ -79,6 +84,7 @@ namespace AdekAdventure
 
             // TODO: Add your update logic here
             animatedPlayer.Update();
+            enemy1.Update();
             base.Update(gameTime);
         }
 
@@ -91,7 +97,8 @@ namespace AdekAdventure
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
             spriteBatch.Draw(background, new Rectangle(0, 0, borderRight, borderDown), Color.White);
-            animatedPlayer.Draw(spriteBatch, new Vector2(400, 200));
+            animatedPlayer.Draw(spriteBatch, new Vector2(200, 375));
+            enemy1.Draw(spriteBatch,new Vector2(400,350));
             spriteBatch.End();
             // TODO: Add your drawing code here
 

@@ -51,3 +51,4 @@ C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\AdekAdventure\Engine\bin\Window
 C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\AdekAdventure\Engine\bin\Windows\Debug\SharpDX.Direct3D9.xml
 C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\AdekAdventure\Engine\obj\x86\Debug\AdekAdventure.csprojResolveAssemblyReference.cache
 C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\AdekAdventure\Engine\bin\Windows\Debug\Content\SmileyWalk.xnb
+C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\AdekAdventure\Engine\bin\Windows\Debug\Content\enemy1.xnb
