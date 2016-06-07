@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using DaGeim.Enemies;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -17,6 +18,9 @@ namespace DaGeim
         Camera camera;
         Map map;
         Player player;
+
+        private Enemy1 enemy1;
+        private Texture2D enemy1Texture2D;
 
         public Game1()
         {
@@ -52,6 +56,9 @@ namespace DaGeim
                     { 2,1,1,1,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2,2,2,2,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
                }, 64);
             player.Load(Content);
+
+            Texture2D enemyTexture2D = Content.Load<Texture2D>("enemy1");
+            enemy1 = new Enemy1(enemyTexture2D, 2, 4);
         }
 
         protected override void UnloadContent()
@@ -64,6 +71,7 @@ namespace DaGeim
                 Exit();
 
             player.Update(gameTime);
+            enemy1.Update();
 
             foreach (CollisionTiles tile in map.CollisionTiles) { 
                 player.Collision(tile.Rectangle, map.Widht, map.Height);
@@ -80,6 +88,7 @@ namespace DaGeim
             spriteBatch.Draw(backText, backRect, Color.White);
             map.Draw(spriteBatch);
             player.Draw(spriteBatch);
+            enemy1.Draw(spriteBatch, new Vector2(330, 210));
             spriteBatch.End();
             
             base.Draw(gameTime);
