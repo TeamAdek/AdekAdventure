@@ -4,8 +4,9 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/Mladen/Desktop/AdekAdventure/DaGeim/DaGeim/Content/Player.png</File>
     <File>C:/Users/Mladen/Desktop/AdekAdventure/DaGeim/DaGeim/Content/Tile1.jpg</File>
     <File>C:/Users/Mladen/Desktop/AdekAdventure/DaGeim/DaGeim/Content/Tile2.jpg</File>
-    <File>C:/Users/Mladen/Desktop/AdekAdventure/DaGeim/DaGeim/Content/Player.png</File>
+    <File>C:/Users/Mladen/Desktop/AdekAdventure/DaGeim/DaGeim/Content/background.png</File>
   </SourceFiles>
 </SourceFileCollection>

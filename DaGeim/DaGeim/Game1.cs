@@ -10,9 +10,14 @@ namespace DaGeim
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Texture2D backText;
+        Rectangle backRect;
+
+
         Camera camera;
         Map map;
         Player player;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -31,7 +36,8 @@ namespace DaGeim
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-          
+            backText = Content.Load<Texture2D>("background");
+            backRect = new Rectangle(0, -50, 3000, 500);
             Tiles.Content = Content;
             camera = new Camera(GraphicsDevice.Viewport);
             map.Generate(new int[,]{
@@ -39,11 +45,11 @@ namespace DaGeim
                     { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                     { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                     { 2,1,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    { 2,2,1,1,1,0,0,0,0,1,1,1,2,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0},
-                    { 2,2,0,0,0,0,0,1,1,2,2,2,2,2,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,2,1,0,0,0,0,0,0},
-                    { 2,0,0,0,0,0,1,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,0,0,0,0,0,0,0,1,2,1,1,1,2,2,2,1,1,1,1,1,1},
-                    { 2,0,0,0,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
-                    { 2,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+                    { 2,2,1,1,1,0,0,0,0,1,1,0,2,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0},
+                    { 2,2,0,0,0,0,0,1,1,2,2,0,2,2,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,2,1,0,0,0,0,0,0},
+                    { 2,0,0,0,0,0,1,2,2,2,2,0,2,2,2,2,2,1,1,1,1,1,1,0,0,0,0,0,0,0,1,2,1,1,1,2,2,2,1,1,1,1,1,1},
+                    { 2,0,0,0,1,1,2,2,2,2,2,0,2,2,2,2,2,2,2,2,2,2,2,0,0,0,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+                    { 2,1,1,1,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2,2,2,2,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
                }, 64);
             player.Load(Content);
         }
@@ -71,6 +77,7 @@ namespace DaGeim
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin(SpriteSortMode.Deferred,
                                BlendState.AlphaBlend,null,null,null,null,camera.Transform);
+            spriteBatch.Draw(backText, backRect, Color.White);
             map.Draw(spriteBatch);
             player.Draw(spriteBatch);
             spriteBatch.End();

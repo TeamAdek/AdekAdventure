@@ -54,3 +54,4 @@ C:\Users\Mladen\Desktop\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpD
 C:\Users\Mladen\Desktop\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.xml
 C:\Users\Mladen\Desktop\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\Mladen\Desktop\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\DaGeim.csprojResolveAssemblyReference.cache
+C:\Users\Mladen\Desktop\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\background.xnb
