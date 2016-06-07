@@ -1,0 +1,9 @@
+1.Add variable => MainCharacter player;
+--------------------------------------------------
+2.Add to LoadContent() the following lines:
+player = new MainCharacter(new Vector2(100, 500));
+player.LoadContent(Content);
+--------------------------------------------------
+3.Add to Update() => player.Update(gameTime);
+--------------------------------------------------
+4.Add to Draw() => player.Draw(spriteBach);
