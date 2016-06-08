@@ -21,6 +21,8 @@ namespace DaGeim
         Player player;
 
         private Enemy1 enemy1;
+        private Enemy2 enemy2;
+        private Enemy2 enemy3;
         private Texture2D enemy1Texture2D;
 
         public Game1()
@@ -38,6 +40,10 @@ namespace DaGeim
         {
             map = new Map();
             player = new Player();
+            enemy2 = new Enemy2();
+            enemy2.Position = new Vector2(164, 380);
+            enemy3 = new Enemy2();
+            enemy3.Position = new Vector2(330,320);
             scoreBoard = new ScoreBoard();
             base.Initialize();
         }
@@ -62,6 +68,8 @@ namespace DaGeim
                     { 2,1,1,1,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2,2,2,2,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
                }, 64);
             player.Load(Content);
+            enemy2.Load(Content);
+            enemy3.Load(Content);
 
             Texture2D enemyTexture2D = Content.Load<Texture2D>("enemy1");
             enemy1 = new Enemy1(enemyTexture2D, 2, 4);
@@ -79,11 +87,16 @@ namespace DaGeim
                 Exit();
 
             player.Update(gameTime);
+            enemy2.Update(gameTime);
+            enemy3.Update(gameTime);
             enemy1.Update();
 
             foreach (CollisionTiles tile in map.CollisionTiles)
             {
                 player.Collision(tile.Rectangle, map.Widht, map.Height);
+                enemy2.Collision(tile.Rectangle, map.Widht, map.Height);
+                enemy3.Collision(tile.Rectangle, map.Widht, map.Height);
+                
                 camera.Update(player.Position, map.Widht, map.Height);
             }
             //update the scoreboard (the whole scoreboard screen)
@@ -104,7 +117,9 @@ namespace DaGeim
             spriteBatch.Draw(backText, backRect, Color.White);
             map.Draw(spriteBatch);
             player.Draw(spriteBatch);
-            enemy1.Draw(spriteBatch, new Vector2(330, 210));
+            //enemy1.Draw(spriteBatch, new Vector2(330, 210));
+            enemy2.Draw(spriteBatch);
+            enemy3.Draw(spriteBatch);
             //draw the scoreboard screen (after the game ends and after the Scores are updated)
             //scoreBoard.Draw(spriteBatch);
 

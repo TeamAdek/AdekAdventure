@@ -4,17 +4,20 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/Player.png</File>
-    <File>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/Tile1.jpg</File>
-    <File>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/Tile2.jpg</File>
-    <File>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/background.png</File>
-    <File>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/enemy1.png</File>
-    <File>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/background2.jpg</File>
-    <File>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/bluestar.png</File>
-    <File>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/darkButton.jpg</File>
-    <File>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/Font.spritefont</File>
-    <File>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/highlightedButton.jpg</File>
-    <File>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/Idle.png</File>
-    <File>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/MainFont.spritefont</File>
+    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/Player.png</File>
+    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/Tile1.jpg</File>
+    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/Tile2.jpg</File>
+    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/background.png</File>
+    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/enemy1.png</File>
+    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/background2.jpg</File>
+    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/bluestar.png</File>
+    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/darkButton.jpg</File>
+    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/Font.spritefont</File>
+    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/highlightedButton.jpg</File>
+    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/Idle.png</File>
+    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/MainFont.spritefont</File>
+    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/enemy_with_sword.png</File>
+    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/enemyRobbot.png</File>
+    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/Upgraded_Robot_Sprite.png</File>
   </SourceFiles>
 </SourceFileCollection>
