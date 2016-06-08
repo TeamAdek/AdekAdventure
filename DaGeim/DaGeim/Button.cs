@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace DaGeim
 {
-    public class Button : Game1
+    public class Button : MainGame
     {
         private Texture2D highlightedImage;
         private Texture2D darkImage;
