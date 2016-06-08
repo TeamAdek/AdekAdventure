@@ -4,10 +4,10 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/Player.png</File>
-    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/Tile1.jpg</File>
-    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/Tile2.jpg</File>
-    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/background.png</File>
-    <File>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/enemy1.png</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/Player.png</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/Tile1.jpg</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/Tile2.jpg</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/background.png</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/enemy1.png</File>
   </SourceFiles>
 </SourceFileCollection>
