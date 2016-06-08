@@ -10,6 +10,7 @@ namespace DaGeim
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        private ScoreBoard scoreBoard;
 
         Texture2D backText;
         Rectangle backRect;
@@ -25,6 +26,10 @@ namespace DaGeim
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            //      THE SCOREBOARD IS SET FOR 1280x720
+            //graphics.PreferredBackBufferWidth = 1280;
+            //graphics.PreferredBackBufferHeight = 720;
+            //graphics.ApplyChanges();
             Content.RootDirectory = "Content";
         }
 
@@ -33,6 +38,7 @@ namespace DaGeim
         {
             map = new Map();
             player = new Player();
+            scoreBoard = new ScoreBoard();
             base.Initialize();
         }
 
@@ -59,6 +65,8 @@ namespace DaGeim
 
             Texture2D enemyTexture2D = Content.Load<Texture2D>("enemy1");
             enemy1 = new Enemy1(enemyTexture2D, 2, 4);
+            //loading the scoreboard content
+            // scoreBoard.Load(Content);
         }
 
         protected override void UnloadContent()
@@ -73,10 +81,18 @@ namespace DaGeim
             player.Update(gameTime);
             enemy1.Update();
 
-            foreach (CollisionTiles tile in map.CollisionTiles) { 
+            foreach (CollisionTiles tile in map.CollisionTiles)
+            {
                 player.Collision(tile.Rectangle, map.Widht, map.Height);
                 camera.Update(player.Position, map.Widht, map.Height);
-                }
+            }
+            //update the scoreboard (the whole scoreboard screen)
+            //scoreBoard.Update(gameTime, this);
+
+            //update the SCORES in the scoreboard AFTER the player dies or clears the level
+            //first we need a Score object containing the player name and scores
+            //  Score playerScore = new Score(name, points);
+            //  scoreBoard.UpdateScore(playerScore);
             base.Update(gameTime);
         }
 
@@ -84,13 +100,16 @@ namespace DaGeim
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin(SpriteSortMode.Deferred,
-                               BlendState.AlphaBlend,null,null,null,null,camera.Transform);
+                               BlendState.AlphaBlend, null, null, null, null, camera.Transform);
             spriteBatch.Draw(backText, backRect, Color.White);
             map.Draw(spriteBatch);
             player.Draw(spriteBatch);
             enemy1.Draw(spriteBatch, new Vector2(330, 210));
+            //draw the scoreboard screen (after the game ends and after the Scores are updated)
+            //scoreBoard.Draw(spriteBatch);
+
             spriteBatch.End();
-            
+
             base.Draw(gameTime);
         }
     }
