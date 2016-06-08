@@ -9,7 +9,6 @@ class PlayerNew : AnimatedSprite
     public const float VelocityX = 150.0f;
     public float VelocityY = 0.0f;
     public const int PLAYER_FPS = 10;
-    private bool attacking = false;
     private bool sliding = false;
     private bool jumped = false;
     private float jumpHeight = 400;
@@ -41,7 +40,8 @@ class PlayerNew : AnimatedSprite
     public void LoadContent(ContentManager content)
     {
         spriteTexture = content.Load<Texture2D>("PlayerAnimation");
-        
+        shootTextureRight = content.Load<Texture2D>("rocketRight");
+        shootTextureLeft = content.Load<Texture2D>("rocketLeft");
     }
 
     public override void Update(GameTime gameTime)
@@ -111,6 +111,7 @@ class PlayerNew : AnimatedSprite
                 {
                     attacking = true;
                     PlayAnimation("AttackLeft");
+                    InitializeRocket(playerPosition, "left");
                 }
                 else if (Keyboard.IsKeyDown(Keys.Up) && !jumped) /// JUMP
                 {
@@ -154,6 +155,7 @@ class PlayerNew : AnimatedSprite
                 {
                     attacking = true;
                     PlayAnimation("AttackRight");
+                    InitializeRocket(playerPosition, "right");
                 }
                 else if (Keyboard.IsKeyDown(Keys.Up) && !jumped) /// JUMP 
                 {
@@ -183,11 +185,13 @@ class PlayerNew : AnimatedSprite
                 {
                     currentDirection = PlayerDirection.Left;
                     PlayAnimation("ShootLeft");
+                    InitializeRocket(playerPosition, "left");
                 }
                 else if (currentDirection == PlayerDirection.Right)
                 {
                     currentDirection = PlayerDirection.Right;
                     PlayAnimation("ShootRight");
+                    InitializeRocket(playerPosition, "right");
                 }
             }
             /// UP ARROW

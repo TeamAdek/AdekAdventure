@@ -9,13 +9,23 @@ using Microsoft.Xna.Framework.Graphics;
         protected Vector2 playerPosition;
         protected Vector2 spriteDirection = Vector2.Zero;
         private Rectangle[] textureArea;
-        
+        private Vector2 shootPosition;
+        protected Texture2D shootTextureRight;
+        protected Texture2D shootTextureLeft;
+        private bool shotCollision = false;
+
         private int frameIndex;
         private double timeElapsed;
         private double timeToUpdate;
         protected string currentAnimation;
-        
-        private Dictionary<string, Rectangle[]> spriteAnimations = new Dictionary<string, Rectangle[]>();
+        protected bool attacking = false;
+
+
+        private int shoot_X_offset;
+        private int shoot_Y_offset;
+        private bool isShootRight = true;
+
+    private Dictionary<string, Rectangle[]> spriteAnimations = new Dictionary<string, Rectangle[]>();
 
         public enum PlayerDirection {None, Up, Down,  Left, Right}
         protected PlayerDirection currentDirection = PlayerDirection.None;
@@ -42,6 +52,14 @@ using Microsoft.Xna.Framework.Graphics;
 
         public virtual void Update(GameTime gameTime)
         {
+
+            if (!shotCollision && isShootRight)
+                shootPosition.X += 3;
+            else if (!shotCollision && !isShootRight)
+                shootPosition.X -= 3;
+            else
+                attacking = false;
+
             timeElapsed += gameTime.ElapsedGameTime.TotalSeconds;
             if (timeElapsed > timeToUpdate)
             {
@@ -57,10 +75,32 @@ using Microsoft.Xna.Framework.Graphics;
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void InitializeRocket(Vector2 startPos, string direction)
         {
+            if (direction == "right")
+            {
+                shoot_X_offset = 80;
+                shoot_Y_offset = 35;
+                isShootRight = true;
+            }
+            else
+            {
+                shoot_X_offset = -15;
+                shoot_Y_offset = 35;
+                isShootRight = false;
+            }
+
+            shootPosition.X = startPos.X + shoot_X_offset;
+            shootPosition.Y = startPos.Y + shoot_Y_offset;
+        }
+
+    public void Draw(SpriteBatch spriteBatch)
+        {
+            if (attacking && isShootRight)
+                spriteBatch.Draw(shootTextureRight, shootPosition, Color.White);
+            else if (attacking && !isShootRight)
+                spriteBatch.Draw(shootTextureLeft, shootPosition, Color.White);
             spriteBatch.Draw(spriteTexture, playerPosition, spriteAnimations[currentAnimation][frameIndex], Color.White);
-            
         }
 
         public void PlayAnimation(string name)
