@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace DaGeim
 {
-    public class ScoreBoard : Game1
+    public class ScoreBoard : MainGame
     {
         private List<Score> highscores = new List<Score>();
         private char[] delimiters = { ' ', '\t', '\n' };
@@ -111,7 +111,7 @@ namespace DaGeim
                 {
                     spritebatch.Draw(star, new Rectangle(310, rowY, 40, 40), Color.White);
                 }
-                string pos = string.Format($"{i + 1}.").PadLeft(3);
+                string pos = string.Format("{0}.", i + 1).PadLeft(3);
                 string name = highscores[i].playerName;
                 string score = highscores[i].points.ToString().PadLeft(10, ' ');
                 spritebatch.DrawString(font, pos, new Vector2(numberX, rowY), Color.Ivory);
@@ -125,7 +125,7 @@ namespace DaGeim
         }
         //update the position of the selector and change the state of the buttons
         //once a button is active, pressing "space" will do something according the button
-        public void Update(GameTime gameTime, Game1 game)
+        public void Update(GameTime gameTime, MainGame game)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
