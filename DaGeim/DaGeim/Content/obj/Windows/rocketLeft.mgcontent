@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/rocketLeft.png</SourceFile>
-  <SourceTime>2016-06-08T22:14:10.1942381+03:00</SourceTime>
-  <DestFile>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/rocketLeft.xnb</DestFile>
-  <DestTime>2016-06-09T12:59:50.2565401+03:00</DestTime>
+  <SourceFile>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/rocketLeft.png</SourceFile>
+  <SourceTime>2016-06-09T19:21:26.2261679+03:00</SourceTime>
+  <DestFile>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/rocketLeft.xnb</DestFile>
+  <DestTime>2016-06-09T19:26:53.3739068+03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T09:36:08+03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

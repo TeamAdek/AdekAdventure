@@ -9,7 +9,7 @@ namespace DaGeim
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        private ScoreBoard scoreBoard;
+        private EndGameScreen endGameScreen;
         private HUD gameUI;
         Texture2D backText;
         Rectangle backRect;
@@ -29,7 +29,7 @@ namespace DaGeim
         {
             Content.RootDirectory = "Content";
             graphics = new GraphicsDeviceManager(this);
-            //      THE SCOREBOARD IS SET FOR 1280x720
+            //      THE ENDGAMESCREEN IS SET FOR 1280x720
             //graphics.PreferredBackBufferWidth = 1280;
             //graphics.PreferredBackBufferHeight = 720;
             //graphics.ApplyChanges();
@@ -47,7 +47,7 @@ namespace DaGeim
             enemy2.Position = new Vector2(164, 380);
             enemy3 = new Enemy2();
             enemy3.Position = new Vector2(330, 320);
-            scoreBoard = new ScoreBoard();
+            endGameScreen = new EndGameScreen();
             base.Initialize();
         }
 
@@ -82,7 +82,7 @@ namespace DaGeim
             Texture2D enemyTexture2D = Content.Load<Texture2D>("enemy1");
             enemy1 = new Enemy1(enemyTexture2D, 2, 4);
             //loading the scoreboard content
-            // scoreBoard.Load(Content);
+            endGameScreen.Load(Content);
         }
 
         protected override void UnloadContent()
@@ -98,10 +98,10 @@ namespace DaGeim
             enemy2.Update(gameTime);
             enemy3.Update(gameTime);
             enemy1.Update();
-            
+
             gameUI.Update(mainPlayer.playerHP);
 
-            if(Keyboard.GetState().IsKeyDown(Keys.F))
+            if (Keyboard.GetState().IsKeyDown(Keys.F))
                 mainPlayer.playerHP -= 3;
             if (Keyboard.GetState().IsKeyDown(Keys.G))
                 mainPlayer.playerHP += 3;
@@ -115,12 +115,12 @@ namespace DaGeim
                 camera.Update(mainPlayer.getPosition(), map.Widht, map.Height);
             }
             //update the scoreboard (the whole scoreboard screen)
-            //scoreBoard.Update(gameTime, this);
+            // endGameScreen.Update(gameTime, this);
 
             //update the SCORES in the scoreboard AFTER the player dies or clears the level
             //first we need a Score object containing the player name and scores
             //  Score playerScore = new Score(name, points);
-            //  scoreBoard.UpdateScore(playerScore);
+            //  endGameScreen.UpdateScoreboard(playerScore);
             base.Update(gameTime);
         }
 
@@ -135,10 +135,10 @@ namespace DaGeim
             mainPlayer.Draw(spriteBatch);
             enemy1.Draw(spriteBatch, new Vector2(330, 210));
             gameUI.Draw(spriteBatch);
-//            enemy2.Draw(spriteBatch);
-//            enemy3.Draw(spriteBatch);
+            //            enemy2.Draw(spriteBatch);
+            //            enemy3.Draw(spriteBatch);
             //draw the scoreboard screen (after the game ends and after the Scores are updated)
-            //scoreBoard.Draw(spriteBatch);
+            // endGameScreen.Draw(spriteBatch);
 
             spriteBatch.End();
 

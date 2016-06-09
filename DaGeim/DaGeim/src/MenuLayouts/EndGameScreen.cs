@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace DaGeim
 {
-    public class ScoreBoard : MainGame
+    public class EndGameScreen : MainGame
     {
         private List<Score> highscores = new List<Score>();
         private char[] delimiters = { ' ', '\t', '\n' };
@@ -16,7 +16,8 @@ namespace DaGeim
         private bool wasUpdated;
         private int positionAtScorelist;
 
-        private Button newGameButton = new Button("New Game", new Rectangle(950, 500, 300, 80));
+        private Button newGameButton = new Button("New Game", new Rectangle(950, 400, 300, 80));
+        private Button mainMenuButton = new Button("Main Menu", new Rectangle(950, 500, 300, 80));
         private Button quitButton = new Button("Quit", new Rectangle(950, 600, 300, 80));
         private Selector selector;
 
@@ -35,9 +36,10 @@ namespace DaGeim
             star = content.Load<Texture2D>("bluestar");
             robotImage = content.Load<Texture2D>("Idle");
             newGameButton.Load(content);
+            mainMenuButton.Load(content);
             quitButton.Load(content);
             //give the selector object cords inside the top-most button
-            selector = new Selector(1000, 520);
+            selector = new Selector(1000, 420);
 
             //load the current highscores from file and fill a list with them
             using (StreamReader reader = new StreamReader(path))
@@ -67,7 +69,7 @@ namespace DaGeim
             }
         }
         //update the scoreboard each time the player dies or clears the level
-        public void UpdateScore(Score playerScore)
+        public void UpdateScoreboard(Score playerScore)
         {
             wasUpdated = false;
             positionAtScorelist = -1;
@@ -129,19 +131,27 @@ namespace DaGeim
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
-                selector.y -= 100;
-                if (selector.y < 520)
-                    selector.y = 520; // the selector cant go above this position
+                selector.y -= 20; // we move the selector 20px up the screen
+                if (selector.y < 420)
+                    selector.y = 420; // the selector cant go above this position
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                selector.y += 100;
+                selector.y += 20; // we move the selector 20px down the screen
                 if (selector.y > 620)
                     selector.y = 620; // the selector cant go below this position
             }
 
             //make a small rectangle to check the if the selector is inside one of the buttons
             Rectangle rect = new Rectangle(selector.x, selector.y, 20, 20);
+            if (rect.Intersects(mainMenuButton.location))
+            {
+                mainMenuButton.isSelected = true;
+            }
+            else
+            {
+                mainMenuButton.isSelected = false;
+            }
             if (rect.Intersects(newGameButton.location))
             {
                 newGameButton.isSelected = true;
@@ -159,11 +169,18 @@ namespace DaGeim
                 quitButton.isSelected = false;
             }
             //check which button is selected and do the action
+            if (mainMenuButton.isSelected)
+            {
+                if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                {
+                    //TODO call the main menu screen
+                }
+            }
             if (newGameButton.isSelected)
             {
                 //starts new game
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))
-                { 
+                {
                     //TODO START NEW GAME LOGIC
                 }
             }
