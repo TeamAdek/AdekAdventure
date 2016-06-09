@@ -10,7 +10,7 @@ namespace DaGeim
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         private ScoreBoard scoreBoard;
-
+        private HUD gameUI;
         Texture2D backText;
         Rectangle backRect;
 
@@ -41,6 +41,7 @@ namespace DaGeim
             map = new Map();
             player = new Player();
             mainPlayer = new PlayerNew(new Vector2(64, 355));
+            gameUI = new HUD();
 
             enemy2 = new Enemy2();
             enemy2.Position = new Vector2(164, 380);
@@ -56,6 +57,7 @@ namespace DaGeim
             DrawRect.LoadContent(Content);
             spriteBatch = new SpriteBatch(GraphicsDevice);
             backText = Content.Load<Texture2D>("background");
+            gameUI.Load(Content);
             backRect = new Rectangle(0, -50, 3000, 500);
             Tiles.Content = Content;
             camera = new Camera(GraphicsDevice.Viewport);
@@ -96,7 +98,13 @@ namespace DaGeim
             enemy2.Update(gameTime);
             enemy3.Update(gameTime);
             enemy1.Update();
+            
+            gameUI.Update(mainPlayer.playerHP);
 
+            if(Keyboard.GetState().IsKeyDown(Keys.F))
+                mainPlayer.playerHP -= 3;
+            if (Keyboard.GetState().IsKeyDown(Keys.G))
+                mainPlayer.playerHP += 3;
             foreach (CollisionTiles tile in map.CollisionTiles)
             {
                 mainPlayer.Collision(tile.Rectangle);
@@ -121,10 +129,12 @@ namespace DaGeim
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin(SpriteSortMode.Deferred,
                                BlendState.AlphaBlend, null, null, null, null, camera.Transform);
+
             spriteBatch.Draw(backText, backRect, Color.White);
             map.Draw(spriteBatch);
             mainPlayer.Draw(spriteBatch);
             enemy1.Draw(spriteBatch, new Vector2(330, 210));
+            gameUI.Draw(spriteBatch);
 //            enemy2.Draw(spriteBatch);
 //            enemy3.Draw(spriteBatch);
             //draw the scoreboard screen (after the game ends and after the Scores are updated)

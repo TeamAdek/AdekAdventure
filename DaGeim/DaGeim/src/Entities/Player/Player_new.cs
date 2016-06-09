@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Input;
 
 class PlayerNew : AnimatedSprite
 {
+    public int playerHP;
     public const float VelocityX = 250.0f;
     public float VelocityY = 0.0f;
     public const int PLAYER_FPS = 10;
@@ -36,7 +37,7 @@ class PlayerNew : AnimatedSprite
         : base(position)
     {
         FramesPerSecond = PLAYER_FPS;
-
+        playerHP = 320;
 
         loadAnimations();
         PlayAnimation("IdleRight");

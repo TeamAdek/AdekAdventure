@@ -41,3 +41,6 @@ E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\
 E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\DaGeim.exe
 E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\DaGeim.pdb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\Adek Aventure.csprojResolveAssemblyReference.cache
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\HUD.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\HUD_HP_BAR.xnb
