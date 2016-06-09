@@ -289,3 +289,6 @@ D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XIn
 D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.xml
 D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\DaGeim.csprojResolveAssemblyReference.cache
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\rocketLeft.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\rocketRight.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\red.xnb

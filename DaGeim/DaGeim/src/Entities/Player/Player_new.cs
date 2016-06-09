@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using DaGeim;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -6,7 +7,7 @@ using Microsoft.Xna.Framework.Input;
 
 class PlayerNew : AnimatedSprite
 {
-    public const float VelocityX = 150.0f;
+    public const float VelocityX = 250.0f;
     public float VelocityY = 0.0f;
     public const int PLAYER_FPS = 10;
     private bool sliding = false;
@@ -14,6 +15,8 @@ class PlayerNew : AnimatedSprite
     private float jumpHeight = 400;
     private float gravity = 15f;
     public Rectangle collisionBox;
+    public Vector2 stepAmount;
+    
 
     public Rectangle getCB()
     {
@@ -24,8 +27,11 @@ class PlayerNew : AnimatedSprite
     {
         collisionBox = b;
     }
-    
-    
+
+    public Vector2 getPosition()
+    {
+        return playerPosition;
+    }
     public PlayerNew(Vector2 position)
         : base(position)
     {
@@ -66,20 +72,11 @@ class PlayerNew : AnimatedSprite
         spriteDirection *= new Vector2(VelocityX, -VelocityY);
         playerPosition += (spriteDirection * deltaTime);
 
-        if (playerPosition.Y >= 355)
-        {
-            playerPosition.Y = 355;
-            VelocityY = 0.0f;
-            jumped = false;
-        }
+        stepAmount = spriteDirection*deltaTime;
+
+        
         setCollisionBounds();
         base.Update(gameTime);
-
-        if (collisionBox.X < -1)
-            playerPosition.X = 0 - 24;
-        if (collisionBox.Y < 0)
-            playerPosition.Y = 0;
-       
     }
 
     public void HandleInput(KeyboardState Keyboard)
@@ -237,14 +234,33 @@ class PlayerNew : AnimatedSprite
             sliding = false;
     }
 
+
+    public void Collision(Rectangle otherObjectRect)
+    {
+        if (collisionBox.TouchTopOf(otherObjectRect))
+        {
+            playerPosition.Y = otherObjectRect.Y - collisionBox.Height - 5;
+            VelocityY = 0.0f;
+            jumped = false;
+        }
+        if (collisionBox.TouchLeftOf(otherObjectRect) && currentDirection == PlayerDirection.Right)
+        {
+            playerPosition.X -= stepAmount.X ;
+        }
+        if (collisionBox.TouchRightOf(otherObjectRect) && currentDirection == PlayerDirection.Left)
+        {
+            playerPosition.X -= stepAmount.X;
+        }
+    }
+
     private void setCollisionBounds()
     {
         int xOffset, yOffset, width, height;
 
         if (currentAnimation.Equals("IdleLeft")){xOffset = 24;yOffset = 10;width = 47;height = 83;}
         else if (currentAnimation.Equals("IdleRight")){xOffset = 30;yOffset = 10;width = 47;height = 83;}
-        else if (currentAnimation.Equals("RunRight")) {xOffset = 20;yOffset = 10;width = 57;height= 83;}
-        else if (currentAnimation.Equals("RunLeft")) {xOffset = 23;yOffset = 10;width = 57;height= 83;}
+        else if (currentAnimation.Equals("RunRight")) {xOffset = 10;yOffset = 10;width = 57;height= 83;}
+        else if (currentAnimation.Equals("RunLeft")) {xOffset = 33;yOffset = 10;width = 57;height= 83;}
         else if (currentAnimation.Equals("AttackRight")) {xOffset = 14;yOffset = 10;width = 70;height= 83;}
         else if (currentAnimation.Equals("AttackLeft")) {xOffset = 16;yOffset = 10;width = 70;height= 83;}
         else if (currentAnimation.Equals("JumpRight")) {xOffset = 14;yOffset = 10;width = 66;height= 88;}

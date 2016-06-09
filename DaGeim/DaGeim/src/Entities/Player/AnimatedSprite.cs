@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
     public abstract class AnimatedSprite
     {
         protected Texture2D spriteTexture;
+
         protected Vector2 playerPosition;
         protected Vector2 spriteDirection = Vector2.Zero;
         private Rectangle[] textureArea;

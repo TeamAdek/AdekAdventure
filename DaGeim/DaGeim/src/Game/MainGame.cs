@@ -5,7 +5,6 @@ using Microsoft.Xna.Framework.Input;
 
 namespace DaGeim
 {
-
     public class MainGame : Game
     {
         GraphicsDeviceManager graphics;
@@ -28,12 +27,12 @@ namespace DaGeim
 
         public MainGame()
         {
+            Content.RootDirectory = "Content";
             graphics = new GraphicsDeviceManager(this);
             //      THE SCOREBOARD IS SET FOR 1280x720
             //graphics.PreferredBackBufferWidth = 1280;
             //graphics.PreferredBackBufferHeight = 720;
             //graphics.ApplyChanges();
-            Content.RootDirectory = "Content";
         }
 
 
@@ -42,11 +41,11 @@ namespace DaGeim
             map = new Map();
             player = new Player();
             mainPlayer = new PlayerNew(new Vector2(64, 355));
-            
+
             enemy2 = new Enemy2();
             enemy2.Position = new Vector2(164, 380);
             enemy3 = new Enemy2();
-            enemy3.Position = new Vector2(330,320);
+            enemy3.Position = new Vector2(330, 320);
             scoreBoard = new ScoreBoard();
             base.Initialize();
         }
@@ -54,6 +53,7 @@ namespace DaGeim
 
         protected override void LoadContent()
         {
+            DrawRect.LoadContent(Content);
             spriteBatch = new SpriteBatch(GraphicsDevice);
             backText = Content.Load<Texture2D>("background");
             backRect = new Rectangle(0, -50, 3000, 500);
@@ -91,7 +91,6 @@ namespace DaGeim
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
             mainPlayer.Update(gameTime);
             player.Update(gameTime);
             enemy2.Update(gameTime);
@@ -100,12 +99,12 @@ namespace DaGeim
 
             foreach (CollisionTiles tile in map.CollisionTiles)
             {
-                
+                mainPlayer.Collision(tile.Rectangle);
                 player.Collision(tile.Rectangle, map.Widht, map.Height);
                 enemy2.Collision(tile.Rectangle, map.Widht, map.Height);
                 enemy3.Collision(tile.Rectangle, map.Widht, map.Height);
-                
-                camera.Update(player.Position, map.Widht, map.Height);
+
+                camera.Update(mainPlayer.getPosition(), map.Widht, map.Height);
             }
             //update the scoreboard (the whole scoreboard screen)
             //scoreBoard.Update(gameTime, this);
@@ -124,11 +123,10 @@ namespace DaGeim
                                BlendState.AlphaBlend, null, null, null, null, camera.Transform);
             spriteBatch.Draw(backText, backRect, Color.White);
             map.Draw(spriteBatch);
-            player.Draw(spriteBatch);
             mainPlayer.Draw(spriteBatch);
-            //enemy1.Draw(spriteBatch, new Vector2(330, 210));
-            enemy2.Draw(spriteBatch);
-            enemy3.Draw(spriteBatch);
+            enemy1.Draw(spriteBatch, new Vector2(330, 210));
+//            enemy2.Draw(spriteBatch);
+//            enemy3.Draw(spriteBatch);
             //draw the scoreboard screen (after the game ends and after the Scores are updated)
             //scoreBoard.Draw(spriteBatch);
 
