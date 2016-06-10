@@ -109,6 +109,10 @@ namespace DaGeim
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            //update the startscreen
+            startGameScreen.Update(gameTime, this);
+
             mainPlayer.Update(gameTime);
             player.Update(gameTime);
 
