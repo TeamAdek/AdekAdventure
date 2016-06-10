@@ -7,7 +7,7 @@ using DaGeim;
 
 namespace DaGeim.Enemies
 {
-    public class Enemy2
+    public class EnemyGuardian
     {
         private Texture2D texture;
         private Vector2 position = new Vector2(164, 384);
@@ -31,7 +31,7 @@ namespace DaGeim.Enemies
             set { this.startPoint = value; }
         }
 
-        public Enemy2() { }
+        public EnemyGuardian() { }
 
         public void Load(ContentManager Content)
         {

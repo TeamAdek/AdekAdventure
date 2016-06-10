@@ -23,9 +23,9 @@ namespace DaGeim
         PlayerNew mainPlayer;
 
         private Enemy1 enemy1;
-        private Enemy2 enemy2;
-        private Enemy2 enemy3;
-        private List<Enemy2> enemiesList = new List<Enemy2>();
+        private EnemyGuardian enemy2;
+        private EnemyGuardian enemy3;
+        private List<EnemyGuardian> enemiesList = new List<EnemyGuardian>();
         private Texture2D enemy1Texture2D;
 
         public MainGame()
@@ -50,10 +50,10 @@ namespace DaGeim
             mainPlayer = new PlayerNew(new Vector2(64, 355));
             gameUI = new HUD();
 
-            enemy2 = new Enemy2();
+            enemy2 = new EnemyGuardian();
             enemy2.StartPoint = new Vector2(164,380);
             enemy2.Position = enemy2.StartPoint;
-            enemy3 = new Enemy2();
+            enemy3 = new EnemyGuardian();
             enemy3.StartPoint = new Vector2(300, 320);
             enemy3.Position = enemy3.StartPoint;
             endGameScreen = new EndGameScreen();

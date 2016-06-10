@@ -45,7 +45,7 @@
     <Compile Include="src\Helper Classes\Collision.cs" />
     <Compile Include="src\Helper Classes\DrawRect.cs" />
     <Compile Include="src\Entities\Enemies\Enemy1.cs" />
-    <Compile Include="src\Entities\Enemies\Enemy2.cs" />
+    <Compile Include="src\Entities\Enemies\EnemyGuardian.cs" />
     <Compile Include="src\Game\MainGame.cs" />
     <Compile Include="src\Level\Map.cs" />
     <Compile Include="src\Entities\Player\Player.cs" />
