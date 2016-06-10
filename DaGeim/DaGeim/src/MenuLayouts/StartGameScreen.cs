@@ -16,10 +16,10 @@ namespace DaGeim
         private SpriteFont font;
         private Selector selector;
 
-        private Button newGameButton = new Button("New Game", new Rectangle(900, 320, 300, 80));
-        private Button scoresButton = new Button("Scores", new Rectangle(900, 420, 300, 80));
-        private Button creditsButton = new Button("Credits", new Rectangle(900, 520, 300, 80));
-        private Button quitButton = new Button("Quit", new Rectangle(900, 620, 300, 80));
+        private Button newGameButton = new Button("New Game", new Rectangle(490, 320, 300, 80));
+        private Button scoresButton = new Button("Scores", new Rectangle(490, 420, 300, 80));
+        private Button creditsButton = new Button("Credits", new Rectangle(490, 520, 300, 80));
+        private Button quitButton = new Button("Quit", new Rectangle(490, 620, 300, 80));
 
 
         public void Load(ContentManager content)
@@ -33,7 +33,7 @@ namespace DaGeim
             creditsButton.Load(content);
             scoresButton.Load(content);
 
-            selector = new Selector(900, 320);
+            selector = new Selector(490, 340);
         }
 
         public void Draw(SpriteBatch spritebatch)
@@ -41,6 +41,8 @@ namespace DaGeim
             // spritebatch.Begin();
             spritebatch.Draw(background, new Rectangle(0, 0, 1280, 720), Color.White);
             spritebatch.Draw(robotImage, new Rectangle(50, 470, 250, 250), Color.White);
+            spritebatch.DrawString(mainFont, "ADEK GAME", new Vector2(450, 25),
+                Color.Ivory);
 
             newGameButton.DrawButton(spritebatch, font);
             scoresButton.DrawButton(spritebatch, font);
@@ -48,7 +50,7 @@ namespace DaGeim
             quitButton.DrawButton(spritebatch, font);
             //spritebatch.End();
         }
-        //selector = new Selector(900, 620);
+
         public void Update(GameTime gameTime, MainGame game)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
@@ -56,14 +58,14 @@ namespace DaGeim
                 selector.y -= 20;
                 if (selector.y < 320)
                 {
-                    selector.y = 320;
+                    selector.y = 340;
                 }
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
                 selector.y += 20;
-                if (selector.y > 720)
-                    selector.y = 720;
+                if (selector.y > 680)
+                    selector.y = 680;
             }
 
             //make a small rectangle to check the if the selector is inside one of the buttons

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Ivan Nikolov/Documents/SoftUni/CSharp/TeamProject/AdekAdventure/DaGeim/DaGeim/Content/darkButton.jpg</SourceFile>
-  <SourceTime>2016-06-10T15:12:20.9473503+03:00</SourceTime>
-  <DestFile>C:/Users/Ivan Nikolov/Documents/SoftUni/CSharp/TeamProject/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/darkButton.xnb</DestFile>
-  <DestTime>2016-06-10T21:21:13.686768+03:00</DestTime>
+  <SourceFile>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/darkButton.jpg</SourceFile>
+  <SourceTime>2016-06-10T20:29:26.2536215+03:00</SourceTime>
+  <DestFile>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/bin/Windows/darkButton.xnb</DestFile>
+  <DestTime>2016-06-10T20:36:48.1538967+03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T09:36:08+03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
