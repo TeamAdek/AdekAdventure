@@ -3,6 +3,10 @@ using DaGeim.Enemies;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
+
+
 
 namespace DaGeim
 {
@@ -10,6 +14,11 @@ namespace DaGeim
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Song song;
+        SoundEffect soundEffect;
+        SoundEffectInstance instance;
+        AudioListener listener;
+        AudioEmitter emitter;
         private StartGameScreen startGameScreen;
         private EndGameScreen endGameScreen;
         private HUD gameUI;
@@ -99,6 +108,12 @@ namespace DaGeim
             enemy1 = new Enemy1(enemyTexture2D, 2, 4);
             //loading the scoreboard content
             endGameScreen.Load(Content);
+
+            this.song = Content.Load<Song>("theme1");
+            MediaPlayer.Play(song);
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
+
         }
 
         protected override void UnloadContent()
@@ -154,6 +169,15 @@ namespace DaGeim
         {
             
         }
+
+        private void MediaPlayer_MediaStateChanged(object sender, System.
+                                           EventArgs e)
+        {
+            // 0.0f is silent, 1.0f is full volume
+            MediaPlayer.Volume -= 0.4f;
+            MediaPlayer.Play(song);
+        }
+
 
         protected override void Draw(GameTime gameTime)
         {

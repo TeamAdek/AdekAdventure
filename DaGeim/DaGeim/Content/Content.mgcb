@@ -253,3 +253,15 @@
 /processorParam:TextureFormat=Color
 /build:HUD_HP_BAR.png
 
+#begin theme2.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:theme2.ogg
+
+#begin theme1.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:theme1.ogg
+
