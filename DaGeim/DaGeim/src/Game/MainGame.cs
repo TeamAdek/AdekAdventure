@@ -1,4 +1,5 @@
-﻿using DaGeim.Enemies;
+﻿using System.Collections.Generic;
+using DaGeim.Enemies;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -13,6 +14,7 @@ namespace DaGeim
         private HUD gameUI;
         Texture2D backText;
         Rectangle backRect;
+        private Vector2 playerPosition;
 
 
         Camera camera;
@@ -23,6 +25,7 @@ namespace DaGeim
         private Enemy1 enemy1;
         private Enemy2 enemy2;
         private Enemy2 enemy3;
+        private List<Enemy2> enemiesList = new List<Enemy2>();
         private Texture2D enemy1Texture2D;
 
         public MainGame()
@@ -35,6 +38,10 @@ namespace DaGeim
             //graphics.ApplyChanges();
         }
 
+        public Vector2 PlayerPosition
+        {
+            get { return this.playerPosition; }
+        }
 
         protected override void Initialize()
         {
@@ -44,9 +51,11 @@ namespace DaGeim
             gameUI = new HUD();
 
             enemy2 = new Enemy2();
-            enemy2.Position = new Vector2(164, 380);
+            enemy2.StartPoint = new Vector2(164,380);
+            enemy2.Position = enemy2.StartPoint;
             enemy3 = new Enemy2();
-            enemy3.Position = new Vector2(330, 320);
+            enemy3.StartPoint = new Vector2(300, 320);
+            enemy3.Position = enemy3.StartPoint;
             endGameScreen = new EndGameScreen();
             base.Initialize();
         }
@@ -73,11 +82,15 @@ namespace DaGeim
                     { 2,1,1,1,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2,2,2,2,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
                }, 64);
             player.Load(Content);
-            enemy2.Load(Content);
-            enemy3.Load(Content);
-
             mainPlayer.LoadContent(Content);
 
+            this.enemiesList.Add(this.enemy2);
+            this.enemiesList.Add(this.enemy3);
+
+            foreach (var enemy in enemiesList)
+            {
+                enemy.Load(Content);
+            }
 
             Texture2D enemyTexture2D = Content.Load<Texture2D>("enemy1");
             enemy1 = new Enemy1(enemyTexture2D, 2, 4);
@@ -95,8 +108,13 @@ namespace DaGeim
                 Exit();
             mainPlayer.Update(gameTime);
             player.Update(gameTime);
-            enemy2.Update(gameTime);
-            enemy3.Update(gameTime);
+
+            foreach (var enemy in enemiesList)
+            {
+                //enemy.Update(gameTime, player.Position);
+                enemy.Update(gameTime, mainPlayer.getPosition());
+            }
+            
             enemy1.Update();
 
             gameUI.Update(mainPlayer.playerHP);
@@ -105,15 +123,20 @@ namespace DaGeim
                 mainPlayer.playerHP -= 3;
             if (Keyboard.GetState().IsKeyDown(Keys.G))
                 mainPlayer.playerHP += 3;
+
             foreach (CollisionTiles tile in map.CollisionTiles)
             {
                 mainPlayer.Collision(tile.Rectangle);
                 player.Collision(tile.Rectangle, map.Widht, map.Height);
-                enemy2.Collision(tile.Rectangle, map.Widht, map.Height);
-                enemy3.Collision(tile.Rectangle, map.Widht, map.Height);
+
+                foreach (var enemy in enemiesList)
+                {
+                    enemy.Collision(tile.Rectangle, map.Widht, map.Height);
+                }
 
                 camera.Update(mainPlayer.getPosition(), map.Widht, map.Height);
             }
+
             //update the scoreboard (the whole scoreboard screen)
             // endGameScreen.Update(gameTime, this);
 
@@ -122,6 +145,11 @@ namespace DaGeim
             //  Score playerScore = new Score(name, points);
             //  endGameScreen.UpdateScoreboard(playerScore);
             base.Update(gameTime);
+        }
+
+        private void EnemyMovement()
+        {
+            
         }
 
         protected override void Draw(GameTime gameTime)
@@ -133,10 +161,14 @@ namespace DaGeim
             spriteBatch.Draw(backText, backRect, Color.White);
             map.Draw(spriteBatch);
             mainPlayer.Draw(spriteBatch);
-            enemy1.Draw(spriteBatch, new Vector2(330, 210));
+            //enemy1.Draw(spriteBatch, new Vector2(330, 210));
             gameUI.Draw(spriteBatch);
-            //            enemy2.Draw(spriteBatch);
-            //            enemy3.Draw(spriteBatch);
+
+            foreach (var enemy in enemiesList)
+            {
+                enemy.Draw(spriteBatch);
+            }
+            
             //draw the scoreboard screen (after the game ends and after the Scores are updated)
             // endGameScreen.Draw(spriteBatch);
 

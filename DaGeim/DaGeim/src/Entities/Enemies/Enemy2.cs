@@ -1,7 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using DaGeim;
 
 namespace DaGeim.Enemies
 {
@@ -11,13 +13,22 @@ namespace DaGeim.Enemies
         private Vector2 position = new Vector2(164, 384);
         private Vector2 velocity;
         private Rectangle rectangle;
+        private Vector2 startPoint = new Vector2(0, 0);
+        private bool inPursue = false;
+        private string direction = "left";
 
         private bool hasJumped = false;
 
         public Vector2 Position
         {
-            get { return position; }
+            get { return this.position; }
             set { this.position = value; }
+        }
+
+        public Vector2 StartPoint
+        {
+            get { return this.startPoint; }
+            set { this.startPoint = value; }
         }
 
         public Enemy2() { }
@@ -25,35 +36,63 @@ namespace DaGeim.Enemies
         public void Load(ContentManager Content)
         {
             texture = Content.Load<Texture2D>("Upgraded_Robot_Sprite");
+            //texture = Content.Load<Texture2D>("enemy_with_sword");
         }
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, Vector2 playerPosition)
         {
             position += velocity;
             rectangle = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
-
-            Input(gameTime);
+            inPursue = false;
 
             if (velocity.Y < 10)
                 velocity.Y += 0.4f;
 
+            // detect player and pursue him
+            if ((playerPosition.X < position.X) &&
+                (position.X - playerPosition.X < 155) &&
+                (position.X > startPoint.X - 35) &&
+                (Math.Abs(position.Y - playerPosition.Y) < 150)
+                )
+            {
+                inPursue = true;
+                direction = "left";
+                position.X -= 1;
+            }
 
+            if ((playerPosition.X > position.X) &&
+                (playerPosition.X - position.X < 155) &&
+                (position.X < startPoint.X + 35) &&
+                (Math.Abs(position.Y - playerPosition.Y) < 150)
+                )
+            {
+                inPursue = true;
+                direction = "right";
+                position.X += 1;
+            }
 
-        }
-        private void Input(GameTime gameTime)
-        {
-            //if (Keyboard.GetState().IsKeyDown(Keys.Right))
-            //    velocity.X = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 4;
-            //else if (Keyboard.GetState().IsKeyDown(Keys.Left))
-            //    velocity.X = -(float)gameTime.ElapsedGameTime.TotalMilliseconds / 4;
-            //else
-            //    velocity.X = 0f;
+            // patrol
+            if (inPursue == false)
+            {
+                if ((direction == "left") && (position.X > startPoint.X - 30))
+                {
+                    position.X--;
+                }
 
-            //if (Keyboard.GetState().IsKeyDown(Keys.Up) && hasJumped == false)
-            //{
-            //    position.Y -= 5f;
-            //    velocity.Y = -9f;
-            //    hasJumped = true;
-            //}
+                if ((direction == "left") && (position.X <= startPoint.X - 30))
+                {
+                    direction = "right";
+                }
+
+                if ((direction == "right") && (position.X < startPoint.X + 30))
+                {
+                    position.X++;
+                }
+
+                if ((direction == "right") && (position.X >= startPoint.X + 30))
+                {
+                    direction = "left";
+                }
+            }
         }
 
         public void Collision(Rectangle newRectangle, int xOffset, int yOffset)

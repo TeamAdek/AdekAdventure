@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/HUD_HP_BAR.png</SourceFile>
-  <SourceTime>2016-06-09T19:21:25.8661674+03:00</SourceTime>
-  <DestFile>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/HUD_HP_BAR.xnb</DestFile>
-  <DestTime>2016-06-09T19:26:53.483907+03:00</DestTime>
+  <SourceFile>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/HUD_HP_BAR.png</SourceFile>
+  <SourceTime>2016-06-10T10:24:38.7309294+03:00</SourceTime>
+  <DestFile>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/HUD_HP_BAR.xnb</DestFile>
+  <DestTime>2016-06-10T10:25:59.0560953+03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T09:36:08+03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
