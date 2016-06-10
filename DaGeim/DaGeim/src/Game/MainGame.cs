@@ -10,6 +10,7 @@ namespace DaGeim
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        private StartGameScreen startGameScreen;
         private EndGameScreen endGameScreen;
         private HUD gameUI;
         Texture2D backText;
@@ -45,6 +46,7 @@ namespace DaGeim
 
         protected override void Initialize()
         {
+            startGameScreen = new StartGameScreen();
             map = new Map();
             player = new Player();
             mainPlayer = new PlayerNew(new Vector2(64, 355));
@@ -64,6 +66,7 @@ namespace DaGeim
         protected override void LoadContent()
         {
             DrawRect.LoadContent(Content);
+            startGameScreen.Load(Content);
             spriteBatch = new SpriteBatch(GraphicsDevice);
             backText = Content.Load<Texture2D>("background");
             gameUI.Load(Content);
@@ -159,6 +162,9 @@ namespace DaGeim
                                BlendState.AlphaBlend, null, null, null, null, camera.Transform);
 
             spriteBatch.Draw(backText, backRect, Color.White);
+
+            //startGameScreen.Draw(spriteBatch);
+
             map.Draw(spriteBatch);
             mainPlayer.Draw(spriteBatch);
             //enemy1.Draw(spriteBatch, new Vector2(330, 210));
