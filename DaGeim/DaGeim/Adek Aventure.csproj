@@ -57,6 +57,7 @@
     <Compile Include="src\MenuLayouts\EndGameScreen.cs" />
     <Compile Include="src\Helper Classes\Selector.cs" />
     <Compile Include="src\Level\Tiles.cs" />
+    <Compile Include="src\MenuLayouts\GameMenuManager.cs" />
     <Compile Include="src\MenuLayouts\StartGameScreen.cs" />
   </ItemGroup>
   <ItemGroup>

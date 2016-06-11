@@ -42,7 +42,7 @@ namespace DaGeim
         {
             Content.RootDirectory = "Content";
             graphics = new GraphicsDeviceManager(this);
-            //      THE ENDGAMESCREEN IS SET FOR 1280x720
+            //      THE MENUS ARE SET FOR 1280x720
             //graphics.PreferredBackBufferWidth = 1280;
             //graphics.PreferredBackBufferHeight = 720;
             //graphics.ApplyChanges();
@@ -55,6 +55,7 @@ namespace DaGeim
 
         protected override void Initialize()
         {
+           // GameMenuManager.mainMenuOn = true; // we set the mainmenuON, because we want to start from the mainMenu
             startGameScreen = new StartGameScreen();
             map = new Map();
             player = new Player();
@@ -62,7 +63,7 @@ namespace DaGeim
             gameUI = new HUD();
 
             enemy2 = new EnemyGuardian();
-            enemy2.StartPoint = new Vector2(164,380);
+            enemy2.StartPoint = new Vector2(164, 380);
             enemy2.Position = enemy2.StartPoint;
             enemy3 = new EnemyGuardian();
             enemy3.StartPoint = new Vector2(300, 320);
@@ -106,7 +107,7 @@ namespace DaGeim
 
             Texture2D enemyTexture2D = Content.Load<Texture2D>("enemy1");
             enemy1 = new Enemy1(enemyTexture2D, 2, 4);
-            //loading the scoreboard content
+            //loading the endGameScreen content
             endGameScreen.Load(Content);
 
             this.song = Content.Load<Song>("theme1");
@@ -125,53 +126,61 @@ namespace DaGeim
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            //update the startscreen
-            startGameScreen.Update(gameTime, this);
-
-            mainPlayer.Update(gameTime);
-            player.Update(gameTime);
-
-            foreach (var enemy in enemiesList)
+            // We update only the currently active menu (or the running game) using the GameMenuManager
+            if (GameMenuManager.mainMenuOn)
             {
-                //enemy.Update(gameTime, player.Position);
-                enemy.Update(gameTime, mainPlayer.getPosition());
+                //update the main menu
+                startGameScreen.Update(gameTime, this);
             }
-            
-            enemy1.Update();
-
-            gameUI.Update(mainPlayer.playerHP);
-
-            if (Keyboard.GetState().IsKeyDown(Keys.F))
-                mainPlayer.playerHP -= 3;
-            if (Keyboard.GetState().IsKeyDown(Keys.G))
-                mainPlayer.playerHP += 3;
-
-            foreach (CollisionTiles tile in map.CollisionTiles)
+            else if (GameMenuManager.endGameMenuOn)
             {
-                mainPlayer.Collision(tile.Rectangle);
-                player.Collision(tile.Rectangle, map.Widht, map.Height);
+                // update teh end game screen
+                endGameScreen.Update(gameTime, this);
+            }
+            else //here it should be "if (gameOn)" //TODO link all the game activity together
+            {
+                mainPlayer.Update(gameTime);
+                player.Update(gameTime);
 
                 foreach (var enemy in enemiesList)
                 {
-                    enemy.Collision(tile.Rectangle, map.Widht, map.Height);
+                    //enemy.Update(gameTime, player.Position);
+                    enemy.Update(gameTime, mainPlayer.getPosition());
                 }
 
-                camera.Update(mainPlayer.getPosition(), map.Widht, map.Height);
+                enemy1.Update();
+
+                gameUI.Update(mainPlayer.playerHP);
+
+                if (Keyboard.GetState().IsKeyDown(Keys.F))
+                    mainPlayer.playerHP -= 3;
+                if (Keyboard.GetState().IsKeyDown(Keys.G))
+                    mainPlayer.playerHP += 3;
+
+                foreach (CollisionTiles tile in map.CollisionTiles)
+                {
+                    mainPlayer.Collision(tile.Rectangle);
+                    player.Collision(tile.Rectangle, map.Widht, map.Height);
+
+                    foreach (var enemy in enemiesList)
+                    {
+                        enemy.Collision(tile.Rectangle, map.Widht, map.Height);
+                    }
+
+                    camera.Update(mainPlayer.getPosition(), map.Widht, map.Height);
+                }
+
+                //update the SCORES in the scoreboard AFTER the player dies or clears the level
+                //first we need a Score object containing the player name and scores
+                //  Score playerScore = new Score(name, points);
+                //  endGameScreen.UpdateScoreboard(playerScore);
             }
-
-            //update the scoreboard (the whole scoreboard screen)
-            // endGameScreen.Update(gameTime, this);
-
-            //update the SCORES in the scoreboard AFTER the player dies or clears the level
-            //first we need a Score object containing the player name and scores
-            //  Score playerScore = new Score(name, points);
-            //  endGameScreen.UpdateScoreboard(playerScore);
             base.Update(gameTime);
         }
 
         private void EnemyMovement()
         {
-            
+
         }
 
         private void MediaPlayer_MediaStateChanged(object sender, System.
@@ -186,28 +195,33 @@ namespace DaGeim
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            spriteBatch.Begin(SpriteSortMode.Deferred,
-                               BlendState.AlphaBlend, null, null, null, null, camera.Transform);
-
-            spriteBatch.Draw(backText, backRect, Color.White);
-
-            //startGameScreen.Draw(spriteBatch);
-
-            map.Draw(spriteBatch);
-            mainPlayer.Draw(spriteBatch);
-            //enemy1.Draw(spriteBatch, new Vector2(330, 210));
-            gameUI.Draw(spriteBatch);
-
-            foreach (var enemy in enemiesList)
+            //the same as the update, here we draw only the active menu
+            if (GameMenuManager.mainMenuOn)
             {
-                enemy.Draw(spriteBatch);
+                startGameScreen.Draw(spriteBatch);
             }
-            
-            //draw the scoreboard screen (after the game ends and after the Scores are updated)
-            // endGameScreen.Draw(spriteBatch);
+            else if (GameMenuManager.endGameMenuOn)
+            {
+                endGameScreen.Draw(spriteBatch);
+            }
+            else //NOTE THAT WE NEED A SEPARATE spriteBatch.Begin()/End() for each menu- the menus dont work with the line below
+            {
+                spriteBatch.Begin(SpriteSortMode.Deferred,
+                                 BlendState.AlphaBlend, null, null, null, null, camera.Transform);
 
-            spriteBatch.End();
+                spriteBatch.Draw(backText, backRect, Color.White);
+                
+                map.Draw(spriteBatch);
+                mainPlayer.Draw(spriteBatch);
+                //enemy1.Draw(spriteBatch, new Vector2(330, 210));
+                gameUI.Draw(spriteBatch);
 
+                foreach (var enemy in enemiesList)
+                {
+                    enemy.Draw(spriteBatch);
+                }
+                spriteBatch.End();
+            }
             base.Draw(gameTime);
         }
     }
