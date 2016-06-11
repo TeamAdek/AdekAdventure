@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="src\Entities\Player\AnimatedSprite.cs" />
+    <Compile Include="src\Helper Classes\Rockets.cs" />
     <Compile Include="src\Level\HUD.cs" />
     <Compile Include="src\MenuLayouts\Button.cs" />
     <Compile Include="src\Level\Camera.cs" />

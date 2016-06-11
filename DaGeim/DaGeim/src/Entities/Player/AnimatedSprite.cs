@@ -21,12 +21,7 @@ using Microsoft.Xna.Framework.Graphics;
         protected string currentAnimation;
         protected bool attacking = false;
 
-
-        private int shoot_X_offset;
-        private int shoot_Y_offset;
-        private bool isShootRight = true;
-
-    private Dictionary<string, Rectangle[]> spriteAnimations = new Dictionary<string, Rectangle[]>();
+        private Dictionary<string, Rectangle[]> spriteAnimations = new Dictionary<string, Rectangle[]>();
 
         public enum PlayerDirection {None, Up, Down,  Left, Right}
         protected PlayerDirection currentDirection = PlayerDirection.None;
@@ -54,13 +49,6 @@ using Microsoft.Xna.Framework.Graphics;
         public virtual void Update(GameTime gameTime)
         {
 
-            if (!shotCollision && isShootRight)
-                shootPosition.X += 3;
-            else if (!shotCollision && !isShootRight)
-                shootPosition.X -= 3;
-            else
-                attacking = false;
-
             timeElapsed += gameTime.ElapsedGameTime.TotalSeconds;
             if (timeElapsed > timeToUpdate)
             {
@@ -76,31 +64,8 @@ using Microsoft.Xna.Framework.Graphics;
             }
         }
 
-        public void InitializeRocket(Vector2 startPos, string direction)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
-            if (direction == "right")
-            {
-                shoot_X_offset = 80;
-                shoot_Y_offset = 35;
-                isShootRight = true;
-            }
-            else
-            {
-                shoot_X_offset = -15;
-                shoot_Y_offset = 35;
-                isShootRight = false;
-            }
-
-            shootPosition.X = startPos.X + shoot_X_offset;
-            shootPosition.Y = startPos.Y + shoot_Y_offset;
-        }
-
-    public void Draw(SpriteBatch spriteBatch)
-        {
-            if (attacking && isShootRight)
-                spriteBatch.Draw(shootTextureRight, shootPosition, Color.White);
-            else if (attacking && !isShootRight)
-                spriteBatch.Draw(shootTextureLeft, shootPosition, Color.White);
             spriteBatch.Draw(spriteTexture, playerPosition, spriteAnimations[currentAnimation][frameIndex], Color.White);
         }
 
