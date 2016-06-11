@@ -48,7 +48,11 @@ class Player : AnimatedSprite
     // Player Constructor
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
+<<<<<<< HEAD
     public Player(Vector2 position)
+=======
+    public PlayerNew(Vector2 position)
+>>>>>>> origin/master
         : base(position)
     {
         FramesPerSecond = PLAYER_FPS;
