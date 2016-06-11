@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>C:/Users/Ivan Nikolov/Documents/SoftUni/CSharp/TeamProject/AdekAdventure/DaGeim/DaGeim/Content/sweep.wav</SourceFile>
+  <SourceTime>2016-06-11T08:44:30.961958+03:00</SourceTime>
+  <DestFile>C:/Users/Ivan Nikolov/Documents/SoftUni/CSharp/TeamProject/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/sweep.xnb</DestFile>
+  <DestTime>2016-06-11T08:51:00.9692651+03:00</DestTime>
+  <Importer>WavImporter</Importer>
+  <ImporterTime>2016-03-30T09:36:08+03:00</ImporterTime>
+  <Processor>SoundEffectProcessor</Processor>
+  <ProcessorTime>2016-03-30T09:36:08+03:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>
