@@ -90,7 +90,7 @@ namespace DaGeim
                 SaveScores();
             }
         }
-        //draw the scoreboard on the game over screen (called always after the UpdateScore method)
+        
         public void Draw(SpriteBatch spritebatch)
         {
             int numberX = 300;
@@ -98,12 +98,12 @@ namespace DaGeim
             int scoreX = 800;
             int rowY = 90;
 
-            // spritebatch.Begin();
+            spritebatch.Begin();
             spritebatch.Draw(background, new Rectangle(0, 0, 1280, 720), Color.White);
             spritebatch.Draw(robotImage, new Rectangle(50, 470, 250, 250), Color.White);
             spritebatch.DrawString(mainFont, "HIGHSCORES", new Vector2(500, 25),
                 Color.Ivory);
-
+            mainMenuButton.DrawButton(spritebatch, font);
             newGameButton.DrawButton(spritebatch, font);
             quitButton.DrawButton(spritebatch, font);
             //draw the data from the list
@@ -123,7 +123,7 @@ namespace DaGeim
                     Color.Ivory);
                 rowY += 55;
             }
-            //spritebatch.End();
+            spritebatch.End();
         }
         //update the position of the selector and change the state of the buttons
         //once a button is active, pressing "space" will do something according the button
@@ -173,7 +173,9 @@ namespace DaGeim
             {
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))
                 {
-                    //TODO call the main menu screen
+                    GameMenuManager.mainMenuOn = true;
+                    GameMenuManager.endGameMenuOn = false; //turn off the current menu
+                    GameMenuManager.TurnOtherMenusOff(); // turn off the other menus
                 }
             }
             if (newGameButton.isSelected)

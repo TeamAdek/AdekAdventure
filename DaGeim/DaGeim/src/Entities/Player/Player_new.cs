@@ -1,11 +1,11 @@
-﻿using System.Runtime.InteropServices;
-using DaGeim;
+﻿using DaGeim;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
-class PlayerNew : AnimatedSprite
+class Player : AnimatedSprite
 {
     public int playerHP;
     public const float VelocityX = 250.0f;
@@ -13,11 +13,17 @@ class PlayerNew : AnimatedSprite
     public const int PLAYER_FPS = 10;
     private bool sliding = false;
     private bool jumped = false;
+    public bool grounded = false;
     private float jumpHeight = 400;
     private float gravity = 15f;
     public Rectangle collisionBox;
     public Vector2 stepAmount;
-    
+    private float rocketDelay = 2;
+    private List<Rockets> rockets = new List<Rockets>();
+
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+    // Get and set collision box
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
     public Rectangle getCB()
     {
@@ -29,11 +35,20 @@ class PlayerNew : AnimatedSprite
         collisionBox = b;
     }
 
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+    // Get player position
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
     public Vector2 getPosition()
     {
         return playerPosition;
     }
-    public PlayerNew(Vector2 position)
+
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+    // Player Constructor
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    public Player(Vector2 position)
         : base(position)
     {
         FramesPerSecond = PLAYER_FPS;
@@ -44,6 +59,10 @@ class PlayerNew : AnimatedSprite
         currentDirection = PlayerDirection.Right;
     }
 
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+    // Load images
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
     public void LoadContent(ContentManager content)
     {
         spriteTexture = content.Load<Texture2D>("PlayerAnimation");
@@ -51,12 +70,18 @@ class PlayerNew : AnimatedSprite
         shootTextureLeft = content.Load<Texture2D>("rocketLeft");
     }
 
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+    // Update Game
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
     public override void Update(GameTime gameTime)
     {
         if (jumped)
             spriteDirection = new Vector2(0f, 1f);
         else
             spriteDirection = Vector2.Zero;
+
+        
 
         HandleInput(Keyboard.GetState());
 
@@ -67,22 +92,42 @@ class PlayerNew : AnimatedSprite
                 spriteDirection += new Vector2(-1f, 0f);
             else
                 spriteDirection += new Vector2(1f, 0f);
+
+//            VelocityY -= 52;
         }
 
+        if (!grounded && !jumped)
+        {
+            spriteDirection += new Vector2(0, 3.0f);
+        }
         VelocityY += gravity * -1;
         spriteDirection *= new Vector2(VelocityX, -VelocityY);
         playerPosition += (spriteDirection * deltaTime);
 
         stepAmount = spriteDirection*deltaTime;
 
-        
         setCollisionBounds();
         base.Update(gameTime);
     }
 
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+    // Draw rockets to screen overriding/updating the AnimateSprite.Draw method
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    public override void Draw(SpriteBatch spriteBatch)
+    {
+        foreach (Rockets rocket in rockets)
+            rocket.Draw(spriteBatch);
+        base.Draw(spriteBatch);
+    }
+
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+    // Handle input from user
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
     public void HandleInput(KeyboardState Keyboard)
     {
-        // When our char is slding, we should be able to control him
+        // When our char is slding, we should'nt be able to control him
         if (!sliding)
         {
             /// LEFT ARROW KEY 
@@ -109,7 +154,7 @@ class PlayerNew : AnimatedSprite
                 {
                     attacking = true;
                     PlayAnimation("AttackLeft");
-                    InitializeRocket(playerPosition, "left");
+                    Shoot();
                 }
                 else if (Keyboard.IsKeyDown(Keys.Up) && !jumped) /// JUMP
                 {
@@ -153,7 +198,7 @@ class PlayerNew : AnimatedSprite
                 {
                     attacking = true;
                     PlayAnimation("AttackRight");
-                    InitializeRocket(playerPosition, "right");
+                    Shoot();
                 }
                 else if (Keyboard.IsKeyDown(Keys.Up) && !jumped) /// JUMP 
                 {
@@ -183,13 +228,13 @@ class PlayerNew : AnimatedSprite
                 {
                     currentDirection = PlayerDirection.Left;
                     PlayAnimation("ShootLeft");
-                    InitializeRocket(playerPosition, "left");
+                    Shoot();
                 }
                 else if (currentDirection == PlayerDirection.Right)
                 {
                     currentDirection = PlayerDirection.Right;
                     PlayAnimation("ShootRight");
-                    InitializeRocket(playerPosition, "right");
+                    Shoot();
                 }
             }
             /// UP ARROW
@@ -223,8 +268,14 @@ class PlayerNew : AnimatedSprite
                         PlayAnimation("IdleRight");
                 }
             }
+           
+                UpdateRocket();
         }
     }
+
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+    // Check if specific animation has ended
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
     public override void AnimationDone(string animation)
     {
@@ -238,21 +289,38 @@ class PlayerNew : AnimatedSprite
 
     public void Collision(Rectangle otherObjectRect)
     {
+        if (!collisionBox.TouchTopOf(otherObjectRect) && !jumped)
+            grounded = false;
         if (collisionBox.TouchTopOf(otherObjectRect))
         {
-            playerPosition.Y = otherObjectRect.Y - collisionBox.Height - 5;
+            if(sliding)
+            playerPosition.Y = otherObjectRect.Y - collisionBox.Height - 25;
+            else
+                playerPosition.Y = otherObjectRect.Y - collisionBox.Height - 9;
+                
             VelocityY = 0.0f;
             jumped = false;
+            grounded = true;
         }
         if (collisionBox.TouchLeftOf(otherObjectRect) && currentDirection == PlayerDirection.Right)
         {
+            sliding = false;
             playerPosition.X -= stepAmount.X ;
         }
         if (collisionBox.TouchRightOf(otherObjectRect) && currentDirection == PlayerDirection.Left)
         {
+            sliding = false;            
             playerPosition.X -= stepAmount.X;
         }
+        if (collisionBox.TouchBottomOf(otherObjectRect))
+            VelocityY = -1.0f;
+
+        
     }
+
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+    // Set all collision bounds
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
     private void setCollisionBounds()
     {
@@ -264,8 +332,8 @@ class PlayerNew : AnimatedSprite
         else if (currentAnimation.Equals("RunLeft")) {xOffset = 33;yOffset = 10;width = 57;height= 83;}
         else if (currentAnimation.Equals("AttackRight")) {xOffset = 14;yOffset = 10;width = 70;height= 83;}
         else if (currentAnimation.Equals("AttackLeft")) {xOffset = 16;yOffset = 10;width = 70;height= 83;}
-        else if (currentAnimation.Equals("JumpRight")) {xOffset = 14;yOffset = 10;width = 66;height= 88;}
-        else if (currentAnimation.Equals("JumpLeft")) {xOffset = 20;yOffset = 10;width = 66;height= 88;}
+        else if (currentAnimation.Equals("JumpRight")) {xOffset = 14;yOffset = 10;width = 66;height= 83;}
+        else if (currentAnimation.Equals("JumpLeft")) {xOffset = 20;yOffset = 10;width = 66;height= 83;}
         else if (currentAnimation.Equals("MeleeRight")) {xOffset = 13;yOffset = 10;width = 75;height= 88;}
         else if (currentAnimation.Equals("MeleeLeft")) {xOffset = 12;yOffset = 10;width = 75;height= 88;}
         else if (currentAnimation.Equals("ShootRight")) {xOffset = 21;yOffset = 10;width = 57;height= 83;}
@@ -279,6 +347,10 @@ class PlayerNew : AnimatedSprite
         Rectangle output = new Rectangle(((int)playerPosition.X + xOffset), ((int)playerPosition.Y + yOffset), width, height);
         collisionBox = output;
     }
+
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+    // Load all animations to dictionary
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
     private void loadAnimations()
     {
@@ -299,4 +371,80 @@ class PlayerNew : AnimatedSprite
         AddAnimation("SlideRight", 10, 1400);
         AddAnimation("SlideLeft", 10, 1500); 
     }
+
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+    // Setting up rockets and adding to list
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    public void Shoot()
+    {
+        if (rocketDelay >= 0)
+            rocketDelay--;
+
+        if (rocketDelay <= 0)
+        {
+            Rockets newRocket;
+
+            // Set the new rockets direction and offsets
+
+            if (currentDirection == PlayerDirection.Left)
+            {
+                newRocket = new Rockets(shootTextureLeft);
+                newRocket.shootPosition = new Vector2(playerPosition.X -15, playerPosition.Y + 35);
+                newRocket.direction = "left";
+            }
+            else
+            {
+                newRocket = new Rockets(shootTextureRight);
+                newRocket.shootPosition = new Vector2(playerPosition.X + 80, playerPosition.Y + 35);
+                newRocket.direction = "right";
+            }
+               
+            newRocket.isVisible = true; // set current rocket's visibility to true
+
+            // Add rocket to list if they are < 20
+
+            if (rockets.Count < 20)
+                rockets.Add(newRocket);
+        }
+
+        //Reset rocket delay timer
+
+        if (rocketDelay == 0)
+            rocketDelay = 20;
+    }
+
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+    // Update rocket positions and remove collided rockets or those off screen
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    public void UpdateRocket()
+    {
+        foreach (Rockets rocket in rockets)
+        {
+            //Move rockets according to its direction
+
+            if (rocket.direction == "left")
+                rocket.shootPosition.X = rocket.shootPosition.X - rocket.speed;
+            else
+                rocket.shootPosition.X = rocket.shootPosition.X + rocket.speed;
+
+            //Set rockets to !visible if they have collided or went off screen
+
+            if (rocket.shootPosition.X > 500)
+                rocket.isVisible = false;
+        }
+
+        //Remove rockets if they are not visible
+
+        for (int i = 0; i < rockets.Count; i++)
+        {
+            if (!rockets[i].isVisible)
+            {
+                rockets.RemoveAt(i);
+                i--;
+            }
+        }
+    }
+
 }
