@@ -4,12 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
-<<<<<<< HEAD
 using DaGeim.Enemies;
-=======
-
-
->>>>>>> origin/master
 
 namespace DaGeim
 {
@@ -17,28 +12,17 @@ namespace DaGeim
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
         Song song;
         SoundEffect soundEffect;
         SoundEffectInstance instance;
         AudioListener listener;
         AudioEmitter emitter;
-<<<<<<< HEAD
-
-=======
         private StartGameScreen startGameScreen;
         private EndGameScreen endGameScreen;
         private HUD gameUI;
->>>>>>> origin/master
         Texture2D backText;
         Rectangle backRect;
-        private StartGameScreen startGameScreen;
-        private EndGameScreen endGameScreen;
 
-        HUD gameUI;
         Camera camera;
         Map map;
 
@@ -61,13 +45,13 @@ namespace DaGeim
 
         protected override void Initialize()
         {
-           // GameMenuManager.mainMenuOn = true; // we set the mainmenuON, because we want to start from the mainMenu
+            // GameMenuManager.mainMenuOn = true; // we set the mainmenuON, because we want to start from the mainMenu
             startGameScreen = new StartGameScreen();
             endGameScreen = new EndGameScreen();
-            
+
             map = new Map();
             gameUI = new HUD();
-            
+
             mainPlayer = new Player(new Vector2(155, 325));
 
             enemy2 = new EnemyGuardian();
@@ -113,19 +97,14 @@ namespace DaGeim
             foreach (var enemy in enemiesList)
                 enemy.Load(Content);
 
-<<<<<<< HEAD
             DrawRect.LoadContent(Content);
             backText = Content.Load<Texture2D>("background");
             gameUI.Load(Content);
             backRect = new Rectangle(0, -50, 3000, 500);
-=======
-            Texture2D enemyTexture2D = Content.Load<Texture2D>("enemy1");
-            enemy1 = new Enemy1(enemyTexture2D, 2, 4);
             //loading the endGameScreen content
             endGameScreen.Load(Content);
->>>>>>> origin/master
-
-            this.song = Content.Load<Song>("theme1");
+            //ERROR LOADING THE SONG ?!?! HERE
+           // this.song = Content.Load<Song>("theme1");
             MediaPlayer.Play(song);
             MediaPlayer.IsRepeating = true;
             MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
@@ -138,7 +117,8 @@ namespace DaGeim
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
+                Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
             // We update only the currently active menu (or the running game) using the GameMenuManager
@@ -155,31 +135,22 @@ namespace DaGeim
             else //here it should be "if (gameOn)" //TODO link all the game activity together
             {
                 mainPlayer.Update(gameTime);
-<<<<<<< HEAD
-
                 foreach (var enemy in enemiesList)
                 {
-=======
-                player.Update(gameTime);
-
-                foreach (var enemy in enemiesList)
-                {
-                    //enemy.Update(gameTime, player.Position);
->>>>>>> origin/master
                     enemy.Update(gameTime, mainPlayer.getPosition());
                 }
 
                 enemy1.Update();
 
-<<<<<<< HEAD
-                gameUI.Update(mainPlayer.playerHP,Camera.centre);
+                gameUI.Update(mainPlayer.playerHP, Camera.centre);
 
                 if (Keyboard.GetState().IsKeyDown(Keys.F))
                     mainPlayer.playerHP -= 3;
                 if (Keyboard.GetState().IsKeyDown(Keys.G))
                     mainPlayer.playerHP += 3;
 
-                foreach (CollisionTiles tile in map.CollisionTiles)  //  VERY HIGH Performance hit. 4096 checks for every entity in the game
+                foreach (CollisionTiles tile in map.CollisionTiles)
+                //  VERY HIGH Performance hit. 4096 checks for every entity in the game
                 {
                     mainPlayer.Collision(tile.Rectangle);
 
@@ -189,44 +160,22 @@ namespace DaGeim
                     camera.Update(mainPlayer.getPosition(), map.Widht, map.Height);
                 }
 
-=======
-                gameUI.Update(mainPlayer.playerHP);
 
-                if (Keyboard.GetState().IsKeyDown(Keys.F))
-                    mainPlayer.playerHP -= 3;
-                if (Keyboard.GetState().IsKeyDown(Keys.G))
-                    mainPlayer.playerHP += 3;
-
-                foreach (CollisionTiles tile in map.CollisionTiles)
-                {
-                    mainPlayer.Collision(tile.Rectangle);
-                    player.Collision(tile.Rectangle, map.Widht, map.Height);
-
-                    foreach (var enemy in enemiesList)
-                    {
-                        enemy.Collision(tile.Rectangle, map.Widht, map.Height);
-                    }
-
-                    camera.Update(mainPlayer.getPosition(), map.Widht, map.Height);
-                }
-
->>>>>>> origin/master
                 //update the SCORES in the scoreboard AFTER the player dies or clears the level
                 //first we need a Score object containing the player name and scores
                 //  Score playerScore = new Score(name, points);
                 //  endGameScreen.UpdateScoreboard(playerScore);
             }
             base.Update(gameTime);
+
         }
 
         private void MediaPlayer_MediaStateChanged(object sender, System.EventArgs e)
         {
-<<<<<<< HEAD
             // 0.0f is silent, 1.0f is full volume
             MediaPlayer.Volume -= 0.4f;
             MediaPlayer.Play(song);
         }
-
 
         protected override void Draw(GameTime gameTime)
         {
@@ -240,40 +189,13 @@ namespace DaGeim
             {
                 endGameScreen.Draw(spriteBatch);
             }
-=======
-
-        }
-
-        private void MediaPlayer_MediaStateChanged(object sender, System.
-                                           EventArgs e)
-        {
-            // 0.0f is silent, 1.0f is full volume
-            MediaPlayer.Volume -= 0.4f;
-            MediaPlayer.Play(song);
-        }
-
-
-        protected override void Draw(GameTime gameTime)
-        {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-            //the same as the update, here we draw only the active menu
-            if (GameMenuManager.mainMenuOn)
-            {
-                startGameScreen.Draw(spriteBatch);
-            }
-            else if (GameMenuManager.endGameMenuOn)
-            {
-                endGameScreen.Draw(spriteBatch);
-            }
->>>>>>> origin/master
             else //NOTE THAT WE NEED A SEPARATE spriteBatch.Begin()/End() for each menu- the menus dont work with the line below
             {
                 spriteBatch.Begin(SpriteSortMode.Deferred,
                                  BlendState.AlphaBlend, null, null, null, null, camera.Transform);
-<<<<<<< HEAD
 
                 spriteBatch.Draw(backText, backRect, Color.White);
-                
+
                 map.Draw(spriteBatch);
                 mainPlayer.Draw(spriteBatch);
                 //enemy1.Draw(spriteBatch, new Vector2(330, 210));
@@ -281,11 +203,8 @@ namespace DaGeim
 
                 foreach (var enemy in enemiesList)
                     enemy.Draw(spriteBatch);
-
-=======
-
                 spriteBatch.Draw(backText, backRect, Color.White);
-                
+
                 map.Draw(spriteBatch);
                 mainPlayer.Draw(spriteBatch);
                 //enemy1.Draw(spriteBatch, new Vector2(330, 210));
@@ -295,7 +214,6 @@ namespace DaGeim
                 {
                     enemy.Draw(spriteBatch);
                 }
->>>>>>> origin/master
                 spriteBatch.End();
             }
             base.Draw(gameTime);

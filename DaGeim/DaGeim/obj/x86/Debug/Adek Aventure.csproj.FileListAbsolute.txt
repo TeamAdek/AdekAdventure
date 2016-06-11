@@ -286,7 +286,6 @@ D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Dir
 D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XInput.xml
 D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.xml
 D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
-<<<<<<< HEAD
 C:\Users\Mladen\Desktop\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\DaGeim.exe
 C:\Users\Mladen\Desktop\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\DaGeim.pdb
 C:\Users\Mladen\Desktop\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\background.xnb
@@ -387,5 +386,55 @@ C:\Users\Hentov\Desktop\AdekGame\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Deb
 C:\Users\Hentov\Desktop\AdekGame\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.xml
 C:\Users\Hentov\Desktop\AdekGame\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\Hentov\Desktop\AdekGame\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\Adek Aventure.csprojResolveAssemblyReference.cache
-=======
->>>>>>> origin/master
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\DaGeim.exe
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\DaGeim.pdb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\background.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\background2.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\bluestar.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\darkButton.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemyRobbot.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy_with_sword.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Font.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\highlightedButton.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\HUD.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\HUD_HP_BAR.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Idle.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\MainFont.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Player.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\PlayerAnimation.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\red.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\rocketLeft.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\rocketRight.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme1.wma
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme1.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme2.wma
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme2.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile1.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile2.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Upgraded_Robot_Sprite.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\DaGeim.exe
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\DaGeim.pdb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\MonoGame.Framework.dll
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.dll
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XInput.dll
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\MonoGame.Framework.xml
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.xml
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XInput.xml
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\Adek Aventure.csprojResolveAssemblyReference.cache
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Icon.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheet.xnb
+D:\SoftUni\Advanced C#\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy1.png

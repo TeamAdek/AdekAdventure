@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-<<<<<<< HEAD
-  <SourceFile>C:/Users/Hentov/Desktop/AdekGame/AdekAdventure/DaGeim/DaGeim/Content/Player.png</SourceFile>
-  <SourceTime>2016-06-11T13:41:30.2573475+03:00</SourceTime>
-  <DestFile>C:/Users/Hentov/Desktop/AdekGame/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/Player.xnb</DestFile>
-  <DestTime>2016-06-11T17:26:23.4275828+03:00</DestTime>
-=======
-  <SourceFile>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Player.png</SourceFile>
-  <SourceTime>2016-06-11T12:19:46.1169424+03:00</SourceTime>
-  <DestFile>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/Player.xnb</DestFile>
-  <DestTime>2016-06-11T12:22:16.4937267+03:00</DestTime>
->>>>>>> origin/master
+  <SourceFile>D:/SoftUni/Advanced C#/AdekAdventure/DaGeim/DaGeim/Content/Player.png</SourceFile>
+  <SourceTime>2016-06-11T21:42:12.0660628+03:00</SourceTime>
+  <DestFile>D:/SoftUni/Advanced C#/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/Player.xnb</DestFile>
+  <DestTime>2016-06-11T21:53:47.5588427+03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T09:36:08+03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
