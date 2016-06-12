@@ -28,21 +28,24 @@ namespace DaGeim
         private List<EnemyGuardian> enemiesList = new List<EnemyGuardian>();
         private Texture2D enemy1Texture2D;
 
+        public const int GAME_WIDTH = 1280;
+        public const int GAME_HEIGHT = 720;
+
         public MainGame()
         {
             Content.RootDirectory = "Content";
             graphics = new GraphicsDeviceManager(this);
-            //      THE MENUS ARE SET FOR 1280x720
-            //graphics.PreferredBackBufferWidth = 1280;
-            //graphics.PreferredBackBufferHeight = 720;
-            //graphics.ApplyChanges();
+                  
+            graphics.PreferredBackBufferWidth = GAME_WIDTH;
+            graphics.PreferredBackBufferHeight = GAME_HEIGHT;
+            graphics.ApplyChanges();
             
 
         }
 
         protected override void Initialize()
         {
-            // GameMenuManager.mainMenuOn = true; // we set the mainmenuON, because we want to start from the mainMenu
+            //GameMenuManager.mainMenuOn = true; // we set the mainmenuON, because we want to start from the mainMenu
             startGameScreen = new StartGameScreen();
             endGameScreen = new EndGameScreen();
 
@@ -140,7 +143,6 @@ namespace DaGeim
 
                 enemy1.Update();
 
-                gameUI.Update(mainPlayer.playerHP, Camera.centre);
 
                 if (Keyboard.GetState().IsKeyDown(Keys.F))
                     mainPlayer.playerHP -= 3;
@@ -156,6 +158,7 @@ namespace DaGeim
                         enemy.Collision(tile.Rectangle, map.Widht, map.Height);
 
                     camera.Update(mainPlayer.getPosition(), map.Widht, map.Height);
+                gameUI.Update(mainPlayer.playerHP, Camera.centre);
                 }
 
 

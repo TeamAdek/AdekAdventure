@@ -48,7 +48,7 @@
     <Compile Include="src\Entities\Enemies\EnemyGuardian.cs" />
     <Compile Include="src\Game\MainGame.cs" />
     <Compile Include="src\Level\Map.cs" />
-    <Compile Include="src\Entities\Player\Player_new.cs" />
+    <Compile Include="src\Entities\Player\Player.cs" />
     <Compile Include="src\Game\Launcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\Helper Classes\RectangleHelper.cs" />

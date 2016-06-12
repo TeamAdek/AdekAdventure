@@ -286,23 +286,11 @@
 /processorParam:TextureFormat=Color
 /build:Upgraded_Robot_Sprite.png
 
-#begin ../../../../Jump.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:../../../../Jump.ogg
-
 #begin lasershot.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:lasershot.wav
-
-#begin jump.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:jump.wav
 
 #begin sweep.wav
 /importer:WavImporter

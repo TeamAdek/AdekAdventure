@@ -21,8 +21,8 @@ class HUD
     public void Update(int hp , Vector2 newPosition)
     {
         healthBar.Width = hp;
-        healthPosition.X = newPosition.X - 400;
-        healthPosition.Y = newPosition.Y - 250;
+        healthPosition.X = newPosition.X - (1280 / 2); // game width / 2
+        healthPosition.Y = newPosition.Y - (720 / 2); // game height / 2
 
     }
     public void Draw(SpriteBatch renderEngine)
