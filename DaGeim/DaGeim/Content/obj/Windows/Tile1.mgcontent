@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/Tile1.jpg</SourceFile>
-  <SourceTime>2016-06-10T20:29:24.3295114+03:00</SourceTime>
-  <DestFile>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/bin/Windows/Tile1.xnb</DestFile>
-  <DestTime>2016-06-10T20:36:39.4183971+03:00</DestTime>
+  <SourceFile>D:/SoftUni/Advanced C#/AdekAdventure/DaGeim/DaGeim/Content/Tile1.jpg</SourceFile>
+  <SourceTime>2016-06-11T21:42:12.0820637+03:00</SourceTime>
+  <DestFile>D:/SoftUni/Advanced C#/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/Tile1.xnb</DestFile>
+  <DestTime>2016-06-11T21:53:47.5658431+03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T09:36:08+03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

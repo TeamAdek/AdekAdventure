@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -38,7 +35,7 @@ namespace DaGeim
 
         public void Draw(SpriteBatch spritebatch)
         {
-            // spritebatch.Begin();
+            spritebatch.Begin();
             spritebatch.Draw(background, new Rectangle(0, 0, 1280, 720), Color.White);
             spritebatch.Draw(robotImage, new Rectangle(50, 470, 250, 250), Color.White);
             spritebatch.DrawString(mainFont, "ADEK GAME", new Vector2(450, 25),
@@ -48,7 +45,7 @@ namespace DaGeim
             scoresButton.DrawButton(spritebatch, font);
             creditsButton.DrawButton(spritebatch, font);
             quitButton.DrawButton(spritebatch, font);
-            //spritebatch.End();
+            spritebatch.End();
         }
 
         public void Update(GameTime gameTime, MainGame game)
@@ -122,7 +119,9 @@ namespace DaGeim
                 //starts Scoreboard
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))
                 {
-                    //TODO START Scoreboard LOGIC
+                    GameMenuManager.endGameMenuOn = true;
+                    GameMenuManager.mainMenuOn = false; //turn the current menu off
+                    GameMenuManager.TurnOtherMenusOff(); // turn the other menus off
                 }
             }
 

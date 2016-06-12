@@ -15,7 +15,7 @@ namespace DaGeim
         {
             get { return transform; }
         }
-        private Vector2 centre;
+        public static Vector2 centre;
         private Viewport viewport;
 
         public Camera(Viewport newViewport)
@@ -36,7 +36,7 @@ namespace DaGeim
             else if (position.Y > yOffset - (viewport.Height / 2))
                 centre.Y = yOffset - (viewport.Height / 2);
             else centre.Y = position.Y;
-
+            
 
             transform = Matrix.CreateTranslation(new Vector3(-centre.X + (viewport.Width / 2),-centre.Y + (viewport.Height/2) ,0));
 

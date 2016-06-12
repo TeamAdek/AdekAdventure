@@ -18,7 +18,7 @@ namespace DaGeim
         }
         public static bool TouchBottomOf(this Rectangle r1, Rectangle r2)
         {
-            return (r1.Top <= r2.Bottom + (r2.Height / 5) &&
+            return (r1.Top <= r2.Bottom + (r2.Height / 20) &&
                     r1.Top >= r2.Bottom - 1 &&
                     r1.Right >= r2.Left + (r2.Width / 5) &&
                     r1.Left <= r2.Right - (r2.Width / 5));                  

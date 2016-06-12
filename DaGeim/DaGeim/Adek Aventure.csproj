@@ -39,16 +39,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="src\Entities\Player\AnimatedSprite.cs" />
+    <Compile Include="src\Helper Classes\Rockets.cs" />
     <Compile Include="src\Level\HUD.cs" />
     <Compile Include="src\MenuLayouts\Button.cs" />
     <Compile Include="src\Level\Camera.cs" />
-    <Compile Include="src\Helper Classes\Collision.cs" />
     <Compile Include="src\Helper Classes\DrawRect.cs" />
     <Compile Include="src\Entities\Enemies\Enemy1.cs" />
     <Compile Include="src\Entities\Enemies\EnemyGuardian.cs" />
     <Compile Include="src\Game\MainGame.cs" />
     <Compile Include="src\Level\Map.cs" />
-    <Compile Include="src\Entities\Player\Player.cs" />
     <Compile Include="src\Entities\Player\Player_new.cs" />
     <Compile Include="src\Game\Launcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -57,6 +56,7 @@
     <Compile Include="src\MenuLayouts\EndGameScreen.cs" />
     <Compile Include="src\Helper Classes\Selector.cs" />
     <Compile Include="src\Level\Tiles.cs" />
+    <Compile Include="src\MenuLayouts\GameMenuManager.cs" />
     <Compile Include="src\MenuLayouts\StartGameScreen.cs" />
   </ItemGroup>
   <ItemGroup>
