@@ -110,7 +110,9 @@ namespace DaGeim
                 //starts new game
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))
                 {
-                    //TODO START NEW GAME LOGIC
+                    GameMenuManager.gameOn = true;
+                    GameMenuManager.mainMenuOn = false;
+                    GameMenuManager.TurnOtherMenusOff();
                 }
             }
 

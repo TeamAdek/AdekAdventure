@@ -4,33 +4,33 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/background.png</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/background2.jpg</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/bluestar.png</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/darkButton.jpg</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/enemy_with_sword.png</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/enemyRobbot.png</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/Font.spritefont</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/highlightedButton.jpg</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/HUD.png</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/HUD_HP_BAR.png</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/Icon.ico</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/Idle.png</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/MainFont.spritefont</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/Player.png</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/PlayerAnimation.png</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/red.png</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/rocketLeft.png</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/rocketRight.png</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/SpriteSheet.png</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/theme1.mp3</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/theme1.ogg</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/theme2.ogg</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/Tile1.jpg</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/Tile2.jpg</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/Upgraded_Robot_Sprite.png</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/lasershot.wav</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/sweep.wav</File>
-    <File>D:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/AdekAdventure/DaGeim/DaGeim/Content/stone.wav</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/background.png</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/background2.jpg</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/bluestar.png</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/darkButton.jpg</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/enemy_with_sword.png</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/enemyRobbot.png</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/Font.spritefont</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/highlightedButton.jpg</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/HUD.png</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/HUD_HP_BAR.png</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/Icon.ico</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/Idle.png</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/MainFont.spritefont</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/Player.png</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/PlayerAnimation.png</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/red.png</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/rocketLeft.png</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/rocketRight.png</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/SpriteSheet.png</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/theme1.mp3</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/theme1.ogg</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/theme2.ogg</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/Tile1.jpg</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/Tile2.jpg</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/Upgraded_Robot_Sprite.png</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/lasershot.wav</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/sweep.wav</File>
+    <File>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/stone.wav</File>
   </SourceFiles>
 </SourceFileCollection>

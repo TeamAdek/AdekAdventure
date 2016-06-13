@@ -142,7 +142,6 @@ C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\D
 C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\background2.xnb
 C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\bluestar.xnb
 C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\darkButton.xnb
-C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy1.xnb
 C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemyRobbot.xnb
 C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy_with_sword.xnb
 C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Font.xnb
@@ -494,3 +493,14 @@ D:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\
 D:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.xml
 D:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 D:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\Adek Aventure.csprojResolveAssemblyReference.cache
+C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy1.png
+C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\jump.xnb
+C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Icon.xnb
+C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\lasershot.xnb
+C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheet.xnb
+C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\stone.xnb
+C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\sweep.xnb
+C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme1.wma
+C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme1.xnb
+C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme2.wma
+C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme2.xnb
