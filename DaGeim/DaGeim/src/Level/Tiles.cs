@@ -33,12 +33,17 @@ namespace DaGeim
         }
     }
 
-       class CollisionTiles : Tiles
+    class CollisionTiles : Tiles, IComparable<CollisionTiles>
     {
         public CollisionTiles(int i, Rectangle newRectangle)
         {
             texture = Content.Load<Texture2D>("Tile" + i);
             this.Rectangle = newRectangle;
+        }
+
+        public int CompareTo(CollisionTiles other)
+        {
+            return this.Rectangle.X.CompareTo(other.Rectangle.X);
         }
     }
 }
