@@ -7,7 +7,8 @@ using DaGeim;
 
 namespace DaGeim.Enemies
 {
-    public class EnemyGuardian
+    using Game.src.Entities;
+    public class EnemyGuardian : IEntity
     {
         private Texture2D texture;
         private Vector2 position = new Vector2(164, 384);
@@ -29,6 +30,12 @@ namespace DaGeim.Enemies
         {
             get { return this.startPoint; }
             set { this.startPoint = value; }
+        }
+
+        public Rectangle CollisionBox
+        {
+            get { return this.rectangle; }
+            set { this.rectangle = value; }
         }
 
         public EnemyGuardian() { }
@@ -95,33 +102,33 @@ namespace DaGeim.Enemies
             }
         }
 
-        public void Collision(Rectangle newRectangle, int xOffset, int yOffset)
+        public void CollisionWithMap(Rectangle tileRectangle, int mapWidth, int mapHeight)
         {
-            if (rectangle.TouchTopOf(newRectangle))
+            if (rectangle.TouchTopOf(tileRectangle))
             {
-                rectangle.Y = newRectangle.Y - rectangle.Height;
+                rectangle.Y = tileRectangle.Y - rectangle.Height;
                 velocity.Y = 0f;
                 hasJumped = false;
             }
 
-            if (rectangle.TouchLeftOf(newRectangle))
+            if (rectangle.TouchLeftOf(tileRectangle))
             {
-                position.X = newRectangle.X - rectangle.Width - 2;
+                position.X = tileRectangle.X - rectangle.Width - 2;
             }
 
-            if (rectangle.TouchRightOf(newRectangle))
+            if (rectangle.TouchRightOf(tileRectangle))
             {
-                position.X = newRectangle.X + newRectangle.Width + 2;
+                position.X = tileRectangle.X + tileRectangle.Width + 2;
             }
 
-            if (rectangle.TouchBottomOf(newRectangle))
+            if (rectangle.TouchBottomOf(tileRectangle))
                 velocity.Y = 1f;
 
 
             if (position.X < 0) position.X = 0;
-            if (position.X > xOffset - rectangle.Width) position.X = xOffset - rectangle.Width;
+            if (position.X > mapWidth - rectangle.Width) position.X = mapWidth - rectangle.Width;
             if (position.Y < 0) velocity.Y = 1f;
-            if (position.Y > yOffset - rectangle.Height) position.Y = yOffset - rectangle.Height;
+            if (position.Y > mapHeight - rectangle.Height) position.Y = mapHeight - rectangle.Height;
         }
 
         public void Draw(SpriteBatch spriteBach)
