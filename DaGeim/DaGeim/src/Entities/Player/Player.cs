@@ -159,12 +159,14 @@ namespace DaGeim
                     {
                         sliding = true;
                         PlayAnimation("SlideLeft");
+                        sounds[1].Play();
                     }
                     else if (Keyboard.IsKeyDown(Keys.Space) && !jumped) /// SHOOT
                     {
                         attacking = true;
                         PlayAnimation("AttackLeft");
                         Shoot();
+                        
                     }
                     else if (Keyboard.IsKeyDown(Keys.Up) && !jumped) /// JUMP
                     {
@@ -204,12 +206,14 @@ namespace DaGeim
                     {
                         sliding = true;
                         PlayAnimation("SlideRight");
+                        sounds[1].Play();
                     }
                     else if (Keyboard.IsKeyDown(Keys.Space) && !jumped) /// SHOOT
                     {
                         attacking = true;
                         PlayAnimation("AttackRight");
                         Shoot();
+                        
                     }
                     else if (Keyboard.IsKeyDown(Keys.Up) && !jumped) /// JUMP 
                     {
@@ -241,12 +245,14 @@ namespace DaGeim
                         currentDirection = PlayerDirection.Left;
                         PlayAnimation("ShootLeft");
                         Shoot();
+                        
                     }
                     else if (currentDirection == PlayerDirection.Right)
                     {
                         currentDirection = PlayerDirection.Right;
                         PlayAnimation("ShootRight");
                         Shoot();
+                        
                     }
                 }
                 /// UP ARROW
@@ -508,12 +514,14 @@ namespace DaGeim
                     newRocket = new Rockets(shootTextureLeft);
                     newRocket.shootPosition = new Vector2(playerPosition.X - 15, playerPosition.Y + 35);
                     newRocket.direction = "left";
+                    sounds[3].Play();
                 }
                 else
                 {
                     newRocket = new Rockets(shootTextureRight);
                     newRocket.shootPosition = new Vector2(playerPosition.X + 80, playerPosition.Y + 35);
                     newRocket.direction = "right";
+                    sounds[3].Play();
                 }
 
                 newRocket.isVisible = true; // set current rocket's visibility to true
