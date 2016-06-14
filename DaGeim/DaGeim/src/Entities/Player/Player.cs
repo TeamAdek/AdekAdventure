@@ -7,7 +7,9 @@ using System.Collections.Generic;
 
 namespace DaGeim
 {
-   public class Player : AnimatedSprite
+    using Game.src.Entities;
+
+    public class Player : AnimatedSprite, IEntity
     {
         public const float VelocityX = 250.0f;
         public const int PLAYER_FPS = 10;
@@ -23,12 +25,22 @@ namespace DaGeim
         public Vector2 stepAmount;
         private Viewport viewport;
         private List<Rockets> rockets = new List<Rockets>();
-        private List<SoundEffect> sounds = new List<SoundEffect>();
+        // private List<SoundEffect> sounds = new List<SoundEffect>();
 
 
         //-----------------------------------------------------------------------------------------------------------------------------------------------------------
         // Get and set collision box
         //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+        public Rectangle CollisionBox
+        {
+            get { return this.collisionBox; }
+            set { this.collisionBox = value; }
+        }
+
+        public List<Rockets> Rockets
+        {
+            get { return this.rockets; }
+        }
 
         public Rectangle getCB()
         {
@@ -52,7 +64,7 @@ namespace DaGeim
         //-----------------------------------------------------------------------------------------------------------------------------------------------------------
         // Player Constructor
         //-----------------------------------------------------------------------------------------------------------------------------------------------------------
-        
+
 
         public Player(Vector2 position) : base(position)
         {
@@ -74,10 +86,10 @@ namespace DaGeim
             shootTextureRight = content.Load<Texture2D>("rocketRight");
             shootTextureLeft = content.Load<Texture2D>("rocketLeft");
 
-            sounds.Add(content.Load<SoundEffect>("jump"));
-            sounds.Add(content.Load<SoundEffect>("sweep"));
-            sounds.Add(content.Load<SoundEffect>("stone"));
-            sounds.Add(content.Load<SoundEffect>("lasershot"));
+            //sounds.Add(content.Load<SoundEffect>("jump"));
+            //sounds.Add(content.Load<SoundEffect>("sweep"));
+            //sounds.Add(content.Load<SoundEffect>("stone"));
+            //sounds.Add(content.Load<SoundEffect>("lasershot"));
         }
 
         //-----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -159,21 +171,21 @@ namespace DaGeim
                     {
                         sliding = true;
                         PlayAnimation("SlideLeft");
-                        sounds[1].Play();
+                        //sounds[1].Play();
                     }
                     else if (Keyboard.IsKeyDown(Keys.Space) && !jumped) /// SHOOT
                     {
                         attacking = true;
                         PlayAnimation("AttackLeft");
                         Shoot();
-                        
+
                     }
                     else if (Keyboard.IsKeyDown(Keys.Up) && !jumped) /// JUMP
                     {
                         jumped = true;
                         VelocityY = jumpHeight;
                         spriteDirection += new Vector2(0f, 1f);
-                        sounds[0].Play();
+                        //sounds[0].Play();
 
                         if (Keyboard.IsKeyDown(Keys.X))
                         {
@@ -206,21 +218,21 @@ namespace DaGeim
                     {
                         sliding = true;
                         PlayAnimation("SlideRight");
-                        sounds[1].Play();
+                        //sounds[1].Play();
                     }
                     else if (Keyboard.IsKeyDown(Keys.Space) && !jumped) /// SHOOT
                     {
                         attacking = true;
                         PlayAnimation("AttackRight");
                         Shoot();
-                        
+
                     }
                     else if (Keyboard.IsKeyDown(Keys.Up) && !jumped) /// JUMP 
                     {
                         jumped = true;
                         spriteDirection += new Vector2(0f, 1f);
                         VelocityY = jumpHeight;
-                        sounds[0].Play();
+                        //sounds[0].Play();
 
                         if (Keyboard.IsKeyDown(Keys.X))
                         {
@@ -245,14 +257,14 @@ namespace DaGeim
                         currentDirection = PlayerDirection.Left;
                         PlayAnimation("ShootLeft");
                         Shoot();
-                        
+
                     }
                     else if (currentDirection == PlayerDirection.Right)
                     {
                         currentDirection = PlayerDirection.Right;
                         PlayAnimation("ShootRight");
                         Shoot();
-                        
+
                     }
                 }
                 /// UP ARROW
@@ -261,7 +273,7 @@ namespace DaGeim
                     jumped = true;
                     spriteDirection += new Vector2(0f, 1f);
                     VelocityY = jumpHeight;
-                    sounds[0].Play();
+                    //sounds[0].Play();
 
                     if (currentDirection == PlayerDirection.Left)
                         PlayAnimation("JumpLeft");
@@ -306,35 +318,33 @@ namespace DaGeim
         }
 
 
-        public void Collision(Rectangle otherObjectRect)
+        public void CollisionWithMap(Rectangle tileRectangle, int mapWidth, int mapHeight)
         {
-            if (!collisionBox.TouchTopOf(otherObjectRect) && !jumped)
+            if (!collisionBox.TouchTopOf(tileRectangle) && !jumped)
                 grounded = false;
-            if (collisionBox.TouchTopOf(otherObjectRect))
+            if (collisionBox.TouchTopOf(tileRectangle))
             {
                 if (sliding)
-                    playerPosition.Y = otherObjectRect.Y - collisionBox.Height - 25;
+                    playerPosition.Y = tileRectangle.Y - collisionBox.Height - 25;
                 else
-                    playerPosition.Y = otherObjectRect.Y - collisionBox.Height - 9;
+                    playerPosition.Y = tileRectangle.Y - collisionBox.Height - 9;
 
                 VelocityY = 0.0f;
                 jumped = false;
                 grounded = true;
             }
-            if (collisionBox.TouchLeftOf(otherObjectRect) && currentDirection == PlayerDirection.Right)
+            if (collisionBox.TouchLeftOf(tileRectangle) && currentDirection == PlayerDirection.Right)
             {
                 sliding = false;
                 playerPosition.X -= stepAmount.X;
             }
-            if (collisionBox.TouchRightOf(otherObjectRect) && currentDirection == PlayerDirection.Left)
+            if (collisionBox.TouchRightOf(tileRectangle) && currentDirection == PlayerDirection.Left)
             {
                 sliding = false;
                 playerPosition.X -= stepAmount.X;
             }
-            if (collisionBox.TouchBottomOf(otherObjectRect))
+            if (collisionBox.TouchBottomOf(tileRectangle))
                 VelocityY = -1.0f;
-
-
         }
 
         //-----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -514,14 +524,14 @@ namespace DaGeim
                     newRocket = new Rockets(shootTextureLeft);
                     newRocket.shootPosition = new Vector2(playerPosition.X - 15, playerPosition.Y + 35);
                     newRocket.direction = "left";
-                    sounds[3].Play();
+                    //sounds[3].Play();
                 }
                 else
                 {
                     newRocket = new Rockets(shootTextureRight);
                     newRocket.shootPosition = new Vector2(playerPosition.X + 80, playerPosition.Y + 35);
                     newRocket.direction = "right";
-                    sounds[3].Play();
+                    // sounds[3].Play();
                 }
 
                 newRocket.isVisible = true; // set current rocket's visibility to true
@@ -555,7 +565,7 @@ namespace DaGeim
 
                 //Set rockets to !visible if they have collided or went off screen
 
-                if(rocket.shootPosition.X < Camera.centre.X - 640 || rocket.shootPosition.X > Camera.centre.X + 640)
+                if (rocket.shootPosition.X < Camera.centre.X - 640 || rocket.shootPosition.X > Camera.centre.X + 640)
                     rocket.isVisible = false;
             }
 
