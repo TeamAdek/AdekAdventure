@@ -2,7 +2,7 @@
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    
+
     public interface IEntity
     {
         /// <summary>
@@ -20,6 +20,8 @@
         /// Make collision with map
         /// </summary>
         /// <param name="tileRectangle"></param>
-        void CollisionWithMap(Rectangle tileRectangle);
+        /// <param name="mapWidth"></param>
+        /// <param name="mapHeight"></param>
+        void CollisionWithMap(Rectangle tileRectangle, int mapWidth, int mapHeight);
     }
 }
