@@ -304,3 +304,9 @@
 /processorParam:Quality=Best
 /build:stone.wav
 
+#begin GameNameFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:GameNameFont.spritefont
+

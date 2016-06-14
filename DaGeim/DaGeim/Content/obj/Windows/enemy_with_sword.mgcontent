@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/enemy_with_sword.png</SourceFile>
-  <SourceTime>2016-06-13T09:29:09.2298686+03:00</SourceTime>
-  <DestFile>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/bin/Windows/enemy_with_sword.xnb</DestFile>
-  <DestTime>2016-06-13T09:32:41.861204+03:00</DestTime>
+  <SourceFile>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/enemy_with_sword.png</SourceFile>
+  <SourceTime>2016-06-13T13:04:04.481776+03:00</SourceTime>
+  <DestFile>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/enemy_with_sword.xnb</DestFile>
+  <DestTime>2016-06-13T13:09:22.2742188+03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T09:36:08+03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

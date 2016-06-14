@@ -14,6 +14,8 @@ namespace DaGeim
         Song song;
         private StartGameScreen startGameScreen;
         private EndGameScreen endGameScreen;
+        private PauseGameScreen pauseGameScreen;
+        private double TimeForUpdate;
         private HUD gameUI;
         Texture2D backText;
         Rectangle backRect;
@@ -35,20 +37,21 @@ namespace DaGeim
         {
             Content.RootDirectory = "Content";
             graphics = new GraphicsDeviceManager(this);
-                  
+
             graphics.PreferredBackBufferWidth = GAME_WIDTH;
             graphics.PreferredBackBufferHeight = GAME_HEIGHT;
             graphics.ApplyChanges();
-            
+
 
         }
 
         protected override void Initialize()
         {
-            //GameMenuManager.mainMenuOn = true; // we set the mainmenuON, because we want to start from the mainMenu
+            GameMenuManager.mainMenuOn = true;
+            // we set the mainmenuON, because we want to start from the mainMenu
             startGameScreen = new StartGameScreen();
             endGameScreen = new EndGameScreen();
-
+            pauseGameScreen = new PauseGameScreen();
             map = new Map();
             gameUI = new HUD();
 
@@ -69,6 +72,7 @@ namespace DaGeim
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             startGameScreen.Load(Content);
+            pauseGameScreen.Load(Content);
             endGameScreen.Load(Content);
 
             camera = new Camera(GraphicsDevice.Viewport);
@@ -104,23 +108,19 @@ namespace DaGeim
             //loading the endGameScreen content
             endGameScreen.Load(Content);
             //ERROR LOADING THE SONG ?!?! HERE
-           // this.song = Content.Load<Song>("theme1");
+            // this.song = Content.Load<Song>("theme1");
             MediaPlayer.Play(song);
             MediaPlayer.Volume = 0.1f;
             MediaPlayer.IsRepeating = true;
             //MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
 
-                       }
+        }
 
         protected override void UnloadContent()
         {
         }
-
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
-                Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
 
             // We update only the currently active menu (or the running game) using the GameMenuManager
             if (GameMenuManager.mainMenuOn)
@@ -133,8 +133,20 @@ namespace DaGeim
                 // update teh end game screen
                 endGameScreen.Update(gameTime, this);
             }
-            else //here it should be "if (gameOn)" //TODO link all the game activity together
+            else if (GameMenuManager.pauseMenuOn)
             {
+                //update the pause game screen
+                pauseGameScreen.Update(gameTime, this);
+            }
+            else  //TODO link all the game activity together
+            {
+                //pressing esc we call the pause game screen
+                if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+                {
+                    GameMenuManager.pauseMenuOn = true;
+                    GameMenuManager.gameOn = false;
+                    GameMenuManager.TurnOtherMenusOff();
+                }
                 mainPlayer.Update(gameTime);
                 foreach (var enemy in enemiesList)
                 {
@@ -158,10 +170,8 @@ namespace DaGeim
                         enemy.Collision(tile.Rectangle, map.Widht, map.Height);
 
                     camera.Update(mainPlayer.getPosition(), map.Widht, map.Height);
-                gameUI.Update(mainPlayer.playerHP, Camera.centre);
+                    gameUI.Update(mainPlayer.playerHP, Camera.centre);
                 }
-
-
                 //update the SCORES in the scoreboard AFTER the player dies or clears the level
                 //first we need a Score object containing the player name and scores
                 //  Score playerScore = new Score(name, points);
@@ -189,6 +199,10 @@ namespace DaGeim
             else if (GameMenuManager.endGameMenuOn)
             {
                 endGameScreen.Draw(spriteBatch);
+            }
+            else if (GameMenuManager.pauseMenuOn)
+            {
+                pauseGameScreen.Draw(spriteBatch);
             }
             else //NOTE THAT WE NEED A SEPARATE spriteBatch.Begin()/End() for each menu- the menus dont work with the line below
             {

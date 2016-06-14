@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Threading;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -9,36 +10,40 @@ namespace DaGeim
     {
         private Texture2D background;
         private Texture2D robotImage;
-        private SpriteFont mainFont;
+        private SpriteFont gameNameFont;
         private SpriteFont font;
         private Selector selector;
+        private float TimeForUpdate;
+        private Button newGameButton = new Button("New Game", new Rectangle(465, 240, 350, 80));
+        private Button scoresButton = new Button("Scores", new Rectangle(465, 360, 350, 80));
+        private Button creditsButton = new Button("Credits", new Rectangle(465, 480, 350, 80));
+        private Button quitButton = new Button("Quit", new Rectangle(465, 600, 350, 80));
 
-        private Button newGameButton = new Button("New Game", new Rectangle(490, 320, 300, 80));
-        private Button scoresButton = new Button("Scores", new Rectangle(490, 420, 300, 80));
-        private Button creditsButton = new Button("Credits", new Rectangle(490, 520, 300, 80));
-        private Button quitButton = new Button("Quit", new Rectangle(490, 620, 300, 80));
-
-
+        /*---------------------------------------------------------------------------------------------------
+        Loads the content for the start game screen
+        ----------------------------------------------------------------------------------------------------*/
         public void Load(ContentManager content)
         {
             background = content.Load<Texture2D>("background2");
             font = content.Load<SpriteFont>("Font");
-            mainFont = content.Load<SpriteFont>("MainFont");
+            gameNameFont = content.Load<SpriteFont>("GameNameFont");
             robotImage = content.Load<Texture2D>("Idle");
             newGameButton.Load(content);
             quitButton.Load(content);
             creditsButton.Load(content);
             scoresButton.Load(content);
 
-            selector = new Selector(490, 340);
+            selector = new Selector(490, 250);
         }
-
+        /*-------------------------------------------------------------------------------------------------
+        Draws the start game screen if it is active
+        -------------------------------------------------------------------------------------------------*/
         public void Draw(SpriteBatch spritebatch)
         {
             spritebatch.Begin();
             spritebatch.Draw(background, new Rectangle(0, 0, 1280, 720), Color.White);
             spritebatch.Draw(robotImage, new Rectangle(50, 470, 250, 250), Color.White);
-            spritebatch.DrawString(mainFont, "ADEK GAME", new Vector2(450, 25),
+            spritebatch.DrawString(gameNameFont, "ROBOT BOY", new Vector2(350, 25),
                 Color.Ivory);
 
             newGameButton.DrawButton(spritebatch, font);
@@ -47,22 +52,24 @@ namespace DaGeim
             quitButton.DrawButton(spritebatch, font);
             spritebatch.End();
         }
-
+        /*-------------------------------------------------------------------------------------------------
+        Update the start game screen if it is active
+        -------------------------------------------------------------------------------------------------*/
         public void Update(GameTime gameTime, MainGame game)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
-                selector.y -= 20;
-                if (selector.y < 320)
+                selector.y -= 25;
+                if (selector.y < 250)
                 {
-                    selector.y = 340;
+                    selector.y = 250;
                 }
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                selector.y += 20;
-                if (selector.y > 680)
-                    selector.y = 680;
+                selector.y += 25;
+                if (selector.y > 650)
+                    selector.y = 650;
             }
 
             //make a small rectangle to check the if the selector is inside one of the buttons
@@ -113,10 +120,11 @@ namespace DaGeim
                     GameMenuManager.gameOn = true;
                     GameMenuManager.mainMenuOn = false;
                     GameMenuManager.TurnOtherMenusOff();
+                    Thread.Sleep(100);
                 }
             }
 
-            if (scoresButton.isSelected)
+            else if (scoresButton.isSelected)
             {
                 //starts Scoreboard
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))
@@ -124,10 +132,11 @@ namespace DaGeim
                     GameMenuManager.endGameMenuOn = true;
                     GameMenuManager.mainMenuOn = false; //turn the current menu off
                     GameMenuManager.TurnOtherMenusOff(); // turn the other menus off
+                    Thread.Sleep(100);
                 }
             }
 
-            if (creditsButton.isSelected)
+            else if (creditsButton.isSelected)
             {
                 //starts Credits
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))
@@ -136,7 +145,7 @@ namespace DaGeim
                 }
             }
 
-            if (quitButton.isSelected)
+            else if (quitButton.isSelected)
             {
                 //the quit button exits the game (you dont say!?!)
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))

@@ -50,7 +50,6 @@ D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\
 D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\background2.xnb
 D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\bluestar.xnb
 D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\darkButton.xnb
-D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy1.xnb
 D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemyRobbot.xnb
 D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy_with_sword.xnb
 D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Font.xnb
@@ -504,3 +503,11 @@ C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\D
 C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme1.xnb
 C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme2.wma
 C:\Programming Courses\SoftUni\C# Advanced\TeamWork\AdekAdventure\trunk\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme2.xnb
+D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy1.png
+D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\jump.xnb
+D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Icon.xnb
+D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\lasershot.xnb
+D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheet.xnb
+D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\stone.xnb
+D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\sweep.xnb
+D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\GameNameFont.xnb

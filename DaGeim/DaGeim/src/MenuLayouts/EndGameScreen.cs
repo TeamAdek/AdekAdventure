@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -27,6 +28,9 @@ namespace DaGeim
         private SpriteFont mainFont;
         private SpriteFont font;
 
+        /*---------------------------------------------------------------------------------------------------
+        Loads the content for the end game screen
+        ----------------------------------------------------------------------------------------------------*/
         public void Load(ContentManager content)
         {
             //load the content for the scoreboard
@@ -40,7 +44,6 @@ namespace DaGeim
             quitButton.Load(content);
             //give the selector object cords inside the top-most button
             selector = new Selector(1000, 420);
-
             //load the current highscores from file and fill a list with them
             using (StreamReader reader = new StreamReader(path))
             {
@@ -54,8 +57,10 @@ namespace DaGeim
                 }
             }
         }
-        //this method saves the scores in the file only if the player managed to get in top 10
-        //we are using it in the UpdateScore method below
+        /*-------------------------------------------------------------------------------------------------
+        Saves the scores in the file only if the player managed to get in top 10
+        we are using it in the UpdateScore method below
+        --------------------------------------------------------------------------------------------------*/
         private void SaveScores()
         {
             using (StreamWriter writer = new StreamWriter(path))
@@ -68,7 +73,9 @@ namespace DaGeim
                 }
             }
         }
-        //update the scoreboard each time the player dies or clears the level
+        /*-------------------------------------------------------------------------------------------------
+        Update the scoreboard each time the player dies or clears the level
+        -------------------------------------------------------------------------------------------------*/
         public void UpdateScoreboard(Score playerScore)
         {
             wasUpdated = false;
@@ -90,7 +97,9 @@ namespace DaGeim
                 SaveScores();
             }
         }
-        
+        /*-------------------------------------------------------------------------------------------------
+        Draws the end game screen if it is active
+        -------------------------------------------------------------------------------------------------*/
         public void Draw(SpriteBatch spritebatch)
         {
             int numberX = 300;
@@ -107,7 +116,7 @@ namespace DaGeim
             newGameButton.DrawButton(spritebatch, font);
             quitButton.DrawButton(spritebatch, font);
             //draw the data from the list
-            for (int i = 0; i < highscores.Count; i++)
+            for (int i = 0; i < 10; i++)
             {
                 if (wasUpdated && positionAtScorelist == i)
                 {
@@ -125,10 +134,13 @@ namespace DaGeim
             }
             spritebatch.End();
         }
-        //update the position of the selector and change the state of the buttons
-        //once a button is active, pressing "space" will do something according the button
+        /*-------------------------------------------------------------------------------------------------
+        Update the end game screen if it is active
+        -------------------------------------------------------------------------------------------------*/
         public void Update(GameTime gameTime, MainGame game)
         {
+            //update the position of the selector and change the state of the buttons
+            //once a button is active, pressing "space" will do something according the button
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
                 selector.y -= 20; // we move the selector 20px up the screen
@@ -171,11 +183,13 @@ namespace DaGeim
             //check which button is selected and do the action
             if (mainMenuButton.isSelected)
             {
+                //returns to the main menu screen
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))
                 {
-                    GameMenuManager.mainMenuOn = true;
+                    GameMenuManager.mainMenuOn = true; //turn on the selected menu
                     GameMenuManager.endGameMenuOn = false; //turn off the current menu
                     GameMenuManager.TurnOtherMenusOff(); // turn off the other menus
+                    Thread.Sleep(100);
                 }
             }
             if (newGameButton.isSelected)
@@ -183,7 +197,10 @@ namespace DaGeim
                 //starts new game
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))
                 {
-                    //TODO START NEW GAME LOGIC
+                    GameMenuManager.gameOn = true; // turn on the selected menu
+                    GameMenuManager.endGameMenuOn = false; //turn off the current menu
+                    GameMenuManager.TurnOtherMenusOff(); // turn off the other menus
+                    Thread.Sleep(100);
                 }
             }
             if (quitButton.isSelected)

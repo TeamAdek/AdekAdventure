@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/MainFont.spritefont</SourceFile>
-  <SourceTime>2016-06-13T09:29:05.0998629+03:00</SourceTime>
-  <DestFile>C:/Programming Courses/SoftUni/C# Advanced/TeamWork/AdekAdventure/trunk/DaGeim/DaGeim/Content/bin/Windows/MainFont.xnb</DestFile>
-  <DestTime>2016-06-13T09:32:46.0442959+03:00</DestTime>
+  <SourceFile>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/MainFont.spritefont</SourceFile>
+  <SourceTime>2016-06-13T13:04:04.0887536+03:00</SourceTime>
+  <DestFile>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/MainFont.xnb</DestFile>
+  <DestTime>2016-06-13T13:09:22.8952197+03:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2016-03-30T09:36:08+03:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>
