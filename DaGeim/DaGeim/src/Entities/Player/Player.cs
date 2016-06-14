@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
 
 namespace DaGeim
@@ -22,6 +23,8 @@ namespace DaGeim
         public Vector2 stepAmount;
         private Viewport viewport;
         private List<Rockets> rockets = new List<Rockets>();
+        private List<SoundEffect> sounds = new List<SoundEffect>();
+
 
         //-----------------------------------------------------------------------------------------------------------------------------------------------------------
         // Get and set collision box
@@ -70,6 +73,11 @@ namespace DaGeim
             spriteTexture = content.Load<Texture2D>("PlayerAnimation");
             shootTextureRight = content.Load<Texture2D>("rocketRight");
             shootTextureLeft = content.Load<Texture2D>("rocketLeft");
+
+            sounds.Add(content.Load<SoundEffect>("jump"));
+            sounds.Add(content.Load<SoundEffect>("sweep"));
+            sounds.Add(content.Load<SoundEffect>("stone"));
+            sounds.Add(content.Load<SoundEffect>("lasershot"));
         }
 
         //-----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -163,6 +171,7 @@ namespace DaGeim
                         jumped = true;
                         VelocityY = jumpHeight;
                         spriteDirection += new Vector2(0f, 1f);
+                        sounds[0].Play();
 
                         if (Keyboard.IsKeyDown(Keys.X))
                         {
@@ -207,6 +216,7 @@ namespace DaGeim
                         jumped = true;
                         spriteDirection += new Vector2(0f, 1f);
                         VelocityY = jumpHeight;
+                        sounds[0].Play();
 
                         if (Keyboard.IsKeyDown(Keys.X))
                         {
@@ -245,6 +255,7 @@ namespace DaGeim
                     jumped = true;
                     spriteDirection += new Vector2(0f, 1f);
                     VelocityY = jumpHeight;
+                    sounds[0].Play();
 
                     if (currentDirection == PlayerDirection.Left)
                         PlayAnimation("JumpLeft");
