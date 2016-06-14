@@ -108,7 +108,7 @@ namespace DaGeim
             //loading the endGameScreen content
             endGameScreen.Load(Content);
             //ERROR LOADING THE SONG ?!?! HERE
-            // this.song = Content.Load<Song>("theme1");
+            song = Content.Load<Song>("theme1");
             MediaPlayer.Play(song);
             MediaPlayer.Volume = 0.1f;
             MediaPlayer.IsRepeating = true;
