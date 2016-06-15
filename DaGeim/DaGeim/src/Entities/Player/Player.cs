@@ -30,7 +30,7 @@ namespace DaGeim
         private Viewport viewport;
         private List<Rockets> rockets = new List<Rockets>();
         private int xOffset, yOffset, width, height;
-        // private List<SoundEffect> sounds = new List<SoundEffect>();
+        private List<SoundEffect> sounds = new List<SoundEffect>();
 
 
         //-----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -92,10 +92,10 @@ namespace DaGeim
             shootTextureRight = content.Load<Texture2D>("rocketRight");
             shootTextureLeft = content.Load<Texture2D>("rocketLeft");
 
-            //sounds.Add(content.Load<SoundEffect>("jump"));
-            //sounds.Add(content.Load<SoundEffect>("sweep"));
-            //sounds.Add(content.Load<SoundEffect>("stone"));
-            //sounds.Add(content.Load<SoundEffect>("lasershot"));
+            sounds.Add(content.Load<SoundEffect>("jump"));
+            sounds.Add(content.Load<SoundEffect>("sweep"));
+            sounds.Add(content.Load<SoundEffect>("stone"));
+            sounds.Add(content.Load<SoundEffect>("lasershot"));
         }
 
         //-----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -190,7 +190,7 @@ namespace DaGeim
                     jumped = true;
                     spriteDirection += new Vector2(0f, 1f);
                     VelocityY = jumpHeight;
-                    //sounds[0].Play();
+                    sounds[0].Play();
 
                     if (currentDirection == PlayerDirection.Left)
                         PlayAnimation("JumpLeft");
@@ -243,7 +243,7 @@ namespace DaGeim
             {
                 sliding = true;
                 PlayAnimation("Slide" + direction);
-                //sounds[1].Play();
+                sounds[1].Play();
             }
             else if (Keyboard.IsKeyDown(Keys.Space) && !jumped) /// SHOOT
             {
@@ -257,7 +257,7 @@ namespace DaGeim
                 jumped = true;
                 VelocityY = jumpHeight;
                 spriteDirection += new Vector2(0f, 1f);
-                //sounds[0].Play();
+                sounds[0].Play();
 
                 if (Keyboard.IsKeyDown(Keys.X))
                 {
@@ -430,7 +430,7 @@ namespace DaGeim
                     newRocket = new Rockets(shootTextureRight);
                     newRocket.shootPosition = new Vector2(playerPosition.X + 80, playerPosition.Y + 35);
                     newRocket.direction = "right";
-                    // sounds[3].Play();
+                    sounds[3].Play();
                 }
 
                 newRocket.isVisible = true; // set current rocket's visibility to true

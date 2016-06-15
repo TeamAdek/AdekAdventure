@@ -94,12 +94,12 @@ namespace DaGeim
             backText = Content.Load<Texture2D>("background");
             backRect = new Rectangle(0, -50, 6000, 700);
             gameUI.Load(Content);
-            //ERROR LOADING THE SONG ?!?! HERE
-            //  song = Content.Load<Song>("theme1");
-            //  MediaPlayer.Play(song);
+            
+            song = Content.Load<Song>("theme1");
+            MediaPlayer.Play(song);
             MediaPlayer.Volume = 0.1f;
             MediaPlayer.IsRepeating = true;
-            //MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
+           
 
         }
 
