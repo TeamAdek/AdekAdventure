@@ -11,7 +11,7 @@ namespace DaGeim
 {
     public class EndGameScreen : MainGame
     {
-        private List<Score> highscores = new List<Score>();
+        private List<int> highscores = new List<int>();
         private char[] delimiters = { ' ', '\t', '\n' };
         private string path = @"TextFile1.txt";
         private bool wasUpdated;
@@ -52,8 +52,8 @@ namespace DaGeim
                 {
                     string[] tokens = line.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
                     string name = tokens[0];
-                    long points = long.Parse(tokens[1]);
-                    highscores.Add(new Score(name, points));
+                    int points = int.Parse(tokens[1]);
+                    highscores.Add(points);
                 }
             }
         }
@@ -67,8 +67,8 @@ namespace DaGeim
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    string line = string.Format("{0}    {1}",
-                        highscores[i].playerName, highscores[i].points);
+                    string line = string.Format("++   {0}",
+                        highscores[i]);
                     writer.WriteLine(line);
                 }
             }
@@ -76,14 +76,14 @@ namespace DaGeim
         /*-------------------------------------------------------------------------------------------------
         Update the scoreboard each time the player dies or clears the level
         -------------------------------------------------------------------------------------------------*/
-        public void UpdateScoreboard(Score playerScore)
+        public void UpdateScoreboard(int playerScore)
         {
             wasUpdated = false;
             positionAtScorelist = -1;
             //set to false every time we call the method
-            for (int i = 0; i < highscores.Count; i++)
+            for (int i = 0; i < 10; i++)
             {
-                if (playerScore.points > highscores[i].points)
+                if (playerScore > highscores[i])
                 {
                     highscores.Insert(i, playerScore);
                     positionAtScorelist = i;
@@ -94,8 +94,8 @@ namespace DaGeim
             if (wasUpdated) //remove the last entry in the list and save the changes
             {
                 highscores.RemoveAt(10);
-                SaveScores();
             }
+            SaveScores();
         }
         /*-------------------------------------------------------------------------------------------------
         Draws the end game screen if it is active
@@ -120,14 +120,14 @@ namespace DaGeim
             {
                 if (wasUpdated && positionAtScorelist == i)
                 {
-                    spritebatch.Draw(star, new Rectangle(310, rowY, 40, 40), Color.White);
+                    spritebatch.Draw(star, new Rectangle(230, rowY, 40, 40), Color.White);
                 }
                 string pos = string.Format("{0}.", i + 1).PadLeft(3);
-                string name = highscores[i].playerName;
-                string score = highscores[i].points.ToString().PadLeft(10, ' ');
+                //  string name = highscores[i].playerName;
+                string score = highscores[i].ToString().PadLeft(10, ' ');
                 spritebatch.DrawString(font, pos, new Vector2(numberX, rowY), Color.Ivory);
-                spritebatch.DrawString(font, name, new Vector2(playerNameX, rowY),
-                    Color.Ivory);
+                //  spritebatch.DrawString(font, name, new Vector2(playerNameX, rowY),
+                // Color.Ivory);
                 spritebatch.DrawString(font, score, new Vector2(scoreX, rowY),
                     Color.Ivory);
                 rowY += 55;

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -169,10 +170,17 @@ namespace DaGeim
                 camera.Update(mainPlayer.getPosition(), map.Widht, map.Height);
                 gameUI.Update(mainPlayer.playerHP, Camera.centre);
                 //  }
-                //update the SCORES in the scoreboard AFTER the player dies or clears the level
-                //first we need a Score object containing the player name and scores
-                //  Score playerScore = new Score(name, points);
-                //  endGameScreen.UpdateScoreboard(playerScore);
+                /*---------------------------------------------------------------
+                if the player dies we update the scoreboard
+                ---------------------------------------------------------------*/
+                if (mainPlayer.playerHP <= 0)
+                {
+                    endGameScreen.UpdateScoreboard(mainPlayer.playerScore);
+                    Thread.Sleep(100);
+                    GameMenuManager.endGameMenuOn = true;
+                    GameMenuManager.gameOn = false;
+                    GameMenuManager.TurnOtherMenusOff();
+                }
             }
             base.Update(gameTime);
         }

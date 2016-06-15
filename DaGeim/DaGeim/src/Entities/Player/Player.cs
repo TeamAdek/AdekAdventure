@@ -32,6 +32,10 @@ namespace DaGeim
         private int xOffset, yOffset, width, height;
         private List<SoundEffect> sounds = new List<SoundEffect>();
 
+        /*---------------------------------------*/
+        // REPLACE THIS ONE
+        public int playerScore = 100;
+        /*--------------------------------------*/
 
         //-----------------------------------------------------------------------------------------------------------------------------------------------------------
         // Get and set collision box
