@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace DaGeim
 {
@@ -14,10 +15,12 @@ namespace DaGeim
         public const float VelocityX = 250.0f;
         public const int PLAYER_FPS = 10;
         public int playerHP;
+        public  bool grounded = false;
         public float VelocityY = 0.0f;
         private bool sliding = false;
         private bool jumped = false;
-        public bool grounded = false;
+        private bool slideCD = false;
+        private double slideCDTimer = 0.0f;
         private float jumpHeight = 400;
         private float gravity = 15f;
         private float rocketDelay = 2;
@@ -25,6 +28,7 @@ namespace DaGeim
         public Vector2 stepAmount;
         private Viewport viewport;
         private List<Rockets> rockets = new List<Rockets>();
+        private int xOffset, yOffset, width, height;
         // private List<SoundEffect> sounds = new List<SoundEffect>();
 
 
@@ -103,19 +107,22 @@ namespace DaGeim
             else
                 spriteDirection = Vector2.Zero;
 
-
-
             HandleInput(Keyboard.GetState());
 
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (slideCDTimer > 0)
+                slideCDTimer -= deltaTime;
+            else
+                slideCD = false;
+
+
             if (sliding)
             {
                 if (currentDirection == PlayerDirection.Left)
                     spriteDirection += new Vector2(-1f, 0f);
                 else
                     spriteDirection += new Vector2(1f, 0f);
-
-                //            VelocityY -= 52;
             }
 
             if (!grounded && !jumped)
@@ -152,104 +159,13 @@ namespace DaGeim
             // When our char is slding, we should'nt be able to control him
             if (!sliding)
             {
-                /// LEFT ARROW KEY 
-                if (Keyboard.IsKeyDown(Keys.Left)) // Left Side Animations
-                {
-                    if (jumped)
-                    {
-                        if (Keyboard.IsKeyDown(Keys.X))
-                        {
-                            attacking = true;
-                            PlayAnimation("MeleeLeft");
-                        }
-                        else
-                            PlayAnimation("JumpLeft");
-                    }
+                if (Keyboard.IsKeyDown(Keys.Left)) /// LEFT ARROW KEY
+                    handleArrowKey("Left", Keyboard);
 
-                    spriteDirection += new Vector2(-1f, 0f);
-                    if (Keyboard.IsKeyDown(Keys.Down) && !jumped) /// SLIDE 
-                    {
-                        sliding = true;
-                        PlayAnimation("SlideLeft");
-                        //sounds[1].Play();
-                    }
-                    else if (Keyboard.IsKeyDown(Keys.Space) && !jumped) /// SHOOT
-                    {
-                        attacking = true;
-                        PlayAnimation("AttackLeft");
-                        Shoot();
+                else if (Keyboard.IsKeyDown(Keys.Right)) /// RIGHT KEY 
+                    handleArrowKey("Right", Keyboard);  
 
-                    }
-                    else if (Keyboard.IsKeyDown(Keys.Up) && !jumped) /// JUMP
-                    {
-                        jumped = true;
-                        VelocityY = jumpHeight;
-                        spriteDirection += new Vector2(0f, 1f);
-                        //sounds[0].Play();
-
-                        if (Keyboard.IsKeyDown(Keys.X))
-                        {
-                            attacking = true;
-                            PlayAnimation("MeleeLeft");
-                        }
-                        else
-                            PlayAnimation("JumpLeft");
-                    }
-                    else if (!jumped) /// RUN
-                        PlayAnimation("RunLeft");
-                    currentDirection = PlayerDirection.Left;
-                }
-
-                /// RIGHT ARROW KEY 
-                else if (Keyboard.IsKeyDown(Keys.Right))
-                {
-                    if (jumped)
-                    {
-                        if (Keyboard.IsKeyDown(Keys.X))
-                        {
-                            attacking = true;
-                            PlayAnimation("MeleeRight");
-                        }
-                        else
-                            PlayAnimation("JumpRight");
-                    }
-                    spriteDirection += new Vector2(1f, 0f);
-                    if (Keyboard.IsKeyDown(Keys.Down) && !jumped) /// SLIDE 
-                    {
-                        sliding = true;
-                        PlayAnimation("SlideRight");
-                        //sounds[1].Play();
-                    }
-                    else if (Keyboard.IsKeyDown(Keys.Space) && !jumped) /// SHOOT
-                    {
-                        attacking = true;
-                        PlayAnimation("AttackRight");
-                        Shoot();
-
-                    }
-                    else if (Keyboard.IsKeyDown(Keys.Up) && !jumped) /// JUMP 
-                    {
-                        jumped = true;
-                        spriteDirection += new Vector2(0f, 1f);
-                        VelocityY = jumpHeight;
-                        //sounds[0].Play();
-
-                        if (Keyboard.IsKeyDown(Keys.X))
-                        {
-                            attacking = true;
-                            PlayAnimation("MeleeRight");
-                        }
-                        else
-                            PlayAnimation("JumpRight");
-                    }
-                    else if (!jumped) /// RUN
-                        PlayAnimation("RunRight");
-
-                    currentDirection = PlayerDirection.Right;
-                }
-
-                /// SPACE
-                else if (Keyboard.IsKeyDown(Keys.Space))
+                else if (Keyboard.IsKeyDown(Keys.Space)) /// SPACE KEY
                 {
                     attacking = true;
                     if (currentDirection == PlayerDirection.Left)
@@ -264,7 +180,6 @@ namespace DaGeim
                         currentDirection = PlayerDirection.Right;
                         PlayAnimation("ShootRight");
                         Shoot();
-
                     }
                 }
                 /// UP ARROW
@@ -300,8 +215,64 @@ namespace DaGeim
                     }
                 }
 
-                UpdateRocket();
             }
+                UpdateRocket();
+        }
+
+        private void handleArrowKey(string direction, KeyboardState Keyboard) // direction == Left
+        {
+            if (jumped)
+            {
+                if (Keyboard.IsKeyDown(Keys.X))
+                {
+                    attacking = true;
+                    PlayAnimation("Melee" + direction);
+                }
+                else
+                    PlayAnimation("Jump" + direction);
+            }
+
+            if(direction == "Left")
+                spriteDirection += new Vector2(-1f, 0f);
+            else
+                spriteDirection += new Vector2(1f, 0f);
+
+            if (Keyboard.IsKeyDown(Keys.Down) && !jumped && !slideCD) /// SLIDE 
+            {
+                sliding = true;
+                PlayAnimation("Slide" + direction);
+                //sounds[1].Play();
+            }
+            else if (Keyboard.IsKeyDown(Keys.Space) && !jumped) /// SHOOT
+            {
+                attacking = true;
+                PlayAnimation("Attack" + direction);
+                Shoot();
+
+            }
+            else if (Keyboard.IsKeyDown(Keys.Up) && !jumped) /// JUMP
+            {
+                jumped = true;
+                VelocityY = jumpHeight;
+                spriteDirection += new Vector2(0f, 1f);
+                //sounds[0].Play();
+
+                if (Keyboard.IsKeyDown(Keys.X))
+                {
+                    attacking = true;
+                    PlayAnimation("Melee" + direction);
+                }
+                else
+                    PlayAnimation("Jump" + direction);
+            }
+            else if (!jumped) /// RUN
+                PlayAnimation("Run" + direction);
+            
+            if(direction == "Left")
+                currentDirection = PlayerDirection.Left;
+            else
+                currentDirection = PlayerDirection.Right;
+
         }
 
         //-----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -314,7 +285,11 @@ namespace DaGeim
                 attacking = false;
 
             if (animation.Contains("Slide"))
+            {
+                slideCDTimer = 0.50f;
+                slideCD = true;
                 sliding = false;
+            }
         }
 
 
@@ -353,131 +328,35 @@ namespace DaGeim
 
         private void setCollisionBounds()
         {
-            int xOffset, yOffset, width, height;
+            switch (currentAnimation)
+            {
+                case "IdleLeft" : setCollisionRectangle(24, 10, 47, 83); break;
+                case "IdleRight" : setCollisionRectangle(30, 10, 47, 83); break;
+                case "RunRight" : setCollisionRectangle(10, 10, 57, 83); break;
+                case "RunLeft" : setCollisionRectangle(33, 10, 57, 83); break;
+                case "AttackRight" : setCollisionRectangle(14, 10, 70, 83); break;
+                case "AttackLeft" : setCollisionRectangle(16, 10, 70, 83); break;
+                case "JumpRight" : setCollisionRectangle(14, 10, 66, 83); break;
+                case "JumpLeft" : setCollisionRectangle(20, 10, 66, 83); break;
+                case "MeleeRight" : setCollisionRectangle(13, 10, 75, 88); break;
+                case "MeleeLeft" : setCollisionRectangle(12, 10, 75, 88); break;
+                case "ShootRight" : setCollisionRectangle(21, 10, 57, 83); break;
+                case "ShootLeft" : setCollisionRectangle(22, 10, 56, 83); break;
+                case "IdleMeleeRight" : setCollisionRectangle(15, 10, 70, 83); break;
+                case "IdleMeleeLeft" : setCollisionRectangle(18, 10, 70, 83); break;
+                case "SlideRight" : setCollisionRectangle(8, 30, 68, 65); break;
+                case "SlideLeft" : setCollisionRectangle(23, 30, 68, 65); break;
+                default : setCollisionRectangle(0,0,100,100); break;
+            }
+            collisionBox = new Rectangle(((int)playerPosition.X + xOffset), ((int)playerPosition.Y + yOffset),width, height);
+        }
 
-            if (currentAnimation.Equals("IdleLeft"))
-            {
-                xOffset = 24;
-                yOffset = 10;
-                width = 47;
-                height = 83;
-            }
-            else if (currentAnimation.Equals("IdleRight"))
-            {
-                xOffset = 30;
-                yOffset = 10;
-                width = 47;
-                height = 83;
-            }
-            else if (currentAnimation.Equals("RunRight"))
-            {
-                xOffset = 10;
-                yOffset = 10;
-                width = 57;
-                height = 83;
-            }
-            else if (currentAnimation.Equals("RunLeft"))
-            {
-                xOffset = 33;
-                yOffset = 10;
-                width = 57;
-                height = 83;
-            }
-            else if (currentAnimation.Equals("AttackRight"))
-            {
-                xOffset = 14;
-                yOffset = 10;
-                width = 70;
-                height = 83;
-            }
-            else if (currentAnimation.Equals("AttackLeft"))
-            {
-                xOffset = 16;
-                yOffset = 10;
-                width = 70;
-                height = 83;
-            }
-            else if (currentAnimation.Equals("JumpRight"))
-            {
-                xOffset = 14;
-                yOffset = 10;
-                width = 66;
-                height = 83;
-            }
-            else if (currentAnimation.Equals("JumpLeft"))
-            {
-                xOffset = 20;
-                yOffset = 10;
-                width = 66;
-                height = 83;
-            }
-            else if (currentAnimation.Equals("MeleeRight"))
-            {
-                xOffset = 13;
-                yOffset = 10;
-                width = 75;
-                height = 88;
-            }
-            else if (currentAnimation.Equals("MeleeLeft"))
-            {
-                xOffset = 12;
-                yOffset = 10;
-                width = 75;
-                height = 88;
-            }
-            else if (currentAnimation.Equals("ShootRight"))
-            {
-                xOffset = 21;
-                yOffset = 10;
-                width = 57;
-                height = 83;
-            }
-            else if (currentAnimation.Equals("ShootLeft"))
-            {
-                xOffset = 22;
-                yOffset = 10;
-                width = 56;
-                height = 83;
-            }
-            else if (currentAnimation.Equals("IdleMeleeRight"))
-            {
-                xOffset = 15;
-                yOffset = 10;
-                width = 70;
-                height = 83;
-            }
-            else if (currentAnimation.Equals("IdleMeleeLeft"))
-            {
-                xOffset = 18;
-                yOffset = 10;
-                width = 70;
-                height = 83;
-            }
-            else if (currentAnimation.Equals("SlideRight"))
-            {
-                xOffset = 8;
-                yOffset = 30;
-                width = 68;
-                height = 65;
-            }
-            else if (currentAnimation.Equals("SlideLeft"))
-            {
-                xOffset = 23;
-                yOffset = 30;
-                width = 68;
-                height = 65;
-            }
-            else
-            {
-                xOffset = 0;
-                yOffset = 0;
-                width = 100;
-                height = 100;
-            }
-
-            Rectangle output = new Rectangle(((int)playerPosition.X + xOffset), ((int)playerPosition.Y + yOffset),
-                width, height);
-            collisionBox = output;
+        private void setCollisionRectangle(int x, int y, int w, int h)
+        {
+            xOffset = x;
+            yOffset = y;
+            width = w;
+            height = h;
         }
 
         //-----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -582,6 +461,3 @@ namespace DaGeim
         }
     }
 }
-
-
-
