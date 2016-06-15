@@ -32,11 +32,12 @@ namespace DaGeim
         Player mainPlayer;
 
         private List<IEntity> entities;
-        private Enemy1 enemy1;
-        private EnemyGuardian enemy2;
-        private EnemyGuardian enemy3;
+        private EnemyGuardian enemy2 = new EnemyGuardian();
+        private EnemyGuardian enemy3 = new EnemyGuardian();
+        private EnemyGuardian enemy4 = new EnemyGuardian();
+        private EnemyGuardian enemy5 = new EnemyGuardian();
+        private EnemyGuardian enemy6 = new EnemyGuardian();
         private List<EnemyGuardian> enemiesList = new List<EnemyGuardian>();
-        private Texture2D enemy1Texture2D;
 
         public const int GAME_WIDTH = 1280;
         public const int GAME_HEIGHT = 720;
@@ -45,7 +46,6 @@ namespace DaGeim
         {
             Content.RootDirectory = "Content";
             graphics = new GraphicsDeviceManager(this);
-
             graphics.PreferredBackBufferWidth = GAME_WIDTH;
             graphics.PreferredBackBufferHeight = GAME_HEIGHT;
             graphics.ApplyChanges();
@@ -65,12 +65,7 @@ namespace DaGeim
             mainPlayer = new Player(new Vector2(155, 325));
 
             this.entities = new List<IEntity>();
-            enemy2 = new EnemyGuardian();
-            enemy2.StartPoint = new Vector2(164, 380);
-            enemy2.Position = enemy2.StartPoint;
-            enemy3 = new EnemyGuardian();
-            enemy3.StartPoint = new Vector2(300, 320);
-            enemy3.Position = enemy3.StartPoint;
+            EnemySetup();
             base.Initialize();
         }
 
@@ -78,7 +73,6 @@ namespace DaGeim
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
             startGameScreen.Load(Content);
             pauseGameScreen.Load(Content);
             creditsScreen.Load(Content);
@@ -89,16 +83,12 @@ namespace DaGeim
             Tiles.Content = Content;
             map.Load(map);
 
-
             mainPlayer.LoadContent(Content);
 
-            Texture2D enemyTexture2D = Content.Load<Texture2D>("enemy1");
-            enemy1 = new Enemy1(enemyTexture2D, 2, 4);
-            this.enemiesList.Add(this.enemy2);
-            this.enemiesList.Add(this.enemy3);
-
             foreach (var enemy in enemiesList)
+            {
                 enemy.Load(Content);
+            }
 
             DrawRect.LoadContent(Content);
             backText = Content.Load<Texture2D>("background");
@@ -154,9 +144,6 @@ namespace DaGeim
                 {
                     enemy.Update(gameTime, mainPlayer.getPosition());
                 }
-
-                enemy1.Update();
-
 
                 if (Keyboard.GetState().IsKeyDown(Keys.F))
                     mainPlayer.playerHP -= 3;
@@ -238,7 +225,7 @@ namespace DaGeim
 
         private void MakeCollisionWithMap()
         {
-           // player collison with map
+            // player collison with map
             int startTileIndex = this.CalculateStartTileIndex(new Vector2(this.mainPlayer.collisionBox.X, this.mainPlayer.collisionBox.Y));
             int endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 40);
 
@@ -274,26 +261,54 @@ namespace DaGeim
             // enemies rockets collision with map
             foreach (var enemy in this.enemiesList)
             {
-                foreach (var rocket in enemy.Rockets)
+                if (enemy.Rockets != null)
                 {
-                    startTileIndex = this.CalculateStartTileIndex(rocket.shootPosition);
-                    endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 40);
-
-                    for (int i = startTileIndex; i <= endTileIndex; i++)
+                    foreach (var rocket in enemy.Rockets)
                     {
-                        rocket.Collision(this.map.CollisionTiles[i].Rectangle);
+                        startTileIndex = this.CalculateStartTileIndex(rocket.shootPosition);
+                        endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 40);
+
+                        for (int i = startTileIndex; i <= endTileIndex; i++)
+                        {
+                            rocket.Collision(this.map.CollisionTiles[i].Rectangle);
+                        }
                     }
                 }
             }
         }
 
-         private int CalculateStartTileIndex(Vector2 entityPosition)
+        private int CalculateStartTileIndex(Vector2 entityPosition)
         {
             int xPosition = Math.Max(0, (int)(entityPosition.X / this.map.TileSize) * this.map.TileSize - this.map.TileSize);
             Rectangle startTileRectangle = new Rectangle(xPosition, 0, 0, 0);
             int startTileIndex = Math.Max(0, this.map.CollisionTiles.BinarySearch(new CollisionTiles(1, startTileRectangle)) - 20);
 
             return startTileIndex;
+        }
+
+        private void EnemySetup()
+        {
+            this.enemy2.StartPoint = new Vector2(410, 430);
+            this.enemy2.Position = this.enemy2.StartPoint;
+            this.enemy2.PatrolRange = 37;
+            this.enemy3.StartPoint = new Vector2(770, 600);
+            this.enemy3.Position = this.enemy3.StartPoint;
+            this.enemy3.PatrolRange = 160;
+            this.enemy4.StartPoint = new Vector2(750, 400);
+            this.enemy4.Position = this.enemy4.StartPoint;
+            this.enemy4.PatrolRange = 70;
+            this.enemy5.StartPoint = new Vector2(920, 600);
+            this.enemy5.Position = this.enemy5.StartPoint;
+            this.enemy5.PatrolRange = 155;
+            this.enemy6.StartPoint = new Vector2(1100, 400);
+            this.enemy6.Position = this.enemy6.StartPoint;
+            this.enemy6.PatrolRange = 70;
+
+            this.enemiesList.Add(this.enemy2);
+            this.enemiesList.Add(this.enemy3);
+            this.enemiesList.Add(this.enemy4);
+            this.enemiesList.Add(this.enemy5);
+            this.enemiesList.Add(this.enemy6);
         }
 
         private void MediaPlayer_MediaStateChanged(object sender, System.EventArgs e)
@@ -332,7 +347,6 @@ namespace DaGeim
 
                 map.Draw(spriteBatch);
                 mainPlayer.Draw(spriteBatch);
-                //enemy1.Draw(spriteBatch, new Vector2(330, 210));
                 gameUI.Draw(spriteBatch);
 
                 foreach (var enemy in enemiesList)
@@ -341,12 +355,13 @@ namespace DaGeim
 
                 map.Draw(spriteBatch);
                 mainPlayer.Draw(spriteBatch);
-                //enemy1.Draw(spriteBatch, new Vector2(330, 210));
                 gameUI.Draw(spriteBatch);
 
                 foreach (var enemy in enemiesList)
                 {
                     enemy.Draw(spriteBatch);
+
+
                 }
                 spriteBatch.End();
             }

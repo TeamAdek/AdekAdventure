@@ -18,6 +18,7 @@ namespace DaGeim.Enemies
         private Vector2 startPoint = new Vector2(0, 0);
         private bool inPursue = false;
         private string direction = "left";
+        private int patrolRange;
 
         private bool hasJumped = false;
         private List<Rockets> rockets;
@@ -38,6 +39,12 @@ namespace DaGeim.Enemies
         {
             get { return this.rectangle; }
             set { this.rectangle = value; }
+        }
+
+        public int PatrolRange
+        {
+            get { return patrolRange; }
+            set { patrolRange = value; }
         }
 
         public List<Rockets> Rockets
@@ -88,22 +95,22 @@ namespace DaGeim.Enemies
             // patrol
             if (inPursue == false)
             {
-                if ((direction == "left") && (position.X > startPoint.X - 30))
+                if ((direction == "left") && (position.X > startPoint.X - patrolRange))
                 {
                     position.X--;
                 }
 
-                if ((direction == "left") && (position.X <= startPoint.X - 30))
+                if ((direction == "left") && (position.X <= startPoint.X - patrolRange))
                 {
                     direction = "right";
                 }
 
-                if ((direction == "right") && (position.X < startPoint.X + 30))
+                if ((direction == "right") && (position.X < startPoint.X + patrolRange))
                 {
                     position.X++;
                 }
 
-                if ((direction == "right") && (position.X >= startPoint.X + 30))
+                if ((direction == "right") && (position.X >= startPoint.X + patrolRange))
                 {
                     direction = "left";
                 }

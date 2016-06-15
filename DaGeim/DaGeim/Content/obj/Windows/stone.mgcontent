@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>D:/SoftUni/AdekAdventure/DaGeim/DaGeim/Content/stone.wav</SourceFile>
-  <SourceTime>2016-06-15T19:23:01.0600463+03:00</SourceTime>
-  <DestFile>D:/SoftUni/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/stone.xnb</DestFile>
-  <DestTime>2016-06-15T19:34:58.7827668+03:00</DestTime>
+  <SourceFile>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/stone.wav</SourceFile>
+  <SourceTime>2016-06-15T21:26:52.3758033+03:00</SourceTime>
+  <DestFile>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/stone.xnb</DestFile>
+  <DestTime>2016-06-15T21:27:56.3375762+03:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2016-03-30T09:36:08+03:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

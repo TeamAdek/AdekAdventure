@@ -45,7 +45,6 @@
     <Compile Include="src\MenuLayouts\Button.cs" />
     <Compile Include="src\Level\Camera.cs" />
     <Compile Include="src\Helper Classes\DrawRect.cs" />
-    <Compile Include="src\Entities\Enemies\Enemy1.cs" />
     <Compile Include="src\Entities\Enemies\EnemyGuardian.cs" />
     <Compile Include="src\Game\MainGame.cs" />
     <Compile Include="src\Level\Map.cs" />
