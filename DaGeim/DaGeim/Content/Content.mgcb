@@ -382,3 +382,9 @@
 /processorParam:TextureFormat=Color
 /build:Tile6.png
 
+#begin CreditsFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:CreditsFont.spritefont
+

@@ -21,7 +21,7 @@ namespace DaGeim
         private StartGameScreen startGameScreen;
         private EndGameScreen endGameScreen;
         private PauseGameScreen pauseGameScreen;
-        private double TimeForUpdate;
+        private CreditsScreen creditsScreen;
         private HUD gameUI;
         Texture2D backText;
         Rectangle backRect;
@@ -58,6 +58,7 @@ namespace DaGeim
             startGameScreen = new StartGameScreen();
             endGameScreen = new EndGameScreen();
             pauseGameScreen = new PauseGameScreen();
+            creditsScreen = new CreditsScreen();
             map = new Map();
             gameUI = new HUD();
 
@@ -80,6 +81,7 @@ namespace DaGeim
 
             startGameScreen.Load(Content);
             pauseGameScreen.Load(Content);
+            creditsScreen.Load(Content);
             endGameScreen.Load(Content);
 
             camera = new Camera(GraphicsDevice.Viewport);
@@ -102,8 +104,6 @@ namespace DaGeim
             backText = Content.Load<Texture2D>("background");
             backRect = new Rectangle(0, -50, 6000, 700);
             gameUI.Load(Content);
-            //loading the endGameScreen content
-            endGameScreen.Load(Content);
             //ERROR LOADING THE SONG ?!?! HERE
             //  song = Content.Load<Song>("theme1");
             //  MediaPlayer.Play(song);
@@ -129,6 +129,11 @@ namespace DaGeim
             {
                 // update teh end game screen
                 endGameScreen.Update(gameTime, this);
+            }
+            else if (GameMenuManager.creditsMenuOn)
+            {
+                //update the credits screen
+                creditsScreen.Update(gameTime, this);
             }
             else if (GameMenuManager.pauseMenuOn)
             {
@@ -217,14 +222,14 @@ namespace DaGeim
             // Enemy rockets collision with player
             foreach (var enemy in this.enemiesList)
             {
-                if(enemy.Rockets != null)
+                if (enemy.Rockets != null)
                 {
                     foreach (var rocket in enemy.Rockets)
                     {
                         this.mainPlayer.CollisionWithRocket(rocket);
                     }
                 }
-                
+
             }
 
             // Collision rocket with rocket if needed
@@ -326,6 +331,10 @@ namespace DaGeim
             else if (GameMenuManager.pauseMenuOn)
             {
                 pauseGameScreen.Draw(spriteBatch);
+            }
+            else if (GameMenuManager.creditsMenuOn)
+            {
+                creditsScreen.Draw(spriteBatch);
             }
             else //NOTE THAT WE NEED A SEPARATE spriteBatch.Begin()/End() for each menu- the menus dont work with the line below
             {

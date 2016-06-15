@@ -13,7 +13,6 @@ namespace DaGeim
         private SpriteFont gameNameFont;
         private SpriteFont font;
         private Selector selector;
-        private float TimeForUpdate;
         private Button newGameButton = new Button("New Game", new Rectangle(465, 240, 350, 80));
         private Button scoresButton = new Button("Scores", new Rectangle(465, 360, 350, 80));
         private Button creditsButton = new Button("Credits", new Rectangle(465, 480, 350, 80));
@@ -123,7 +122,6 @@ namespace DaGeim
                     Thread.Sleep(100);
                 }
             }
-
             else if (scoresButton.isSelected)
             {
                 //starts Scoreboard
@@ -135,13 +133,18 @@ namespace DaGeim
                     Thread.Sleep(100);
                 }
             }
-
             else if (creditsButton.isSelected)
             {
                 //starts Credits
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))
                 {
-                    //TODO START Credits LOGIC
+                    if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                    {
+                        GameMenuManager.creditsMenuOn = true;
+                        GameMenuManager.mainMenuOn = false;//turn the current menu off
+                        GameMenuManager.TurnOtherMenusOff(); // turn the other menus off
+                        Thread.Sleep(100);
+                    }
                 }
             }
 

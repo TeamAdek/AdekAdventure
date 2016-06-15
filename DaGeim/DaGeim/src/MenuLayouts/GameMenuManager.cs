@@ -8,6 +8,7 @@ namespace DaGeim
         public static bool pauseMenuOn;
         public static bool endGameMenuOn;
         public static bool gameOn;
+        public static bool creditsMenuOn;
 
         /*----------------------------------------------------------------------------------------------------
         turn off the menus we dont need on screen right now;
@@ -21,22 +22,29 @@ namespace DaGeim
                 endGameMenuOn = false;
                 gameOn = false;
             }
-             if (pauseMenuOn)
+            if (pauseMenuOn)
             {
                 mainMenuOn = false;
                 endGameMenuOn = false;
                 gameOn = false;
             }
-             if (endGameMenuOn)
+            if (endGameMenuOn)
             {
                 mainMenuOn = false;
                 pauseMenuOn = false;
                 gameOn = false;
             }
-             if (gameOn)
+            if (gameOn)
             {
                 mainMenuOn = false;
                 pauseMenuOn = false;
+                endGameMenuOn = false;
+            }
+            if (creditsMenuOn)
+            {
+                mainMenuOn = false;
+                pauseMenuOn = false;
+                gameOn = false;
                 endGameMenuOn = false;
             }
         }
