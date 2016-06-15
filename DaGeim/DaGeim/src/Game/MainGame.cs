@@ -159,6 +159,9 @@ namespace DaGeim
                     mainPlayer.playerHP += 3;
 
                 this.MakeCollisionWithMap();
+                this.CollisionWithRocket();
+                this.CollisionWithEnemy();
+
 
                 //TODO add collision between player and enemies
                 //TODO add collision between player/enemy and rockets
@@ -181,6 +184,52 @@ namespace DaGeim
             }
             base.Update(gameTime);
         }
+
+        private void CollisionWithEnemy()
+        {
+            // Player collision with enemy
+            foreach (var enemy in this.enemiesList)
+            {
+                this.mainPlayer.CollisionWithEntity(enemy);
+            }
+
+            //enemy collision with enemy
+            for (int i = 0; i < this.enemiesList.Count; i++)
+            {
+                for (int j = i + 1; j < this.enemiesList.Count; j++)
+                {
+                    this.enemiesList[i].CollisionWithEntity(this.enemiesList[j]);
+                }
+            }
+        }
+
+        private void CollisionWithRocket()
+        {
+            // player rockets collision with enemies
+            foreach (var rocket in this.mainPlayer.Rockets)
+            {
+                foreach (var enemy in this.enemiesList)
+                {
+                    enemy.CollisionWithRocket(rocket);
+                }
+            }
+
+            // Enemy rockets collision with player
+            foreach (var enemy in this.enemiesList)
+            {
+                if(enemy.Rockets != null)
+                {
+                    foreach (var rocket in enemy.Rockets)
+                    {
+                        this.mainPlayer.CollisionWithRocket(rocket);
+                    }
+                }
+                
+            }
+
+            // Collision rocket with rocket if needed
+        }
+
 
         private void MakeCollisionWithMap()
         {
@@ -217,7 +266,24 @@ namespace DaGeim
                 }
             }
 
-            //TODO add enemies rocket collision with map
+            foreach (var enemy in this.enemiesList)
+            {
+                if (enemy.Rockets != null)
+                {
+
+
+                    foreach (var rocket in enemy.Rockets)
+                    {
+                        startTileIndex = this.CalculateStartTileIndex(rocket.shootPosition);
+                        endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 40);
+
+                        for (int i = startTileIndex; i <= endTileIndex; i++)
+                        {
+                            rocket.Collision(this.map.CollisionTiles[i].Rectangle);
+                        }
+                    }
+                }
+            }
         }
 
         private int CalculateStartTileIndex(Vector2 entityPosition)

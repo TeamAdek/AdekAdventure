@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -19,6 +20,7 @@ namespace DaGeim.Enemies
         private string direction = "left";
 
         private bool hasJumped = false;
+        private List<Rockets> rockets;
 
         public Vector2 Position
         {
@@ -36,6 +38,12 @@ namespace DaGeim.Enemies
         {
             get { return this.rectangle; }
             set { this.rectangle = value; }
+        }
+
+        public List<Rockets> Rockets
+        {
+            get { return this.rockets; }
+            set { this.rockets = value; }
         }
 
         public EnemyGuardian() { }
@@ -129,6 +137,16 @@ namespace DaGeim.Enemies
             if (position.X > mapWidth - rectangle.Width) position.X = mapWidth - rectangle.Width;
             if (position.Y < 0) velocity.Y = 1f;
             if (position.Y > mapHeight - rectangle.Height) position.Y = mapHeight - rectangle.Height;
+        }
+
+        public void CollisionWithEntity(IEntity entity)
+        {
+            //TODO enemy collision with other enemy
+        }
+
+        public void CollisionWithRocket(Rockets rocket)
+        {
+            //TODO enemy collision with player rocket
         }
 
         public void Draw(SpriteBatch spriteBach)

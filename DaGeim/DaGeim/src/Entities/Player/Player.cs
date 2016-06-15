@@ -8,6 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace DaGeim
 {
+    using System;
     using Game.src.Entities;
 
     public class Player : AnimatedSprite, IEntity
@@ -44,6 +45,7 @@ namespace DaGeim
         public List<Rockets> Rockets
         {
             get { return this.rockets; }
+            set { this.rockets = value; }
         }
 
         public Rectangle getCB()
@@ -321,6 +323,24 @@ namespace DaGeim
             if (collisionBox.TouchBottomOf(tileRectangle))
                 VelocityY = -1.0f;
         }
+
+        public void CollisionWithEntity(IEntity entity)
+        {
+            //TODO: player collision with enemy
+            if (this.collisionBox.Intersects(entity.CollisionBox))
+            {
+                this.playerHP--;
+            }
+        }
+
+        public void CollisionWithRocket(Rockets rocket)
+        {
+            //TODO: player collision with rockets
+        }
+
+
+
+
 
         //-----------------------------------------------------------------------------------------------------------------------------------------------------------
         // Set all collision bounds
