@@ -7,6 +7,12 @@ using DaGeim.Enemies;
 
 namespace DaGeim
 {
+    using System;
+
+    using Game.src.Entities;
+
+    using Game = Microsoft.Xna.Framework.Game;
+
     public class MainGame : Game
     {
         GraphicsDeviceManager graphics;
@@ -24,6 +30,8 @@ namespace DaGeim
         Map map;
 
         Player mainPlayer;
+
+        private List<IEntity> entities;
         private Enemy1 enemy1;
         private EnemyGuardian enemy2;
         private EnemyGuardian enemy3;
@@ -57,6 +65,7 @@ namespace DaGeim
 
             mainPlayer = new Player(new Vector2(155, 325));
 
+            this.entities = new List<IEntity>();
             enemy2 = new EnemyGuardian();
             enemy2.StartPoint = new Vector2(164, 380);
             enemy2.Position = enemy2.StartPoint;
@@ -78,17 +87,7 @@ namespace DaGeim
             camera = new Camera(GraphicsDevice.Viewport);
 
             Tiles.Content = Content;
-            map.Generate(new int[,]{
-
-                    { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    { 2,1,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    { 2,2,1,1,1,0,0,0,0,1,1,0,2,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0},
-                    { 2,2,0,0,0,0,0,1,1,2,2,0,2,2,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,2,1,0,0,0,0,0,0},
-                    { 2,0,0,0,0,0,1,2,2,2,2,0,2,2,2,2,2,1,1,1,1,1,1,0,0,0,0,0,0,0,1,2,1,1,1,2,2,2,1,1,1,1,1,1},
-                    { 2,0,0,0,1,1,2,2,2,2,2,0,2,2,2,2,2,2,2,2,2,2,2,0,0,0,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
-                    { 2,1,1,1,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2,2,2,2,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
-               }, 64);
+            map.Load(map);
 
 
             mainPlayer.LoadContent(Content);
@@ -103,13 +102,13 @@ namespace DaGeim
 
             DrawRect.LoadContent(Content);
             backText = Content.Load<Texture2D>("background");
+            backRect = new Rectangle(0, -50, 6000, 700);
             gameUI.Load(Content);
-            backRect = new Rectangle(0, -50, 3000, 500);
             //loading the endGameScreen content
             endGameScreen.Load(Content);
             //ERROR LOADING THE SONG ?!?! HERE
-            song = Content.Load<Song>("theme1");
-            MediaPlayer.Play(song);
+            //  song = Content.Load<Song>("theme1");
+            //  MediaPlayer.Play(song);
             MediaPlayer.Volume = 0.1f;
             MediaPlayer.IsRepeating = true;
             //MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
@@ -161,24 +160,84 @@ namespace DaGeim
                 if (Keyboard.GetState().IsKeyDown(Keys.G))
                     mainPlayer.playerHP += 3;
 
-                foreach (CollisionTiles tile in map.CollisionTiles)
+                this.MakeCollisionWithMap();
+
+                //TODO add collision between player and enemies
+                //TODO add collision between player/enemy and rockets
+
+                //   foreach (CollisionTiles tile in map.CollisionTiles)
                 //  VERY HIGH Performance hit. 4096 checks for every entity in the game
-                {
-                    mainPlayer.Collision(tile.Rectangle);
+                //   {
+                //    mainPlayer.CollisionWithMap(tile.Rectangle, map.Widht, map.Height);
 
-                    foreach (var enemy in enemiesList) //
-                        enemy.Collision(tile.Rectangle, map.Widht, map.Height);
+                //     foreach (var enemy in enemiesList) //
+                //         enemy.CollisionWithMap(tile.Rectangle, map.Widht, map.Height);
 
-                    camera.Update(mainPlayer.getPosition(), map.Widht, map.Height);
-                    gameUI.Update(mainPlayer.playerHP, Camera.centre);
-                }
+                camera.Update(mainPlayer.getPosition(), map.Widht, map.Height);
+                gameUI.Update(mainPlayer.playerHP, Camera.centre);
+                //  }
                 //update the SCORES in the scoreboard AFTER the player dies or clears the level
                 //first we need a Score object containing the player name and scores
                 //  Score playerScore = new Score(name, points);
                 //  endGameScreen.UpdateScoreboard(playerScore);
             }
             base.Update(gameTime);
+        }
 
+        private void MakeCollisionWithMap()
+        {
+            // player collison with map
+            int startTileIndex = this.CalculateStartTileIndex(new Vector2(this.mainPlayer.collisionBox.X, this.mainPlayer.collisionBox.Y));
+            int endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 24);
+
+            for (int i = startTileIndex; i <= endTileIndex; i++)
+            {
+                this.mainPlayer.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, this.map.Widht, this.map.Height);
+            }
+
+            //enemies collision with map
+            foreach (var enemyGuardian in this.enemiesList)
+            {
+                startTileIndex = this.CalculateStartTileIndex(enemyGuardian.Position);
+                endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 24);
+
+                for (int i = startTileIndex; i <= endTileIndex; i++)
+                {
+                    enemyGuardian.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, this.map.Widht, this.map.Height);
+                }
+            }
+
+            // player's rockets collision with map
+            foreach (var rocket in this.mainPlayer.Rockets)
+            {
+                startTileIndex = this.CalculateStartTileIndex(rocket.shootPosition);
+                endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 30);
+
+                for (int i = startTileIndex; i <= endTileIndex; i++)
+                {
+                    rocket.Collision(this.map.CollisionTiles[i].Rectangle);
+                }
+            }
+
+            //TODO add enemies rocket collision with map
+        }
+
+        private int CalculateStartTileIndex(Vector2 entityPosition)
+        {
+            int xPosition = Math.Max(0, (int)(entityPosition.X / this.map.TileSize) * this.map.TileSize - this.map.TileSize);
+            Rectangle startTileRectangle = new Rectangle(xPosition, 0, 0, 0);
+            int startTileIndex = Math.Max(0, this.map.CollisionTiles.BinarySearch(new CollisionTiles(1, startTileRectangle)) - 10);
+
+            int s = 1;
+            while (startTileIndex < 0)
+            {
+                xPosition = Math.Max(0, (int)(entityPosition.X / this.map.TileSize) * this.map.TileSize - this.map.TileSize * s);
+                startTileRectangle = new Rectangle(xPosition, 0, 0, 0);
+                startTileIndex = this.map.CollisionTiles.BinarySearch(new CollisionTiles(1, startTileRectangle));
+                s++;
+            }
+
+            return startTileIndex;
         }
 
         private void MediaPlayer_MediaStateChanged(object sender, System.EventArgs e)
