@@ -238,9 +238,9 @@ namespace DaGeim
 
         private void MakeCollisionWithMap()
         {
-            // player collison with map
+           // player collison with map
             int startTileIndex = this.CalculateStartTileIndex(new Vector2(this.mainPlayer.collisionBox.X, this.mainPlayer.collisionBox.Y));
-            int endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 24);
+            int endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 40);
 
             for (int i = startTileIndex; i <= endTileIndex; i++)
             {
@@ -251,7 +251,7 @@ namespace DaGeim
             foreach (var enemyGuardian in this.enemiesList)
             {
                 startTileIndex = this.CalculateStartTileIndex(enemyGuardian.Position);
-                endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 24);
+                endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 40);
 
                 for (int i = startTileIndex; i <= endTileIndex; i++)
                 {
@@ -263,7 +263,7 @@ namespace DaGeim
             foreach (var rocket in this.mainPlayer.Rockets)
             {
                 startTileIndex = this.CalculateStartTileIndex(rocket.shootPosition);
-                endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 30);
+                endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 40);
 
                 for (int i = startTileIndex; i <= endTileIndex; i++)
                 {
@@ -271,40 +271,27 @@ namespace DaGeim
                 }
             }
 
+            // enemies rockets collision with map
             foreach (var enemy in this.enemiesList)
             {
-                if (enemy.Rockets != null)
+                foreach (var rocket in enemy.Rockets)
                 {
+                    startTileIndex = this.CalculateStartTileIndex(rocket.shootPosition);
+                    endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 40);
 
-
-                    foreach (var rocket in enemy.Rockets)
+                    for (int i = startTileIndex; i <= endTileIndex; i++)
                     {
-                        startTileIndex = this.CalculateStartTileIndex(rocket.shootPosition);
-                        endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 40);
-
-                        for (int i = startTileIndex; i <= endTileIndex; i++)
-                        {
-                            rocket.Collision(this.map.CollisionTiles[i].Rectangle);
-                        }
+                        rocket.Collision(this.map.CollisionTiles[i].Rectangle);
                     }
                 }
             }
         }
 
-        private int CalculateStartTileIndex(Vector2 entityPosition)
+         private int CalculateStartTileIndex(Vector2 entityPosition)
         {
             int xPosition = Math.Max(0, (int)(entityPosition.X / this.map.TileSize) * this.map.TileSize - this.map.TileSize);
             Rectangle startTileRectangle = new Rectangle(xPosition, 0, 0, 0);
-            int startTileIndex = Math.Max(0, this.map.CollisionTiles.BinarySearch(new CollisionTiles(1, startTileRectangle)) - 10);
-
-            int s = 1;
-            while (startTileIndex < 0)
-            {
-                xPosition = Math.Max(0, (int)(entityPosition.X / this.map.TileSize) * this.map.TileSize - this.map.TileSize * s);
-                startTileRectangle = new Rectangle(xPosition, 0, 0, 0);
-                startTileIndex = this.map.CollisionTiles.BinarySearch(new CollisionTiles(1, startTileRectangle));
-                s++;
-            }
+            int startTileIndex = Math.Max(0, this.map.CollisionTiles.BinarySearch(new CollisionTiles(1, startTileRectangle)) - 20);
 
             return startTileIndex;
         }
