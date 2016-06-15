@@ -38,6 +38,7 @@
     <ApplicationIcon>Content\Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+	<Compile Include="src\Entities\IEntity.cs" />
     <Compile Include="src\Entities\Player\AnimatedSprite.cs" />
     <Compile Include="src\Helper Classes\Rockets.cs" />
     <Compile Include="src\Level\HUD.cs" />
