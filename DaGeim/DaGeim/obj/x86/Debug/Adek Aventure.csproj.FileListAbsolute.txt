@@ -2,7 +2,6 @@ E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\
 E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\background2.xnb
 E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\bluestar.xnb
 E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\darkButton.xnb
-E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy1.xnb
 E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemyRobbot.xnb
 E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy_with_sword.xnb
 E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Font.xnb
@@ -511,3 +510,19 @@ D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\
 D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\stone.xnb
 D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\sweep.xnb
 D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\GameNameFont.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy1.png
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\jump.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\GameNameFont.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Icon.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\lasershot.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheet.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\stone.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\sweep.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme1.wma
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme1.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme2.wma
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme2.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile3.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile4.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile5.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile6.xnb

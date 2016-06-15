@@ -49,8 +49,6 @@ namespace DaGeim
             graphics.PreferredBackBufferWidth = GAME_WIDTH;
             graphics.PreferredBackBufferHeight = GAME_HEIGHT;
             graphics.ApplyChanges();
-
-
         }
 
         protected override void Initialize()
