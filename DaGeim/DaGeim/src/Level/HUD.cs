@@ -10,7 +10,7 @@ class HUD
     private Texture2D HPBar;
     public Vector2 healthPosition;
 
-    private Rectangle healthBar = new Rectangle(25, 0, 1280, 720);
+    private Rectangle healthBar = new Rectangle(0, 0, 1280, 720);
     private Rectangle health = new Rectangle(0, 0, 1280, 720);
     public void Load(ContentManager content)
     {
