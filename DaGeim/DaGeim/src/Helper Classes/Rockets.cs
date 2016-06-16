@@ -38,4 +38,9 @@ public class Rockets
             this.isVisible = false;
         }
     }
+
+    public Rectangle getCollisionBox()
+    {
+        return new Rectangle((int)this.shootPosition.X, (int)this.shootPosition.Y, this.shootTexture.Width, this.shootTexture.Height);
+    }
 }

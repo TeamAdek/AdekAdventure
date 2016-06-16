@@ -1,4 +1,6 @@
-﻿namespace Game.src.Entities
+﻿using DaGeim;
+
+namespace Game.src.Entities
 {
     using System.Collections.Generic;
 
@@ -41,6 +43,6 @@
         /// Make collision with rocket
         /// </summary>
         /// <param name="rocket"></param>
-        void CollisionWithRocket(Rockets rocket);
+        void CollisionWithRocket(Rockets rocket, Player player);
     }
 }

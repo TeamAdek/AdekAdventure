@@ -34,7 +34,7 @@ namespace DaGeim
 
         /*---------------------------------------*/
         // REPLACE THIS ONE
-        public int playerScore = 100;
+        public int playerScore = 0;
         /*--------------------------------------*/
 
         //-----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -337,12 +337,10 @@ namespace DaGeim
             }
         }
 
-        public void CollisionWithRocket(Rockets rocket)
+        public void CollisionWithRocket(Rockets rocket, Player player)
         {
             //TODO: player collision with rockets
         }
-
-
 
 
 
@@ -427,7 +425,7 @@ namespace DaGeim
                     newRocket = new Rockets(shootTextureLeft);
                     newRocket.shootPosition = new Vector2(playerPosition.X - 15, playerPosition.Y + 35);
                     newRocket.direction = "left";
-                    //sounds[3].Play();
+                    sounds[3].Play();
                 }
                 else
                 {

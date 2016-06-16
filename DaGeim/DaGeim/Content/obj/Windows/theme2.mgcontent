@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>D:/SoftUni/AdekAdventure/DaGeim/DaGeim/Content/theme2.ogg</SourceFile>
-  <SourceTime>2016-06-15T23:53:08.362775+03:00</SourceTime>
-  <DestFile>D:/SoftUni/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/theme2.xnb</DestFile>
-  <DestTime>2016-06-15T23:56:05.2604159+03:00</DestTime>
+  <SourceFile>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Robot Boy/AdekAdventure/DaGeim/DaGeim/Content/theme2.ogg</SourceFile>
+  <SourceTime>2016-06-15T13:59:14+03:00</SourceTime>
+  <DestFile>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Robot Boy/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/theme2.xnb</DestFile>
+  <DestTime>2016-06-16T04:54:29.0302287+03:00</DestTime>
   <Importer>OggImporter</Importer>
   <ImporterTime>2016-03-30T09:36:08+03:00</ImporterTime>
   <Processor>SongProcessor</Processor>
@@ -15,6 +15,6 @@
   <Dependencies />
   <BuildAsset />
   <BuildOutput>
-    <string>D:/SoftUni/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/theme2.wma</string>
+    <string>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Robot Boy/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/theme2.wma</string>
   </BuildOutput>
 </PipelineBuildEvent>

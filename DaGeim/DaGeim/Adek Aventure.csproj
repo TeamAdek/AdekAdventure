@@ -39,7 +39,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="src\Entities\IEntity.cs" />
+    <Compile Include="src\Entities\Enemies\AnimatedEnemy.cs" />
     <Compile Include="src\Entities\Player\AnimatedSprite.cs" />
+    <Compile Include="src\Entities\Enemies\SkeletonEnemy.cs" />
     <Compile Include="src\Helper Classes\Rockets.cs" />
     <Compile Include="src\Level\HUD.cs" />
     <Compile Include="src\MenuLayouts\Button.cs" />

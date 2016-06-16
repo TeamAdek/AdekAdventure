@@ -57,8 +57,7 @@ namespace DaGeim.Enemies
 
         public void Load(ContentManager Content)
         {
-            texture = Content.Load<Texture2D>("Upgraded_Robot_Sprite");
-            //texture = Content.Load<Texture2D>("enemy_with_sword");
+            texture = Content.Load<Texture2D>("enemy");
         }
         public void Update(GameTime gameTime, Vector2 playerPosition)
         {
@@ -145,13 +144,12 @@ namespace DaGeim.Enemies
             if (position.Y < 0) velocity.Y = 1f;
             if (position.Y > mapHeight - rectangle.Height) position.Y = mapHeight - rectangle.Height;
         }
-
         public void CollisionWithEntity(IEntity entity)
         {
             //TODO enemy collision with other enemy
         }
 
-        public void CollisionWithRocket(Rockets rocket)
+        public void CollisionWithRocket(Rockets rocket, Player player)
         {
             //TODO enemy collision with player rocket
         }
@@ -160,5 +158,7 @@ namespace DaGeim.Enemies
         {
             spriteBach.Draw(texture, rectangle, Color.White);
         }
+
+        
     }
 }
