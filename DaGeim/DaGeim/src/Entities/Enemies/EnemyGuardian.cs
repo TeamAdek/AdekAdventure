@@ -19,6 +19,7 @@ namespace DaGeim.Enemies
         private bool inPursue = false;
         private string direction = "left";
         private int patrolRange;
+        private int enemyHealth = 100;
 
         private bool hasJumped = false;
         private List<Rockets> rockets;

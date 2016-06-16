@@ -1,0 +1,128 @@
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\background.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\background2.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\bluestar.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\CreditsFont.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\darkButton.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy1.png
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemyRobbot.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy_with_sword.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Font.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\GameNameFont.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\highlightedButton.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\HUD.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\HUD_HP_BAR.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Icon.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Idle.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\jump.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\lasershot.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\MainFont.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Player.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\PlayerAnimation.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\red.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\rocketLeft.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\rocketRight.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheet.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheetEnemy.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\stone.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\sweep.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme2.wma
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme2.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile3.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile4.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile5.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile6.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Upgraded_Robot_Sprite.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme1.wma
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme1.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile1.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile2.xnb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\DaGeim.exe
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\DaGeim.pdb
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\obj\x86\Debug\Robot Boy.csprojResolveAssemblyReference.cache
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\obj\x86\Debug\DaGeim.exe
+C:\Users\Hentov\Desktop\AdekAdventure-master\DaGeim\DaGeim\obj\x86\Debug\DaGeim.pdb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\DaGeim.exe
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\DaGeim.pdb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy1.png
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\jump.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\background.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\background2.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\bluestar.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\CreditsFont.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\darkButton.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemyRobbot.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy_with_sword.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Font.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\GameNameFont.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\highlightedButton.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\HUD.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\HUD_HP_BAR.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Icon.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Idle.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\lasershot.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\MainFont.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Player.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\PlayerAnimation.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\red.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\rocketLeft.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\rocketRight.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheet.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheetEnemy.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\stone.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\sweep.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme1.wma
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme1.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme2.wma
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme2.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile1.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile2.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile3.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile4.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile5.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile6.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Upgraded_Robot_Sprite.xnb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\DaGeim.exe
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\DaGeim.pdb
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\MonoGame.Framework.dll
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.dll
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XInput.dll
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\MonoGame.Framework.xml
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.xml
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XInput.xml
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+E:\Downloads\Adek Game Test\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\Robot Boy.csprojResolveAssemblyReference.cache

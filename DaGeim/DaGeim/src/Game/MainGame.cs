@@ -32,7 +32,7 @@ namespace DaGeim
         Map map;
 
         Player mainPlayer;
-        Skeleton skeletonEnemy;
+
         private List<IEntity> entities;
         private List<Skeleton> enemies = new List<Skeleton>();
         private List<int> deadEnemies = new List<int>();
@@ -41,6 +41,7 @@ namespace DaGeim
         public MainGame()
         {
             Content.RootDirectory = "Content";
+            Window.Title = "Robot Boy";
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth = GAME_WIDTH;
             graphics.PreferredBackBufferHeight = GAME_HEIGHT;
@@ -58,14 +59,12 @@ namespace DaGeim
             map = new Map();
             gameUI = new HUD();
 
-            mainPlayer = new Player(new Vector2(100, 350));
-            skeletonEnemy = new Skeleton(new Vector2(700, 520), 120);
+            mainPlayer = new Player(new Vector2(155, 325));
             InitializeEnemies();
 
             entities = new List<IEntity>();
             base.Initialize();
         }
-
 
 
         protected override void LoadContent()
@@ -87,15 +86,13 @@ namespace DaGeim
             {
                 enemy.Load(Content);
             }
-            skeletonEnemy.Load(Content);
-
 
             DrawRect.LoadContent(Content);
             backText = Content.Load<Texture2D>("background");
             backRect = new Rectangle(0, -50, 6000, 700);
             gameUI.Load(Content);
 
-           // song = Content.Load<Song>("theme1");
+            song = Content.Load<Song>("theme1");
             MediaPlayer.Play(song);
             MediaPlayer.Volume = 0.1f;
             MediaPlayer.IsRepeating = true;
@@ -151,7 +148,6 @@ namespace DaGeim
                 
                 mainPlayer.Update(gameTime);
 
-                skeletonEnemy.Update(gameTime, mainPlayer.getPosition());
                 foreach (var enemy in enemies)
                     enemy.Update(gameTime, mainPlayer.getPosition());
 
@@ -188,14 +184,12 @@ namespace DaGeim
             {
                 mainPlayer.CollisionWithEntity(enemy);   
             }
-            mainPlayer.CollisionWithEntity(skeletonEnemy);
             //enemy collision with enemy
             for (int i = 0; i < enemies.Count - 1; i++)
             {
                 for (int j = i + 1; j < enemies.Count - 1; j++)
                 {
                     enemies[i].CollisionWithEntity(enemies[j]);
-                    skeletonEnemy.CollisionWithEntity(enemies[j]);
                 }
             }
             
@@ -211,21 +205,6 @@ namespace DaGeim
                     enemy.CollisionWithRocket(rocket, mainPlayer);
                 }
             }
-
-            // Enemy rockets collision with player
-//            foreach (var enemy in this.enemies)
-//            {
-//                if (enemy.Rockets != null)
-//                {
-//                    foreach (var rocket in enemy.Rockets)
-//                    {
-//                        this.mainPlayer.CollisionWithRocket(rocket);
-//                    }
-//                }
-//
-//            }
-
-            // Collision rocket with rocket if needed
         }
 
 
@@ -238,7 +217,6 @@ namespace DaGeim
             for (int i = startTileIndex; i <= endTileIndex; i++)
             {
                 this.mainPlayer.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, this.map.Widht, this.map.Height);
-                   skeletonEnemy.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, map.Widht, this.map.Height);
 
             }
 
@@ -264,24 +242,6 @@ namespace DaGeim
                     rocket.Collision(this.map.CollisionTiles[i].Rectangle);
                 }
             }
-
-            // enemies rockets collision with map
-//            foreach (var enemy in this.enemiesList)
-//            {
-//                if (enemy.Rockets != null)
-//                {
-//                    foreach (var rocket in enemy.Rockets)
-//                    {
-//                        startTileIndex = this.CalculateStartTileIndex(rocket.shootPosition);
-//                        endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 40);
-//
-//                        for (int i = startTileIndex; i <= endTileIndex; i++)
-//                        {
-//                            rocket.Collision(this.map.CollisionTiles[i].Rectangle);
-//                        }
-//                    }
-//                }
-//            }
         }
 
         private int CalculateStartTileIndex(Vector2 entityPosition)
@@ -296,9 +256,8 @@ namespace DaGeim
         private void InitializeEnemies()
         {
             Skeleton enemy1 = new Skeleton(new Vector2(910, 350), 150);
-            Skeleton enemy2 = new Skeleton(new Vector2(1200, 500), 150);
-            Skeleton enemy3 = new Skeleton(new Vector2(1400, 200), 200);
-            Skeleton enemy4 = new Skeleton(new Vector2(740, 100), 90);
+            Skeleton enemy2 = new Skeleton(new Vector2(1100, 500), 50);
+            Skeleton enemy4 = new Skeleton(new Vector2(740, 100), 100);
             Skeleton enemy5 = new Skeleton(new Vector2(1800, 100), 200);
             Skeleton enemy6 = new Skeleton(new Vector2(2200, 155), 50);
             Skeleton enemy7 = new Skeleton(new Vector2(1950, 155), 40);
@@ -316,10 +275,8 @@ namespace DaGeim
             Skeleton enemy19 = new Skeleton(new Vector2(5000, 200), 35);
             Skeleton enemy20 = new Skeleton(new Vector2(5200, 200), 95);
 
-
             enemies.Add(enemy1);
             enemies.Add(enemy2);
-            enemies.Add(enemy3);
             enemies.Add(enemy4);
             enemies.Add(enemy5);
             enemies.Add(enemy6);
@@ -375,7 +332,7 @@ namespace DaGeim
 
                 map.Draw(spriteBatch);
                 mainPlayer.Draw(spriteBatch);
-                skeletonEnemy.Draw(spriteBatch);
+
                 gameUI.Draw(spriteBatch);
 
                 foreach (var enemy in enemies)

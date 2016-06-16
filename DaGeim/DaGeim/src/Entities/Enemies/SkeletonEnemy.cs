@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using DaGeim;
+
 
 namespace DaGeim.Enemies
 {
@@ -21,6 +20,7 @@ namespace DaGeim.Enemies
         private int patrolRange;
         private const int ENEMY_FPS = 15;
         public bool dead = false;
+        private int enemyHealth = 90;
 
         private bool hasJumped = false;
         private List<Rockets> rockets;
@@ -210,17 +210,23 @@ namespace DaGeim.Enemies
 
          public void CollisionWithEntity(IEntity entity)
         {
-            //TODO enemy collision with other enemy
+
         }
 
         public void CollisionWithRocket(Rockets rocket, Player player)
         {
             if (CollisionBox.Intersects(rocket.getCollisionBox()))
             {
-                player.playerScore += 50;
-                dead = true;
-            }
+                if (enemyHealth <= 0)
+                {
+                    player.playerScore += 50;
+                    dead = true;
+                }
+                else
+                    enemyHealth -= 50;
                 
+                rocket.isVisible = false;
+            }         
         }
     }
 }
