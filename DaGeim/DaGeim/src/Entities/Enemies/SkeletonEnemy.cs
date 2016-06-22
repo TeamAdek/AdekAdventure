@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DaGeim.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -8,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace DaGeim.Enemies
 {
     using Game.src.Entities;
-    public class Skeleton: AnimatedEnemy, IEntity
+    public class Skeleton: AnimatedEnemy, IEntity, IPatrolable
     {
         private Texture2D texture;
         private Vector2 position;
@@ -108,6 +109,12 @@ namespace DaGeim.Enemies
             }
 
             // patrol
+            Patrol();
+            base.Update(gameTime);
+        }
+
+        public void Patrol()
+        {
             if (inPursue == false)
             {
                 if ((direction == "left") && (enemyPosition.X > startPoint.X - patrolRange))
@@ -137,7 +144,6 @@ namespace DaGeim.Enemies
                     direction = "left";
                 }
             }
-            base.Update(gameTime);
         }
 
         public void CollisionWithMap(Rectangle tileRectangle, int mapWidth, int mapHeight)

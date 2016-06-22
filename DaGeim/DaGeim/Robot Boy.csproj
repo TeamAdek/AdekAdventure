@@ -38,6 +38,7 @@
     <ApplicationIcon>Content\Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IPatrolable.cs" />
     <Compile Include="src\Entities\IEntity.cs" />
     <Compile Include="src\Entities\Enemies\AnimatedEnemy.cs" />
     <Compile Include="src\Entities\Player\AnimatedSprite.cs" />
@@ -76,6 +77,7 @@
   <ItemGroup>
     <Content Include="Content\Icon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,25 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using DaGeim.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using DaGeim;
+
 
 namespace DaGeim.Enemies
 {
     using Game.src.Entities;
-    public class EnemyGuardian : IEntity
+    public class EnemyGuardian : AnimatedEnemy, IEntity, IPatrolable
     {
         private Texture2D texture;
-        private Vector2 position = new Vector2(164, 384);
+        private Vector2 position;
         private Vector2 velocity;
         private Rectangle rectangle;
         private Vector2 startPoint = new Vector2(0, 0);
         private bool inPursue = false;
         private string direction = "left";
         private int patrolRange;
-        private int enemyHealth = 100;
+        private const int ENEMY_FPS = 15;
+        public bool dead = false;
+        private int enemyHealth = 90;
 
         private bool hasJumped = false;
         private List<Rockets> rockets;
@@ -54,64 +56,92 @@ namespace DaGeim.Enemies
             set { this.rockets = value; }
         }
 
-        public EnemyGuardian() { }
+        public EnemyGuardian(Vector2 position, int range) : base(position)
+        {
+            this.position = position;
+            this.startPoint = position;
+            patrolRange = range;
+            FramesPerSecond = ENEMY_FPS;
+
+            loadAnimations();
+            PlayAnimation("IdleLeft");
+            currentDirection = Direction.Left;
+        }
 
         public void Load(ContentManager Content)
         {
-            texture = Content.Load<Texture2D>("enemy");
+            spriteTexture = Content.Load<Texture2D>("SpriteSheetEnemy");
         }
         public void Update(GameTime gameTime, Vector2 playerPosition)
         {
-            position += velocity;
-            rectangle = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
+
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            enemyPosition += velocity;
+            rectangle = setCollisionBounds();
             inPursue = false;
 
             if (velocity.Y < 10)
                 velocity.Y += 0.4f;
 
             // detect player and pursue him
-            if ((playerPosition.X < position.X) &&
-                (position.X - playerPosition.X < 155) &&
-                (position.X > startPoint.X - 35) &&
+            if ((playerPosition.X < enemyPosition.X) &&
+                (enemyPosition.X - playerPosition.X < 155) &&
+                (enemyPosition.X > startPoint.X - 35) &&
                 (Math.Abs(position.Y - playerPosition.Y) < 150)
                 )
             {
                 inPursue = true;
                 direction = "left";
-                position.X -= 1;
+                PlayAnimation("WalkLeft");
+                enemyPosition.X -= 1;
             }
 
-            if ((playerPosition.X > position.X) &&
-                (playerPosition.X - position.X < 155) &&
-                (position.X < startPoint.X + 35) &&
+            if ((playerPosition.X > enemyPosition.X) &&
+                (playerPosition.X - enemyPosition.X < 155) &&
+                (enemyPosition.X < startPoint.X + 35) &&
                 (Math.Abs(position.Y - playerPosition.Y) < 150)
                 )
             {
                 inPursue = true;
                 direction = "right";
-                position.X += 1;
+                PlayAnimation("WalkRight");
+                enemyPosition.X += 1;
             }
 
             // patrol
+            Patrol();
+            
+            base.Update(gameTime);
+        }
+
+        public void Patrol()
+        {
             if (inPursue == false)
             {
-                if ((direction == "left") && (position.X > startPoint.X - patrolRange))
+                if ((direction == "left") && (enemyPosition.X > startPoint.X - patrolRange))
                 {
-                    position.X--;
+                    enemyPosition.X--;
+                    PlayAnimation("WalkLeft");
+
                 }
 
-                if ((direction == "left") && (position.X <= startPoint.X - patrolRange))
+                if ((direction == "left") && (enemyPosition.X <= startPoint.X - patrolRange))
                 {
+                    PlayAnimation("WalkRight");
+
                     direction = "right";
                 }
 
-                if ((direction == "right") && (position.X < startPoint.X + patrolRange))
+                if ((direction == "right") && (enemyPosition.X < startPoint.X + patrolRange))
                 {
-                    position.X++;
+                    PlayAnimation("WalkRight");
+
+                    enemyPosition.X++;
                 }
 
-                if ((direction == "right") && (position.X >= startPoint.X + patrolRange))
+                if ((direction == "right") && (enemyPosition.X >= startPoint.X + patrolRange))
                 {
+                    PlayAnimation("WalkLeft");
                     direction = "left";
                 }
             }
@@ -128,38 +158,83 @@ namespace DaGeim.Enemies
 
             if (rectangle.TouchLeftOf(tileRectangle))
             {
-                position.X = tileRectangle.X - rectangle.Width - 2;
+                enemyPosition.X = tileRectangle.X - rectangle.Width - 2;
             }
 
             if (rectangle.TouchRightOf(tileRectangle))
             {
-                position.X = tileRectangle.X + tileRectangle.Width + 2;
+                enemyPosition.X = tileRectangle.X + tileRectangle.Width + 2;
             }
 
             if (rectangle.TouchBottomOf(tileRectangle))
                 velocity.Y = 1f;
 
 
-            if (position.X < 0) position.X = 0;
-            if (position.X > mapWidth - rectangle.Width) position.X = mapWidth - rectangle.Width;
-            if (position.Y < 0) velocity.Y = 1f;
-            if (position.Y > mapHeight - rectangle.Height) position.Y = mapHeight - rectangle.Height;
+            if (enemyPosition.X < 0) enemyPosition.X = 0;
+            if (enemyPosition.X > mapWidth - rectangle.Width) enemyPosition.X = mapWidth - rectangle.Width;
+            if (enemyPosition.Y < 0) velocity.Y = 1f;
+            if (enemyPosition.Y > mapHeight - rectangle.Height) enemyPosition.Y = mapHeight - rectangle.Height;
         }
+
+        private Rectangle setCollisionBounds()
+        {
+            Rectangle output = new Rectangle();
+            switch (currentAnimation)
+            {
+                case "IdleLeft": output = setRectangle(6, 0, 64, 90); break;
+                case "IdleRight": output = setRectangle(0, 0, 64, 90); break;
+                case "WalkLeft": output = setRectangle(3, 0, 59, 90); break;
+                case "WalkRight": output = setRectangle(8, 0, 59, 90); break;
+                default: output = setRectangle(0, 0, 70, 90); break; ;
+            }
+
+            return output;
+        }
+
+        private Rectangle setRectangle(int x, int y, int w, int h)
+        {
+            return new Rectangle((int)enemyPosition.X + x, (int)enemyPosition.Y + y, w, h);
+        }
+
+        private void loadAnimations()
+        {
+            AddAnimation("IdleLeft", 0);
+            AddAnimation("IdleRight", 1);
+            AddAnimation("WalkLeft", 2);
+            AddAnimation("WalkRight", 3);
+        }
+
+        public override void AnimationDone(string animation)
+        {
+            if (animation.Contains("Attack") || animation.Contains("Shoot"))
+                attacking = false;
+        }
+
+        public override void Draw(SpriteBatch spriteBach)
+        {
+            base.Draw(spriteBach);
+        }
+
         public void CollisionWithEntity(IEntity entity)
         {
-            //TODO enemy collision with other enemy
+
         }
 
         public void CollisionWithRocket(Rockets rocket, Player player)
         {
-            //TODO enemy collision with player rocket
-        }
+            if (CollisionBox.Intersects(rocket.getCollisionBox()))
+            {
+                if (enemyHealth <= 0)
+                {
+                    player.playerScore += 50;
+                    dead = true;
+                }
+                else
+                    enemyHealth -= 50;
 
-        public void Draw(SpriteBatch spriteBach)
-        {
-            spriteBach.Draw(texture, rectangle, Color.White);
-        }
+                rocket.isVisible = false;
+            }
 
-        
+        }
     }
 }
