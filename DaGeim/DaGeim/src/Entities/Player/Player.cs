@@ -335,7 +335,23 @@ namespace DaGeim
             {
                 this.playerHP--;
             }
+
+
         }
+
+        
+        ///////////////////
+        public void CollisionWithCollectable(IEntity entity)
+        {
+            if (this.collisionBox.Intersects(entity.CollisionBox))
+            {
+                this.playerHP+=50;
+            }
+
+
+        }
+
+
 
         public void CollisionWithRocket(Rockets rocket, Player player)
         {

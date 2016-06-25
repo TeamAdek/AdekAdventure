@@ -190,3 +190,8 @@ C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\D
 C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.xml
 C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\Robot Boy.csprojResolveAssemblyReference.cache
+C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\heart.xnb
+C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\HeartContainer.xnb
+C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Recovery-Heart-Sprite.xnb
+C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\pow.xnb
+C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Corazon.xnb

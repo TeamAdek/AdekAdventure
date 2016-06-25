@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using DaGeim.Enemies;
+using DaGeim.src.Collectable;
 
 namespace DaGeim
 {
@@ -37,6 +38,10 @@ namespace DaGeim
         private List<Skeleton> enemies = new List<Skeleton>();
         private List<int> deadEnemies = new List<int>();
 
+        //////////////////////////////////////
+        private List<HealthRestore> healthRestores = new List<HealthRestore>();
+        private List<HPBonus> HPBonuses = new List<HPBonus>();
+
 
         public MainGame()
         {
@@ -55,12 +60,14 @@ namespace DaGeim
             endGameScreen = new EndGameScreen();
             pauseGameScreen = new PauseGameScreen();
             creditsScreen = new CreditsScreen();
-            
+
             map = new Map();
             gameUI = new HUD();
 
             mainPlayer = new Player(new Vector2(155, 325));
             InitializeEnemies();
+            //////////////////////////////////////
+            InitializeCollectables();
 
             entities = new List<IEntity>();
             base.Initialize();
@@ -85,6 +92,19 @@ namespace DaGeim
             foreach (var enemy in enemies)
             {
                 enemy.Load(Content);
+            }
+
+
+
+            //////////////
+            foreach (var collectable in healthRestores)
+            {
+                collectable.Load(Content);
+            }
+
+            foreach (var HPBonus in HPBonuses)
+            {
+                HPBonus.Load(Content);
             }
 
             DrawRect.LoadContent(Content);
@@ -139,17 +159,22 @@ namespace DaGeim
 
                 for (int i = 0; i < enemies.Count; i++)
                 {
-                    if(enemies[i].dead)
+                    if (enemies[i].dead)
                         deadEnemies.Add(i);
                 }
                 foreach (var index in deadEnemies)
                     enemies.RemoveAt(index);
                 deadEnemies.Clear();
-                
+
                 mainPlayer.Update(gameTime);
 
                 foreach (var enemy in enemies)
                     enemy.Update(gameTime, mainPlayer.getPosition());
+
+                foreach (HealthRestore healthRestore in healthRestores)
+                {
+                    healthRestore.Update(gameTime);
+                }
 
                 MakeCollisionWithMap();
                 CollisionWithRocket();
@@ -174,6 +199,7 @@ namespace DaGeim
                     GameMenuManager.TurnOtherMenusOff();
                 }
             }
+
             base.Update(gameTime);
         }
 
@@ -182,7 +208,7 @@ namespace DaGeim
             // Player collision with enemy
             foreach (var enemy in enemies)
             {
-                mainPlayer.CollisionWithEntity(enemy);   
+                mainPlayer.CollisionWithEntity(enemy);
             }
             //enemy collision with enemy
             for (int i = 0; i < enemies.Count - 1; i++)
@@ -192,7 +218,27 @@ namespace DaGeim
                     enemies[i].CollisionWithEntity(enemies[j]);
                 }
             }
-            
+
+            //////////////// Player collision with collectable
+            foreach (var collectable in healthRestores)
+            {
+                mainPlayer.CollisionWithCollectable(collectable);
+                collectable.CollisionWithPlayer(mainPlayer);
+            }
+
+        }
+
+        
+        /////////////
+        private void ClearCollectedItems()
+        {
+            foreach (var item in healthRestores)
+            {
+                if (item.Position.X < -10)
+                {
+                    healthRestores.Remove(item);
+                }
+            }
         }
 
         private void CollisionWithRocket()
@@ -228,7 +274,7 @@ namespace DaGeim
                 for (int i = startTileIndex; i <= endTileIndex; i++)
                 {
                     enemy.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, map.Widht, this.map.Height);
-                }  
+                }
             }
 
             // player's rockets collision with map
@@ -296,6 +342,27 @@ namespace DaGeim
             enemies.Add(enemy20);
         }
 
+
+        //////////////////////
+        public void InitializeCollectables()
+        {
+            HealthRestore healthRestore1 = new HealthRestore(new Vector2(700, 600));
+            HealthRestore healthRestore2 = new HealthRestore(new Vector2(1000, 600));
+            HealthRestore healthRestore3 = new HealthRestore(new Vector2(2800, 400));
+            HealthRestore healthRestore4 = new HealthRestore(new Vector2(3000, 400));
+            HealthRestore healthRestore5 = new HealthRestore(new Vector2(5000, 400));
+            healthRestores.Add(healthRestore1);
+            healthRestores.Add(healthRestore2);
+            healthRestores.Add(healthRestore3);
+           // healthRestores.Add(healthRestore4);
+           // healthRestores.Add(healthRestore5);
+        }
+        public void InitializeHPBonuses()
+        {
+            HPBonus hpBonus = new HPBonus(new Vector2(100, 100));
+            HPBonuses.Add(hpBonus);
+        }
+
         private void MediaPlayer_MediaStateChanged(object sender, System.EventArgs e)
         {
             // 0.0f is silent, 1.0f is full volume
@@ -338,6 +405,15 @@ namespace DaGeim
                 foreach (var enemy in enemies)
                 {
                     enemy.Draw(spriteBatch);
+                }
+                //////////
+                foreach (var collectable in healthRestores)
+                {
+                    collectable.Draw(spriteBatch);
+                }
+                foreach (var hpbonus in HPBonuses)
+                {
+                    hpbonus.Draw(spriteBatch);
                 }
 
                 spriteBatch.End();
