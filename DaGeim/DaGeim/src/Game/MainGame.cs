@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using DaGeim.Enemies;
+using DaGeim.Interfaces;
 using DaGeim.src.Collectable;
 
 namespace DaGeim
@@ -39,10 +40,8 @@ namespace DaGeim
         private List<int> deadEnemies = new List<int>();
 
         //////////////////////////////////////
-        private List<HealthRestore> healthRestores = new List<HealthRestore>();
-        private List<HPBonus> HPBonuses = new List<HPBonus>();
-
-
+        private List<ICollectable> collectableItems = new List<ICollectable>();
+        
         public MainGame()
         {
             Content.RootDirectory = "Content";
@@ -97,14 +96,9 @@ namespace DaGeim
 
 
             //////////////
-            foreach (var collectable in healthRestores)
+            foreach (var collectable in collectableItems)
             {
                 collectable.Load(Content);
-            }
-
-            foreach (var HPBonus in HPBonuses)
-            {
-                HPBonus.Load(Content);
             }
 
             DrawRect.LoadContent(Content);
@@ -171,9 +165,9 @@ namespace DaGeim
                 foreach (var enemy in enemies)
                     enemy.Update(gameTime, mainPlayer.getPosition());
 
-                foreach (HealthRestore healthRestore in healthRestores)
+                foreach (ICollectable collectable in collectableItems)
                 {
-                    healthRestore.Update(gameTime);
+                    collectable.Update(gameTime);
                 }
 
                 MakeCollisionWithMap();
@@ -199,6 +193,7 @@ namespace DaGeim
                     GameMenuManager.TurnOtherMenusOff();
                 }
             }
+            
 
             base.Update(gameTime);
         }
@@ -220,7 +215,7 @@ namespace DaGeim
             }
 
             //////////////// Player collision with collectable
-            foreach (var collectable in healthRestores)
+            foreach (var collectable in collectableItems)
             {
                 mainPlayer.CollisionWithCollectable(collectable);
                 collectable.CollisionWithPlayer(mainPlayer);
@@ -229,19 +224,7 @@ namespace DaGeim
         }
 
         
-        /////////////
-        private void ClearCollectedItems()
-        {
-            foreach (var item in healthRestores)
-            {
-                if (item.Position.X < -10)
-                {
-                    healthRestores.Remove(item);
-                }
-            }
-        }
-
-        private void CollisionWithRocket()
+       private void CollisionWithRocket()
         {
             // player rockets collision with enemies
             foreach (var rocket in this.mainPlayer.Rockets)
@@ -347,22 +330,19 @@ namespace DaGeim
         public void InitializeCollectables()
         {
             HealthRestore healthRestore1 = new HealthRestore(new Vector2(700, 600));
-            HealthRestore healthRestore2 = new HealthRestore(new Vector2(1000, 600));
-            HealthRestore healthRestore3 = new HealthRestore(new Vector2(2800, 400));
-            HealthRestore healthRestore4 = new HealthRestore(new Vector2(3000, 400));
+            HealthRestore healthRestore2 = new HealthRestore(new Vector2(1000, 250));
+            HealthRestore healthRestore3 = new HealthRestore(new Vector2(2800, 150));
+            //HealthRestore healthRestore4 = new HealthRestore(new Vector2(4000, 200));
             HealthRestore healthRestore5 = new HealthRestore(new Vector2(5000, 400));
-            healthRestores.Add(healthRestore1);
-            healthRestores.Add(healthRestore2);
-            healthRestores.Add(healthRestore3);
-           // healthRestores.Add(healthRestore4);
-           // healthRestores.Add(healthRestore5);
+            HealthRestore healthRestore6 = new HealthRestore(new Vector2(4400, 100));
+            collectableItems.Add(healthRestore1);
+            collectableItems.Add(healthRestore2);
+            collectableItems.Add(healthRestore3);
+            //collectableItems.Add(healthRestore4);
+            collectableItems.Add(healthRestore5);
+            collectableItems.Add(healthRestore6);
         }
-        public void InitializeHPBonuses()
-        {
-            HPBonus hpBonus = new HPBonus(new Vector2(100, 100));
-            HPBonuses.Add(hpBonus);
-        }
-
+        
         private void MediaPlayer_MediaStateChanged(object sender, System.EventArgs e)
         {
             // 0.0f is silent, 1.0f is full volume
@@ -407,15 +387,11 @@ namespace DaGeim
                     enemy.Draw(spriteBatch);
                 }
                 //////////
-                foreach (var collectable in healthRestores)
+                foreach (var collectable in collectableItems)
                 {
                     collectable.Draw(spriteBatch);
                 }
-                foreach (var hpbonus in HPBonuses)
-                {
-                    hpbonus.Draw(spriteBatch);
-                }
-
+                
                 spriteBatch.End();
             }
             base.Draw(gameTime);

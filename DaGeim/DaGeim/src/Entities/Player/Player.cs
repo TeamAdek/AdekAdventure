@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using DaGeim.Interfaces;
 
 namespace DaGeim
 {
@@ -16,7 +17,7 @@ namespace DaGeim
         public const float VelocityX = 250.0f;
         public const int PLAYER_FPS = 10;
         public int playerHP;
-        public  bool grounded = false;
+        public bool grounded = false;
         public float VelocityY = 0.0f;
         private bool sliding = false;
         private bool jumped = false;
@@ -169,7 +170,7 @@ namespace DaGeim
                     handleArrowKey("Left", Keyboard);
 
                 else if (Keyboard.IsKeyDown(Keys.Right)) /// RIGHT KEY 
-                    handleArrowKey("Right", Keyboard);  
+                    handleArrowKey("Right", Keyboard);
 
                 else if (Keyboard.IsKeyDown(Keys.Space)) /// SPACE KEY
                 {
@@ -222,7 +223,7 @@ namespace DaGeim
                 }
 
             }
-                UpdateRocket();
+            UpdateRocket();
         }
 
         private void handleArrowKey(string direction, KeyboardState Keyboard) // direction == Left
@@ -238,7 +239,7 @@ namespace DaGeim
                     PlayAnimation("Jump" + direction);
             }
 
-            if(direction == "Left")
+            if (direction == "Left")
                 spriteDirection += new Vector2(-1f, 0f);
             else
                 spriteDirection += new Vector2(1f, 0f);
@@ -273,8 +274,8 @@ namespace DaGeim
             }
             else if (!jumped) /// RUN
                 PlayAnimation("Run" + direction);
-            
-            if(direction == "Left")
+
+            if (direction == "Left")
                 currentDirection = PlayerDirection.Left;
             else
                 currentDirection = PlayerDirection.Right;
@@ -338,17 +339,19 @@ namespace DaGeim
 
 
         }
-
         
         ///////////////////
-        public void CollisionWithCollectable(IEntity entity)
+        public void CollisionWithCollectable(ICollectable collectable)
         {
-            if (this.collisionBox.Intersects(entity.CollisionBox))
+            if (this.collisionBox.Intersects(collectable.CollisionBox))
             {
-                this.playerHP+=50;
+                this.playerHP += 50;
+
+                if (this.playerHP > 350)
+                {
+                    this.playerHP = 350;
+                }
             }
-
-
         }
 
 
@@ -368,25 +371,25 @@ namespace DaGeim
         {
             switch (currentAnimation)
             {
-                case "IdleLeft" : setCollisionRectangle(24, 10, 47, 83); break;
-                case "IdleRight" : setCollisionRectangle(30, 10, 47, 83); break;
-                case "RunRight" : setCollisionRectangle(10, 10, 57, 83); break;
-                case "RunLeft" : setCollisionRectangle(33, 10, 57, 83); break;
-                case "AttackRight" : setCollisionRectangle(14, 10, 70, 83); break;
-                case "AttackLeft" : setCollisionRectangle(16, 10, 70, 83); break;
-                case "JumpRight" : setCollisionRectangle(14, 10, 66, 83); break;
-                case "JumpLeft" : setCollisionRectangle(20, 10, 66, 83); break;
-                case "MeleeRight" : setCollisionRectangle(13, 10, 75, 88); break;
-                case "MeleeLeft" : setCollisionRectangle(12, 10, 75, 88); break;
-                case "ShootRight" : setCollisionRectangle(21, 10, 57, 83); break;
-                case "ShootLeft" : setCollisionRectangle(22, 10, 56, 83); break;
-                case "IdleMeleeRight" : setCollisionRectangle(15, 10, 70, 83); break;
-                case "IdleMeleeLeft" : setCollisionRectangle(18, 10, 70, 83); break;
-                case "SlideRight" : setCollisionRectangle(8, 30, 68, 65); break;
-                case "SlideLeft" : setCollisionRectangle(23, 30, 68, 65); break;
-                default : setCollisionRectangle(0,0,100,100); break;
+                case "IdleLeft": setCollisionRectangle(24, 10, 47, 83); break;
+                case "IdleRight": setCollisionRectangle(30, 10, 47, 83); break;
+                case "RunRight": setCollisionRectangle(10, 10, 57, 83); break;
+                case "RunLeft": setCollisionRectangle(33, 10, 57, 83); break;
+                case "AttackRight": setCollisionRectangle(14, 10, 70, 83); break;
+                case "AttackLeft": setCollisionRectangle(16, 10, 70, 83); break;
+                case "JumpRight": setCollisionRectangle(14, 10, 66, 83); break;
+                case "JumpLeft": setCollisionRectangle(20, 10, 66, 83); break;
+                case "MeleeRight": setCollisionRectangle(13, 10, 75, 88); break;
+                case "MeleeLeft": setCollisionRectangle(12, 10, 75, 88); break;
+                case "ShootRight": setCollisionRectangle(21, 10, 57, 83); break;
+                case "ShootLeft": setCollisionRectangle(22, 10, 56, 83); break;
+                case "IdleMeleeRight": setCollisionRectangle(15, 10, 70, 83); break;
+                case "IdleMeleeLeft": setCollisionRectangle(18, 10, 70, 83); break;
+                case "SlideRight": setCollisionRectangle(8, 30, 68, 65); break;
+                case "SlideLeft": setCollisionRectangle(23, 30, 68, 65); break;
+                default: setCollisionRectangle(0, 0, 100, 100); break;
             }
-            collisionBox = new Rectangle(((int)playerPosition.X + xOffset), ((int)playerPosition.Y + yOffset),width, height);
+            collisionBox = new Rectangle(((int)playerPosition.X + xOffset), ((int)playerPosition.Y + yOffset), width, height);
         }
 
         private void setCollisionRectangle(int x, int y, int w, int h)
