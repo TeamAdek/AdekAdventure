@@ -12,6 +12,8 @@ namespace DaGeim.Interfaces
 
         int RestoreHealthPoints { get; }
 
+        int JumpBoost { get; }
+
         Vector2 Position { get; set; }
         Rectangle CollisionBox { get; }
 

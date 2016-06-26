@@ -12,7 +12,7 @@ namespace DaGeim
     using System;
     using Game.src.Entities;
 
-    public class Player : AnimatedSprite, IEntity
+    public class Player : AnimatedSprite, IEntity, ICollecting, IJumpboostable
     {
         public const float VelocityX = 250.0f;
         public const int PLAYER_FPS = 10;
@@ -32,6 +32,13 @@ namespace DaGeim
         private List<Rockets> rockets = new List<Rockets>();
         private int xOffset, yOffset, width, height;
         private List<SoundEffect> sounds = new List<SoundEffect>();
+        private int jumpBoostJumpBoostTimer = 0;
+
+        public int JumpBoostTimer
+        {
+            get { return jumpBoostJumpBoostTimer; }
+            set { jumpBoostJumpBoostTimer = value; }
+        }
 
         /*---------------------------------------*/
         // REPLACE THIS ONE
@@ -143,6 +150,7 @@ namespace DaGeim
             stepAmount = spriteDirection * deltaTime;
 
             setCollisionBounds();
+            JumpBoostCheckTimer();
             base.Update(gameTime);
         }
 
@@ -340,21 +348,51 @@ namespace DaGeim
 
         }
 
-        ///////////////////
+        /// <summary>
+        /// If player colide with collectable item this function check the bonus type
+        /// (health or jump foe example) and up health or set on the JumpBoosterTimer
+        /// The player`s health can`t be more than maximum of 350 health points.
+        /// </summary>
+        /// <param name="collectable"></param>
         public void CollisionWithCollectable(ICollectable collectable)
         {
             if (this.collisionBox.Intersects(collectable.CollisionBox))
             {
-                this.playerHP += collectable.RestoreHealthPoints;
-                if (this.playerHP > 350)
+                if (collectable.RestoreHealthPoints > 0)
                 {
-                    this.playerHP = 350;
+                    this.playerHP += collectable.RestoreHealthPoints;
+                    if (this.playerHP > 350)
+                    {
+                        this.playerHP = 350;
+                    }
                 }
-                
+
+
+
+                if (collectable.JumpBoost > 0)
+                {
+                    JumpBoostTimer = 2000;
+                }
+
+
             }
         }
 
-
+        /// <summary>
+        /// If the JumpBoosterTimer has a time this function set player to jump high.
+        /// </summary>
+        public void JumpBoostCheckTimer()
+        {
+            if (JumpBoostTimer > 1)
+            {
+                JumpBoostTimer--;
+                this.jumpHeight = 450;
+            }
+            else
+            {
+                this.jumpHeight = 400;
+            }
+        }
 
         public void CollisionWithRocket(Rockets rocket, Player player)
         {
@@ -462,7 +500,7 @@ namespace DaGeim
                     rockets.Add(newRocket);
             }
 
-            //Reset rocket delay timer
+            //Reset rocket delay _jumpBoostJumpBoostTimer
 
             if (rocketDelay == 0)
                 rocketDelay = 20;

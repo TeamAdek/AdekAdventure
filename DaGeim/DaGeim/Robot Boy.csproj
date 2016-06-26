@@ -39,15 +39,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Interfaces\ICollectable.cs" />
-    <Compile Include="Interfaces\IHealthRestorating.cs" />
+    <Compile Include="Interfaces\ICollecting.cs" />
+    <Compile Include="Interfaces\IJumpboostable.cs" />
     <Compile Include="Interfaces\IPatrolable.cs" />
-    <Compile Include="src\Collectable\HealthRestore.cs" />
-    <Compile Include="src\Collectable\CollectableItem.cs" />
-    <Compile Include="src\Collectable\HealthRestoreBig.cs" />
+    <Compile Include="src\Collectables\HealthRestore.cs" />
+    <Compile Include="src\Collectables\CollectableItem.cs" />
+    <Compile Include="src\Collectables\HealthRestoreBig.cs" />
     <Compile Include="src\Entities\IEntity.cs" />
     <Compile Include="src\Entities\Enemies\AnimatedEnemy.cs" />
     <Compile Include="src\Entities\Player\AnimatedSprite.cs" />
     <Compile Include="src\Entities\Enemies\SkeletonEnemy.cs" />
+    <Compile Include="src\Collectables\JumpBooster.cs" />
     <Compile Include="src\Helper Classes\Rockets.cs" />
     <Compile Include="src\Level\HUD.cs" />
     <Compile Include="src\MenuLayouts\Button.cs" />

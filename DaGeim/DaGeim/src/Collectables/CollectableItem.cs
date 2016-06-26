@@ -10,11 +10,11 @@ namespace DaGeim.src.Collectable
     {
         protected string itemType;
         protected int restoreHealthPoints;
+        protected int jumpBoost;
         protected Texture2D spriteTexture;
         protected Vector2 position;
         protected Vector2 velocity;
         protected Rectangle rectangle;
-        //protected Vector2 startPoint = new Vector2(0, 0);
         public bool dead = false;
 
         public string ItemType
@@ -27,6 +27,11 @@ namespace DaGeim.src.Collectable
             get { return this.restoreHealthPoints; }
         }
 
+        public int JumpBoost
+        {
+            get { return jumpBoost; }
+        }
+
         public Vector2 Position
         {
             get { return this.position; }
@@ -36,37 +41,31 @@ namespace DaGeim.src.Collectable
         public Rectangle CollisionBox
         {
             get { return this.rectangle; }
-            //set { this.rectangle = value; }
         }
 
         protected CollectableItem(Vector2 position)
         {
             this.position = position;
-            //this.startPoint = position;
-            //loadAnimations();
-
+            this.rectangle = setRectangle(0, 0, 30, 30);
         }
 
         public abstract void Load(ContentManager content);
-        
+
         public void CollisionWithPlayer(IEntity entity)
         {
             if (this.CollisionBox.Intersects(entity.CollisionBox))
             {
-                Position = new Vector2(-1000, -1000);
+                this.Position = new Vector2(-1000, -1000);
+                this.restoreHealthPoints = 0;
             }
         }
 
         public void Update(GameTime gameTime)
         {
-
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            rectangle = setRectangle(0, 0, 30, 30);
 
             if (velocity.Y < 10)
                 velocity.Y += 0.4f;
-
-            //base.Update(gameTime);
         }
 
 
@@ -79,9 +78,7 @@ namespace DaGeim.src.Collectable
         {
             Texture2D t = spriteTexture;
             Vector2 v = Position;
-            //Rectangle src = spriteAnimations[currentAnimation][frameIndex];
             spriteBatch.Draw(t, v, Color.White);
-            //base.Draw(spriteBach);
         }
     }
 }

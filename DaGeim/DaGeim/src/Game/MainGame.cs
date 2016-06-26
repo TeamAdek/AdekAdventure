@@ -41,7 +41,7 @@ namespace DaGeim
 
         //////////////////////////////////////
         private List<ICollectable> collectableItems = new List<ICollectable>();
-        
+
         public MainGame()
         {
             Content.RootDirectory = "Content";
@@ -65,9 +65,7 @@ namespace DaGeim
 
             mainPlayer = new Player(new Vector2(155, 325));
             InitializeEnemies();
-            //////////////////////////////////////
             InitializeCollectables();
-
             entities = new List<IEntity>();
             base.Initialize();
         }
@@ -93,9 +91,6 @@ namespace DaGeim
                 enemy.Load(Content);
             }
 
-
-
-            //////////////
             foreach (var collectable in collectableItems)
             {
                 collectable.Load(Content);
@@ -110,13 +105,12 @@ namespace DaGeim
             MediaPlayer.Play(song);
             MediaPlayer.Volume = 0.1f;
             MediaPlayer.IsRepeating = true;
-
-
         }
 
         protected override void UnloadContent()
         {
         }
+
         protected override void Update(GameTime gameTime)
         {
 
@@ -194,7 +188,6 @@ namespace DaGeim
                 }
             }
             
-
             base.Update(gameTime);
         }
 
@@ -214,7 +207,7 @@ namespace DaGeim
                 }
             }
 
-            //////////////// Player collision with collectable
+            // Player collision with collectables
             foreach (var collectable in collectableItems)
             {
                 mainPlayer.CollisionWithCollectable(collectable);
@@ -223,8 +216,8 @@ namespace DaGeim
 
         }
 
-        
-       private void CollisionWithRocket()
+
+        private void CollisionWithRocket()
         {
             // player rockets collision with enemies
             foreach (var rocket in this.mainPlayer.Rockets)
@@ -324,25 +317,23 @@ namespace DaGeim
             enemies.Add(enemy19);
             enemies.Add(enemy20);
         }
-
-
-        //////////////////////
+        
         public void InitializeCollectables()
         {
             HealthRestore healthRestore1 = new HealthRestore(new Vector2(700, 600));
-            HealthRestore healthRestore2 = new HealthRestore(new Vector2(1000, 250));
-            HealthRestore healthRestore3 = new HealthRestore(new Vector2(2800, 150));
-            //HealthRestore healthRestore4 = new HealthRestore(new Vector2(4000, 200));
+            HealthRestore healthRestore2 = new HealthRestore(new Vector2(800, 230));
+            JumpBooster jumpBooster2 = new JumpBooster(new Vector2(2800, 150));
+            JumpBooster jumpBooster1 = new JumpBooster(new Vector2(1000, 250));
             HealthRestore healthRestore5 = new HealthRestore(new Vector2(5000, 400));
-            HealthRestoreBig healthRestore6 = new HealthRestoreBig(new Vector2(4400, 100));
+            HealthRestoreBig healthRestore6 = new HealthRestoreBig(new Vector2(4400, 77));
             collectableItems.Add(healthRestore1);
             collectableItems.Add(healthRestore2);
-            collectableItems.Add(healthRestore3);
-            //collectableItems.Add(healthRestore4);
+            collectableItems.Add(jumpBooster2);
+            collectableItems.Add(jumpBooster1);
             collectableItems.Add(healthRestore5);
             collectableItems.Add(healthRestore6);
         }
-        
+
         private void MediaPlayer_MediaStateChanged(object sender, System.EventArgs e)
         {
             // 0.0f is silent, 1.0f is full volume
@@ -386,12 +377,12 @@ namespace DaGeim
                 {
                     enemy.Draw(spriteBatch);
                 }
-                //////////
+                
                 foreach (var collectable in collectableItems)
                 {
                     collectable.Draw(spriteBatch);
                 }
-                
+
                 spriteBatch.End();
             }
             base.Draw(gameTime);
