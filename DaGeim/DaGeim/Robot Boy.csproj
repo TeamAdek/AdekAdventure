@@ -39,8 +39,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Interfaces\ICollectable.cs" />
+    <Compile Include="Interfaces\IHealthRestorating.cs" />
     <Compile Include="Interfaces\IPatrolable.cs" />
     <Compile Include="src\Collectable\HealthRestore.cs" />
+    <Compile Include="src\Collectable\CollectableItem.cs" />
+    <Compile Include="src\Collectable\HealthRestoreBig.cs" />
     <Compile Include="src\Entities\IEntity.cs" />
     <Compile Include="src\Entities\Enemies\AnimatedEnemy.cs" />
     <Compile Include="src\Entities\Player\AnimatedSprite.cs" />

@@ -339,18 +339,18 @@ namespace DaGeim
 
 
         }
-        
+
         ///////////////////
         public void CollisionWithCollectable(ICollectable collectable)
         {
             if (this.collisionBox.Intersects(collectable.CollisionBox))
             {
-                this.playerHP += 50;
-
+                this.playerHP += collectable.RestoreHealthPoints;
                 if (this.playerHP > 350)
                 {
                     this.playerHP = 350;
                 }
+                
             }
         }
 

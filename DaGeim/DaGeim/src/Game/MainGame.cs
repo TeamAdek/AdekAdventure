@@ -334,7 +334,7 @@ namespace DaGeim
             HealthRestore healthRestore3 = new HealthRestore(new Vector2(2800, 150));
             //HealthRestore healthRestore4 = new HealthRestore(new Vector2(4000, 200));
             HealthRestore healthRestore5 = new HealthRestore(new Vector2(5000, 400));
-            HealthRestore healthRestore6 = new HealthRestore(new Vector2(4400, 100));
+            HealthRestoreBig healthRestore6 = new HealthRestoreBig(new Vector2(4400, 100));
             collectableItems.Add(healthRestore1);
             collectableItems.Add(healthRestore2);
             collectableItems.Add(healthRestore3);
