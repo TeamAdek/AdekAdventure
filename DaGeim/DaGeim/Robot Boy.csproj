@@ -45,6 +45,8 @@
     <Compile Include="src\Collectables\HealthRestore.cs" />
     <Compile Include="src\Collectables\CollectableItem.cs" />
     <Compile Include="src\Collectables\HealthRestoreBig.cs" />
+    <Compile Include="src\Entities\Bosses\AnimatedBoss.cs" />
+    <Compile Include="src\Entities\Bosses\Boss.cs" />
     <Compile Include="src\Entities\IEntity.cs" />
     <Compile Include="src\Entities\Enemies\AnimatedEnemy.cs" />
     <Compile Include="src\Entities\Player\AnimatedSprite.cs" />

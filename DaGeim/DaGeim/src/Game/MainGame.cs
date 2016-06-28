@@ -39,6 +39,8 @@ namespace DaGeim
         private List<Skeleton> enemies = new List<Skeleton>();
         private List<int> deadEnemies = new List<int>();
 
+        Boss boss;
+
         //////////////////////////////////////
         private List<ICollectable> collectableItems = new List<ICollectable>();
 
@@ -64,6 +66,7 @@ namespace DaGeim
             gameUI = new HUD();
 
             mainPlayer = new Player(new Vector2(155, 325));
+            boss = new Boss(new Vector2(5250, 450));
             InitializeEnemies();
             InitializeCollectables();
             entities = new List<IEntity>();
@@ -85,6 +88,7 @@ namespace DaGeim
             map.Load(map);
 
             mainPlayer.LoadContent(Content);
+            boss.Load(Content);
 
             foreach (var enemy in enemies)
             {
@@ -155,6 +159,7 @@ namespace DaGeim
                 deadEnemies.Clear();
 
                 mainPlayer.Update(gameTime);
+                boss.Update(gameTime, mainPlayer.getPosition());
 
                 foreach (var enemy in enemies)
                     enemy.Update(gameTime, mainPlayer.getPosition());
@@ -290,12 +295,6 @@ namespace DaGeim
             Skeleton enemy12 = new Skeleton(new Vector2(3800, 340), 150);
             Skeleton enemy13 = new Skeleton(new Vector2(4100, 190), 25);
             Skeleton enemy14 = new Skeleton(new Vector2(4300, 190), 75);
-            Skeleton enemy15 = new Skeleton(new Vector2(4600, 200), 75);
-            Skeleton enemy16 = new Skeleton(new Vector2(4700, 200), 45);
-            Skeleton enemy17 = new Skeleton(new Vector2(4800, 200), 65);
-            Skeleton enemy18 = new Skeleton(new Vector2(4900, 200), 105);
-            Skeleton enemy19 = new Skeleton(new Vector2(5000, 200), 35);
-            Skeleton enemy20 = new Skeleton(new Vector2(5200, 200), 95);
 
             enemies.Add(enemy1);
             enemies.Add(enemy2);
@@ -310,12 +309,6 @@ namespace DaGeim
             enemies.Add(enemy12);
             enemies.Add(enemy13);
             enemies.Add(enemy14);
-            enemies.Add(enemy15);
-            enemies.Add(enemy16);
-            enemies.Add(enemy17);
-            enemies.Add(enemy18);
-            enemies.Add(enemy19);
-            enemies.Add(enemy20);
         }
         
         public void InitializeCollectables()
@@ -370,6 +363,7 @@ namespace DaGeim
 
                 map.Draw(spriteBatch);
                 mainPlayer.Draw(spriteBatch);
+                boss.Draw(spriteBatch);
 
                 gameUI.Draw(spriteBatch);
 
