@@ -27,8 +27,7 @@ namespace DaGeim
         private PauseGameScreen pauseGameScreen;
         private CreditsScreen creditsScreen;
         private HUD gameUI;
-        Texture2D backText;
-        Rectangle backRect;
+     
 
         Camera camera;
         Map map;
@@ -85,7 +84,7 @@ namespace DaGeim
             camera = new Camera(GraphicsDevice.Viewport);
 
             Tiles.Content = Content;
-            map.Load(map);
+            map.Load(map , Content);
 
             mainPlayer.LoadContent(Content);
             boss.Load(Content);
@@ -101,8 +100,7 @@ namespace DaGeim
             }
 
             DrawRect.LoadContent(Content);
-            backText = Content.Load<Texture2D>("background");
-            backRect = new Rectangle(0, -50, 6000, 700);
+          
             gameUI.Load(Content);
 
             song = Content.Load<Song>("theme1");
@@ -155,12 +153,12 @@ namespace DaGeim
                         deadEnemies.Add(i);
                 }
                 foreach (var index in deadEnemies)
-                    enemies.RemoveAt(index);
+                enemies.RemoveAt(index);
                 deadEnemies.Clear();
-
+                map.Update(mainPlayer.getPosition());
                 mainPlayer.Update(gameTime);
                 boss.Update(gameTime, mainPlayer.getPosition());
-
+                
                 foreach (var enemy in enemies)
                     enemy.Update(gameTime, mainPlayer.getPosition());
 
@@ -359,7 +357,7 @@ namespace DaGeim
                 spriteBatch.Begin(SpriteSortMode.Deferred,
                                  BlendState.AlphaBlend, null, null, null, null, camera.Transform);
 
-                spriteBatch.Draw(backText, backRect, Color.White);
+                
 
                 map.Draw(spriteBatch);
                 mainPlayer.Draw(spriteBatch);

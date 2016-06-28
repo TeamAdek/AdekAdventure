@@ -6,10 +6,15 @@ using Microsoft.Xna.Framework.Media;
 
 namespace DaGeim
 {
-    class Map
-    {
+    using Microsoft.Xna.Framework.Content;
+    using Game = Microsoft.Xna.Framework.Game;
+    class Map 
+        {
         private int tileSize;
         private List<CollisionTiles> collisionTiles = new List<CollisionTiles>();
+        private Texture2D backText;
+        private Rectangle backRect;
+        private int yPosition = -50;
 
         public List<CollisionTiles> CollisionTiles
         {
@@ -22,7 +27,11 @@ namespace DaGeim
             get { return this.tileSize; }
             set { this.tileSize = value; }
         }
-
+        public void  Update(Vector2 position)
+        {
+            int calculated = (int)position.Y / 30 - 50;
+            backRect.Y = calculated;
+        }
         public int Widht
         {
             get { return widht; }
@@ -36,8 +45,10 @@ namespace DaGeim
         {
             this.TileSize = 72; // size of single tiile
         }
-        public void Load(Map map)
+        public void Load(Map map , ContentManager Content )
         {
+            backRect = new Rectangle(0,  0,6000, 700);
+            backText = Content.Load<Texture2D>("background");
             map.Generate(new int[,]{
 
                       { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5},
@@ -54,7 +65,7 @@ namespace DaGeim
                }, this.tileSize);
 
         }
-
+        
         public void Generate(int[,] map, int size)
         {
             for (int x = 0; x < map.GetLength(1); x++)
@@ -74,6 +85,7 @@ namespace DaGeim
         }
         public void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.Draw(backText, backRect, Color.White);
             foreach (CollisionTiles tile in collisionTiles)
                 tile.Draw(spriteBatch);
         }
