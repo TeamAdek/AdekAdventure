@@ -9,7 +9,7 @@ namespace DaGeim
         // Boss Details
         protected Vector2 bossPosition;
         protected Texture2D spriteTexture;
-
+        protected bool dead = false;
 
         // Animations
         private int frameIndex;
@@ -31,12 +31,12 @@ namespace DaGeim
             bossPosition = position;
         }
 
-        public void AddAnimation(string name, int frameCount, int yPos)
+        public void AddAnimation(string name, int frameCount, int yPos, int yOffset)
         {
             Rectangle[] animationSet = new Rectangle[frameCount];
 
             for (int i = 0; i < frameCount; i++)
-                animationSet[i] = new Rectangle((i) * 128, yPos * 128, 128, 128);
+                animationSet[i] = new Rectangle((i) * 128, yPos * 128, 128, 128 + yOffset);
 
             spriteAnimations.Add(name, animationSet);
         }
@@ -60,13 +60,15 @@ namespace DaGeim
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(spriteTexture, bossPosition, spriteAnimations[currentAnimation][frameIndex], Color.White);
+            if (!dead)
+                spriteBatch.Draw(spriteTexture, bossPosition, spriteAnimations[currentAnimation][frameIndex], Color.White);
         }
 
         public void PlayAnimation(string name)
         {
             if (currentAnimation != name)
             {
+
                 currentAnimation = name;
                 frameIndex = 0;
             }
