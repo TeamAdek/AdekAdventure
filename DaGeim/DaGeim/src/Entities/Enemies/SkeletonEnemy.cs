@@ -184,7 +184,7 @@ namespace DaGeim.Enemies
                 case "IdleRight": output = setRectangle(0, 0, 64, 90); break;
                 case "WalkLeft": output = setRectangle(3, 0, 59, 90); break;
                 case "WalkRight": output = setRectangle(8, 0, 59, 90); break;
-                default: output = setRectangle(0, 0, 70, 90);  break;;
+                default: output = setRectangle(0, 0, 70, 90);  break;
             }
 
             return output;

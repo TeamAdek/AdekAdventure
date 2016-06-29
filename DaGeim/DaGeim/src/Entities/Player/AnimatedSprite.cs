@@ -2,7 +2,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-
+namespace DaGeim
+{
     public abstract class AnimatedSprite
     {
         protected Texture2D spriteTexture;
@@ -23,12 +24,12 @@ using Microsoft.Xna.Framework.Graphics;
 
         private Dictionary<string, Rectangle[]> spriteAnimations = new Dictionary<string, Rectangle[]>();
 
-        public enum PlayerDirection {None, Up, Down,  Left, Right}
+        public enum PlayerDirection { None, Up, Down, Left, Right }
         protected PlayerDirection currentDirection = PlayerDirection.None;
 
         public int FramesPerSecond
         {
-            set { timeToUpdate = (1f/value); }
+            set { timeToUpdate = (1f / value); }
         }
 
         public AnimatedSprite(Vector2 position)
@@ -41,12 +42,12 @@ using Microsoft.Xna.Framework.Graphics;
             Rectangle[] animationSet = new Rectangle[frameCount];
 
             for (int i = 0; i < frameCount; i++)
-                animationSet[i] = new Rectangle((i) * 100, yPos, 100, 100);      
+                animationSet[i] = new Rectangle((i) * 100, yPos, 100, 100);
 
             spriteAnimations.Add(name, animationSet);
         }
 
-        public virtual void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime, Boss boss)
         {
 
             timeElapsed += gameTime.ElapsedGameTime.TotalSeconds;
@@ -79,3 +80,4 @@ using Microsoft.Xna.Framework.Graphics;
         }
         public abstract void AnimationDone(string animation);
     }
+}

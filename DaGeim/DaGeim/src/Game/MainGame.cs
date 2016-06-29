@@ -64,7 +64,7 @@ namespace DaGeim
             map = new Map();
             gameUI = new HUD();
 
-            mainPlayer = new Player(new Vector2(155, 325));
+            mainPlayer = new Player(new Vector2(4905, 325));
             boss = new Boss(new Vector2(5250, 450));
             InitializeEnemies();
             InitializeCollectables();
@@ -156,8 +156,8 @@ namespace DaGeim
                 enemies.RemoveAt(index);
                 deadEnemies.Clear();
                 map.Update(mainPlayer.getPosition());
-                mainPlayer.Update(gameTime);
                 boss.Update(gameTime, mainPlayer.getPosition());
+                mainPlayer.Update(gameTime, boss);
                 
                 foreach (var enemy in enemies)
                     enemy.Update(gameTime, mainPlayer.getPosition());
@@ -169,6 +169,7 @@ namespace DaGeim
 
                 MakeCollisionWithMap();
                 CollisionWithRocket();
+                CollisionWithLaser();
                 CollisionWithEnemy();
 
 
@@ -229,9 +230,17 @@ namespace DaGeim
                 {
                     enemy.CollisionWithRocket(rocket, mainPlayer);
                 }
+                boss.CollisionWithRocket(rocket);
+                mainPlayer.CollisionWithRocket(rocket);
             }
         }
 
+        private void CollisionWithLaser()
+        {
+            // player rockets collision with enemies
+            foreach (var laser in this.boss.Lasers)
+                mainPlayer.CollisionWithLaser(laser);
+        }
 
         private void MakeCollisionWithMap()
         {
@@ -242,7 +251,14 @@ namespace DaGeim
             for (int i = startTileIndex; i <= endTileIndex; i++)
             {
                 this.mainPlayer.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, this.map.Widht, this.map.Height);
+            }
 
+            startTileIndex = this.CalculateStartTileIndex(boss.Position);
+            endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 40);
+
+            for (int i = startTileIndex; i <= endTileIndex; i++)
+            {
+                this.boss.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, this.map.Widht, this.map.Height);
             }
 
             foreach (var enemy in enemies)
@@ -267,6 +283,18 @@ namespace DaGeim
                     rocket.Collision(this.map.CollisionTiles[i].Rectangle);
                 }
             }
+
+            foreach (var laser in boss.Lasers)
+            {
+                startTileIndex = this.CalculateStartTileIndex(laser.shootPosition);
+                endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 40);
+
+                for (int i = startTileIndex; i <= endTileIndex; i++)
+                {
+                    laser.Collision(this.map.CollisionTiles[i].Rectangle);
+                }
+            }
+
         }
 
         private int CalculateStartTileIndex(Vector2 entityPosition)

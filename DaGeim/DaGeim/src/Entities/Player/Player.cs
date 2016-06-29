@@ -33,7 +33,8 @@ namespace DaGeim
         private int xOffset, yOffset, width, height;
         private List<SoundEffect> sounds = new List<SoundEffect>();
         private int jumpBoostJumpBoostTimer = 0;
-
+        private bool dead = false;
+        
         public int JumpBoostTimer
         {
             get { return jumpBoostJumpBoostTimer; }
@@ -114,7 +115,7 @@ namespace DaGeim
         // Update Game
         //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        public override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime, Boss boss)
         {
             if (jumped)
                 spriteDirection = new Vector2(0f, 1f);
@@ -130,6 +131,13 @@ namespace DaGeim
             else
                 slideCD = false;
 
+            if (boss.isPushing)
+            {
+                sliding = true;
+                PlayAnimation("SlideLeft");
+                currentDirection = PlayerDirection.Left;
+                sounds[1].Play();
+            }
 
             if (sliding)
             {
@@ -151,7 +159,7 @@ namespace DaGeim
 
             setCollisionBounds();
             JumpBoostCheckTimer();
-            base.Update(gameTime);
+            base.Update(gameTime, boss);
         }
 
         //-----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -538,5 +546,30 @@ namespace DaGeim
                 }
             }
         }
+
+        public void CollisionWithRocket(Rockets rocket)
+        {
+            if (CollisionBox.Intersects(rocket.getCollisionBox()))
+            {
+                if ( playerHP<= 0)
+                    dead = true;
+                else
+                    playerHP -= 40;
+                rocket.isVisible = false;
+            }
+        }
+
+        public void CollisionWithLaser(Lasers laser)
+        {
+            if (CollisionBox.Intersects(laser.getCollisionBox()))
+            {
+                if (playerHP <= 0)
+                    dead = true;
+                else
+                    playerHP -= 40;
+                laser.isVisible = false;
+            }
+        }
+
     }
 }

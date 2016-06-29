@@ -19,13 +19,34 @@ namespace DaGeim
         private string direction = "right";
         private Vector2 startPoint = new Vector2(0, 0);
         private float distanceToPlayer;
-        private List<Rockets> rockets = new List<Rockets>();
+        private List<Lasers> lasers = new List<Lasers>();
         private Texture2D shootTextureLeft;
         private bool playDead;
         private int bossHealth = 180;
         private int attackDelay = 20;
         private int laserDelay = 2;
         public float bossDmg = 15;
+        private Rectangle rectangle;
+        public bool isPushing = false;
+
+        public Vector2 Position
+        {
+            get { return this.position; }
+            set { this.position = value; }
+        }
+
+        public Rectangle CollisionBox
+        {
+            get { return this.rectangle; }
+            set { this.rectangle = value; }
+        }
+
+        public List<Lasers> Lasers
+        {
+            get { return this.lasers; }
+            set { this.lasers = value; }
+        }
+
 
         public Boss(Vector2 position) : base(position)
         {
@@ -45,8 +66,8 @@ namespace DaGeim
         public void Update(GameTime gameTime, Vector2 playerPosition)
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            position += velocity;
-            //rectangle = setCollisionBounds();
+            bossPosition += velocity;
+            rectangle = setCollisionBounds();
 
             if (velocity.Y < 10)
                 velocity.Y += 0.4f;
@@ -66,8 +87,16 @@ namespace DaGeim
                 {
                     attacking = true;
 
-                    PlayAnimation("Attack");
-                    Attack();
+                    if (distanceToPlayer < 150)
+                    {
+                        PlayAnimation("Push");
+                        isPushing = true;
+                    }
+                    else if(!playDead)
+                    {
+                        PlayAnimation("Attack");
+                        Attack();
+                    }
                 }
 
                 if (attackDelay == 0)
@@ -88,17 +117,17 @@ namespace DaGeim
 
             if (laserDelay <= 0)
             {
-                Rockets newRocket;
+                Lasers newLaser;
 
-                newRocket = new Rockets(shootTextureLeft);
-                newRocket.shootPosition = new Vector2(bossPosition.X - 15, bossPosition.Y + 35);
-                newRocket.direction = "left";
+                newLaser = new Lasers(shootTextureLeft);
+                newLaser.shootPosition = new Vector2(bossPosition.X - 15, bossPosition.Y + 45);
+                newLaser.direction = "left";
 
-                newRocket.isVisible = true;
+                newLaser.isVisible = true;
 
-                // Add rocket to list if they are < 5
-                if (rockets.Count < 5)
-                    rockets.Add(newRocket);
+                // Add laser to list if they are < 5
+                if (lasers.Count < 5)
+                    lasers.Add(newLaser);
             }
 
             if (laserDelay == 0)
@@ -107,25 +136,25 @@ namespace DaGeim
 
         public void UpdateAttack()
         {
-            foreach (Rockets rocket in rockets)
+            foreach (Lasers laser in lasers)
             {
-                //Move rockets according to its direction
+                //Move lasers according to its direction
 
-                rocket.shootPosition.X = rocket.shootPosition.X - rocket.speed;
+                laser.shootPosition.X = laser.shootPosition.X - laser.speed;
 
-                //Set rockets to !visible if they have collided or went off screen
+                //Set lasers to !visible if they have collided or went off screen
 
-                if (rocket.shootPosition.X < Camera.centre.X - 640 || rocket.shootPosition.X > Camera.centre.X + 640)
-                    rocket.isVisible = false;
+                if (laser.shootPosition.X < Camera.centre.X - 640 || laser.shootPosition.X > Camera.centre.X + 640)
+                    laser.isVisible = false;
             }
 
-            //Remove rockets if they are not visible
+            //Remove lasers if they are not visible
 
-            for (int i = 0; i < rockets.Count; i++)
+            for (int i = 0; i < lasers.Count; i++)
             {
-                if (!rockets[i].isVisible)
+                if (!lasers[i].isVisible)
                 {
-                    rockets.RemoveAt(i);
+                    lasers.RemoveAt(i);
                     i--;
                 }
             }
@@ -158,17 +187,62 @@ namespace DaGeim
             }
         }
 
+        public void CollisionWithMap(Rectangle tileRectangle, int mapWidth, int mapHeight)
+        {
+            if (rectangle.TouchTopOf(tileRectangle))
+            {
+                rectangle.Y = tileRectangle.Y - rectangle.Height;
+                velocity.Y = 0f;
+            }
+
+            if (rectangle.TouchLeftOf(tileRectangle))
+                bossPosition.X = tileRectangle.X - rectangle.Width - 2;
+
+            if (rectangle.TouchRightOf(tileRectangle))
+                bossPosition.X = tileRectangle.X + tileRectangle.Width + 2;
+
+            if (rectangle.TouchBottomOf(tileRectangle))
+                velocity.Y = 1f;
+
+            if (bossPosition.X < 0) bossPosition.X = 0;
+            if (bossPosition.X > mapWidth - rectangle.Width) bossPosition.X = mapWidth - rectangle.Width;
+            if (bossPosition.Y < 0) velocity.Y = 1f;
+            if (bossPosition.Y > mapHeight - rectangle.Height) bossPosition.Y = mapHeight - rectangle.Height;
+        }
+
+        private Rectangle setCollisionBounds()
+        {
+            Rectangle output = new Rectangle();
+            switch (currentAnimation)
+            {
+                case "RunLeft": output = setRectangle(30, 0, 45, 123); break;
+                case "RunRight": output = setRectangle(30, 0, 45, 123); break;
+                case "Attack": output = setRectangle(30, 0, 45, 123); break;
+                case "Push": output = setRectangle(30, 0, 45, 175); break;
+                default: output = setRectangle(30, 0, 45, 123); break;
+            }
+            return output;
+        }
+
+        private Rectangle setRectangle(int x, int y, int w, int h)
+        {
+            return new Rectangle((int)bossPosition.X + x, (int)bossPosition.Y + y, w, h);
+        }
+
         public override void Draw(SpriteBatch spriteBach)
         {
-            foreach (Rockets rocket in rockets)
-                rocket.Draw(spriteBach);
+            foreach (Lasers laser in lasers)
+                laser.Draw(spriteBach);
             base.Draw(spriteBach);
         }
 
         public override void AnimationDone(string animation)
         {
             if (animation.Contains("Attack"))
+            {
                 attacking = false;
+                isPushing = false;
+            }
 
             if (animation.Contains("Dead"))
                 dead = true;
@@ -181,6 +255,18 @@ namespace DaGeim
             AddAnimation("Attack", 12, 2, 0);
             AddAnimation("Dead", 12, 3, 0);
             AddAnimation("Push", 12, 4, 47);
+        }
+
+        public void CollisionWithRocket(Rockets rocket)
+        {
+            if (CollisionBox.Intersects(rocket.getCollisionBox()))
+            {
+                if (bossHealth <= 0)
+                    playDead = true;
+                else
+                    bossHealth -= 20;
+                rocket.isVisible = false;
+            }
         }
     }
 }

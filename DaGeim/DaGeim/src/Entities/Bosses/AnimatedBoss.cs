@@ -68,7 +68,8 @@ namespace DaGeim
         {
             if (currentAnimation != name)
             {
-
+                if (name.Contains("Push"))
+                    bossPosition.Y -= 47;
                 currentAnimation = name;
                 frameIndex = 0;
             }
