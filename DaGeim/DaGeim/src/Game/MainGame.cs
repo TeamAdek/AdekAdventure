@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using DaGeim.Enemies;
 using DaGeim.Interfaces;
+using DaGeim.MenuLayouts;
 using DaGeim.src.Collectable;
 
 namespace DaGeim
@@ -19,8 +20,8 @@ namespace DaGeim
         public const int GAME_WIDTH = 1280;
         public const int GAME_HEIGHT = 720;
 
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
         Song song;
         private StartGameScreen startGameScreen;
         private EndGameScreen endGameScreen;
@@ -55,12 +56,11 @@ namespace DaGeim
 
         protected override void Initialize()
         {
-            GameMenuManager.mainMenuOn = true;
             startGameScreen = new StartGameScreen();
             endGameScreen = new EndGameScreen();
             pauseGameScreen = new PauseGameScreen();
             creditsScreen = new CreditsScreen();
-
+            GameMenuManager.mainMenuOn = true;
             map = new Map();
             gameUI = new HUD();
 

@@ -1,80 +1,75 @@
 ﻿using System.Threading;
+using DaGeim.src.MenuLayouts;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace DaGeim
+namespace DaGeim.MenuLayouts
 {
-    public class PauseGameScreen : MainGame
+    public class PauseGameScreen : MenuScreen
     {
         private Button resumeGameButton = new Button("Resume Game", new Rectangle(440, 240, 400, 80));
         private Button mainMenuButton = new Button("Main Menu", new Rectangle(440, 350, 400, 80));
         private Button quitButton = new Button("Quit", new Rectangle(440, 460, 400, 80));
         private Selector selector;
-        private Texture2D background;
-        private Texture2D robotImage;
-        private SpriteFont mainFont;
-        private SpriteFont font;
 
         /*----------------------------------------------------------------------------------------------
         Loads the content for the menu
         ----------------------------------------------------------------------------------------------*/
-        public void Load(ContentManager content)
+        public override void Load(ContentManager content)
         {
-            resumeGameButton.Load(content);
-            mainMenuButton.Load(content);
-            quitButton.Load(content);
-            selector = new Selector(450, 250);
-            background = content.Load<Texture2D>("background2");
-            robotImage = content.Load<Texture2D>("Idle");
-            mainFont = content.Load<SpriteFont>("MainFont");
-            font = content.Load<SpriteFont>("Font");
+            base.Load(content);
+            this.resumeGameButton.Load(content);
+            this.mainMenuButton.Load(content);
+            this.quitButton.Load(content);
+            this.selector = new Selector(450, 250);
+           
         }
         /*--------------------------------------------------------------------------------------------
         Updates the pause menu when it is active
         ---------------------------------------------------------------------------------------------*/
-        public void Update(GameTime gameTime, MainGame game)
+        public override void Update(GameTime gameTime, MainGame game)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
-                selector.y -= 25; // we move the selector 20px up the screen
-                if (selector.y < 250)
-                    selector.y = 250; // the selector cant go above this position
+                this.selector.Y -= 25; // we move the selector 20px up the screen
+                if (this.selector.Y < 250)
+                    this.selector.Y = 250; // the selector cant go above this position
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                selector.y += 25; // we move the selector 20px down the screen
-                if (selector.y > 520)
-                    selector.y = 520; // the selector cant go below this position
+                this.selector.Y += 25; // we move the selector 20px down the screen
+                if (this.selector.Y > 520)
+                    this.selector.Y = 520; // the selector cant go below this position
             }
             //make a small rectangle to check the if the selector is inside one of the buttons
-            Rectangle rect = new Rectangle(selector.x, selector.y, 25, 25);
-            if (rect.Intersects(resumeGameButton.location))
+            Rectangle rect = new Rectangle(this.selector.X, this.selector.Y, 25, 25);
+            if (rect.Intersects(this.resumeGameButton.Location))
             {
-                resumeGameButton.isSelected = true;
+                this.resumeGameButton.IsSelected = true;
             }
             else
             {
-                resumeGameButton.isSelected = false;
+                this.resumeGameButton.IsSelected = false;
             }
-            if (rect.Intersects(mainMenuButton.location))
+            if (rect.Intersects(this.mainMenuButton.Location))
             {
-                mainMenuButton.isSelected = true;
+                this.mainMenuButton.IsSelected = true;
             }
             else
             {
-                mainMenuButton.isSelected = false;
+                this.mainMenuButton.IsSelected = false;
             }
-            if (rect.Intersects(quitButton.location))
+            if (rect.Intersects(this.quitButton.Location))
             {
-                quitButton.isSelected = true;
+                this.quitButton.IsSelected = true;
             }
             else
             {
-                quitButton.isSelected = false;
+               this. quitButton.IsSelected = false;
             }
-            if (resumeGameButton.isSelected)
+            if (this.resumeGameButton.IsSelected)
             {
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))
                 {
@@ -85,7 +80,7 @@ namespace DaGeim
 
                 }
             }
-            if (mainMenuButton.isSelected) // does not work
+            if (this.mainMenuButton.IsSelected) // does not work
             {
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))
                 {
@@ -95,7 +90,7 @@ namespace DaGeim
                     Thread.Sleep(100);
                 }
             }
-            if (quitButton.isSelected)
+            if (this.quitButton.IsSelected)
             {
                 //the quit button exits the game (you dont say!?!)
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))
@@ -107,16 +102,15 @@ namespace DaGeim
         /*------------------------------------------------------------------------------------------
         Draws the pause menu screen when it is active
         ------------------------------------------------------------------------------------------*/
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
+            base.Draw(spriteBatch);
             spriteBatch.Begin();
-            spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 720), Color.White);
-            spriteBatch.Draw(robotImage, new Rectangle(50, 450, 250, 250), Color.White);
-            spriteBatch.DrawString(mainFont, "Game Paused", new Vector2(440, 100),
+            spriteBatch.DrawString(base.MainFont, "Game Paused", new Vector2(440, 100),
                 Color.Ivory);
-            resumeGameButton.DrawButton(spriteBatch, font);
-            mainMenuButton.DrawButton(spriteBatch, font);
-            quitButton.DrawButton(spriteBatch, font);
+            this.resumeGameButton.DrawButton(spriteBatch,base.Font);
+            this.mainMenuButton.DrawButton(spriteBatch, base.Font);
+            this.quitButton.DrawButton(spriteBatch, base.Font);
             spriteBatch.End();
         }
     }

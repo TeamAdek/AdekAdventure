@@ -71,6 +71,7 @@
     <Compile Include="src\Helper Classes\Selector.cs" />
     <Compile Include="src\Level\Tiles.cs" />
     <Compile Include="src\MenuLayouts\GameMenuManager.cs" />
+    <Compile Include="src\MenuLayouts\MenuScreen.cs" />
     <Compile Include="src\MenuLayouts\PauseGameScreen.cs" />
     <Compile Include="src\MenuLayouts\StartGameScreen.cs" />
   </ItemGroup>

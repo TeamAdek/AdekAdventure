@@ -4,46 +4,65 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace DaGeim
 {
-    public class Button : MainGame
+    public class Button
     {
         private Texture2D highlightedImage;
         private Texture2D darkImage;
         private string buttonText;
-        public Rectangle location;
-        public bool isSelected;
+        private Rectangle location;
+        private bool isSelected;
 
         public Button(string text, Rectangle location)
         {
-            buttonText = text;
-            this.location = location;
+            this.buttonText = text;
+            this.Location = location;
+            this.IsSelected = false;
+        }
+        public bool IsSelected
+        {
+            get
+            {
+                return this.isSelected;
+            }
+
+            set
+            {
+                this.isSelected = value;
+            }
         }
 
-        public Button(string text, Rectangle location, bool selected)
+        public Rectangle Location
         {
-            buttonText = text;
-            this.location = location;
-            isSelected = selected;
+            get
+            {
+                return location;
+            }
+
+            private set
+            {
+                this.location = value;
+            }
         }
 
         public void Load(ContentManager content)
         {
-            highlightedImage = content.Load<Texture2D>("highlightedButton");
-            darkImage = content.Load<Texture2D>("darkButton");
+            this.highlightedImage = content.Load<Texture2D>("highlightedButton");
+            this.darkImage = content.Load<Texture2D>("darkButton");
         }
 
         public void DrawButton(SpriteBatch spriteBatch, SpriteFont font)
         {
-            int textX = location.X + location.Width/6;
-            int textY = location.Y + (location.Height*25)/80;
-            if (isSelected)
+            int textX = Location.X + Location.Width/6;
+            int textY = Location.Y + (Location.Height*25)/80;
+            if (this.IsSelected)
             {
-                spriteBatch.Draw(highlightedImage, location, Color.White);
+                spriteBatch.Draw(highlightedImage, Location, Color.White);
                 spriteBatch.DrawString(font, buttonText, new Vector2(textX, textY),
                     Color.Ivory);
             }
             else
             {
-                spriteBatch.Draw(darkImage, location, Color.White);
+                spriteBatch.Draw(darkImage, Location, Color.White);
                 spriteBatch.DrawString(font, buttonText, new Vector2(textX, textY),
                     Color.Ivory);
             }

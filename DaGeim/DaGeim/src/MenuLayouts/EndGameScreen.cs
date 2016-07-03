@@ -2,48 +2,40 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+using DaGeim.src.MenuLayouts;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace DaGeim
+namespace DaGeim.MenuLayouts
 {
-    public class EndGameScreen : MainGame
+    public class EndGameScreen : MenuScreen
     {
         private List<int> highscores = new List<int>();
         private char[] delimiters = { ' ', '\t', '\n' };
         private string path = @"TextFile1.txt";
         private bool wasUpdated;
         private int positionAtScorelist;
-
         private Button newGameButton = new Button("New Game", new Rectangle(950, 400, 300, 80));
         private Button mainMenuButton = new Button("Main Menu", new Rectangle(950, 500, 300, 80));
         private Button quitButton = new Button("Quit", new Rectangle(950, 600, 300, 80));
         private Selector selector;
-
-        private Texture2D background;
         private Texture2D star;
-        private Texture2D robotImage;
-        private SpriteFont mainFont;
-        private SpriteFont font;
 
         /*---------------------------------------------------------------------------------------------------
         Loads the content for the end game screen
         ----------------------------------------------------------------------------------------------------*/
-        public void Load(ContentManager content)
+        public override void Load(ContentManager content)
         {
+            base.Load(content);
             //load the content for the scoreboard
-            background = content.Load<Texture2D>("background2");
-            font = content.Load<SpriteFont>("Font");
-            mainFont = content.Load<SpriteFont>("MainFont");
-            star = content.Load<Texture2D>("bluestar");
-            robotImage = content.Load<Texture2D>("Idle");
-            newGameButton.Load(content);
-            mainMenuButton.Load(content);
-            quitButton.Load(content);
+            this.star = content.Load<Texture2D>("bluestar");
+            this.newGameButton.Load(content);
+            this.mainMenuButton.Load(content);
+            this.quitButton.Load(content);
             //give the selector object cords inside the top-most button
-            selector = new Selector(1000, 420);
+            this.selector = new Selector(1000, 420);
             //load the current highscores from file and fill a list with them
             using (StreamReader reader = new StreamReader(path))
             {
@@ -100,88 +92,86 @@ namespace DaGeim
         /*-------------------------------------------------------------------------------------------------
         Draws the end game screen if it is active
         -------------------------------------------------------------------------------------------------*/
-        public void Draw(SpriteBatch spritebatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            int numberX = 300;
-            int playerNameX = 350;
-            int scoreX = 800;
+            base.Draw(spriteBatch);
+            int numberX = 350;
+            //int playerNameX = 350;
+            int scoreX = 750;
             int rowY = 90;
-
-            spritebatch.Begin();
-            spritebatch.Draw(background, new Rectangle(0, 0, 1280, 720), Color.White);
-            spritebatch.Draw(robotImage, new Rectangle(50, 470, 250, 250), Color.White);
-            spritebatch.DrawString(mainFont, "HIGHSCORES", new Vector2(500, 25),
+            spriteBatch.Begin();
+            spriteBatch.DrawString(base.MainFont, "HIGHSCORES", new Vector2(500, 25),
                 Color.Ivory);
-            mainMenuButton.DrawButton(spritebatch, font);
-            newGameButton.DrawButton(spritebatch, font);
-            quitButton.DrawButton(spritebatch, font);
+            this.mainMenuButton.DrawButton(spriteBatch, base.Font);
+            this.newGameButton.DrawButton(spriteBatch, base.Font);
+            this.quitButton.DrawButton(spriteBatch, base.Font);
             //draw the data from the list
             for (int i = 0; i < 10; i++)
             {
                 if (wasUpdated && positionAtScorelist == i)
                 {
-                    spritebatch.Draw(star, new Rectangle(230, rowY, 40, 40), Color.White);
+                    spriteBatch.Draw(star, new Rectangle(280, rowY, 40, 40), Color.White);
                 }
-                string pos = string.Format("{0}.", i + 1).PadLeft(3);
+                string position = string.Format("{0}.", i + 1).PadLeft(3);
                 //  string name = highscores[i].playerName;
                 string score = highscores[i].ToString().PadLeft(10, ' ');
-                spritebatch.DrawString(font, pos, new Vector2(numberX, rowY), Color.Ivory);
+                spriteBatch.DrawString(base.Font, position, new Vector2(numberX, rowY), Color.Ivory);
                 //  spritebatch.DrawString(font, name, new Vector2(playerNameX, rowY),
                 // Color.Ivory);
-                spritebatch.DrawString(font, score, new Vector2(scoreX, rowY),
+                spriteBatch.DrawString(base.Font, score, new Vector2(scoreX, rowY),
                     Color.Ivory);
                 rowY += 55;
             }
-            spritebatch.End();
+            spriteBatch.End();
         }
         /*-------------------------------------------------------------------------------------------------
         Update the end game screen if it is active
         -------------------------------------------------------------------------------------------------*/
-        public void Update(GameTime gameTime, MainGame game)
+        public override void Update(GameTime gameTime, MainGame game)
         {
             //update the position of the selector and change the state of the buttons
             //once a button is active, pressing "space" will do something according the button
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
-                selector.y -= 20; // we move the selector 20px up the screen
-                if (selector.y < 420)
-                    selector.y = 420; // the selector cant go above this position
+                this.selector.Y -= 25; // we move the selector 20px up the screen
+                if (this.selector.Y < 420)
+                    this.selector.Y = 420; // the selector cant go above this position
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                selector.y += 20; // we move the selector 20px down the screen
-                if (selector.y > 620)
-                    selector.y = 620; // the selector cant go below this position
+                this.selector.Y += 25; // we move the selector 20px down the screen
+                if (this.selector.Y > 620)
+                    this.selector.Y = 620; // the selector cant go below this position
             }
 
             //make a small rectangle to check the if the selector is inside one of the buttons
-            Rectangle rect = new Rectangle(selector.x, selector.y, 20, 20);
-            if (rect.Intersects(mainMenuButton.location))
+            Rectangle rect = new Rectangle(this.selector.X, this.selector.Y, 20, 20);
+            if (rect.Intersects(this.mainMenuButton.Location))
             {
-                mainMenuButton.isSelected = true;
+                this.mainMenuButton.IsSelected = true;
             }
             else
             {
-                mainMenuButton.isSelected = false;
+               this. mainMenuButton.IsSelected = false;
             }
-            if (rect.Intersects(newGameButton.location))
+            if (rect.Intersects(this.newGameButton.Location))
             {
-                newGameButton.isSelected = true;
-            }
-            else
-            {
-                newGameButton.isSelected = false;
-            }
-            if (rect.Intersects(quitButton.location))
-            {
-                quitButton.isSelected = true;
+                this.newGameButton.IsSelected = true;
             }
             else
             {
-                quitButton.isSelected = false;
+                this.newGameButton.IsSelected = false;
+            }
+            if (rect.Intersects(this.quitButton.Location))
+            {
+                this.quitButton.IsSelected = true;
+            }
+            else
+            {
+                this.quitButton.IsSelected = false;
             }
             //check which button is selected and do the action
-            if (mainMenuButton.isSelected)
+            if (this.mainMenuButton.IsSelected)
             {
                 //returns to the main menu screen
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))
@@ -192,7 +182,7 @@ namespace DaGeim
                     Thread.Sleep(100);
                 }
             }
-            if (newGameButton.isSelected)
+            if (this.newGameButton.IsSelected)
             {
                 //starts new game
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))
@@ -203,7 +193,7 @@ namespace DaGeim
                     Thread.Sleep(100);
                 }
             }
-            if (quitButton.isSelected)
+            if (this.quitButton.IsSelected)
             {
                 //the quit button exits the game (you dont say!?!)
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))

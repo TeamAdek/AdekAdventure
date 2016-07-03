@@ -1,17 +1,14 @@
 ﻿using System.Threading;
+using DaGeim.src.MenuLayouts;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace DaGeim
+namespace DaGeim.MenuLayouts
 {
-    public class StartGameScreen : MainGame
+    public class StartGameScreen : MenuScreen
     {
-        private Texture2D background;
-        private Texture2D robotImage;
-        private SpriteFont gameNameFont;
-        private SpriteFont font;
         private Selector selector;
         private Button newGameButton = new Button("New Game", new Rectangle(465, 240, 350, 80));
         private Button scoresButton = new Button("Scores", new Rectangle(465, 360, 350, 80));
@@ -21,97 +18,77 @@ namespace DaGeim
         /*---------------------------------------------------------------------------------------------------
         Loads the content for the start game screen
         ----------------------------------------------------------------------------------------------------*/
-        public void Load(ContentManager content)
+        public override void Load(ContentManager content)
         {
-            background = content.Load<Texture2D>("background2");
-            font = content.Load<SpriteFont>("Font");
-            gameNameFont = content.Load<SpriteFont>("GameNameFont");
-            robotImage = content.Load<Texture2D>("Idle");
-            newGameButton.Load(content);
-            quitButton.Load(content);
-            creditsButton.Load(content);
-            scoresButton.Load(content);
-
-            selector = new Selector(490, 250);
+            base.Load(content);
+            this.newGameButton.Load(content);
+            this.quitButton.Load(content);
+            this.creditsButton.Load(content);
+            this.scoresButton.Load(content);
+            this.selector = new Selector(490, 250);
         }
-        /*-------------------------------------------------------------------------------------------------
-        Draws the start game screen if it is active
-        -------------------------------------------------------------------------------------------------*/
-        public void Draw(SpriteBatch spritebatch)
-        {
-            spritebatch.Begin();
-            spritebatch.Draw(background, new Rectangle(0, 0, 1280, 720), Color.White);
-            spritebatch.Draw(robotImage, new Rectangle(50, 470, 250, 250), Color.White);
-            spritebatch.DrawString(gameNameFont, "ROBOT BOY", new Vector2(350, 25),
-                Color.Ivory);
 
-            newGameButton.DrawButton(spritebatch, font);
-            scoresButton.DrawButton(spritebatch, font);
-            creditsButton.DrawButton(spritebatch, font);
-            quitButton.DrawButton(spritebatch, font);
-            spritebatch.End();
-        }
         /*-------------------------------------------------------------------------------------------------
         Update the start game screen if it is active
         -------------------------------------------------------------------------------------------------*/
-        public void Update(GameTime gameTime, MainGame game)
+        public override void Update(GameTime gameTime, MainGame game)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
-                selector.y -= 25;
-                if (selector.y < 250)
+                this.selector.Y -= 25;
+                if (this.selector.Y < 250)
                 {
-                    selector.y = 250;
+                    this.selector.Y = 250;
                 }
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                selector.y += 25;
-                if (selector.y > 650)
-                    selector.y = 650;
+                this.selector.Y += 25;
+                if (this.selector.Y > 650)
+                    this.selector.Y = 650;
             }
 
             //make a small rectangle to check the if the selector is inside one of the buttons
 
-            Rectangle rect = new Rectangle(selector.x, selector.y, 20, 20);
-            if (rect.Intersects(newGameButton.location))
+            Rectangle rect = new Rectangle(this.selector.X, this.selector.Y, 20, 20);
+            if (rect.Intersects(this.newGameButton.Location))
             {
-                newGameButton.isSelected = true;
+                this.newGameButton.IsSelected = true;
             }
             else
             {
-                newGameButton.isSelected = false;
+                this.newGameButton.IsSelected = false;
             }
 
-            if (rect.Intersects(creditsButton.location))
+            if (rect.Intersects(this.creditsButton.Location))
             {
-                creditsButton.isSelected = true;
+                this.creditsButton.IsSelected = true;
             }
             else
             {
-                creditsButton.isSelected = false;
+                this.creditsButton.IsSelected = false;
             }
 
-            if (rect.Intersects(scoresButton.location))
+            if (rect.Intersects(this.scoresButton.Location))
             {
-                scoresButton.isSelected = true;
+                this.scoresButton.IsSelected = true;
             }
             else
             {
-                scoresButton.isSelected = false;
+                this.scoresButton.IsSelected = false;
             }
 
-            if (rect.Intersects(quitButton.location))
+            if (rect.Intersects(this.quitButton.Location))
             {
-                quitButton.isSelected = true;
+                this.quitButton.IsSelected = true;
             }
             else
             {
-                quitButton.isSelected = false;
+                this.quitButton.IsSelected = false;
             }
 
             //check which button is selected and do the action
-            if (newGameButton.isSelected)
+            if (this.newGameButton.IsSelected)
             {
                 //starts new game
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))
@@ -122,7 +99,7 @@ namespace DaGeim
                     Thread.Sleep(100);
                 }
             }
-            else if (scoresButton.isSelected)
+            else if (this.scoresButton.IsSelected)
             {
                 //starts Scoreboard
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))
@@ -133,7 +110,7 @@ namespace DaGeim
                     Thread.Sleep(100);
                 }
             }
-            else if (creditsButton.isSelected)
+            else if (this.creditsButton.IsSelected)
             {
                 //starts Credits
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))
@@ -148,7 +125,7 @@ namespace DaGeim
                 }
             }
 
-            else if (quitButton.isSelected)
+            else if (this.quitButton.IsSelected)
             {
                 //the quit button exits the game (you dont say!?!)
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))
@@ -157,5 +134,21 @@ namespace DaGeim
                 }
             }
         }
+        /*-------------------------------------------------------------------------------------------------
+        Draws the start game screen if it is active
+        -------------------------------------------------------------------------------------------------*/
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+            spriteBatch.Begin();
+            spriteBatch.DrawString(base.GameNameFont, "ROBOT BOY", new Vector2(350, 25),
+                Color.Ivory);
+            this.newGameButton.DrawButton(spriteBatch, base.Font);
+            this.scoresButton.DrawButton(spriteBatch, base.Font);
+            this.creditsButton.DrawButton(spriteBatch, base.Font);
+            this.quitButton.DrawButton(spriteBatch, base.Font);
+            spriteBatch.End();
+        }
+        
     }
 }
