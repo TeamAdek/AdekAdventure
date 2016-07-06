@@ -38,19 +38,28 @@
     <ApplicationIcon>Content\Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\ICollectable.cs" />
-    <Compile Include="Interfaces\ICollecting.cs" />
-    <Compile Include="Interfaces\IJumpboostable.cs" />
-    <Compile Include="Interfaces\IPatrolable.cs" />
+    <Compile Include="src\Entities\Ammunition\Icycle.cs" />
+    <Compile Include="src\Entities\Ammunition\Laser.cs" />
+    <Compile Include="src\Entities\Bosses\Boss_L1.cs" />
+    <Compile Include="src\Interfaces\ICollectable.cs" />
+    <Compile Include="src\Interfaces\ICollecting.cs" />
+    <Compile Include="src\Interfaces\IJumpboostable.cs" />
+    <Compile Include="src\Interfaces\IPatrolable.cs" />
     <Compile Include="src\Collectables\HealthRestore.cs" />
     <Compile Include="src\Collectables\CollectableItem.cs" />
     <Compile Include="src\Collectables\HealthRestoreBig.cs" />
+    <Compile Include="src\Entities\Ammunition\Ammunition.cs" />
+    <Compile Include="src\Entities\AnimatedSprite.cs" />
     <Compile Include="src\Entities\Bosses\AnimatedBoss.cs" />
     <Compile Include="src\Entities\Bosses\Boss.cs" />
-    <Compile Include="src\Entities\IEntity.cs" />
-    <Compile Include="src\Entities\Enemies\AnimatedEnemy.cs" />
-    <Compile Include="src\Entities\Player\AnimatedSprite.cs" />
-    <Compile Include="src\Entities\Enemies\SkeletonEnemy.cs" />
+    <Compile Include="src\Interfaces\IEntity.cs" />
+    <Compile Include="src\Entities\Entity.cs" />
+    <Compile Include="src\Interfaces\ICollidable.cs" />
+    <Compile Include="src\Interfaces\IGameObject.cs" />
+    <Compile Include="src\Entities\NPC.cs" />
+    <Compile Include="src\Entities\Player\Player.cs" />
+    <Compile Include="src\Entities\Ammunition\Rocket.cs" />
+    <Compile Include="src\Entities\Enemies\Skeleton.cs" />
     <Compile Include="src\Collectables\JumpBooster.cs" />
     <Compile Include="src\Helper Classes\Lasers.cs" />
     <Compile Include="src\Helper Classes\Rockets.cs" />
@@ -58,10 +67,8 @@
     <Compile Include="src\MenuLayouts\Button.cs" />
     <Compile Include="src\Level\Camera.cs" />
     <Compile Include="src\Helper Classes\DrawRect.cs" />
-    <Compile Include="src\Entities\Enemies\EnemyGuardian.cs" />
     <Compile Include="src\Game\MainGame.cs" />
     <Compile Include="src\Level\Map.cs" />
-    <Compile Include="src\Entities\Player\Player.cs" />
     <Compile Include="src\Game\Launcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\Helper Classes\RectangleHelper.cs" />
