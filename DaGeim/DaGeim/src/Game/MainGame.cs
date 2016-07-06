@@ -61,7 +61,7 @@ namespace DaGeim
             gameUI = new HUD();
 
             
-            player = new Player(new Vector2(2800, 450));
+            player = new Player(new Vector2(150, 465));
 
             InitializeEnemies();
             InitializeCollectables();
@@ -154,15 +154,16 @@ namespace DaGeim
                     npc.Shoot(player);
                 }
 
-
+		int tempScore = 0;
                 for (int i = 0; i < npcs.Count; i++)
                 {
                     if (npcs[i].Dead)
                     {
                         deadEnemies.Add(i);
-                        player.Score += 50;
+                 	tempScore += 50;       
                     }
                 }
+                player.Score = tempScore;
                 foreach (var index in deadEnemies)
                     npcs.RemoveAt(index);
 

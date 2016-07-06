@@ -10,7 +10,7 @@ public abstract class Ammunition : IGameObject, ICollidable
 
     protected Texture2D Sprite { get; set; }
     public bool IsVisible { get; set; }
-    protected float Velocity { get; }
+    protected float Velocity { get; set;}
     protected string Direction { get; set; }
     public Rectangle CollisionBox { get; protected set; }
     protected Ammunition(Vector2 position, string direction)
