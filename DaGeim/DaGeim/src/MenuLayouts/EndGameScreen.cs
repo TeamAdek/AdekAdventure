@@ -20,7 +20,6 @@ namespace DaGeim.MenuLayouts
         private Button newGameButton = new Button("New Game", new Rectangle(950, 400, 300, 80));
         private Button mainMenuButton = new Button("Main Menu", new Rectangle(950, 500, 300, 80));
         private Button quitButton = new Button("Quit", new Rectangle(950, 600, 300, 80));
-        private Selector selector;
         private Texture2D star;
 
         /*---------------------------------------------------------------------------------------------------
@@ -34,8 +33,6 @@ namespace DaGeim.MenuLayouts
             this.newGameButton.Load(content);
             this.mainMenuButton.Load(content);
             this.quitButton.Load(content);
-            //give the selector object cords inside the top-most button
-            this.selector = new Selector(1000, 420);
             //load the current highscores from file and fill a list with them
             using (StreamReader reader = new StreamReader(path))
             {
@@ -43,7 +40,6 @@ namespace DaGeim.MenuLayouts
                 while ((line = reader.ReadLine()) != null)
                 {
                     string[] tokens = line.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
-                    string name = tokens[0];
                     int points = int.Parse(tokens[1]);
                     highscores.Add(points);
                 }
@@ -129,24 +125,7 @@ namespace DaGeim.MenuLayouts
         -------------------------------------------------------------------------------------------------*/
         public override void Update(GameTime gameTime, MainGame game)
         {
-            //update the position of the selector and change the state of the buttons
-            //once a button is active, pressing "space" will do something according the button
-            if (Keyboard.GetState().IsKeyDown(Keys.Up))
-            {
-                this.selector.Y -= 25; // we move the selector 20px up the screen
-                if (this.selector.Y < 420)
-                    this.selector.Y = 420; // the selector cant go above this position
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.Down))
-            {
-                this.selector.Y += 25; // we move the selector 20px down the screen
-                if (this.selector.Y > 620)
-                    this.selector.Y = 620; // the selector cant go below this position
-            }
-
-            //make a small rectangle to check the if the selector is inside one of the buttons
-            Rectangle rect = new Rectangle(this.selector.X, this.selector.Y, 20, 20);
-            if (rect.Intersects(this.mainMenuButton.Location))
+            if (this.mainMenuButton.Location.Contains(Mouse.GetState(game.Window).Position))
             {
                 this.mainMenuButton.IsSelected = true;
             }
@@ -154,7 +133,7 @@ namespace DaGeim.MenuLayouts
             {
                this. mainMenuButton.IsSelected = false;
             }
-            if (rect.Intersects(this.newGameButton.Location))
+            if (this.newGameButton.Location.Contains(Mouse.GetState(game.Window).Position))
             {
                 this.newGameButton.IsSelected = true;
             }
@@ -162,7 +141,7 @@ namespace DaGeim.MenuLayouts
             {
                 this.newGameButton.IsSelected = false;
             }
-            if (rect.Intersects(this.quitButton.Location))
+            if (this.quitButton.Location.Contains(Mouse.GetState(game.Window).Position))
             {
                 this.quitButton.IsSelected = true;
             }
@@ -174,7 +153,7 @@ namespace DaGeim.MenuLayouts
             if (this.mainMenuButton.IsSelected)
             {
                 //returns to the main menu screen
-                if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                if (Mouse.GetState(game.Window).LeftButton == ButtonState.Pressed)
                 {
                     GameMenuManager.mainMenuOn = true; //turn on the selected menu
                     GameMenuManager.endGameMenuOn = false; //turn off the current menu
@@ -185,7 +164,7 @@ namespace DaGeim.MenuLayouts
             if (this.newGameButton.IsSelected)
             {
                 //starts new game
-                if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                if (Mouse.GetState(game.Window).LeftButton == ButtonState.Pressed)
                 {
                     GameMenuManager.gameOn = true; // turn on the selected menu
                     GameMenuManager.endGameMenuOn = false; //turn off the current menu
@@ -196,7 +175,7 @@ namespace DaGeim.MenuLayouts
             if (this.quitButton.IsSelected)
             {
                 //the quit button exits the game (you dont say!?!)
-                if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                if (Mouse.GetState(game.Window).LeftButton == ButtonState.Pressed)
                 {
                     game.Exit();
                 }

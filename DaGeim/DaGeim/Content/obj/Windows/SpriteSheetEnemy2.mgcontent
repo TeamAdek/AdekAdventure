@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Hentov/Desktop/AdekAdventure/AdekAdventure/DaGeim/DaGeim/Content/SpriteSheetEnemy2.png</SourceFile>
-  <SourceTime>2016-07-06T13:54:15.9301102+03:00</SourceTime>
-  <DestFile>C:/Users/Hentov/Desktop/AdekAdventure/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/SpriteSheetEnemy2.xnb</DestFile>
-  <DestTime>2016-07-06T19:27:03.2801053+03:00</DestTime>
+  <SourceFile>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/SpriteSheetEnemy2.png</SourceFile>
+  <SourceTime>2016-07-06T22:53:36.2705055+03:00</SourceTime>
+  <DestFile>D:/SoftUni Projects/LocalReps/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/SpriteSheetEnemy2.xnb</DestFile>
+  <DestTime>2016-07-06T22:54:36.333941+03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T09:36:08+03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

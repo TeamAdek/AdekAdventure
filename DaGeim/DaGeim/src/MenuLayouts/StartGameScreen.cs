@@ -9,7 +9,6 @@ namespace DaGeim.MenuLayouts
 {
     public class StartGameScreen : MenuScreen
     {
-        private Selector selector;
         private Button newGameButton = new Button("New Game", new Rectangle(465, 240, 350, 80));
         private Button scoresButton = new Button("Scores", new Rectangle(465, 360, 350, 80));
         private Button creditsButton = new Button("Credits", new Rectangle(465, 480, 350, 80));
@@ -25,7 +24,6 @@ namespace DaGeim.MenuLayouts
             this.quitButton.Load(content);
             this.creditsButton.Load(content);
             this.scoresButton.Load(content);
-            this.selector = new Selector(490, 250);
         }
 
         /*-------------------------------------------------------------------------------------------------
@@ -33,25 +31,7 @@ namespace DaGeim.MenuLayouts
         -------------------------------------------------------------------------------------------------*/
         public override void Update(GameTime gameTime, MainGame game)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Up))
-            {
-                this.selector.Y -= 25;
-                if (this.selector.Y < 250)
-                {
-                    this.selector.Y = 250;
-                }
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.Down))
-            {
-                this.selector.Y += 25;
-                if (this.selector.Y > 650)
-                    this.selector.Y = 650;
-            }
-
-            //make a small rectangle to check the if the selector is inside one of the buttons
-
-            Rectangle rect = new Rectangle(this.selector.X, this.selector.Y, 20, 20);
-            if (rect.Intersects(this.newGameButton.Location))
+            if (this.newGameButton.Location.Contains(Mouse.GetState(game.Window).Position))
             {
                 this.newGameButton.IsSelected = true;
             }
@@ -60,7 +40,7 @@ namespace DaGeim.MenuLayouts
                 this.newGameButton.IsSelected = false;
             }
 
-            if (rect.Intersects(this.creditsButton.Location))
+            if (this.creditsButton.Location.Contains(Mouse.GetState(game.Window).Position))
             {
                 this.creditsButton.IsSelected = true;
             }
@@ -69,7 +49,7 @@ namespace DaGeim.MenuLayouts
                 this.creditsButton.IsSelected = false;
             }
 
-            if (rect.Intersects(this.scoresButton.Location))
+            if (this.scoresButton.Location.Contains(Mouse.GetState(game.Window).Position))
             {
                 this.scoresButton.IsSelected = true;
             }
@@ -78,7 +58,7 @@ namespace DaGeim.MenuLayouts
                 this.scoresButton.IsSelected = false;
             }
 
-            if (rect.Intersects(this.quitButton.Location))
+            if (this.quitButton.Location.Contains(Mouse.GetState(game.Window).Position))
             {
                 this.quitButton.IsSelected = true;
             }
@@ -91,7 +71,7 @@ namespace DaGeim.MenuLayouts
             if (this.newGameButton.IsSelected)
             {
                 //starts new game
-                if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                if (Mouse.GetState(game.Window).LeftButton == ButtonState.Pressed)
                 {
                     GameMenuManager.gameOn = true;
                     GameMenuManager.mainMenuOn = false;
@@ -102,7 +82,7 @@ namespace DaGeim.MenuLayouts
             else if (this.scoresButton.IsSelected)
             {
                 //starts Scoreboard
-                if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                if (Mouse.GetState(game.Window).LeftButton == ButtonState.Pressed)
                 {
                     GameMenuManager.endGameMenuOn = true;
                     GameMenuManager.mainMenuOn = false; //turn the current menu off
@@ -113,22 +93,20 @@ namespace DaGeim.MenuLayouts
             else if (this.creditsButton.IsSelected)
             {
                 //starts Credits
-                if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                if (Mouse.GetState(game.Window).LeftButton == ButtonState.Pressed)
                 {
-                    if (Keyboard.GetState().IsKeyDown(Keys.Space))
-                    {
-                        GameMenuManager.creditsMenuOn = true;
-                        GameMenuManager.mainMenuOn = false;//turn the current menu off
-                        GameMenuManager.TurnOtherMenusOff(); // turn the other menus off
-                        Thread.Sleep(100);
-                    }
+                    GameMenuManager.creditsMenuOn = true;
+                    GameMenuManager.mainMenuOn = false;//turn the current menu off
+                    GameMenuManager.TurnOtherMenusOff(); // turn the other menus off
+                    Thread.Sleep(100);
                 }
+
             }
 
             else if (this.quitButton.IsSelected)
             {
                 //the quit button exits the game (you dont say!?!)
-                if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                if (Mouse.GetState(game.Window).LeftButton == ButtonState.Pressed)
                 {
                     game.Exit();
                 }
@@ -149,6 +127,6 @@ namespace DaGeim.MenuLayouts
             this.quitButton.DrawButton(spriteBatch, base.Font);
             spriteBatch.End();
         }
-        
+
     }
 }

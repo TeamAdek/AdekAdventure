@@ -11,7 +11,6 @@ namespace DaGeim.MenuLayouts
     {
         private Button mainMenuButton = new Button("Main Menu", new Rectangle(950, 500, 300, 80));
         private Button quitButton = new Button("Quit", new Rectangle(950, 600, 300, 80));
-        private Selector selector;
         /*----------------------------------------------------------------------------------------------
         Loads the content for the menu
         ----------------------------------------------------------------------------------------------*/
@@ -20,28 +19,13 @@ namespace DaGeim.MenuLayouts
             base.Load(content);
             this.mainMenuButton.Load(content);
             this.quitButton.Load(content);
-            this.selector = new Selector(1000, 520);
         }
         /*--------------------------------------------------------------------------------------------
         Updates the pause menu when it is active
         ---------------------------------------------------------------------------------------------*/
         public override void Update(GameTime gameTime, MainGame game)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Up))
-            {
-                this.selector.Y -= 25; // we move the selector 20px up the screen
-                if (this.selector.Y < 520)
-                    this.selector.Y = 520; // the selector cant go above this position
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.Down))
-            {
-                this.selector.Y += 25; // we move the selector 20px down the screen
-                if (this.selector.Y > 650)
-                    this.selector.Y = 650; // the selector cant go below this position
-            }
-            //make a small rectangle to check the if the selector is inside one of the buttons
-            Rectangle rect = new Rectangle(this.selector.X, this.selector.Y, 25, 25);
-            if (rect.Intersects(this.mainMenuButton.Location))
+            if (this.mainMenuButton.Location.Contains(Mouse.GetState(game.Window).Position))
             {
                 this.mainMenuButton.IsSelected = true;
             }
@@ -49,7 +33,7 @@ namespace DaGeim.MenuLayouts
             {
                 this.mainMenuButton.IsSelected = false;
             }
-            if (rect.Intersects(this.quitButton.Location))
+            if (this.quitButton.Location.Contains(Mouse.GetState(game.Window).Position))
             {
                 this.quitButton.IsSelected = true;
             }
@@ -59,7 +43,7 @@ namespace DaGeim.MenuLayouts
             }
             if (this.mainMenuButton.IsSelected)
             {
-                if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                if (Mouse.GetState(game.Window).LeftButton == ButtonState.Pressed)
                 {
                     GameMenuManager.mainMenuOn = true; //turn on the selected menu
                     GameMenuManager.creditsMenuOn = false; //turn off the current menu
@@ -70,7 +54,7 @@ namespace DaGeim.MenuLayouts
             if (this.quitButton.IsSelected)
             {
                 //the quit button exits the game (you dont say!?!)
-                if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                if (Mouse.GetState(game.Window).LeftButton == ButtonState.Pressed)
                 {
                     game.Exit();
                 }

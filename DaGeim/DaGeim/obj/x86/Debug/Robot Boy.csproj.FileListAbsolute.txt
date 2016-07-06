@@ -545,3 +545,7 @@ D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\
 D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.xml
 D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\Robot Boy.csprojResolveAssemblyReference.cache
+D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\blastEdit.xnb
+D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\icycleLeft.xnb
+D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\icycleRight.xnb
+D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheetEnemy2.xnb

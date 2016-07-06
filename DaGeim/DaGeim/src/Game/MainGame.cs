@@ -109,30 +109,34 @@ namespace DaGeim
 
         protected override void Update(GameTime gameTime)
         {
-
             // We update only the currently active menu (or the running game) using the GameMenuManager
             if (GameMenuManager.mainMenuOn)
             {
                 //update the main menu
+                IsMouseVisible = true;
                 startGameScreen.Update(gameTime, this);
             }
             else if (GameMenuManager.endGameMenuOn)
             {
+                IsMouseVisible = true;
                 // update teh end game screen
                 endGameScreen.Update(gameTime, this);
             }
             else if (GameMenuManager.creditsMenuOn)
             {
+                IsMouseVisible = true;
                 //update the credits screen
                 creditsScreen.Update(gameTime, this);
             }
             else if (GameMenuManager.pauseMenuOn)
             {
+                IsMouseVisible = true;
                 //update the pause game screen
                 pauseGameScreen.Update(gameTime, this);
             }
             else  //TODO link all the game activity together
             {
+                IsMouseVisible = false;
                 //pressing esc we call the pause game screen
                 if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 {
