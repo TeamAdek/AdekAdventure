@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
-using DaGeim.Enemies;
 using DaGeim.Interfaces;
 using DaGeim.MenuLayouts;
 using DaGeim.src.Collectable;
@@ -17,8 +16,8 @@ namespace DaGeim
 
     public class MainGame : Game
     {
-        public const int GAME_WIDTH = 1280;
-        public const int GAME_HEIGHT = 720;
+        public const int WindowWidth = 1280;
+        public const int WindowHeight = 720;
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -28,47 +27,44 @@ namespace DaGeim
         private PauseGameScreen pauseGameScreen;
         private CreditsScreen creditsScreen;
         private HUD gameUI;
-     
+
 
         Camera camera;
         Map map;
 
-        Player mainPlayer;
-
-        private List<IEntity> entities;
-        private List<Skeleton> enemies = new List<Skeleton>();
-        private List<int> deadEnemies = new List<int>();
-
-        Boss boss;
-
-        //////////////////////////////////////
+        private Player player;
+        private Boss_L1 bossL1;
+        private List<NPC> npcs = new List<NPC>();
         private List<ICollectable> collectableItems = new List<ICollectable>();
+        private List<int> deadEnemies = new List<int>();
 
         public MainGame()
         {
             Content.RootDirectory = "Content";
             Window.Title = "Robot Boy";
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = GAME_WIDTH;
-            graphics.PreferredBackBufferHeight = GAME_HEIGHT;
+            graphics.PreferredBackBufferWidth = WindowWidth;
+            graphics.PreferredBackBufferHeight = WindowHeight;
             graphics.ApplyChanges();
         }
 
         protected override void Initialize()
         {
+            GameMenuManager.mainMenuOn = true;
             startGameScreen = new StartGameScreen();
             endGameScreen = new EndGameScreen();
             pauseGameScreen = new PauseGameScreen();
             creditsScreen = new CreditsScreen();
+
             GameMenuManager.mainMenuOn = true;
             map = new Map();
             gameUI = new HUD();
 
-            mainPlayer = new Player(new Vector2(4905, 325));
-            boss = new Boss(new Vector2(5250, 450));
+            
+            player = new Player(new Vector2(2800, 450));
+
             InitializeEnemies();
             InitializeCollectables();
-            entities = new List<IEntity>();
             base.Initialize();
         }
 
@@ -81,26 +77,24 @@ namespace DaGeim
             creditsScreen.Load(Content);
             endGameScreen.Load(Content);
 
+
             camera = new Camera(GraphicsDevice.Viewport);
 
             Tiles.Content = Content;
-            map.Load(map , Content);
+            map.Load(map, Content);
+            player.LoadContent(Content);
 
-            mainPlayer.LoadContent(Content);
-            boss.Load(Content);
-
-            foreach (var enemy in enemies)
+            foreach (var npc in npcs)
             {
-                enemy.Load(Content);
+                npc.LoadContent(Content);
             }
-
+            
             foreach (var collectable in collectableItems)
             {
                 collectable.Load(Content);
             }
 
             DrawRect.LoadContent(Content);
-          
             gameUI.Load(Content);
 
             song = Content.Load<Song>("theme1");
@@ -147,75 +141,85 @@ namespace DaGeim
                     GameMenuManager.TurnOtherMenusOff();
                 }
 
-                for (int i = 0; i < enemies.Count; i++)
+                deadEnemies.Clear();
+                map.Update(player.Position);
+                player.Update(gameTime);
+
+                if(bossL1.isPushing)
+                    player.PushedByBoss();
+
+                foreach (var npc in npcs)
                 {
-                    if (enemies[i].dead)
+                    npc.Update(gameTime);
+                    npc.Shoot(player);
+                }
+
+
+                for (int i = 0; i < npcs.Count; i++)
+                {
+                    if (npcs[i].Dead)
+                    {
                         deadEnemies.Add(i);
+                        player.Score += 50;
+                    }
                 }
                 foreach (var index in deadEnemies)
-                enemies.RemoveAt(index);
-                deadEnemies.Clear();
-                map.Update(mainPlayer.getPosition());
-                boss.Update(gameTime, mainPlayer.getPosition());
-                mainPlayer.Update(gameTime, boss);
-                
-                foreach (var enemy in enemies)
-                    enemy.Update(gameTime, mainPlayer.getPosition());
+                    npcs.RemoveAt(index);
 
                 foreach (ICollectable collectable in collectableItems)
-                {
                     collectable.Update(gameTime);
-                }
 
                 MakeCollisionWithMap();
                 CollisionWithRocket();
-                CollisionWithLaser();
                 CollisionWithEnemy();
+                CollisionWithAmmo();
 
+                camera.Update(player.Position, map.Widht, map.Height);
+                gameUI.Update(player.Health, Camera.centre);
 
-                //TODO add collision between player and enemies
-                //TODO add collision between player/enemy and rockets
-
-                camera.Update(mainPlayer.getPosition(), map.Widht, map.Height);
-                gameUI.Update(mainPlayer.playerHP, Camera.centre);
-                //  }
-                /*---------------------------------------------------------------
-                if the player dies we update the scoreboard
-                ---------------------------------------------------------------*/
-                if (mainPlayer.playerHP <= 0)
+                if (player.Health <= 0)
                 {
-                    endGameScreen.UpdateScoreboard(mainPlayer.playerScore);
+                    endGameScreen.UpdateScoreboard(player.Score);
                     Thread.Sleep(100);
                     GameMenuManager.endGameMenuOn = true;
                     GameMenuManager.gameOn = false;
                     GameMenuManager.TurnOtherMenusOff();
                 }
             }
-            
+
             base.Update(gameTime);
         }
 
+        private void CollisionWithAmmo()
+        {
+            foreach (var npc in npcs)
+            {
+                foreach (var ammonition in npc.ammo)
+                {
+                    if (ammonition.CollisionBox.Intersects(player.CollisionBox))
+                    {
+                        ammonition.IsVisible = false;
+                        player.Health -= 20;
+                    }
+                }
+            }
+        }
         private void CollisionWithEnemy()
         {
-            // Player collision with enemy
-            foreach (var enemy in enemies)
-            {
-                mainPlayer.CollisionWithEntity(enemy);
-            }
             //enemy collision with enemy
-            for (int i = 0; i < enemies.Count - 1; i++)
+            for (int i = 0; i < npcs.Count - 1; i++)
             {
-                for (int j = i + 1; j < enemies.Count - 1; j++)
+                for (int j = i + 1; j < npcs.Count - 1; j++)
                 {
-                    enemies[i].CollisionWithEntity(enemies[j]);
+                    npcs[i].CollisionWithEntity(npcs[j]);
                 }
             }
 
             // Player collision with collectables
             foreach (var collectable in collectableItems)
             {
-                mainPlayer.CollisionWithCollectable(collectable);
-                collectable.CollisionWithPlayer(mainPlayer);
+                player.CollisionWithCollectable(collectable); ///TODO: Add CollisionWithCollectable
+                collectable.CollisionWithPlayer(player);
             }
 
         }
@@ -224,77 +228,48 @@ namespace DaGeim
         private void CollisionWithRocket()
         {
             // player rockets collision with enemies
-            foreach (var rocket in this.mainPlayer.Rockets)
+            foreach (var rocket in player.Rockets)
             {
-                foreach (var enemy in enemies)
+                foreach (var npc in npcs)
                 {
-                    enemy.CollisionWithRocket(rocket, mainPlayer);
+                    npc.CollisionWithAmmunition(rocket);
                 }
-                boss.CollisionWithRocket(rocket);
-                mainPlayer.CollisionWithRocket(rocket);
             }
-        }
-
-        private void CollisionWithLaser()
-        {
-            // player rockets collision with enemies
-            foreach (var laser in this.boss.Lasers)
-                mainPlayer.CollisionWithLaser(laser);
         }
 
         private void MakeCollisionWithMap()
         {
             // player collison with map
-            int startTileIndex = this.CalculateStartTileIndex(new Vector2(this.mainPlayer.collisionBox.X, this.mainPlayer.collisionBox.Y));
+            int startTileIndex = this.CalculateStartTileIndex(new Vector2(this.player.CollisionBox.X, this.player.CollisionBox.Y));
             int endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 40);
 
             for (int i = startTileIndex; i <= endTileIndex; i++)
             {
-                this.mainPlayer.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, this.map.Widht, this.map.Height);
+                this.player.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, this.map.Widht, this.map.Height);
             }
 
-            startTileIndex = this.CalculateStartTileIndex(boss.Position);
-            endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 40);
-
-            for (int i = startTileIndex; i <= endTileIndex; i++)
+            foreach (var npc in npcs)
             {
-                this.boss.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, this.map.Widht, this.map.Height);
-            }
-
-            foreach (var enemy in enemies)
-            {
-                startTileIndex = this.CalculateStartTileIndex(enemy.Position);
+                startTileIndex = this.CalculateStartTileIndex(npc.Position);
                 endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 40);
 
-                for (int i = startTileIndex; i <= endTileIndex; i++)
+                for ( int i = startTileIndex; i <= endTileIndex; i++)
                 {
-                    enemy.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, map.Widht, this.map.Height);
+                    npc.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, map.Widht, this.map.Height);
                 }
             }
 
             // player's rockets collision with map
-            foreach (var rocket in this.mainPlayer.Rockets)
+            foreach (var rocket in this.player.Rockets)
             {
-                startTileIndex = this.CalculateStartTileIndex(rocket.shootPosition);
+                startTileIndex = this.CalculateStartTileIndex(rocket.Position);
                 endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 40);
 
                 for (int i = startTileIndex; i <= endTileIndex; i++)
                 {
-                    rocket.Collision(this.map.CollisionTiles[i].Rectangle);
+                    rocket.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, map.Widht, this.map.Height);
                 }
             }
-
-            foreach (var laser in boss.Lasers)
-            {
-                startTileIndex = this.CalculateStartTileIndex(laser.shootPosition);
-                endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 40);
-
-                for (int i = startTileIndex; i <= endTileIndex; i++)
-                {
-                    laser.Collision(this.map.CollisionTiles[i].Rectangle);
-                }
-            }
-
         }
 
         private int CalculateStartTileIndex(Vector2 entityPosition)
@@ -308,35 +283,38 @@ namespace DaGeim
 
         private void InitializeEnemies()
         {
-            Skeleton enemy1 = new Skeleton(new Vector2(910, 350), 150);
+            Skeleton enemy1 = new Skeleton(new Vector2(910, 450), 350);
+            bossL1 = new Boss_L1(new Vector2(5250, 450), 100);
+
             Skeleton enemy2 = new Skeleton(new Vector2(1100, 500), 50);
-            Skeleton enemy4 = new Skeleton(new Vector2(740, 100), 100);
+            Skeleton enemy4 = new Skeleton(new Vector2(710, 200), 70);
             Skeleton enemy5 = new Skeleton(new Vector2(1800, 100), 200);
-            Skeleton enemy6 = new Skeleton(new Vector2(2200, 155), 50);
+          //  Skeleton enemy6 = new Skeleton(new Vector2(2200, 155), 50);
             Skeleton enemy7 = new Skeleton(new Vector2(1950, 155), 40);
             Skeleton enemy8 = new Skeleton(new Vector2(2400, 200), 75);
             Skeleton enemy9 = new Skeleton(new Vector2(2600, 155), 150);
-            Skeleton enemy10 = new Skeleton(new Vector2(2800, 155), 100);
-            Skeleton enemy11 = new Skeleton(new Vector2(3000, 320), 100);
+           // Skeleton enemy10 = new Skeleton(new Vector2(2800, 155), 100);
+            //Skeleton enemy11 = new Skeleton(new Vector2(3000, 320), 100);
             Skeleton enemy12 = new Skeleton(new Vector2(3800, 340), 150);
             Skeleton enemy13 = new Skeleton(new Vector2(4100, 190), 25);
             Skeleton enemy14 = new Skeleton(new Vector2(4300, 190), 75);
 
-            enemies.Add(enemy1);
-            enemies.Add(enemy2);
-            enemies.Add(enemy4);
-            enemies.Add(enemy5);
-            enemies.Add(enemy6);
-            enemies.Add(enemy7);
-            enemies.Add(enemy8);
-            enemies.Add(enemy9);
-            enemies.Add(enemy10);
-            enemies.Add(enemy11);
-            enemies.Add(enemy12);
-            enemies.Add(enemy13);
-            enemies.Add(enemy14);
+            npcs.Add(enemy1);
+            npcs.Add(enemy2);
+            npcs.Add(enemy4);
+            npcs.Add(enemy5);
+           // npcs.Add(enemy6);
+            npcs.Add(enemy7);
+            npcs.Add(enemy8);
+            npcs.Add(enemy9);
+           // npcs.Add(enemy10);
+           // npcs.Add(enemy11);
+            npcs.Add(enemy12);
+            npcs.Add(enemy13);
+            npcs.Add(enemy14);
+            npcs.Add(bossL1);
         }
-        
+
         public void InitializeCollectables()
         {
             HealthRestore healthRestore1 = new HealthRestore(new Vector2(700, 600));
@@ -385,23 +363,18 @@ namespace DaGeim
                 spriteBatch.Begin(SpriteSortMode.Deferred,
                                  BlendState.AlphaBlend, null, null, null, null, camera.Transform);
 
-                
-
                 map.Draw(spriteBatch);
-                mainPlayer.Draw(spriteBatch);
-                boss.Draw(spriteBatch);
+                player.Draw(spriteBatch);
 
-                gameUI.Draw(spriteBatch);
+                gameUI.Draw(spriteBatch, player);
+                foreach (var rocket in player.Rockets)
+                    rocket.Draw(spriteBatch);
 
-                foreach (var enemy in enemies)
-                {
-                    enemy.Draw(spriteBatch);
-                }
-                
+                foreach (var enemy in npcs)
+                      enemy.Draw(spriteBatch);
+
                 foreach (var collectable in collectableItems)
-                {
                     collectable.Draw(spriteBatch);
-                }
 
                 spriteBatch.End();
             }
