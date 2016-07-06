@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DaGeim.src.Entities.New_Code;
 
 namespace DaGeim
 {
@@ -257,15 +258,15 @@ namespace DaGeim
             AddAnimation("Push", 12, 4, 47);
         }
 
-        public void CollisionWithRocket(Rockets rocket)
+        public void CollisionWithRocket(Rocket rocket)
         {
-            if (CollisionBox.Intersects(rocket.getCollisionBox()))
+            if (CollisionBox.Intersects(rocket.CollisionBox))
             {
                 if (bossHealth <= 0)
                     playDead = true;
                 else
                     bossHealth -= 20;
-                rocket.isVisible = false;
+                rocket.IsVisible = false;
             }
         }
     }

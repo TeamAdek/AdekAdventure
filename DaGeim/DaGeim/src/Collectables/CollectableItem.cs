@@ -1,5 +1,4 @@
 ﻿using DaGeim.Interfaces;
-using Game.src.Entities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -51,7 +50,7 @@ namespace DaGeim.src.Collectable
 
         public abstract void Load(ContentManager content);
 
-        public void CollisionWithPlayer(IEntity entity)
+        public void CollisionWithPlayer(Entity entity)
         {
             if (this.CollisionBox.Intersects(entity.CollisionBox))
             {
