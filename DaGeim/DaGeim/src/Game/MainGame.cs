@@ -1,17 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
+using DaGeim.Interfaces;
+using DaGeim.MenuLayouts;
+using DaGeim.src.Collectable;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
-using DaGeim.Interfaces;
-using DaGeim.MenuLayouts;
-using DaGeim.src.Collectable;
 
-namespace DaGeim
+namespace DaGeim.Game
 {
-    using System;
-    using Game.src.Entities;
     using Game = Microsoft.Xna.Framework.Game;
 
     public class MainGame : Game
@@ -77,7 +76,6 @@ namespace DaGeim
             creditsScreen.Load(Content);
             endGameScreen.Load(Content);
 
-
             camera = new Camera(GraphicsDevice.Viewport);
 
             Tiles.Content = Content;
@@ -134,7 +132,7 @@ namespace DaGeim
                 //update the pause game screen
                 pauseGameScreen.Update(gameTime, this);
             }
-            else  //TODO link all the game activity together
+            else  
             {
                 IsMouseVisible = false;
                 //pressing esc we call the pause game screen
@@ -223,7 +221,7 @@ namespace DaGeim
             // Player collision with collectables
             foreach (var collectable in collectableItems)
             {
-                player.CollisionWithCollectable(collectable); ///TODO: Add CollisionWithCollectable
+                player.CollisionWithCollectable(collectable); //TODO: Add CollisionWithCollectable
                 collectable.CollisionWithPlayer(player);
             }
 
@@ -363,7 +361,7 @@ namespace DaGeim
             {
                 creditsScreen.Draw(spriteBatch);
             }
-            else //NOTE THAT WE NEED A SEPARATE spriteBatch.Begin()/End() for each menu- the menus dont work with the line below
+            else 
             {
                 spriteBatch.Begin(SpriteSortMode.Deferred,
                                  BlendState.AlphaBlend, null, null, null, null, camera.Transform);

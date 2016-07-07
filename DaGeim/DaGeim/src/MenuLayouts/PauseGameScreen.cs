@@ -1,5 +1,5 @@
 ﻿using System.Threading;
-using DaGeim.src.MenuLayouts;
+using DaGeim.Game;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
