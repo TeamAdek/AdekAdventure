@@ -1,10 +1,13 @@
-﻿using DaGeim.Interfaces;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace DaGeim.src.Collectable
+﻿namespace DaGeim.src.Collectable
 {
+    using DaGeim.Interfaces;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Graphics;
+
+    /// <summary>
+    /// CollectableItem is a base, abstract class for any collectable items.
+    /// </summary>
     public abstract class CollectableItem : ICollectable
     {
         protected string itemType;
@@ -14,7 +17,7 @@ namespace DaGeim.src.Collectable
         protected Vector2 position;
         protected Vector2 velocity;
         protected Rectangle rectangle;
-        public bool dead = false;
+        private bool dead = false;
 
         public string ItemType
         {
@@ -28,7 +31,7 @@ namespace DaGeim.src.Collectable
 
         public int JumpBoost
         {
-            get { return jumpBoost; }
+            get { return this.jumpBoost; }
         }
 
         public Vector2 Position
@@ -50,6 +53,12 @@ namespace DaGeim.src.Collectable
 
         public abstract void Load(ContentManager content);
 
+        /// <summary>
+        /// CollisionWithPlayer method check for collision with player but can work with ani Entity objects.
+        /// If collision is detected the CollectableItem hes restoreHealthPoints down to zero and
+        /// go out of the screen but already exist.
+        /// </summary>
+        /// <param name="entity">Method can work with any Entity objects.</param>
         public void CollisionWithPlayer(Entity entity)
         {
             if (this.CollisionBox.Intersects(entity.CollisionBox))
@@ -63,20 +72,20 @@ namespace DaGeim.src.Collectable
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (velocity.Y < 10)
-                velocity.Y += 0.4f;
+            if (this.velocity.Y < 10)
+                this.velocity.Y += 0.4f;
         }
 
 
         public Rectangle setRectangle(int x, int y, int w, int h)
         {
-            return new Rectangle((int)Position.X + x, (int)Position.Y + y, w, h);
+            return new Rectangle((int)this.Position.X + x, (int)this.Position.Y + y, w, h);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Texture2D t = spriteTexture;
-            Vector2 v = Position;
+            Texture2D t = this.spriteTexture;
+            Vector2 v = this.Position;
             spriteBatch.Draw(t, v, Color.White);
         }
     }

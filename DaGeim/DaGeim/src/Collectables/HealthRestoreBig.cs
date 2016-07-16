@@ -1,15 +1,20 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace DaGeim.src.Collectable
+﻿namespace DaGeim.src.Collectable
 {
-    public class HealthRestoreBig : CollectableItem
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Graphics;
+
+    /// <summary>
+    /// HealthrestoreBig is a collectable item.
+    /// HealthrestoreBig inherits Healthrestore. 
+    /// It has a position, itemType and more restoreHealthPoints.
+    /// It has function Load - loading texture
+    /// </summary>
+    public class HealthRestoreBig : HealthRestore
     {
-        public HealthRestoreBig(Vector2 position, string itemType = "healthRestoreBig") : base(position)
+        public HealthRestoreBig(Vector2 position, string itemType = "healthRestoreBig")
+            : base(position, itemType)
         {
-            this.position = position;
-            this.itemType = itemType;
             this.restoreHealthPoints = 100;
         }
 
@@ -17,5 +22,7 @@ namespace DaGeim.src.Collectable
         {
             spriteTexture = content.Load<Texture2D>("heart");
         }
+
+
     }
 }
