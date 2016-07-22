@@ -38,6 +38,7 @@
     <ApplicationIcon>Content\Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="src\Collectables\Chest.cs" />
     <Compile Include="src\Entities\Ammunition\Icycle.cs" />
     <Compile Include="src\Entities\Ammunition\Laser.cs" />
     <Compile Include="src\Entities\Bosses\Boss_L1.cs" />

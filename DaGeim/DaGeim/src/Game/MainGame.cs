@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using DaGeim.Collectables;
 using DaGeim.Interfaces;
 using DaGeim.MenuLayouts;
 using DaGeim.src.Collectable;
@@ -326,12 +327,14 @@ namespace DaGeim.Game
             JumpBooster jumpBooster1 = new JumpBooster(new Vector2(1000, 250));
             HealthRestore healthRestore5 = new HealthRestore(new Vector2(5000, 400));
             HealthRestoreBig healthRestore6 = new HealthRestoreBig(new Vector2(4400, 100));
+            Chest chest1 = new Chest(new Vector2(5500, 500));
             collectableItems.Add(healthRestore1);
             collectableItems.Add(healthRestore2);
             collectableItems.Add(jumpBooster2);
             collectableItems.Add(jumpBooster1);
             collectableItems.Add(healthRestore5);
             collectableItems.Add(healthRestore6);
+            collectableItems.Add(chest1);
         }
 
         private void MediaPlayer_MediaStateChanged(object sender, System.EventArgs e)

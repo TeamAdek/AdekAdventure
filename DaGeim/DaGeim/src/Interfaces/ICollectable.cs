@@ -14,6 +14,8 @@ namespace DaGeim.Interfaces
 
         int JumpBoost { get; }
 
+        int BonusScorePoints { get; }
+
         Vector2 Position { get; set; }
         Rectangle CollisionBox { get; }
 

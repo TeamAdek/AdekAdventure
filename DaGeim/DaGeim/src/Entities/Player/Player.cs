@@ -28,15 +28,15 @@ internal sealed class Player : Entity
     {
         Health = 300;
         FramesPerSecond = 10;
-        
+
         entityVelocity.X = 250.0f;
         entityVelocity.Y = 0.0f;
-        
+
         gravity = 15.0f;
         jumpHeight = 400.0f;
         score = 0;
         rockets = new List<Rocket>();
-        
+
         LoadAnimations();
         PlayAnimation("IdleRight");
         entityOrientation = Orientations.Right;
@@ -53,7 +53,7 @@ internal sealed class Player : Entity
         }
     }
 
-    public List<Rocket> Rockets{get { return this.rockets; }  }
+    public List<Rocket> Rockets { get { return this.rockets; } }
     public override void Update(GameTime gameTime)
     {
         if (jumped)
@@ -91,6 +91,9 @@ internal sealed class Player : Entity
 
         UpdateCollisionBounds();
         //  TODO: Implement this whole JumpBoostThingy --> JumpBoostCheckTimer();
+
+
+
         base.Update(gameTime);
     }
 
@@ -127,7 +130,7 @@ internal sealed class Player : Entity
                 jumped = true;
                 entityDirection += new Vector2(0f, 1f);
                 entityVelocity.Y = jumpHeight;
-               // sounds[0].Play();
+                // sounds[0].Play();
 
                 if (entityOrientation == Orientations.Left)
                     PlayAnimation("JumpLeft");
@@ -155,7 +158,7 @@ internal sealed class Player : Entity
             }
 
         }
-       // UpdateRocket();
+        // UpdateRocket();
     }
 
     private void HandleArrowKey(string direction, KeyboardState keyboard)
@@ -221,11 +224,11 @@ internal sealed class Player : Entity
         if (rocketCDTimer == 0.0f)
         {
             Rocket rocket;
-            if(entityOrientation == Orientations.Left)
+            if (entityOrientation == Orientations.Left)
                 rocket = new Rocket(new Vector2(entityPosition.X + -15, entityPosition.Y + 35), "left", rocketLeft, rocketRight);
             else
                 rocket = new Rocket(new Vector2(entityPosition.X + 80, entityPosition.Y + 35), "right", rocketLeft, rocketRight);
-            
+
             rockets.Add(rocket);
             ///TODO: Play sound here (on this line)
             rocketCDTimer = 20.0f;
@@ -294,6 +297,13 @@ internal sealed class Player : Entity
                     Health = 320;
                 }
             }
+
+            if (collectable.BonusScorePoints > 0)
+            {
+                score += collectable.BonusScorePoints;
+            }
+
+
         }
     }
 

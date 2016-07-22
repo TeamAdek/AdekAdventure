@@ -13,6 +13,7 @@
         protected string itemType;
         protected int restoreHealthPoints;
         protected int jumpBoost;
+        protected int bonusScorePoints;
         protected Texture2D spriteTexture;
         protected Vector2 position;
         protected Vector2 velocity;
@@ -32,6 +33,10 @@
         public int JumpBoost
         {
             get { return this.jumpBoost; }
+        }
+        public int BonusScorePoints
+        {
+            get { return this.bonusScorePoints; }
         }
 
         public Vector2 Position
@@ -65,6 +70,7 @@
             {
                 this.Position = new Vector2(-1000, -1000);
                 this.restoreHealthPoints = 0;
+                this.bonusScorePoints = 0;
             }
         }
 
