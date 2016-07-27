@@ -555,3 +555,4 @@ C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\D
 C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheetBoss.xnb
 C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheetEnemy2.xnb
 C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Chest.xnb
+C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\chestBig.xnb

@@ -327,7 +327,7 @@ namespace DaGeim.Game
             JumpBooster jumpBooster1 = new JumpBooster(new Vector2(1000, 250));
             HealthRestore healthRestore5 = new HealthRestore(new Vector2(5000, 400));
             HealthRestoreBig healthRestore6 = new HealthRestoreBig(new Vector2(4400, 100));
-            Chest chest1 = new Chest(new Vector2(5500, 500));
+            Chest chest1 = new Chest(new Vector2(5450, 518));
             collectableItems.Add(healthRestore1);
             collectableItems.Add(healthRestore2);
             collectableItems.Add(jumpBooster2);

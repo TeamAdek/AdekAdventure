@@ -9,12 +9,12 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-internal sealed class Player : Entity
+internal sealed class Player : Entity, ICollecting, IJumpboostable
 {
     private float slideCDTimer;
     private float rocketCDTimer;
     private readonly float gravity;
-    private readonly float jumpHeight;
+    private float jumpHeight;
     private Vector2 stepAmount;
     private int score;
     private bool attacking, sliding, slideCD, jumped, grounded;
@@ -22,6 +22,8 @@ internal sealed class Player : Entity
     private Texture2D rocketLeft;
     private Texture2D rocketRight;
     private List<Rocket> rockets;
+
+    private int jumpBoostJumpBoostTimer = 0;
 
     public Player(Vector2 position)
         : base(position)
@@ -40,6 +42,12 @@ internal sealed class Player : Entity
         LoadAnimations();
         PlayAnimation("IdleRight");
         entityOrientation = Orientations.Right;
+    }
+
+    public int JumpBoostTimer
+    {
+        get { return jumpBoostJumpBoostTimer; }
+        set { jumpBoostJumpBoostTimer = value; }
     }
 
     public int Score
@@ -91,7 +99,7 @@ internal sealed class Player : Entity
 
         UpdateCollisionBounds();
         //  TODO: Implement this whole JumpBoostThingy --> JumpBoostCheckTimer();
-
+        JumpBoostCheckTimer();
 
 
         base.Update(gameTime);
@@ -303,6 +311,11 @@ internal sealed class Player : Entity
                 score += collectable.BonusScorePoints;
             }
 
+            if (collectable.JumpBoost > 0)
+            {
+                JumpBoostTimer = 2000;
+            }
+
 
         }
     }
@@ -380,5 +393,22 @@ internal sealed class Player : Entity
         AddAnimation("IdleMeleeLeft", 8, 13);
         AddAnimation("SlideRight", 10, 14);
         AddAnimation("SlideLeft", 10, 15);
+    }
+
+
+    /// <summary>
+    /// If the JumpBoosterTimer has a time this function set player to jump high.
+    /// </summary>
+    public void JumpBoostCheckTimer()
+    {
+        if (JumpBoostTimer > 1)
+        {
+            JumpBoostTimer--;
+            this.jumpHeight = 450;
+        }
+        else
+        {
+            this.jumpHeight = 400;
+        }
     }
 }

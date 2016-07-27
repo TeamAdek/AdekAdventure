@@ -15,7 +15,7 @@
 
         public override void Load(ContentManager content)
         {
-            spriteTexture = content.Load<Texture2D>("Chest");
+            spriteTexture = content.Load<Texture2D>("chestBig");
         }
     }
 }

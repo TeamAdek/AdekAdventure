@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/Idle.png</SourceFile>
-  <SourceTime>2016-07-22T11:38:26.2608962+03:00</SourceTime>
+  <SourceTime>2016-07-27T08:42:02.4221153+03:00</SourceTime>
   <DestFile>C:/Users/Simeon/Desktop/GitHubAdek/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/Idle.xnb</DestFile>
-  <DestTime>2016-07-22T11:41:07.5190999+03:00</DestTime>
+  <DestTime>2016-07-27T08:43:19.8490792+03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T09:36:08+03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
