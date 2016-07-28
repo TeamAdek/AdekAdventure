@@ -14,6 +14,7 @@
         protected int restoreHealthPoints;
         protected int jumpBoost;
         protected int bonusScorePoints;
+        protected int bonusRockerShootingBooster;
         protected Texture2D spriteTexture;
         protected Vector2 position;
         protected Vector2 velocity;
@@ -37,6 +38,11 @@
         public int BonusScorePoints
         {
             get { return this.bonusScorePoints; }
+        }
+
+        public int BonusRockerShootingBooster
+        {
+            get { return this.bonusRockerShootingBooster; }
         }
 
         public Vector2 Position

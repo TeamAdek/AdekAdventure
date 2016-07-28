@@ -16,18 +16,20 @@ namespace DaGeim.Interfaces
 
         int BonusScorePoints { get; }
 
+        int BonusRockerShootingBooster { get; }
+
         Vector2 Position { get; set; }
         Rectangle CollisionBox { get; }
 
         void Load(ContentManager Content);
 
         void CollisionWithPlayer(Entity entity); // Set from IEntity to Entity
-        
+
         void Update(GameTime gameTime);
 
         Rectangle setRectangle(int x, int y, int w, int h);
-        
+
         void Draw(SpriteBatch spriteBatch);
-        
+
     }
 }

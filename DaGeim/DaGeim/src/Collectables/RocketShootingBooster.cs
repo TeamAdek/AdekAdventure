@@ -5,18 +5,17 @@
     using Microsoft.Xna.Framework.Content;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class Chest : CollectableItem
+    public class RocketShootingBooster : CollectableItem
     {
-        public Chest(Vector2 position) : base(position)
+        public RocketShootingBooster(Vector2 position) : base(position)
         {
             this.position = position;
-            this.bonusScorePoints = 1000;
+            this.bonusRockerShootingBooster = 20;
         }
 
         public override void Load(ContentManager content)
         {
-            spriteTexture = content.Load<Texture2D>("chestBig");
-            //spriteTexture = content.Load<Texture2D>("gun");
+            spriteTexture = content.Load<Texture2D>("gun");
         }
     }
 }

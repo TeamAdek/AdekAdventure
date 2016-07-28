@@ -24,6 +24,7 @@ internal sealed class Player : Entity, ICollecting, IJumpboostable
     private List<Rocket> rockets;
 
     private int jumpBoostJumpBoostTimer = 0;
+    private float rocketFrequencyShootingTimer = 50.0f;
 
     public Player(Vector2 position)
         : base(position)
@@ -94,7 +95,7 @@ internal sealed class Player : Entity, ICollecting, IJumpboostable
         entityVelocity.Y += gravity * (-1.0f);
         entityDirection *= new Vector2(entityVelocity.X, -entityVelocity.Y);
         entityPosition += (entityDirection * deltaTime);
-
+        
         stepAmount = entityDirection * deltaTime;
 
         UpdateCollisionBounds();
@@ -239,7 +240,7 @@ internal sealed class Player : Entity, ICollecting, IJumpboostable
 
             rockets.Add(rocket);
             ///TODO: Play sound here (on this line)
-            rocketCDTimer = 20.0f;
+            rocketCDTimer = rocketFrequencyShootingTimer;
         }
     }
 
@@ -314,6 +315,11 @@ internal sealed class Player : Entity, ICollecting, IJumpboostable
             if (collectable.JumpBoost > 0)
             {
                 JumpBoostTimer = 2000;
+            }
+
+            if (collectable.BonusRockerShootingBooster > 0)
+            {
+                rocketFrequencyShootingTimer = collectable.BonusRockerShootingBooster;
             }
 
 
