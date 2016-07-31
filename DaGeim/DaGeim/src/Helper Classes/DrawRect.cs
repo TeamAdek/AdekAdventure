@@ -1,19 +1,21 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-
-class DrawRect
+﻿namespace DaGeim.Helper_Classes
 {
-    private static Texture2D rectText;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Graphics;
 
-    public static void LoadContent(ContentManager content)
+    public class DrawRect
     {
-        rectText = content.Load<Texture2D>("red");
+        private static Texture2D rectText;
+
+        public static void LoadContent(ContentManager content)
+        {
+            rectText = content.Load<Texture2D>("red");
         
-    }
-    public static void Draw(Rectangle area, SpriteBatch sb)
-    {
-        sb.Draw(rectText, area, Color.White);
+        }
+        public static void Draw(Rectangle area, SpriteBatch sb)
+        {
+            sb.Draw(rectText, area, Color.White);
+        }
     }
 }

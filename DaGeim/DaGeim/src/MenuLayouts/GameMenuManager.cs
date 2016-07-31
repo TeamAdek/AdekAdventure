@@ -1,6 +1,9 @@
-﻿//class that we use to turn off the unused the menus in the game
-namespace DaGeim
+﻿//class that we use to turn off the unused menus in the game
+namespace DaGeim.MenuLayouts
 {
+    using DaGeim.Entities.Player;
+    using DaGeim.Level;
+    using Microsoft.Xna.Framework;
 
     public static class GameMenuManager
     {
@@ -10,10 +13,10 @@ namespace DaGeim
         public static bool gameOn;
         public static bool creditsMenuOn;
 
-        /*----------------------------------------------------------------------------------------------------
+        /*-------------------------------------------------------------------------------------------------
         turn off the menus we dont need on screen right now;
         it is called in the update method of each menu
-        ----------------------------------------------------------------------------------------------------*/
+        ------------------------------------------------------------------------------------------------*/
         public static void TurnOtherMenusOff()
         {
             if (mainMenuOn)
@@ -49,5 +52,11 @@ namespace DaGeim
             }
         }
 
+        public static void InitializeNewGame(Player player, Map map, HUD gameUI)
+        {
+            map = new Map();
+            gameUI = new HUD();
+            player = new Player(new Vector2(150, 465));
+        }
     }
 }

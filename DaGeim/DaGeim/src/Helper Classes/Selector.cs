@@ -1,6 +1,5 @@
 ﻿//helper class used to select the buttons
-
-namespace DaGeim
+namespace DaGeim.Helper_Classes
 {
     public class Selector
     {

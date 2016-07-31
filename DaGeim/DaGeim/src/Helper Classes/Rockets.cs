@@ -1,46 +1,49 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-public class Rockets
+﻿namespace DaGeim.Helper_Classes
 {
-    public Texture2D shootTexture;
-    public Vector2 shootPosition;
-    public bool isVisible;
-    public float speed;
-    public string direction;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
 
-    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
-    // Rocket Constructor
-    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
-
-    public Rockets(Texture2D newBullet)
+    public class Rockets
     {
-        speed = 10;
-        shootTexture = newBullet;
-        isVisible = false;
-        direction = "right";
-    }
+        public Texture2D shootTexture;
+        public Vector2 shootPosition;
+        public bool isVisible;
+        public float speed;
+        public string direction;
 
-    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
-    // Draw rockets
-    //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+        // Rocket Constructor
+        //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    public void Draw(SpriteBatch spriteBatch)
-    {
-        spriteBatch.Draw(shootTexture, shootPosition, Color.White);
-    }
-
-    public void Collision(Rectangle otherObject)
-    {
-        Rectangle thisRectangle = new Rectangle((int)this.shootPosition.X, (int)this.shootPosition.Y, this.shootTexture.Width, this.shootTexture.Height);
-        if (thisRectangle.Intersects(otherObject))
+        public Rockets(Texture2D newBullet)
         {
+            this.speed = 10;
+            this.shootTexture = newBullet;
             this.isVisible = false;
+            this.direction = "right";
         }
-    }
 
-    public Rectangle getCollisionBox()
-    {
-        return new Rectangle((int)this.shootPosition.X, (int)this.shootPosition.Y, this.shootTexture.Width, this.shootTexture.Height);
+        //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+        // Draw rockets
+        //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(this.shootTexture, this.shootPosition, Color.White);
+        }
+
+        public void Collision(Rectangle otherObject)
+        {
+            Rectangle thisRectangle = new Rectangle((int)this.shootPosition.X, (int)this.shootPosition.Y, this.shootTexture.Width, this.shootTexture.Height);
+            if (thisRectangle.Intersects(otherObject))
+            {
+                this.isVisible = false;
+            }
+        }
+
+        public Rectangle getCollisionBox()
+        {
+            return new Rectangle((int)this.shootPosition.X, (int)this.shootPosition.Y, this.shootTexture.Width, this.shootTexture.Height);
+        }
     }
 }

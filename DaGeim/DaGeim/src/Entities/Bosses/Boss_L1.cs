@@ -1,111 +1,116 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-
-internal sealed class Boss_L1 : NPC
+﻿namespace DaGeim.Entities.Bosses
 {
+    using Ammunition;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Graphics;
+    using Player = Player.Player;
 
-    public bool isPushing = false;
-
-    public Boss_L1(Vector2 position, int range): base(position, range)
+    public sealed class Boss_L1 : NPC
     {
-        Health = 180;
-        FramesPerSecond = 15;
-        ammoType = typeof(Laser);
-        LoadAnimations();
-        PlayAnimation("WalkRight");
-        entityOrientation = Orientations.Right;
-    }
 
-    public override void LoadContent(ContentManager content)
-    {
-        entityTexture = content.Load<Texture2D>("SpriteSheetBoss");
-        ammoLeft = content.Load<Texture2D>("blastEdit");
-    }
+        public bool isPushing = false;
 
-    public override void Update(GameTime gameTime)
-    {
-        UpdateAmmo(gameTime);
-
-        if (!isDying)
+        public Boss_L1(Vector2 position, int range): base(position, range)
         {
-            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            //entityPosition += entityVelocity;
-            UpdateCollisionBounds();
-
-            if (entityVelocity.Y < 10) /// used as gravity
-                entityVelocity.Y += 0.4f;
-
-            if (!IsAttacking)
-                Patrol();
+            this.Health = 180;
+            this.FramesPerSecond = 15;
+            this.ammoType = typeof(Laser);
+            this.LoadAnimations();
+            this.PlayAnimation("WalkRight");
+            this.entityOrientation = Orientations.Right;
         }
 
-        base.Update(gameTime);
-    }
-
-    public override void Shoot(Player player)
-    {
-        int distanceToPlayer = (int)entityPosition.X - (int)player.Position.X;
-
-        if (distanceToPlayer < 100)
+        public override void LoadContent(ContentManager content)
         {
-            PlayAnimation("Push");
-            if (!isPushing)
-                entityPosition.Y -= 47;
-            notPatrolling = true;
-            isPushing = true;
+            this.entityTexture = content.Load<Texture2D>("SpriteSheetBoss");
+            this.ammoLeft = content.Load<Texture2D>("blastEdit");
         }
 
-        base.Shoot(player);
-    }
-
-    public override void UpdateCollisionBounds()
-    {
-        Rectangle output = new Rectangle();
-        switch (currAnimationSet)
+        public override void Update(GameTime gameTime)
         {
-            case "WalkLeft": output = SetCollisionRectangle(30, 0, 45, 123); break;
-            case "WalkRight": output = SetCollisionRectangle(30, 0, 45, 123); break;
-            case "ShootLeft": output = SetCollisionRectangle(30, 0, 45, 123); break;
-            case "Push": output = SetCollisionRectangle(30, 0, 45, 123); break;
-            default: output = SetCollisionRectangle(30, 0, 45, 123); break;
+            this.UpdateAmmo(gameTime);
+
+            if (!this.isDying)
+            {
+                float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                //entityPosition += entityVelocity;
+                this.UpdateCollisionBounds();
+
+                if (this.entityVelocity.Y < 10) /// used as gravity
+                    this.entityVelocity.Y += 0.4f;
+
+                if (!this.IsAttacking)
+                    this.Patrol();
+            }
+
+            base.Update(gameTime);
         }
-        CollisionBox = output;
-    }
 
-    protected override void LoadAnimations()
-    {
-        textureWidth = 128;
-        textureHeight = 128;
-        AddAnimation("WalkLeft", 12, 0);
-        AddAnimation("WalkRight", 12, 1);
-        AddAnimation("ShootLeft", 12, 2);
-        AddAnimation("DieLeft", 12, 3);
-        AddAnimation("DieRight", 12, 3);
-        offSetYPx += 47;
-        AddAnimation("Push", 12, 4);
-    }
-
-    public override void Draw(SpriteBatch spriteBatch)
-    {
-        foreach (var laser in ammo)
-            laser.Draw(spriteBatch);
-
-        base.Draw(spriteBatch, entityPosition, entityTexture);
-    }
-
-    protected override void AnimationDone(string animation)
-    {
-        if (animation.Contains("Shoot"))
-            IsAttacking = false;
-        if (animation.Contains("Push"))
+        public override void Shoot(Player player)
         {
-            entityPosition.Y += 47;
-            isPushing = false;
-            notPatrolling = false;
-        }
-        if (animation.Contains("Die"))
-            Dead = true;
-    }
+            int distanceToPlayer = (int)this.entityPosition.X - (int)player.Position.X;
 
+            if (distanceToPlayer < 100)
+            {
+                this.PlayAnimation("Push");
+                if (!this.isPushing)
+                    this.entityPosition.Y -= 47;
+                this.notPatrolling = true;
+                this.isPushing = true;
+            }
+
+            base.Shoot(player);
+        }
+
+        public override void UpdateCollisionBounds()
+        {
+            Rectangle output = new Rectangle();
+            switch (this.currAnimationSet)
+            {
+                case "WalkLeft": output = this.SetCollisionRectangle(30, 0, 45, 123); break;
+                case "WalkRight": output = this.SetCollisionRectangle(30, 0, 45, 123); break;
+                case "ShootLeft": output = this.SetCollisionRectangle(30, 0, 45, 123); break;
+                case "Push": output = this.SetCollisionRectangle(30, 0, 45, 123); break;
+                default: output = this.SetCollisionRectangle(30, 0, 45, 123); break;
+            }
+            this.CollisionBox = output;
+        }
+
+        protected override void LoadAnimations()
+        {
+            this.textureWidth = 128;
+            this.textureHeight = 128;
+            this.AddAnimation("WalkLeft", 12, 0);
+            this.AddAnimation("WalkRight", 12, 1);
+            this.AddAnimation("ShootLeft", 12, 2);
+            this.AddAnimation("DieLeft", 12, 3);
+            this.AddAnimation("DieRight", 12, 3);
+            this.offSetYPx += 47;
+            this.AddAnimation("Push", 12, 4);
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            foreach (var laser in this.ammo)
+                laser.Draw(spriteBatch);
+
+            base.Draw(spriteBatch, this.entityPosition, this.entityTexture);
+        }
+
+        protected override void AnimationDone(string animation)
+        {
+            if (animation.Contains("Shoot"))
+                this.IsAttacking = false;
+            if (animation.Contains("Push"))
+            {
+                this.entityPosition.Y += 47;
+                this.isPushing = false;
+                this.notPatrolling = false;
+            }
+            if (animation.Contains("Die"))
+                this.Dead = true;
+        }
+
+    }
 }

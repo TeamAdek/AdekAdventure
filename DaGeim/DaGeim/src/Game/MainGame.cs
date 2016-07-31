@@ -1,17 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using DaGeim.Collectables;
-using DaGeim.Interfaces;
-using DaGeim.MenuLayouts;
-using DaGeim.src.Collectable;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-
-namespace DaGeim.Game
+﻿namespace DaGeim.Game
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading;
+    using DaGeim.Collectables;
+    using DaGeim.Entities;
+    using DaGeim.Entities.Bosses;
+    using DaGeim.Entities.Enemies;
+    using DaGeim.Entities.Player;
+    using DaGeim.Helper_Classes;
+    using DaGeim.Interfaces;
+    using DaGeim.Level;
+    using DaGeim.MenuLayouts;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+    using Microsoft.Xna.Framework.Input;
+    using Microsoft.Xna.Framework.Media;
     using Game = Microsoft.Xna.Framework.Game;
 
     public class MainGame : Game
@@ -21,22 +25,19 @@ namespace DaGeim.Game
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        Song song;
+        private Song song;
         private StartGameScreen startGameScreen;
         private EndGameScreen endGameScreen;
         private PauseGameScreen pauseGameScreen;
         private CreditsScreen creditsScreen;
         private HUD gameUI;
-
-
-        Camera camera;
-        Map map;
-
+        private Camera camera;
+        private Map map;
         private Player player;
         private Boss_L1 bossL1;
-        private List<NPC> npcs = new List<NPC>();
-        private List<ICollectable> collectableItems = new List<ICollectable>();
-        private List<int> deadEnemies = new List<int>();
+        private List<NPC> npcs;
+        private List<ICollectable> collectableItems;
+        private List<int> deadEnemies;
 
         public MainGame()
         {
@@ -50,19 +51,19 @@ namespace DaGeim.Game
 
         protected override void Initialize()
         {
-            GameMenuManager.mainMenuOn = true;
+            
             startGameScreen = new StartGameScreen();
             endGameScreen = new EndGameScreen();
             pauseGameScreen = new PauseGameScreen();
             creditsScreen = new CreditsScreen();
-
             GameMenuManager.mainMenuOn = true;
             map = new Map();
             gameUI = new HUD();
-
-            
             player = new Player(new Vector2(150, 465));
-
+            // GameMenuManager.InitializeNewGame(this.player, this.map, this.gameUI);
+            npcs = new List<NPC>();
+            collectableItems = new List<ICollectable>();
+            deadEnemies = new List<int>();
             InitializeEnemies();
             InitializeCollectables();
             base.Initialize();
@@ -154,7 +155,7 @@ namespace DaGeim.Game
                 foreach (var npc in npcs)
                 {
                     npc.Update(gameTime);
-                    npc.Shoot(player);
+                    npc.Shoot(this.player);
                 }
 
 		int tempScore = 0;

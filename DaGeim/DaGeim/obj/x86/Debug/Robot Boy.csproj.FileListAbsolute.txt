@@ -557,3 +557,6 @@ C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\D
 C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Chest.xnb
 C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\chestBig.xnb
 C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\gun.xnb
+D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Chest.xnb
+D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\chestBig.xnb
+D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\gun.xnb

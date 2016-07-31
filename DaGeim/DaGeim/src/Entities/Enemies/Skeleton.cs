@@ -1,128 +1,133 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-
-internal sealed class Skeleton : NPC
+﻿namespace DaGeim.Entities.Enemies
 {
+    using Ammunition;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Graphics;
 
-    public Skeleton(Vector2 position, int range)
-        : base(position, range)
+    using Player = Player.Player;
+
+    public sealed class Skeleton : NPC
     {
-        Health = 100;
-        FramesPerSecond = 12;
-        ammoType = typeof(Icycle);
+
+        public Skeleton(Vector2 position, int range)
+            : base(position, range)
+        {
+            this.Health = 100;
+            this.FramesPerSecond = 12;
+            this.ammoType = typeof(Icycle);
        
 
-        LoadAnimations();
-        PlayAnimation("IdleLeft");
-        entityOrientation = Orientations.Left;
+            this.LoadAnimations();
+            this.PlayAnimation("IdleLeft");
+            this.entityOrientation = Orientations.Left;
 
-    }
+        }
 
-    public override void LoadContent(ContentManager content)
-    {
-        entityTexture = content.Load<Texture2D>("SpriteSheetEnemy2");
-        ammoLeft = content.Load<Texture2D>("icycleLeft");
-        ammoRight = content.Load<Texture2D>("icycleRight");
-    }
-
-    public override void Shoot(Player player)
-    {
-        if (PlayerIsInRange(player) && !isDying)
+        public override void LoadContent(ContentManager content)
         {
-            //PlayAnimation("ShootLeft");
-            if (shootCD > 0.0f)
-                shootCD--;
-            if (shootCD == 0.0f)
-            {
-                if (player.Position.X < entityPosition.X)
-                    entityOrientation = Orientations.Left;
-                else if (player.Position.X >= entityPosition.X)
-                    entityOrientation = Orientations.Right;
+            this.entityTexture = content.Load<Texture2D>("SpriteSheetEnemy2");
+            this.ammoLeft = content.Load<Texture2D>("icycleLeft");
+            this.ammoRight = content.Load<Texture2D>("icycleRight");
+        }
 
-                Icycle icycle;
-                if (entityOrientation == Orientations.Left)
+        public override void Shoot(Player player)
+        {
+            if (this.PlayerIsInRange(player) && !this.isDying)
+            {
+                //PlayAnimation("ShootLeft");
+                if (this.shootCD > 0.0f)
+                    this.shootCD--;
+                if (this.shootCD == 0.0f)
                 {
-                    icycle = new Icycle(new Vector2(entityPosition.X - 15, entityPosition.Y + 35), "left", ammoLeft,
-                        ammoRight);
-                    PlayAnimation("ShootLeft");
-                    IsAttacking = true;
+                    if (player.Position.X < this.entityPosition.X)
+                        this.entityOrientation = Orientations.Left;
+                    else if (player.Position.X >= this.entityPosition.X)
+                        this.entityOrientation = Orientations.Right;
+
+                    Icycle icycle;
+                    if (this.entityOrientation == Orientations.Left)
+                    {
+                        icycle = new Icycle(new Vector2(this.entityPosition.X - 15, this.entityPosition.Y + 35), "left", this.ammoLeft,
+                            this.ammoRight);
+                        this.PlayAnimation("ShootLeft");
+                        this.IsAttacking = true;
+                    }
+                    else
+                    {
+                        icycle = new Icycle(new Vector2(this.entityPosition.X + 80, this.entityPosition.Y + 35), "right", this.ammoLeft, this.ammoRight);
+                        this.PlayAnimation("ShootRight");
+                        this.IsAttacking = true;
+                    }
+                    this.ammo.Add(icycle);
+                    this.shootCD = 40.0f;
                 }
-                else
-                {
-                    icycle = new Icycle(new Vector2(entityPosition.X + 80, entityPosition.Y + 35), "right", ammoLeft, ammoRight);
-                    PlayAnimation("ShootRight");
-                    IsAttacking = true;
-                }
-                ammo.Add(icycle);
-                shootCD = 40.0f;
             }
         }
-    }
 
-public override void Update(GameTime gameTime)
-    {
-        UpdateAmmo(gameTime);
-        if (!isDying)
+        public override void Update(GameTime gameTime)
         {
+            this.UpdateAmmo(gameTime);
+            if (!this.isDying)
+            {
 
 
-            float deltaTime = (float) gameTime.ElapsedGameTime.TotalSeconds;
-            entityPosition += entityVelocity;
-            UpdateCollisionBounds();
+                float deltaTime = (float) gameTime.ElapsedGameTime.TotalSeconds;
+                this.entityPosition += this.entityVelocity;
+                this.UpdateCollisionBounds();
 
-            if (entityVelocity.Y < 10) /// used as gravity
-                entityVelocity.Y += 0.4f;
+                if (this.entityVelocity.Y < 10) /// used as gravity
+                    this.entityVelocity.Y += 0.4f;
 
-            if (!IsAttacking)
-                Patrol();
+                if (!this.IsAttacking)
+                    this.Patrol();
+            }
+            base.Update(gameTime);
         }
-        base.Update(gameTime);
-    }
 
-    public override void UpdateCollisionBounds()
-    {
-        Rectangle output = new Rectangle();
-        switch (currAnimationSet)
+        public override void UpdateCollisionBounds()
         {
-            case "IdleLeft": output = SetCollisionRectangle(6, 0, 64, 90); break;
-            case "IdleRight": output = SetCollisionRectangle(0, 0, 64, 90); break;
-            case "WalkLeft": output = SetCollisionRectangle(3, 0, 59, 90); break;
-            case "WalkRight": output = SetCollisionRectangle(8, 0, 59, 90); break;
-            default: output = SetCollisionRectangle(0, 0, 70, 90); break;
+            Rectangle output = new Rectangle();
+            switch (this.currAnimationSet)
+            {
+                case "IdleLeft": output = this.SetCollisionRectangle(6, 0, 64, 90); break;
+                case "IdleRight": output = this.SetCollisionRectangle(0, 0, 64, 90); break;
+                case "WalkLeft": output = this.SetCollisionRectangle(3, 0, 59, 90); break;
+                case "WalkRight": output = this.SetCollisionRectangle(8, 0, 59, 90); break;
+                default: output = this.SetCollisionRectangle(0, 0, 70, 90); break;
+            }
+            this.CollisionBox = output;
         }
-        CollisionBox = output;
-    }
 
-    protected override void LoadAnimations()
-    {
-        textureWidth = 110;
-        textureHeight = 95;
-        AddAnimation("IdleLeft", 10, 0);
-        AddAnimation("IdleRight", 10, 1);
-        AddAnimation("WalkLeft", 10, 2);
-        AddAnimation("WalkRight", 10, 3);
-        AddAnimation("ShootLeft", 10, 4);
-        AddAnimation("ShootRight", 10, 5);
-        AddAnimation("DieLeft", 10, 6);
-        AddAnimation("DieRight", 10, 7);
-    }
-
-    public override void Draw(SpriteBatch spriteBatch)
-    {
-        foreach (var icycle in ammo)
+        protected override void LoadAnimations()
         {
-            icycle.Draw(spriteBatch);
+            this.textureWidth = 110;
+            this.textureHeight = 95;
+            this.AddAnimation("IdleLeft", 10, 0);
+            this.AddAnimation("IdleRight", 10, 1);
+            this.AddAnimation("WalkLeft", 10, 2);
+            this.AddAnimation("WalkRight", 10, 3);
+            this.AddAnimation("ShootLeft", 10, 4);
+            this.AddAnimation("ShootRight", 10, 5);
+            this.AddAnimation("DieLeft", 10, 6);
+            this.AddAnimation("DieRight", 10, 7);
         }
-        base.Draw(spriteBatch, entityPosition, entityTexture);
-    }
 
-    protected override void AnimationDone(string animation)
-    {
-        if (animation.Contains("Shoot"))
-            IsAttacking = false;
-        if (animation.Contains("Die"))
-            Dead = true;
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            foreach (var icycle in this.ammo)
+            {
+                icycle.Draw(spriteBatch);
+            }
+            base.Draw(spriteBatch, this.entityPosition, this.entityTexture);
+        }
+
+        protected override void AnimationDone(string animation)
+        {
+            if (animation.Contains("Shoot"))
+                this.IsAttacking = false;
+            if (animation.Contains("Die"))
+                this.Dead = true;
+        }
     }
 }

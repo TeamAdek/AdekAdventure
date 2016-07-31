@@ -1,12 +1,12 @@
-﻿using System.Threading;
-using DaGeim.Game;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-
-namespace DaGeim.MenuLayouts
+﻿namespace DaGeim.MenuLayouts
 {
+    using System.Threading;
+    using DaGeim.Game;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Graphics;
+    using Microsoft.Xna.Framework.Input;
+
     public class CreditsScreen : MenuScreen
     {
         private Button mainMenuButton = new Button("Main Menu", new Rectangle(950, 500, 300, 80));

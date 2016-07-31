@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace Game.src.Entities
+﻿namespace DaGeim.Entities
 {
+    using System.Collections.Generic;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
 
     public abstract class AnimatedSprite
     {
@@ -27,12 +26,12 @@ namespace Game.src.Entities
 
         protected int FramesPerSecond
         {
-            set { frameTimeSpan = (1.0f/value); }
+            set { this.frameTimeSpan = (1.0f/value); }
         }
 
         protected AnimatedSprite()
         {
-            spriteAnimations = new Dictionary<string, Rectangle[]>();
+            this.spriteAnimations = new Dictionary<string, Rectangle[]>();
         }
 
         protected void AddAnimation(string name, int frameCount, int offsetY)
@@ -40,24 +39,24 @@ namespace Game.src.Entities
             Rectangle[] animationSet = new Rectangle[frameCount];
 
             for (int i = 0; i < frameCount; i++)
-                animationSet[i] = new Rectangle(i*textureWidth, offsetY*textureHeight, textureWidth, textureHeight + offSetYPx);
+                animationSet[i] = new Rectangle(i*this.textureWidth, offsetY*this.textureHeight, this.textureWidth, this.textureHeight + this.offSetYPx);
 
-            spriteAnimations.Add(name, animationSet);
+            this.spriteAnimations.Add(name, animationSet);
         }
 
         public virtual void Update(GameTime gameTime)
         {
-            timeElapsed += gameTime.ElapsedGameTime.TotalSeconds;
-            if (timeElapsed > frameTimeSpan)
+            this.timeElapsed += gameTime.ElapsedGameTime.TotalSeconds;
+            if (this.timeElapsed > this.frameTimeSpan)
             {
-                timeElapsed -= frameTimeSpan;
+                this.timeElapsed -= this.frameTimeSpan;
 
-                if (frameIndex < spriteAnimations[currAnimationSet].Length - 1)
-                    frameIndex++;
+                if (this.frameIndex < this.spriteAnimations[this.currAnimationSet].Length - 1)
+                    this.frameIndex++;
                 else
                 {
-                    AnimationDone(currAnimationSet);
-                    frameIndex = 0;
+                    this.AnimationDone(this.currAnimationSet);
+                    this.frameIndex = 0;
                 }
             }
 
@@ -65,15 +64,15 @@ namespace Game.src.Entities
 
         protected virtual void Draw(SpriteBatch spriteBatch, Vector2 entityPosition, Texture2D entityTexture)
         {
-            spriteBatch.Draw(entityTexture, entityPosition, spriteAnimations[currAnimationSet][frameIndex], Color.White);
+            spriteBatch.Draw(entityTexture, entityPosition, this.spriteAnimations[this.currAnimationSet][this.frameIndex], Color.White);
         }
 
         protected void PlayAnimation(string name)
         {
-            if (currAnimationSet != name)
+            if (this.currAnimationSet != name)
             {
-                currAnimationSet = name;
-                frameIndex = 0;
+                this.currAnimationSet = name;
+                this.frameIndex = 0;
             }
         }
 

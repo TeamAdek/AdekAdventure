@@ -1,10 +1,13 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-
-interface IGameObject
+﻿namespace DaGeim.Interfaces
 {
-    void LoadContent(ContentManager content);
-    void Draw(SpriteBatch spriteBatch);
-    void Update(GameTime gameTime);
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Graphics;
+
+    public interface IGameObject
+    {
+        void LoadContent(ContentManager content);
+        void Draw(SpriteBatch spriteBatch);
+        void Update(GameTime gameTime);
+    }
 }

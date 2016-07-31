@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading;
-using DaGeim.Game;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-
-namespace DaGeim.MenuLayouts
+﻿namespace DaGeim.MenuLayouts
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Threading;
+    using DaGeim.Game;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Graphics;
+    using Microsoft.Xna.Framework.Input;
+
     public class EndGameScreen : MenuScreen
     {
         private List<int> highscores = new List<int>();

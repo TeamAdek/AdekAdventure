@@ -1,10 +1,11 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace DaGeim
+﻿namespace DaGeim.MenuLayouts
 {
-    public class Button
+    using DaGeim.Interfaces;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Graphics;
+
+    public class Button : IButton
     {
         private Texture2D highlightedImage;
         private Texture2D darkImage;
@@ -20,28 +21,14 @@ namespace DaGeim
         }
         public bool IsSelected
         {
-            get
-            {
-                return this.isSelected;
-            }
-
-            set
-            {
-                this.isSelected = value;
-            }
+            get { return this.isSelected; }
+            set { this.isSelected = value; }
         }
 
         public Rectangle Location
         {
-            get
-            {
-                return location;
-            }
-
-            private set
-            {
-                this.location = value;
-            }
+            get { return this.location; }
+            private set { this.location = value; }
         }
 
         public void Load(ContentManager content)
@@ -52,18 +39,18 @@ namespace DaGeim
 
         public void DrawButton(SpriteBatch spriteBatch, SpriteFont font)
         {
-            int textX = Location.X + Location.Width/6;
-            int textY = Location.Y + (Location.Height*25)/80;
+            int textX = this.Location.X + this.Location.Width / 6;
+            int textY = this.Location.Y + (this.Location.Height * 25) / 80;
             if (this.IsSelected)
             {
-                spriteBatch.Draw(highlightedImage, Location, Color.White);
-                spriteBatch.DrawString(font, buttonText, new Vector2(textX, textY),
+                spriteBatch.Draw(this.highlightedImage, this.Location, Color.White);
+                spriteBatch.DrawString(font, this.buttonText, new Vector2(textX, textY),
                     Color.Ivory);
             }
             else
             {
-                spriteBatch.Draw(darkImage, Location, Color.White);
-                spriteBatch.DrawString(font, buttonText, new Vector2(textX, textY),
+                spriteBatch.Draw(this.darkImage, this.Location, Color.White);
+                spriteBatch.DrawString(font, this.buttonText, new Vector2(textX, textY),
                     Color.Ivory);
             }
         }

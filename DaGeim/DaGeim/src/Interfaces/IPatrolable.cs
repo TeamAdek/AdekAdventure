@@ -1,7 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace DaGeim.Interfaces
+﻿namespace DaGeim.Interfaces
 {
+    using Microsoft.Xna.Framework;
+
     public interface IPatrolable
     {
         Vector2 Position { get; set; }

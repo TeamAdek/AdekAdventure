@@ -1,19 +1,17 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-
-
-namespace DaGeim
+﻿namespace DaGeim.Level
 {
-    class Tiles
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Graphics;
+
+    public class Tiles
     {
         protected Texture2D texture;
         private Rectangle rectangle;
         public Rectangle Rectangle
         {
-            get { return rectangle; }
-            protected set { rectangle = value; }
+            get { return this.rectangle; }
+            protected set { this.rectangle = value; }
         }
 
         private static ContentManager content;
@@ -25,22 +23,8 @@ namespace DaGeim
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, rectangle, Color.White);
+            spriteBatch.Draw(this.texture, this.rectangle, Color.White);
 
-        }
-    }
-
-    class CollisionTiles : Tiles, IComparable<CollisionTiles>
-    {
-        public CollisionTiles(int i, Rectangle newRectangle)
-        {
-            texture = Content.Load<Texture2D>("Tile" + i);
-            this.Rectangle = newRectangle;
-        }
-
-        public int CompareTo(CollisionTiles other)
-        {
-            return this.Rectangle.X.CompareTo(other.Rectangle.X);
         }
     }
 }

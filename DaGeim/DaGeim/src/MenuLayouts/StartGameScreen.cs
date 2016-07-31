@@ -1,12 +1,12 @@
-﻿using System.Threading;
-using DaGeim.Game;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-
-namespace DaGeim.MenuLayouts
+﻿namespace DaGeim.MenuLayouts
 {
+    using System.Threading;
+    using DaGeim.Game;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Graphics;
+    using Microsoft.Xna.Framework.Input;
+
     public class StartGameScreen : MenuScreen
     {
         private Button newGameButton = new Button("New Game", new Rectangle(465, 240, 350, 80));
