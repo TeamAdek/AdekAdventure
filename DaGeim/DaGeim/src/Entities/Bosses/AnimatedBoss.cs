@@ -1,9 +1,9 @@
-﻿namespace DaGeim.Entities.Bosses
-{
-    using System.Collections.Generic;
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
+namespace DaGeim
+{
     public abstract class AnimatedBoss
     {
         // Boss Details
@@ -23,12 +23,12 @@
 
         public int FramesPerSecond
         {
-            set { this.timeToUpdate = (1f / value); }
+            set { timeToUpdate = (1f / value); }
         }
 
         public AnimatedBoss(Vector2 position)
         {
-            this.bossPosition = position;
+            bossPosition = position;
         }
 
         public void AddAnimation(string name, int frameCount, int yPos, int yOffset)
@@ -38,40 +38,40 @@
             for (int i = 0; i < frameCount; i++)
                 animationSet[i] = new Rectangle((i) * 128, yPos * 128, 128, 128 + yOffset);
 
-            this.spriteAnimations.Add(name, animationSet);
+            spriteAnimations.Add(name, animationSet);
         }
 
         public virtual void Update(GameTime gameTime)
         {
-            this.timeElapsed += gameTime.ElapsedGameTime.TotalSeconds;
-            if (this.timeElapsed > this.timeToUpdate)
+            timeElapsed += gameTime.ElapsedGameTime.TotalSeconds;
+            if (timeElapsed > timeToUpdate)
             {
-                this.timeElapsed -= this.timeToUpdate;
+                timeElapsed -= timeToUpdate;
 
-                if (this.frameIndex < (this.spriteAnimations[this.currentAnimation].Length - 1))
-                    this.frameIndex++;
+                if (frameIndex < (spriteAnimations[currentAnimation].Length - 1))
+                    frameIndex++;
                 else
                 {
-                    this.AnimationDone(this.currentAnimation);
-                    this.frameIndex = 0;
+                    AnimationDone(currentAnimation);
+                    frameIndex = 0;
                 }
             }
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            if (!this.dead)
-                spriteBatch.Draw(this.spriteTexture, this.bossPosition, this.spriteAnimations[this.currentAnimation][this.frameIndex], Color.White);
+            if (!dead)
+                spriteBatch.Draw(spriteTexture, bossPosition, spriteAnimations[currentAnimation][frameIndex], Color.White);
         }
 
         public void PlayAnimation(string name)
         {
-            if (this.currentAnimation != name)
+            if (currentAnimation != name)
             {
                 if (name.Contains("Push"))
-                    this.bossPosition.Y -= 47;
-                this.currentAnimation = name;
-                this.frameIndex = 0;
+                    bossPosition.Y -= 47;
+                currentAnimation = name;
+                frameIndex = 0;
             }
         }
 

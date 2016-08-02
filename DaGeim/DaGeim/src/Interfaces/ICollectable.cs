@@ -1,10 +1,11 @@
-﻿namespace DaGeim.Interfaces
-{
-    using DaGeim.Entities;
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Content;
-    using Microsoft.Xna.Framework.Graphics;
+﻿using System;
+using Game.src.Entities;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
+namespace DaGeim.Interfaces
+{
     public interface ICollectable
     {
         string ItemType { get; }
@@ -29,5 +30,6 @@
         Rectangle setRectangle(int x, int y, int w, int h);
 
         void Draw(SpriteBatch spriteBatch);
+
     }
 }

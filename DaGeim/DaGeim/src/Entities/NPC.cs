@@ -1,186 +1,188 @@
-﻿namespace DaGeim.Entities
+﻿using System;
+using System.CodeDom;
+using System.Collections.Generic;
+using DaGeim;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+abstract class NPC : Entity
 {
-    using System;
-    using System.Collections.Generic;
-    using DaGeim.Entities.Ammunition;
-    using DaGeim.Helper_Classes;
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
-
-    public abstract class NPC : Entity
+    private Vector2 startPosition;
+    public List<Ammunition> ammo;
+    protected Type ammoType;
+    private int patrolRange;
+    protected Texture2D ammoLeft, ammoRight;
+    protected float shootCD;
+    public bool IsAttacking { get; protected set; }
+    protected bool notPatrolling, hasCollidedLeft, hasCollidedRight, isDying;
+    public NPC(Vector2 position, int patrolRange) : base(position)
     {
-        private Vector2 startPosition;
-        public List<Ammunition.Ammunition> ammo;
-        protected Type ammoType;
-        private int patrolRange;
-        protected Texture2D ammoLeft, ammoRight;
-        protected float shootCD;
-        public bool IsAttacking { get; protected set; }
-        protected bool notPatrolling, hasCollidedLeft, hasCollidedRight, isDying;
-        public NPC(Vector2 position, int patrolRange) : base(position)
+        startPosition = position;
+        this.patrolRange = patrolRange;
+        ammo = new List<Ammunition>();
+    }
+
+    protected virtual void Patrol()
+    {
+        if (!notPatrolling)
         {
-            this.startPosition = position;
-            this.patrolRange = patrolRange;
-            this.ammo = new List<Ammunition.Ammunition>();
+            if (hasCollidedLeft || hasCollidedRight)
+            {
+                patrolRange = (int) Math.Abs(startPosition.X - entityPosition.X);
+
+                if (entityOrientation == Orientations.Left && hasCollidedRight)
+                {
+                    PlayAnimation("WalkRight");
+                    entityOrientation = Orientations.Right;
+                }
+                else if (entityOrientation == Orientations.Right && hasCollidedLeft)
+                {
+                    PlayAnimation("WalkLeft");
+                    entityOrientation = Orientations.Left;
+                }
+                hasCollidedLeft = false;
+                hasCollidedRight = false;
+            }
+
+            if ((entityOrientation == Orientations.Left) && (entityPosition.X > startPosition.X - patrolRange))
+            {
+                entityPosition.X -= 2;
+                PlayAnimation("WalkLeft");
+            }
+
+            if ((entityOrientation == Orientations.Left) && ((entityPosition.X <= startPosition.X - patrolRange)))
+            {
+                PlayAnimation("WalkRight");
+                entityOrientation = Orientations.Right;
+            }
+
+            if ((entityOrientation == Orientations.Right) && (entityPosition.X < startPosition.X + patrolRange))
+            {
+                PlayAnimation("WalkRight");
+                entityPosition.X += 2;
+            }
+
+            if ((entityOrientation == Orientations.Right) && ((entityPosition.X >= startPosition.X + patrolRange)))
+            {
+                PlayAnimation("WalkLeft");
+                entityOrientation = Orientations.Left;
+            }
+
+
         }
 
-        protected virtual void Patrol()
+    }
+
+
+    public override void CollisionWithMap(Rectangle tileRectangle, int mapWidth, int mapHeight)
+    {
+        if (CollisionBox.TouchLeftOf(tileRectangle))
+            hasCollidedLeft = true;
+        if (CollisionBox.TouchRightOf(tileRectangle))
+            hasCollidedRight = true;
+
+        base.CollisionWithMap(tileRectangle, mapWidth, mapHeight);
+    }
+
+    protected virtual void Chase(Player player)
+    {
+
+    }
+
+    public virtual void Shoot(Player player)
+    {
+        if (PlayerIsInRange(player) && !isDying)
         {
-            if (!this.notPatrolling)
+            if (shootCD > 0.0f)
+                shootCD--;
+            if (shootCD == 0.0f)
             {
-                if (this.hasCollidedLeft || this.hasCollidedRight)
-                {
-                    this.patrolRange = (int) Math.Abs(this.startPosition.X - this.entityPosition.X);
+                if (player.Position.X < entityPosition.X)
+                    entityOrientation = Orientations.Left;
+                else if (player.Position.X >= entityPosition.X)
+                    entityOrientation = Orientations.Right;
 
-                    if (this.entityOrientation == Orientations.Left && this.hasCollidedRight)
-                    {
-                        this.PlayAnimation("WalkRight");
-                        this.entityOrientation = Orientations.Right;
-                    }
-                    else if (this.entityOrientation == Orientations.Right && this.hasCollidedLeft)
-                    {
-                        this.PlayAnimation("WalkLeft");
-                        this.entityOrientation = Orientations.Left;
-                    }
-                    this.hasCollidedLeft = false;
-                    this.hasCollidedRight = false;
+                Ammunition currentAmmo;
+                switch (ammoType.FullName)
+                {
+                    case "Laser":
+                        currentAmmo = new Laser(new Vector2(entityPosition.X -15, entityPosition.Y + 35), "left", ammoLeft);
+                        break;
+                    case "Icycle":
+                        if (entityOrientation == Orientations.Left)
+                            currentAmmo = new Icycle(new Vector2(entityPosition.X - 15, entityPosition.Y + 35), "left", ammoLeft,ammoRight);
+                        else
+                            currentAmmo = new Icycle(new Vector2(entityPosition.X + 80, entityPosition.Y + 35), "right", ammoLeft, ammoRight);
+                        break;
+                    default:currentAmmo = null;break;
                 }
 
-                if ((this.entityOrientation == Orientations.Left) && (this.entityPosition.X > this.startPosition.X - this.patrolRange))
+                if (entityOrientation == Orientations.Left)
                 {
-                    this.entityPosition.X -= 2;
-                    this.PlayAnimation("WalkLeft");
+                    PlayAnimation("ShootLeft");
+                    IsAttacking = true;
+                }
+                else
+                {
+                    PlayAnimation("ShootRight");
+                    IsAttacking = true;
                 }
 
-                if ((this.entityOrientation == Orientations.Left) && ((this.entityPosition.X <= this.startPosition.X - this.patrolRange)))
-                {
-                    this.PlayAnimation("WalkRight");
-                    this.entityOrientation = Orientations.Right;
-                }
-
-                if ((this.entityOrientation == Orientations.Right) && (this.entityPosition.X < this.startPosition.X + this.patrolRange))
-                {
-                    this.PlayAnimation("WalkRight");
-                    this.entityPosition.X += 2;
-                }
-
-                if ((this.entityOrientation == Orientations.Right) && ((this.entityPosition.X >= this.startPosition.X + this.patrolRange)))
-                {
-                    this.PlayAnimation("WalkLeft");
-                    this.entityOrientation = Orientations.Left;
-                }
+                ammo.Add(currentAmmo);
+                shootCD = 40.0f;
             }
         }
 
-        public override void CollisionWithMap(Rectangle tileRectangle, int mapWidth, int mapHeight)
+    }
+
+    protected virtual void UpdateAmmo(GameTime gameTime)
+    {
+        foreach (var ammunition in ammo)
+            ammunition.Update(gameTime);
+
+        for (int i = 0; i < ammo.Count; i++)
         {
-            if (this.CollisionBox.TouchLeftOf(tileRectangle))
-                this.hasCollidedLeft = true;
-            if (this.CollisionBox.TouchRightOf(tileRectangle))
-                this.hasCollidedRight = true;
-
-            base.CollisionWithMap(tileRectangle, mapWidth, mapHeight);
-        }
-
-        protected virtual void Chase(Player.Player player)
-        {
-
-        }
-
-        public virtual void Shoot(Player.Player player)
-        {
-            if (this.PlayerIsInRange(player) && !this.isDying)
+            if (!ammo[i].IsVisible)
             {
-                if (this.shootCD > 0.0f)
-                    this.shootCD--;
-                if (this.shootCD.Equals(0.0f))
-                {
-                    if (player.Position.X < this.entityPosition.X)
-                        this.entityOrientation = Orientations.Left;
-                    else if (player.Position.X >= this.entityPosition.X)
-                        this.entityOrientation = Orientations.Right;
-
-                    Ammunition.Ammunition currentAmmo;
-                    switch (this.ammoType.FullName)
-                    {
-                        case "Laser":
-                            currentAmmo = new Laser(new Vector2(this.entityPosition.X -15, this.entityPosition.Y + 35), "left", this.ammoLeft);
-                            break;
-                        case "Icycle":
-                            if (this.entityOrientation == Orientations.Left)
-                                currentAmmo = new Icycle(new Vector2(this.entityPosition.X - 15, this.entityPosition.Y + 35), "left", this.ammoLeft,this.ammoRight);
-                            else
-                                currentAmmo = new Icycle(new Vector2(this.entityPosition.X + 80, this.entityPosition.Y + 35), "right", this.ammoLeft, this.ammoRight);
-                            break;
-                        default:currentAmmo = null;break;
-                    }
-
-                    if (this.entityOrientation == Orientations.Left)
-                    {
-                        this.PlayAnimation("ShootLeft");
-                        this.IsAttacking = true;
-                    }
-                    else
-                    {
-                        this.PlayAnimation("ShootRight");
-                        this.IsAttacking = true;
-                    }
-
-                    this.ammo.Add(currentAmmo);
-                    this.shootCD = 40.0f;
-                }
+                ammo.RemoveAt(i);
+                i--;
             }
         }
+    }
 
-        protected virtual void UpdateAmmo(GameTime gameTime)
+    protected bool PlayerIsInRange(Player player)
+    {
+        float lowBound = player.Position.Y - 35;
+        float highBound = player.Position.Y + 35;
+        int range = 600;
+        float positionDelta = Math.Abs(player.Position.X - entityPosition.X);
+
+        if (entityPosition.Y > lowBound && entityPosition.Y < highBound)
         {
-            foreach (var ammunition in this.ammo)
-                ammunition.Update(gameTime);
-
-            for (int i = 0; i < this.ammo.Count; i++)
-            {
-                if (!this.ammo[i].IsVisible)
-                {
-                    this.ammo.RemoveAt(i);
-                    i--;
-                }
-            }
+            if (positionDelta <= range)
+                return true;
         }
 
-        protected bool PlayerIsInRange(Player.Player player)
-        {
-            float lowBound = player.Position.Y - 35;
-            float highBound = player.Position.Y + 35;
-            int range = 600;
-            float positionDelta = Math.Abs(player.Position.X - this.entityPosition.X);
+        return false;
+    }
 
-            if (this.entityPosition.Y > lowBound && this.entityPosition.Y < highBound)
+    public override void CollisionWithAmmunition(Ammunition ammunition)
+    {
+        if (CollisionBox.Intersects(ammunition.CollisionBox))
+        {
+            Health -= 50;
+
+            if (Health <= 0)
             {
-                if (positionDelta <= range)
-                    return true;
+                if(entityOrientation == Orientations.Left)
+                    PlayAnimation("DieLeft");
+                else
+                    PlayAnimation("DieRight");
+
+                isDying = true;
             }
 
-            return false;
-        }
-
-        public override void CollisionWithAmmunition(Ammunition.Ammunition ammunition)
-        {
-            if (this.CollisionBox.Intersects(ammunition.CollisionBox))
-            {
-                this.Health -= 50;
-
-                if (this.Health <= 0)
-                {
-                    if(this.entityOrientation == Orientations.Left)
-                        this.PlayAnimation("DieLeft");
-                    else
-                        this.PlayAnimation("DieRight");
-
-                    this.isDying = true;
-                }
-
-                ammunition.IsVisible = false;
-            }
+            ammunition.IsVisible = false;
         }
     }
 }

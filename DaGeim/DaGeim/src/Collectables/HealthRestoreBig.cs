@@ -1,4 +1,4 @@
-﻿namespace DaGeim.Collectables
+﻿namespace DaGeim.src.Collectable
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Content;
@@ -20,7 +20,7 @@
 
         public override void Load(ContentManager content)
         {
-            this.spriteTexture = content.Load<Texture2D>("heart");
+            spriteTexture = content.Load<Texture2D>("heart");
         }
 
 

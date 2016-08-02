@@ -1,12 +1,12 @@
-﻿namespace DaGeim.Game
-{
-    using System;
+﻿using System;
 
+namespace DaGeim.Game
+{
 #if WINDOWS || LINUX
     public static class Launcher
     {
         [STAThread]
-        public static void Main()
+        static void Main()
         {
             using (var game = new MainGame())
                 game.Run();

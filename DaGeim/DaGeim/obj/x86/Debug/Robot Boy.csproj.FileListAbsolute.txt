@@ -557,6 +557,157 @@ C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\D
 C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Chest.xnb
 C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\chestBig.xnb
 C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\gun.xnb
-D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Chest.xnb
-D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\chestBig.xnb
-D:\SoftUni Projects\LocalReps\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\gun.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\obj\x86\Debug\DaGeim.exe
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\obj\x86\Debug\DaGeim.pdb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy1.png
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\jump.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\background.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\background2.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\blastEdit.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\bluestar.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Chest.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\chestBig.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Corazon.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\CreditsFont.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\darkButton.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemyRobbot.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy_with_sword.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Font.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\GameNameFont.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\gun.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\heart.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\HeartContainer.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\highlightedButton.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\HUD.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\HUD_HP_BAR.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Icon.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\icycleLeft.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\icycleRight.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Idle.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\lasershot.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\MainFont.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Player.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\PlayerAnimation.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\pow.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Recovery-Heart-Sprite.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\red.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\rocketLeft.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\rocketRight.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheet.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheetBoss.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheetEnemy.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheetEnemy2.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\stone.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\sweep.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme1.wma
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme1.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme2.wma
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme2.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile1.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile2.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile3.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile4.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile5.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile6.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Upgraded_Robot_Sprite.xnb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\DaGeim.exe
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\DaGeim.pdb
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\MonoGame.Framework.dll
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.dll
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XInput.dll
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\MonoGame.Framework.xml
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.xml
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XInput.xml
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+D:\Extracted XML - B1\AdekAdventure-f510cba4e42f68b4bd7f1f4b79ccd90100f06738\DaGeim\DaGeim\obj\x86\Debug\Robot Boy.csprojResolveAssemblyReference.cache
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\DaGeim.exe
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\DaGeim.pdb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy1.png
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\jump.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\background.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\background2.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\blastEdit.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\bluestar.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Chest.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\chestBig.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Corazon.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\CreditsFont.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\darkButton.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemyRobbot.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\enemy_with_sword.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Font.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\GameNameFont.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\gun.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\heart.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\HeartContainer.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\highlightedButton.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\HUD.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\HUD_HP_BAR.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Icon.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\icycleLeft.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\icycleRight.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Idle.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\lasershot.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\MainFont.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Player.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\PlayerAnimation.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\pow.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Recovery-Heart-Sprite.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\red.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\rocketLeft.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\rocketRight.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheet.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheetBoss.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheetEnemy.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheetEnemy2.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\stone.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\sweep.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme1.wma
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme1.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme2.wma
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\theme2.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile1.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile2.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile3.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile4.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile5.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Tile6.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Upgraded_Robot_Sprite.xnb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\DaGeim.exe
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\DaGeim.pdb
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\MonoGame.Framework.dll
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.dll
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XInput.dll
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\MonoGame.Framework.xml
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.xml
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XInput.xml
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+D:\SoftUni\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\Robot Boy.csprojResolveAssemblyReference.cache

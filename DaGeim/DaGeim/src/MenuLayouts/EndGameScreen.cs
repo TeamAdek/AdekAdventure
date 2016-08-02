@@ -1,15 +1,15 @@
-﻿namespace DaGeim.MenuLayouts
-{
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Threading;
-    using DaGeim.Game;
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Content;
-    using Microsoft.Xna.Framework.Graphics;
-    using Microsoft.Xna.Framework.Input;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+using DaGeim.Game;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
+namespace DaGeim.MenuLayouts
+{
     public class EndGameScreen : MenuScreen
     {
         private List<int> highscores = new List<int>();
@@ -22,10 +22,9 @@
         private Button quitButton = new Button("Quit", new Rectangle(950, 600, 300, 80));
         private Texture2D star;
 
-        /// <summary>
-        /// Loads the content for the end game screen
-        /// </summary>
-        /// <param name="content"></param>
+        /*---------------------------------------------------------------------------------------------------
+        Loads the content for the end game screen
+        ----------------------------------------------------------------------------------------------------*/
         public override void Load(ContentManager content)
         {
             base.Load(content);
@@ -46,10 +45,10 @@
                 }
             }
         }
-        /// <summary>
-        /// Saves the scores in the file only if the player managed to get in top 10
-        /// we are using it in the UpdateScore method below
-        /// </summary>
+        /*-------------------------------------------------------------------------------------------------
+        Saves the scores in the file only if the player managed to get in top 10
+        we are using it in the UpdateScore method below
+        --------------------------------------------------------------------------------------------------*/
         private void SaveScores()
         {
             using (StreamWriter writer = new StreamWriter(path))
@@ -62,11 +61,9 @@
                 }
             }
         }
-
-        /// <summary>
-        /// Update the scoreboard each time the player dies or clears the level
-        /// </summary>
-        /// <param name="playerScore"></param>
+        /*-------------------------------------------------------------------------------------------------
+        Update the scoreboard each time the player dies or clears the level
+        -------------------------------------------------------------------------------------------------*/
         public void UpdateScoreboard(int playerScore)
         {
             wasUpdated = false;
@@ -88,11 +85,9 @@
             }
             SaveScores();
         }
-
-        /// <summary>
-        /// Draws the end game screen if it is active
-        /// </summary>
-        /// <param name="spriteBatch"></param>
+        /*-------------------------------------------------------------------------------------------------
+        Draws the end game screen if it is active
+        -------------------------------------------------------------------------------------------------*/
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
@@ -125,12 +120,9 @@
             }
             spriteBatch.End();
         }
-
-        /// <summary>
-        /// Update the end game screen if it is active
-        /// </summary>
-        /// <param name="gameTime"></param>
-        /// <param name="game"></param>
+        /*-------------------------------------------------------------------------------------------------
+        Update the end game screen if it is active
+        -------------------------------------------------------------------------------------------------*/
         public override void Update(GameTime gameTime, MainGame game)
         {
             if (this.mainMenuButton.Location.Contains(Mouse.GetState(game.Window).Position))

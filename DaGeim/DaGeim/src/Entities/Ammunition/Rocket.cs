@@ -1,9 +1,11 @@
-﻿namespace DaGeim.Entities.Ammunition
-{
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Content;
-    using Microsoft.Xna.Framework.Graphics;
+﻿using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using DaGeim;
 
+namespace DaGeim.src.Entities.New_Code
+{
     public class Rocket : Ammunition
     {
 
@@ -15,7 +17,7 @@
         public Rocket(Vector2 position, string direction, Texture2D left, Texture2D right)
             :base(position, direction)
         {
-            this.Load(left, right);
+            Load(left, right);
             Sprite = direction == "left" ? LeftTexture : RightTexture;
         }
     

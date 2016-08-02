@@ -1,34 +1,28 @@
-﻿namespace DaGeim.MenuLayouts
-{
-    using System.Threading;
-    using DaGeim.Game;
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Content;
-    using Microsoft.Xna.Framework.Graphics;
-    using Microsoft.Xna.Framework.Input;
+﻿using System.Threading;
+using DaGeim.Game;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
+namespace DaGeim.MenuLayouts
+{
     public class CreditsScreen : MenuScreen
     {
         private Button mainMenuButton = new Button("Main Menu", new Rectangle(950, 500, 300, 80));
         private Button quitButton = new Button("Quit", new Rectangle(950, 600, 300, 80));
-
-        /// <summary>
-        /// Loads the content for the menu
-        /// </summary>
-        /// <param name="content"></param>
-        
+        /*----------------------------------------------------------------------------------------------
+        Loads the content for the menu
+        ----------------------------------------------------------------------------------------------*/
         public override void Load(ContentManager content)
         {
             base.Load(content);
             this.mainMenuButton.Load(content);
             this.quitButton.Load(content);
         }
-
-        /// <summary>
-        /// Updates the pause menu when it is active
-        /// </summary>
-        /// <param name="gameTime"></param>
-        /// <param name="game"></param>
+        /*--------------------------------------------------------------------------------------------
+        Updates the pause menu when it is active
+        ---------------------------------------------------------------------------------------------*/
         public override void Update(GameTime gameTime, MainGame game)
         {
             if (this.mainMenuButton.Location.Contains(Mouse.GetState(game.Window).Position))
@@ -66,11 +60,9 @@
                 }
             }
         }
-
-        /// <summary>
-        ///  Draws the pause menu screen when it is active
-        /// </summary>
-        /// <param name="spriteBatch"></param>
+        /*------------------------------------------------------------------------------------------
+        Draws the pause menu screen when it is active
+        ------------------------------------------------------------------------------------------*/
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);

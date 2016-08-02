@@ -1,7 +1,12 @@
-﻿namespace DaGeim.Helper_Classes
-{
-    using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
+namespace DaGeim
+{
     static class RectangleHelper
     {
         public static bool TouchTopOf(this Rectangle r1 ,Rectangle r2)

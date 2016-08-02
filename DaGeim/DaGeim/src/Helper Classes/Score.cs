@@ -1,5 +1,5 @@
 ﻿//helper class used to store the scores in the scoreboard
-namespace DaGeim.Helper_Classes
+namespace DaGeim
 {
     public class Score
     {

@@ -1,11 +1,14 @@
-﻿namespace DaGeim.Level
-{
-    using System.Collections.Generic;
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Content;
-    using Microsoft.Xna.Framework.Graphics;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
-    public class Map 
+namespace DaGeim
+{
+    using Microsoft.Xna.Framework.Content;
+    using Game = Microsoft.Xna.Framework.Game;
+    class Map 
         {
         private int tileSize;
         private List<CollisionTiles> collisionTiles = new List<CollisionTiles>();
@@ -13,7 +16,10 @@
         private Rectangle backRect;
         private int yPosition = -50;
 
-        public List<CollisionTiles> CollisionTiles => this.collisionTiles;
+        public List<CollisionTiles> CollisionTiles
+        {
+            get { return collisionTiles; }
+        }
         private int widht, height;
 
         public int TileSize
@@ -24,15 +30,15 @@
         public void  Update(Vector2 position)
         {
             int calculated = (int)position.Y / 30 - 50;
-            this.backRect.Y = calculated;
+            backRect.Y = calculated;
         }
         public int Widht
         {
-            get { return this.widht; }
+            get { return widht; }
         }
         public int Height
         {
-            get { return this.height; }
+            get { return height; }
         }
 
         public Map()
@@ -41,8 +47,8 @@
         }
         public void Load(Map map , ContentManager Content )
         {
-            this.backRect = new Rectangle(0,  0,6000, 700);
-            this.backText = Content.Load<Texture2D>("background");
+            backRect = new Rectangle(0,  0,6000, 700);
+            backText = Content.Load<Texture2D>("background");
             map.Generate(new int[,]{
 
                       { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5},
@@ -68,10 +74,10 @@
                 {
                     int number = map[y, x];
 
-                    if (number > 0) this.collisionTiles.Add(new CollisionTiles(number, new Rectangle(x * size, y * size, size, size)));
+                    if (number > 0) collisionTiles.Add(new CollisionTiles(number, new Rectangle(x * size, y * size, size, size)));
 
-                    this.widht = (x + 1) * size;
-                    this.height = (y + 1) * size;
+                    widht = (x + 1) * size;
+                    height = (y + 1) * size;
                 }
             }
 
@@ -79,8 +85,8 @@
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.backText, this.backRect, Color.White);
-            foreach (CollisionTiles tile in this.collisionTiles)
+            spriteBatch.Draw(backText, backRect, Color.White);
+            foreach (CollisionTiles tile in collisionTiles)
                 tile.Draw(spriteBatch);
         }
     }

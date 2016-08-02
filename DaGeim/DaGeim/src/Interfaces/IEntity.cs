@@ -1,7 +1,9 @@
-﻿namespace DaGeim.Interfaces
+﻿using DaGeim;
+
+namespace Game.src.Entities
 {
     using System.Collections.Generic;
-    using DaGeim.Helper_Classes;
+
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 

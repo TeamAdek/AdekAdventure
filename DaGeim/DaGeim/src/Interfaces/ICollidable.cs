@@ -1,10 +1,13 @@
-﻿namespace DaGeim.Interfaces
-{
-    using DaGeim.Entities;
-    using DaGeim.Entities.Ammunition;
-    using Microsoft.Xna.Framework;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 
-    public interface ICollidable
+namespace DaGeim.src.Entities.New_Code
+{
+    interface ICollidable
     {
         Rectangle CollisionBox { get; }
         void UpdateCollisionBounds();

@@ -1,6 +1,5 @@
-﻿namespace DaGeim.Collectables
+﻿namespace DaGeim.src.Collectable
 {
-    using DaGeim.Entities;
     using DaGeim.Interfaces;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Content;
@@ -60,7 +59,7 @@
         protected CollectableItem(Vector2 position)
         {
             this.position = position;
-            this.rectangle = this.setRectangle(0, 0, 30, 30);
+            this.rectangle = setRectangle(0, 0, 30, 30);
         }
 
         public abstract void Load(ContentManager content);

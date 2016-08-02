@@ -1,12 +1,11 @@
-﻿namespace DaGeim.MenuLayouts
-{
-    using DaGeim.Game;
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Content;
-    using Microsoft.Xna.Framework.Graphics;
-    using DaGeim.src.Interfaces;
+﻿using DaGeim.Game;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
-    public abstract class MenuScreen : MainGame, IMenu
+namespace DaGeim.MenuLayouts
+{
+    public class MenuScreen : MainGame
     {
         private Texture2D background;
         private Texture2D robotImage;
@@ -15,28 +14,56 @@
         private SpriteFont mainFont;
         private SpriteFont creditsFont;
 
-        public SpriteFont CreditsFont
+        protected SpriteFont CreditsFont
         {
-            get { return creditsFont; }
-            private set { this.creditsFont = value; }
+            get
+            {
+                return creditsFont;
+            }
+
+            private set 
+            {
+                this.creditsFont = value;
+            }
         }
 
-        public SpriteFont MainFont
+        protected SpriteFont MainFont
         {
-            get { return mainFont; }
-            private set { this.mainFont = value; }
+            get
+            {
+                return mainFont;
+            }
+
+            private set
+            {
+                this.mainFont = value;
+            }
         }
 
-        public SpriteFont Font
+        protected SpriteFont Font
         {
-            get { return font; }
-            private set { this.font = value; }
+            get
+            {
+                return font;
+            }
+
+            private set
+            {
+                this.font = value;
+            }
         }
 
-        public SpriteFont GameNameFont
+        protected SpriteFont GameNameFont
         {
-            get { return gameNameFont; }
-            private set { this.gameNameFont = value; }
+            get
+            {
+                return gameNameFont;
+            }
+
+            private set
+            {
+                this.gameNameFont = value;
+            }
         }
 
         public virtual void Load(ContentManager content)

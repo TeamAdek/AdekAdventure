@@ -1,12 +1,12 @@
-﻿namespace DaGeim.MenuLayouts
-{
-    using System.Threading;
-    using DaGeim.Game;
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Content;
-    using Microsoft.Xna.Framework.Graphics;
-    using Microsoft.Xna.Framework.Input;
+﻿using System.Threading;
+using DaGeim.Game;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
+namespace DaGeim.MenuLayouts
+{
     public class StartGameScreen : MenuScreen
     {
         private Button newGameButton = new Button("New Game", new Rectangle(465, 240, 350, 80));
@@ -14,6 +14,9 @@
         private Button creditsButton = new Button("Credits", new Rectangle(465, 480, 350, 80));
         private Button quitButton = new Button("Quit", new Rectangle(465, 600, 350, 80));
 
+        /*---------------------------------------------------------------------------------------------------
+        Loads the content for the start game screen
+        ----------------------------------------------------------------------------------------------------*/
         public override void Load(ContentManager content)
         {
             base.Load(content);
@@ -22,11 +25,10 @@
             this.creditsButton.Load(content);
             this.scoresButton.Load(content);
         }
-        /// <summary>
-        /// Update the start game screen if it is active
-        /// </summary>
-        /// <param name="gameTime"></param>
-        /// <param name="game"></param>
+
+        /*-------------------------------------------------------------------------------------------------
+        Update the start game screen if it is active
+        -------------------------------------------------------------------------------------------------*/
         public override void Update(GameTime gameTime, MainGame game)
         {
             if (this.newGameButton.Location.Contains(Mouse.GetState(game.Window).Position))
@@ -110,10 +112,9 @@
                 }
             }
         }
-        /// <summary>
-        ///  Draws the start game screen if it is active
-        /// </summary>
-        /// <param name="spriteBatch"></param>
+        /*-------------------------------------------------------------------------------------------------
+        Draws the start game screen if it is active
+        -------------------------------------------------------------------------------------------------*/
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
