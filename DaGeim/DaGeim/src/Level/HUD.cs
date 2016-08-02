@@ -17,9 +17,9 @@
         private Rectangle health = new Rectangle(0, 0, 1280, 720);
         public void Load(ContentManager content)
         {
-            HUDTexture = content.Load<Texture2D>("HUD");
-            HPBar = content.Load<Texture2D>("HUD_HP_BAR");
-            font = content.Load<SpriteFont>("Font");
+            this.HUDTexture = content.Load<Texture2D>("HUD");
+            this.HPBar = content.Load<Texture2D>("HUD_HP_BAR");
+            this.font = content.Load<SpriteFont>("Font");
         }
 
         public void Update(int hp, Vector2 newPosition)
@@ -27,11 +27,11 @@
             // lower bound - 90 , higher bound 320
             double ratio = (320.0f - 90.0f) / (300.0f); // 320 - 90 the two bounds. 300 - player max hp
             double result = (hp) * ratio + 90.0f;
-            healthBar.Width = (int)result;
-            healthPosition.X = newPosition.X - (1280 / 2); // game width / 2
-            healthPosition.Y = newPosition.Y - (720 / 2); // game height / 2
-            scorePosition.X = newPosition.X - 535;
-            scorePosition.Y = newPosition.Y - 313;
+            this.healthBar.Width = (int)result;
+            this.healthPosition.X = newPosition.X - (1280 / 2); // game width / 2
+            this.healthPosition.Y = newPosition.Y - (720 / 2); // game height / 2
+            this.scorePosition.X = newPosition.X - 535;
+            this.scorePosition.Y = newPosition.Y - 313;
 
         }
         public void Draw(SpriteBatch renderEngine, Player player)

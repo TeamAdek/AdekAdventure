@@ -22,9 +22,10 @@
         private Button quitButton = new Button("Quit", new Rectangle(950, 600, 300, 80));
         private Texture2D star;
 
-        /*---------------------------------------------------------------------------------------------------
-        Loads the content for the end game screen
-        ----------------------------------------------------------------------------------------------------*/
+        /// <summary>
+        /// Loads the content for the end game screen
+        /// </summary>
+        /// <param name="content"></param>
         public override void Load(ContentManager content)
         {
             base.Load(content);
@@ -45,10 +46,10 @@
                 }
             }
         }
-        /*-------------------------------------------------------------------------------------------------
-        Saves the scores in the file only if the player managed to get in top 10
-        we are using it in the UpdateScore method below
-        --------------------------------------------------------------------------------------------------*/
+        /// <summary>
+        /// Saves the scores in the file only if the player managed to get in top 10
+        /// we are using it in the UpdateScore method below
+        /// </summary>
         private void SaveScores()
         {
             using (StreamWriter writer = new StreamWriter(path))
@@ -61,9 +62,11 @@
                 }
             }
         }
-        /*-------------------------------------------------------------------------------------------------
-        Update the scoreboard each time the player dies or clears the level
-        -------------------------------------------------------------------------------------------------*/
+
+        /// <summary>
+        /// Update the scoreboard each time the player dies or clears the level
+        /// </summary>
+        /// <param name="playerScore"></param>
         public void UpdateScoreboard(int playerScore)
         {
             wasUpdated = false;
@@ -85,9 +88,11 @@
             }
             SaveScores();
         }
-        /*-------------------------------------------------------------------------------------------------
-        Draws the end game screen if it is active
-        -------------------------------------------------------------------------------------------------*/
+
+        /// <summary>
+        /// Draws the end game screen if it is active
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
@@ -120,9 +125,12 @@
             }
             spriteBatch.End();
         }
-        /*-------------------------------------------------------------------------------------------------
-        Update the end game screen if it is active
-        -------------------------------------------------------------------------------------------------*/
+
+        /// <summary>
+        /// Update the end game screen if it is active
+        /// </summary>
+        /// <param name="gameTime"></param>
+        /// <param name="game"></param>
         public override void Update(GameTime gameTime, MainGame game)
         {
             if (this.mainMenuButton.Location.Contains(Mouse.GetState(game.Window).Position))

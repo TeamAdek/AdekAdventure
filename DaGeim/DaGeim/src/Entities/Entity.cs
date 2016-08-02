@@ -66,7 +66,7 @@
         {
             if (this.CollisionBox.Intersects(entity.CollisionBox))
             {
-                ///TODO: Add Collision Logic
+                //TODO: Add Collision Logic
             }
         }
         public virtual void CollisionWithAmmunition(Ammunition.Ammunition ammunition)

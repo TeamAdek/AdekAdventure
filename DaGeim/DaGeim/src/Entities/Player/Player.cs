@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using Ammunition;
-    using DaGeim.Helper_Classes;
+    using Helper_Classes;
     using Interfaces;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Content;
@@ -23,26 +23,26 @@
         private Texture2D rocketRight;
         private List<Rocket> rockets;
 
-        private int jumpBoostJumpBoostTimer = 0;
+        private int jumpBoostJumpBoostTimer;
         private float rocketFrequencyShootingTimer = 50.0f;
 
         public Player(Vector2 position)
             : base(position)
         {
-            Health = 300;
-            FramesPerSecond = 10;
+            this.Health = 300;
+            this.FramesPerSecond = 10;
 
-            entityVelocity.X = 250.0f;
-            entityVelocity.Y = 0.0f;
+            this.entityVelocity.X = 250.0f;
+            this.entityVelocity.Y = 0.0f;
 
-            gravity = 15.0f;
-            jumpHeight = 400.0f;
-            score = 0;
-            rockets = new List<Rocket>();
+            this.gravity = 15.0f;
+            this.jumpHeight = 400.0f;
+            this.score = 0;
+            this.rockets = new List<Rocket>();
 
-            LoadAnimations();
-            PlayAnimation("IdleRight");
-            entityOrientation = Orientations.Right;
+            this.LoadAnimations();
+            this.PlayAnimation("IdleRight");
+            this.entityOrientation = Orientations.Right;
         }
 
         public int JumpBoostTimer
@@ -56,51 +56,51 @@
             get { return this.score; }
             set
             {
-                score += value;
-                if (score < 0)
-                    score = 0;
+                this.score += value;
+                if (this.score < 0)
+                    this.score = 0;
             }
         }
 
         public List<Rocket> Rockets { get { return this.rockets; } }
         public override void Update(GameTime gameTime)
         {
-            if (jumped)
-                entityDirection = new Vector2(0f, 1f);
+            if (this.jumped)
+                this.entityDirection = new Vector2(0f, 1f);
             else
-                entityDirection = Vector2.Zero;
+                this.entityDirection = Vector2.Zero;
 
-            HandleInput(Keyboard.GetState());
-            UpdateRockets(gameTime);
+            this.HandleInput(Keyboard.GetState());
+            this.UpdateRockets(gameTime);
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (slideCDTimer > 0)
-                slideCDTimer -= deltaTime;
+            if (this.slideCDTimer > 0)
+                this.slideCDTimer -= deltaTime;
             else
-                slideCD = false;
+                this.slideCD = false;
 
-            if (sliding)
+            if (this.sliding)
             {
-                if (entityOrientation == Orientations.Left)
-                    entityDirection += new Vector2(-1f, 0f);
+                if (this.entityOrientation == Orientations.Left)
+                    this.entityDirection += new Vector2(-1f, 0f);
                 else
-                    entityDirection += new Vector2(1f, 0f);
+                    this.entityDirection += new Vector2(1f, 0f);
             }
 
-            if (!grounded && !jumped)
+            if (!this.grounded && !this.jumped)
             {
-                entityDirection += new Vector2(0, 3.0f);
+                this.entityDirection += new Vector2(0, 3.0f);
             }
 
-            entityVelocity.Y += gravity * (-1.0f);
-            entityDirection *= new Vector2(entityVelocity.X, -entityVelocity.Y);
-            entityPosition += (entityDirection * deltaTime);
+            this.entityVelocity.Y += this.gravity * (-1.0f);
+            this.entityDirection *= new Vector2(this.entityVelocity.X, -this.entityVelocity.Y);
+            this.entityPosition += (this.entityDirection * deltaTime);
 
-            stepAmount = entityDirection * deltaTime;
+            this.stepAmount = this.entityDirection * deltaTime;
 
-            UpdateCollisionBounds();
+            this.UpdateCollisionBounds();
             //  TODO: Implement this whole JumpBoostThingy --> JumpBoostCheckTimer();
-            JumpBoostCheckTimer();
+            this.JumpBoostCheckTimer();
 
 
             base.Update(gameTime);
@@ -108,61 +108,61 @@
 
         private void HandleInput(KeyboardState keyboard)
         {
-            if (!sliding)
+            if (!this.sliding)
             {
                 if (keyboard.IsKeyDown(Keys.Left)) // LEFT ARROW KEY
-                    HandleArrowKey("Left", keyboard);
+                    this.HandleArrowKey("Left", keyboard);
 
                 else if (keyboard.IsKeyDown(Keys.Right)) // RIGHT KEY 
-                    HandleArrowKey("Right", keyboard);
+                    this.HandleArrowKey("Right", keyboard);
 
                 else if (keyboard.IsKeyDown(Keys.Space)) // SPACE KEY
                 {
-                    attacking = true;
-                    if (entityOrientation == Orientations.Left)
+                    this.attacking = true;
+                    if (this.entityOrientation == Orientations.Left)
                     {
-                        entityOrientation = Orientations.Left;
-                        PlayAnimation("ShootLeft");
-                        Shoot();
+                        this.entityOrientation = Orientations.Left;
+                        this.PlayAnimation("ShootLeft");
+                        this.Shoot();
 
                     }
-                    else if (entityOrientation == Orientations.Right)
+                    else if (this.entityOrientation == Orientations.Right)
                     {
-                        entityOrientation = Orientations.Right;
-                        PlayAnimation("ShootRight");
-                        Shoot();
+                        this.entityOrientation = Orientations.Right;
+                        this.PlayAnimation("ShootRight");
+                        this.Shoot();
                     }
                 }
                 // UP ARROW
-                else if (keyboard.IsKeyDown(Keys.Up) && !jumped)
+                else if (keyboard.IsKeyDown(Keys.Up) && !this.jumped)
                 {
-                    jumped = true;
-                    entityDirection += new Vector2(0f, 1f);
-                    entityVelocity.Y = jumpHeight;
+                    this.jumped = true;
+                    this.entityDirection += new Vector2(0f, 1f);
+                    this.entityVelocity.Y = this.jumpHeight;
                     // sounds[0].Play();
 
-                    if (entityOrientation == Orientations.Left)
-                        PlayAnimation("JumpLeft");
+                    if (this.entityOrientation == Orientations.Left)
+                        this.PlayAnimation("JumpLeft");
                     else
-                        PlayAnimation("JumpRight");
+                        this.PlayAnimation("JumpRight");
                 }
                 else if (keyboard.IsKeyDown(Keys.X))
                 {
-                    attacking = true;
-                    if (entityOrientation == Orientations.Left)
-                        PlayAnimation("IdleMeleeLeft");
+                    this.attacking = true;
+                    if (this.entityOrientation == Orientations.Left)
+                        this.PlayAnimation("IdleMeleeLeft");
                     else
-                        PlayAnimation("IdleMeleeRight");
+                        this.PlayAnimation("IdleMeleeRight");
                 }
                 // NO KEY PRESSED
                 else
                 {
-                    if (!jumped)
+                    if (!this.jumped)
                     {
-                        if (entityOrientation == Orientations.Left)
-                            PlayAnimation("IdleLeft");
-                        if (entityOrientation == Orientations.Right)
-                            PlayAnimation("IdleRight");
+                        if (this.entityOrientation == Orientations.Left)
+                            this.PlayAnimation("IdleLeft");
+                        if (this.entityOrientation == Orientations.Right)
+                            this.PlayAnimation("IdleRight");
                     }
                 }
 
@@ -172,126 +172,126 @@
 
         private void HandleArrowKey(string direction, KeyboardState keyboard)
         {
-            if (jumped)
+            if (this.jumped)
             {
                 if (keyboard.IsKeyDown(Keys.X))
                 {
-                    attacking = true;
-                    PlayAnimation("Melee" + direction);
+                    this.attacking = true;
+                    this.PlayAnimation("Melee" + direction);
                 }
                 else
-                    PlayAnimation("Jump" + direction);
+                    this.PlayAnimation("Jump" + direction);
             }
 
             if (direction == "Left")
-                entityDirection += new Vector2(-1f, 0f);
+                this.entityDirection += new Vector2(-1f, 0f);
             else
-                entityDirection += new Vector2(1f, 0f);
+                this.entityDirection += new Vector2(1f, 0f);
 
             if (keyboard.IsKeyDown(Keys.Down) && !jumped && !slideCD) // SLIDE 
             {
-                sliding = true;
-                PlayAnimation("Slide" + direction);
+                this.sliding = true;
+                this.PlayAnimation("Slide" + direction);
                 //sounds[1].Play();
             }
             else if (keyboard.IsKeyDown(Keys.Space) && !jumped) // SHOOT
             {
-                attacking = true;
-                PlayAnimation("Attack" + direction);
-                Shoot();
+                this.attacking = true;
+                this.PlayAnimation("Attack" + direction);
+                this.Shoot();
 
             }
             else if (keyboard.IsKeyDown(Keys.Up) && !jumped) // JUMP
             {
-                jumped = true;
-                entityVelocity.Y = jumpHeight;
-                entityDirection += new Vector2(0f, 1f);
+                this.jumped = true;
+                this.entityVelocity.Y = this.jumpHeight;
+                this.entityDirection += new Vector2(0f, 1f);
                 //sounds[0].Play();
 
                 if (keyboard.IsKeyDown(Keys.X))
                 {
-                    attacking = true;
-                    PlayAnimation("Melee" + direction);
+                    this.attacking = true;
+                    this.PlayAnimation("Melee" + direction);
                 }
                 else
-                    PlayAnimation("Jump" + direction);
+                    this.PlayAnimation("Jump" + direction);
             }
-            else if (!jumped) // RUN
-                PlayAnimation("Run" + direction);
+            else if (!this.jumped) // RUN
+                this.PlayAnimation("Run" + direction);
 
             if (direction == "Left")
-                entityOrientation = Orientations.Left;
+                this.entityOrientation = Orientations.Left;
             else
-                entityOrientation = Orientations.Right;
+                this.entityOrientation = Orientations.Right;
         }
 
         private void Shoot()
         {
-            if (rocketCDTimer > 0.0f)
-                rocketCDTimer--;
+            if (this.rocketCDTimer > 0.0f)
+                this.rocketCDTimer--;
 
-            if (rocketCDTimer == 0.0f)
+            if (this.rocketCDTimer.Equals(0.0f))
             {
                 Rocket rocket;
-                if (entityOrientation == Orientations.Left)
-                    rocket = new Rocket(new Vector2(entityPosition.X + -15, entityPosition.Y + 35), "left", rocketLeft, rocketRight);
+                if (this.entityOrientation == Orientations.Left)
+                    rocket = new Rocket(new Vector2(this.entityPosition.X + -15, this.entityPosition.Y + 35), "left", this.rocketLeft, this.rocketRight);
                 else
-                    rocket = new Rocket(new Vector2(entityPosition.X + 80, entityPosition.Y + 35), "right", rocketLeft, rocketRight);
+                    rocket = new Rocket(new Vector2(this.entityPosition.X + 80, this.entityPosition.Y + 35), "right", this.rocketLeft, this.rocketRight);
 
-                rockets.Add(rocket);
+                this.rockets.Add(rocket);
                 //TODO: Play sound here (on this line)
-                rocketCDTimer = rocketFrequencyShootingTimer;
+                this.rocketCDTimer = rocketFrequencyShootingTimer;
             }
         }
 
         private void UpdateRockets(GameTime gameTime)
         {
-            foreach (var rocket in rockets)
+            foreach (var rocket in this.rockets)
                 rocket.Update(gameTime);
 
-            for (int i = 0; i < rockets.Count; i++)
-                if (!rockets[i].IsVisible)
+            for (int i = 0; i < this.rockets.Count; i++)
+                if (!this.rockets[i].IsVisible)
                 {
-                    rockets.RemoveAt(i);
+                    this.rockets.RemoveAt(i);
                     i--;
                 }
         }
 
         public void PushedByBoss()
         {
-            sliding = true;
-            PlayAnimation("SlideLeft");
-            entityOrientation = Orientations.Left;
+            this.sliding = true;
+            this.PlayAnimation("SlideLeft");
+            this.entityOrientation = Orientations.Left;
             //TO DO: Add sound
         }
 
         public override void CollisionWithMap(Rectangle tileRectangle, int mapWidth, int mapHeight)
         {
-            if (!CollisionBox.TouchTopOf(tileRectangle) && !jumped)
-                grounded = false;
+            if (!CollisionBox.TouchTopOf(tileRectangle) && !this.jumped)
+                this.grounded = false;
             if (CollisionBox.TouchTopOf(tileRectangle))
             {
-                if (sliding)
-                    entityPosition.Y = tileRectangle.Y - CollisionBox.Height - 25;
+                if (this.sliding)
+                    this.entityPosition.Y = tileRectangle.Y - CollisionBox.Height - 25;
                 else
-                    entityPosition.Y = tileRectangle.Y - CollisionBox.Height - 9;
+                    this.entityPosition.Y = tileRectangle.Y - CollisionBox.Height - 9;
 
-                entityVelocity.Y = 0.0f;
-                jumped = false;
-                grounded = true;
+                this.entityVelocity.Y = 0.0f;
+                this.jumped = false;
+                this.grounded = true;
             }
             if (CollisionBox.TouchLeftOf(tileRectangle) && entityOrientation == Orientations.Right)
             {
-                sliding = false;
-                entityPosition.X -= stepAmount.X;
+                this.sliding = false;
+                this.entityPosition.X -= stepAmount.X;
             }
             if (CollisionBox.TouchRightOf(tileRectangle) && entityOrientation == Orientations.Left)
             {
-                sliding = false;
-                entityPosition.X -= stepAmount.X;
+                this.sliding = false;
+                this.entityPosition.X -= stepAmount.X;
             }
             if (CollisionBox.TouchBottomOf(tileRectangle))
-                entityVelocity.Y = -1.0f;
+                this.entityVelocity.Y = -1.0f;
         }
 
         public void CollisionWithCollectable(ICollectable collectable)
@@ -300,26 +300,26 @@
             {
                 if (collectable.RestoreHealthPoints > 0)
                 {
-                    Health += collectable.RestoreHealthPoints;
-                    if (Health > 320)
+                    this.Health += collectable.RestoreHealthPoints;
+                    if (this.Health > 320)
                     {
-                        Health = 320;
+                        this.Health = 320;
                     }
                 }
 
                 if (collectable.BonusScorePoints > 0)
                 {
-                    score += collectable.BonusScorePoints;
+                    this.score += collectable.BonusScorePoints;
                 }
 
                 if (collectable.JumpBoost > 0)
                 {
-                    JumpBoostTimer = 2000;
+                    this.JumpBoostTimer = 2000;
                 }
 
                 if (collectable.BonusRockerShootingBooster > 0)
                 {
-                    rocketFrequencyShootingTimer = collectable.BonusRockerShootingBooster;
+                    this.rocketFrequencyShootingTimer = collectable.BonusRockerShootingBooster;
                 }
 
 
@@ -328,9 +328,9 @@
 
         public override void LoadContent(ContentManager content)
         {
-            entityTexture = content.Load<Texture2D>("PlayerAnimation");
-            rocketLeft = content.Load<Texture2D>("rocketLeft");
-            rocketRight = content.Load<Texture2D>("rocketRight");
+            this.entityTexture = content.Load<Texture2D>("PlayerAnimation");
+            this.rocketLeft = content.Load<Texture2D>("rocketLeft");
+            this.rocketRight = content.Load<Texture2D>("rocketRight");
 
         }
 
@@ -343,20 +343,20 @@
         protected override void AnimationDone(string animation)
         {
             if (animation.Contains("Attack") || animation.Contains("Shoot"))
-                attacking = false;
+                this.attacking = false;
 
             if (animation.Contains("Slide"))
             {
-                slideCDTimer = 0.50f;
-                slideCD = true;
-                sliding = false;
+                this.slideCDTimer = 0.50f;
+                this.slideCD = true;
+                this.sliding = false;
             }
         }
 
         public override void UpdateCollisionBounds()
         {
             Rectangle output = new Rectangle();
-            switch (currAnimationSet)
+            switch (this.currAnimationSet)
             {
                 case "IdleLeft": output = SetCollisionRectangle(24, 10, 47, 83); break;
                 case "IdleRight": output = SetCollisionRectangle(30, 10, 47, 83); break;
@@ -381,8 +381,8 @@
 
         protected override void LoadAnimations()
         {
-            textureWidth = 100;
-            textureHeight = 100;
+            this.textureWidth = 100;
+            this.textureHeight = 100;
             AddAnimation("IdleRight", 10, 0);
             AddAnimation("IdleLeft", 10, 1);
             AddAnimation("RunRight", 8, 2);
@@ -407,9 +407,9 @@
         /// </summary>
         public void JumpBoostCheckTimer()
         {
-            if (JumpBoostTimer > 1)
+            if (this.JumpBoostTimer > 1)
             {
-                JumpBoostTimer--;
+                this.JumpBoostTimer--;
                 this.jumpHeight = 450;
             }
             else

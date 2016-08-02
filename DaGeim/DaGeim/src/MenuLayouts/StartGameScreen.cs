@@ -14,9 +14,6 @@
         private Button creditsButton = new Button("Credits", new Rectangle(465, 480, 350, 80));
         private Button quitButton = new Button("Quit", new Rectangle(465, 600, 350, 80));
 
-        /*---------------------------------------------------------------------------------------------------
-        Loads the content for the start game screen
-        ----------------------------------------------------------------------------------------------------*/
         public override void Load(ContentManager content)
         {
             base.Load(content);
@@ -25,10 +22,11 @@
             this.creditsButton.Load(content);
             this.scoresButton.Load(content);
         }
-
-        /*-------------------------------------------------------------------------------------------------
-        Update the start game screen if it is active
-        -------------------------------------------------------------------------------------------------*/
+        /// <summary>
+        /// Update the start game screen if it is active
+        /// </summary>
+        /// <param name="gameTime"></param>
+        /// <param name="game"></param>
         public override void Update(GameTime gameTime, MainGame game)
         {
             if (this.newGameButton.Location.Contains(Mouse.GetState(game.Window).Position))
@@ -112,9 +110,10 @@
                 }
             }
         }
-        /*-------------------------------------------------------------------------------------------------
-        Draws the start game screen if it is active
-        -------------------------------------------------------------------------------------------------*/
+        /// <summary>
+        ///  Draws the start game screen if it is active
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);

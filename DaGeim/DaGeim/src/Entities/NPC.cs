@@ -93,7 +93,7 @@
             {
                 if (this.shootCD > 0.0f)
                     this.shootCD--;
-                if (this.shootCD == 0.0f)
+                if (this.shootCD.Equals(0.0f))
                 {
                     if (player.Position.X < this.entityPosition.X)
                         this.entityOrientation = Orientations.Left;
@@ -163,7 +163,7 @@
             return false;
         }
 
-        public void CollisionWithAmmunition(Ammunition.Ammunition ammunition)
+        public override void CollisionWithAmmunition(Ammunition.Ammunition ammunition)
         {
             if (this.CollisionBox.Intersects(ammunition.CollisionBox))
             {

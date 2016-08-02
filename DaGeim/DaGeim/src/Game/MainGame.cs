@@ -41,63 +41,61 @@
 
         public MainGame()
         {
-            Content.RootDirectory = "Content";
-            Window.Title = "Robot Boy";
-            graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = WindowWidth;
-            graphics.PreferredBackBufferHeight = WindowHeight;
-            graphics.ApplyChanges();
+            this.Content.RootDirectory = "Content";
+            this.Window.Title = "Robot Boy";
+            this.graphics = new GraphicsDeviceManager(this);
+            this.graphics.PreferredBackBufferWidth = WindowWidth;
+            this.graphics.PreferredBackBufferHeight = WindowHeight;
+            this.graphics.ApplyChanges();
         }
 
         protected override void Initialize()
         {
-            
-            startGameScreen = new StartGameScreen();
-            endGameScreen = new EndGameScreen();
-            pauseGameScreen = new PauseGameScreen();
-            creditsScreen = new CreditsScreen();
-            GameMenuManager.mainMenuOn = true;
-            map = new Map();
-            gameUI = new HUD();
-            player = new Player(new Vector2(150, 465));
-            // GameMenuManager.InitializeNewGame(this.player, this.map, this.gameUI);
-            npcs = new List<NPC>();
-            collectableItems = new List<ICollectable>();
-            deadEnemies = new List<int>();
-            InitializeEnemies();
-            InitializeCollectables();
+
+            this.startGameScreen = new StartGameScreen();
+            this.endGameScreen = new EndGameScreen();
+            this.pauseGameScreen = new PauseGameScreen();
+            this.creditsScreen = new CreditsScreen();
+            //GameMenuManager.mainMenuOn = true;
+            this.map = new Map();
+            this.gameUI = new HUD();
+            this.player = new Player(new Vector2(150, 465));
+            this.npcs = new List<NPC>();
+            this.collectableItems = new List<ICollectable>();
+            this.deadEnemies = new List<int>();
+            this.InitializeEnemies();
+            this.InitializeCollectables();
             base.Initialize();
         }
 
 
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-            startGameScreen.Load(Content);
-            pauseGameScreen.Load(Content);
-            creditsScreen.Load(Content);
-            endGameScreen.Load(Content);
+            this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
+            this.startGameScreen.Load(this.Content);
+            this.pauseGameScreen.Load(this.Content);
+            this.creditsScreen.Load(this.Content);
+            this.endGameScreen.Load(this.Content);
+            this.camera = new Camera(this.GraphicsDevice.Viewport);
 
-            camera = new Camera(GraphicsDevice.Viewport);
+            Tiles.Content = this.Content;
+            this.map.Load(this.map, this.Content);
+            this.player.LoadContent(this.Content);
 
-            Tiles.Content = Content;
-            map.Load(map, Content);
-            player.LoadContent(Content);
-
-            foreach (var npc in npcs)
+            foreach (var npc in this.npcs)
             {
                 npc.LoadContent(Content);
             }
-            
-            foreach (var collectable in collectableItems)
+
+            foreach (var collectable in this.collectableItems)
             {
                 collectable.Load(Content);
             }
 
-            DrawRect.LoadContent(Content);
-            gameUI.Load(Content);
+            DrawRect.LoadContent(this.Content);
+            this.gameUI.Load(this.Content);
 
-            song = Content.Load<Song>("theme1");
+            this.song = this.Content.Load<Song>("theme1");
             MediaPlayer.Play(song);
             MediaPlayer.Volume = 0.1f;
             MediaPlayer.IsRepeating = true;
@@ -114,27 +112,27 @@
             {
                 //update the main menu
                 IsMouseVisible = true;
-                startGameScreen.Update(gameTime, this);
+                this.startGameScreen.Update(gameTime, this);
             }
             else if (GameMenuManager.endGameMenuOn)
             {
                 IsMouseVisible = true;
                 // update teh end game screen
-                endGameScreen.Update(gameTime, this);
+                this.endGameScreen.Update(gameTime, this);
             }
             else if (GameMenuManager.creditsMenuOn)
             {
                 IsMouseVisible = true;
                 //update the credits screen
-                creditsScreen.Update(gameTime, this);
+                this.creditsScreen.Update(gameTime, this);
             }
             else if (GameMenuManager.pauseMenuOn)
             {
                 IsMouseVisible = true;
                 //update the pause game screen
-                pauseGameScreen.Update(gameTime, this);
+                this.pauseGameScreen.Update(gameTime, this);
             }
-            else  
+            else
             {
                 IsMouseVisible = false;
                 //pressing esc we call the pause game screen
@@ -145,46 +143,47 @@
                     GameMenuManager.TurnOtherMenusOff();
                 }
 
-                deadEnemies.Clear();
-                map.Update(player.Position);
-                player.Update(gameTime);
+                this.deadEnemies.Clear();
+                this.map.Update(this.player.Position);
+                this.player.Update(gameTime);
 
-                if(bossL1.isPushing)
-                    player.PushedByBoss();
+                if (this.bossL1.isPushing)
+                    this.player.PushedByBoss();
 
-                foreach (var npc in npcs)
+                foreach (var npc in this.npcs)
                 {
                     npc.Update(gameTime);
                     npc.Shoot(this.player);
                 }
 
-		int tempScore = 0;
-                for (int i = 0; i < npcs.Count; i++)
+                int tempScore = 0;
+                for (int i = 0; i < this.npcs.Count; i++)
                 {
-                    if (npcs[i].Dead)
+                    if (this.npcs[i].Dead)
                     {
-                        deadEnemies.Add(i);
-                 	tempScore += 50;       
+                        this.deadEnemies.Add(i);
+                        tempScore += 50;
                     }
                 }
-                player.Score = tempScore;
-                foreach (var index in deadEnemies)
-                    npcs.RemoveAt(index);
+                this.player.Score = tempScore;
+                foreach (var index in this.deadEnemies)
+                    this.npcs.RemoveAt(index);
 
-                foreach (ICollectable collectable in collectableItems)
+                foreach (ICollectable collectable in this.collectableItems)
                     collectable.Update(gameTime);
 
-                MakeCollisionWithMap();
-                CollisionWithRocket();
-                CollisionWithEnemy();
-                CollisionWithAmmo();
+                this.MakeCollisionWithMap();
+                this.CollisionWithRocket();
+                this.CollisionWithEnemy();
+                this.CollisionWithAmmo();
 
-                camera.Update(player.Position, map.Widht, map.Height);
-                gameUI.Update(player.Health, Camera.centre);
+                this.camera.Update(this.player.Position, this.map.Widht, this.map.Height);
+                this.gameUI.Update(this.player.Health, Camera.centre);
 
-                if (player.Health <= 0)
+                if (this.player.Health <= 0)
                 {
-                    endGameScreen.UpdateScoreboard(player.Score);
+                    this.Initialize();
+                    this.endGameScreen.UpdateScoreboard(player.Score);
                     Thread.Sleep(100);
                     GameMenuManager.endGameMenuOn = true;
                     GameMenuManager.gameOn = false;
@@ -194,17 +193,60 @@
 
             base.Update(gameTime);
         }
+        
+        protected override void Draw(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+            //the same as the update, here we draw only the active menu
+            if (GameMenuManager.mainMenuOn)
+            {
+                this.startGameScreen.Draw(this.spriteBatch);
+            }
+            else if (GameMenuManager.endGameMenuOn)
+            {
+                this.endGameScreen.Draw(this.spriteBatch);
+            }
+            else if (GameMenuManager.pauseMenuOn)
+            {
+                this.pauseGameScreen.Draw(this.spriteBatch);
+            }
+            else if (GameMenuManager.creditsMenuOn)
+            {
+                this.creditsScreen.Draw(this.spriteBatch);
+            }
+            else
+            {
+                this.spriteBatch.Begin(SpriteSortMode.Deferred,
+                                 BlendState.AlphaBlend, null, null, null, null, this.camera.Transform);
+
+                this.map.Draw(this.spriteBatch);
+                this.player.Draw(this.spriteBatch);
+
+                this.gameUI.Draw(this.spriteBatch, this.player);
+                foreach (var rocket in this.player.Rockets)
+                    rocket.Draw(this.spriteBatch);
+
+                foreach (var enemy in this.npcs)
+                    enemy.Draw(this.spriteBatch);
+
+                foreach (var collectable in collectableItems)
+                    collectable.Draw(spriteBatch);
+
+                this.spriteBatch.End();
+            }
+            base.Draw(gameTime);
+        }
 
         private void CollisionWithAmmo()
         {
-            foreach (var npc in npcs)
+            foreach (var npc in this.npcs)
             {
                 foreach (var ammonition in npc.ammo)
                 {
-                    if (ammonition.CollisionBox.Intersects(player.CollisionBox))
+                    if (ammonition.CollisionBox.Intersects(this.player.CollisionBox))
                     {
                         ammonition.IsVisible = false;
-                        player.Health -= 20;
+                        this.player.Health -= 20;
                     }
                 }
             }
@@ -212,19 +254,19 @@
         private void CollisionWithEnemy()
         {
             //enemy collision with enemy
-            for (int i = 0; i < npcs.Count - 1; i++)
+            for (int i = 0; i < this.npcs.Count - 1; i++)
             {
-                for (int j = i + 1; j < npcs.Count - 1; j++)
+                for (int j = i + 1; j < this.npcs.Count - 1; j++)
                 {
-                    npcs[i].CollisionWithEntity(npcs[j]);
+                    this.npcs[i].CollisionWithEntity(this.npcs[j]);
                 }
             }
 
             // Player collision with collectables
-            foreach (var collectable in collectableItems)
+            foreach (var collectable in this.collectableItems)
             {
-                player.CollisionWithCollectable(collectable); //TODO: Add CollisionWithCollectable
-                collectable.CollisionWithPlayer(player);
+                this.player.CollisionWithCollectable(collectable); //TODO: Add CollisionWithCollectable
+                collectable.CollisionWithPlayer(this.player);
             }
 
         }
@@ -233,9 +275,9 @@
         private void CollisionWithRocket()
         {
             // player rockets collision with enemies
-            foreach (var rocket in player.Rockets)
+            foreach (var rocket in this.player.Rockets)
             {
-                foreach (var npc in npcs)
+                foreach (var npc in this.npcs)
                 {
                     npc.CollisionWithAmmunition(rocket);
                 }
@@ -253,14 +295,14 @@
                 this.player.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, this.map.Widht, this.map.Height);
             }
 
-            foreach (var npc in npcs)
+            foreach (var npc in this.npcs)
             {
                 startTileIndex = this.CalculateStartTileIndex(npc.Position);
                 endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 40);
 
-                for ( int i = startTileIndex; i <= endTileIndex; i++)
+                for (int i = startTileIndex; i <= endTileIndex; i++)
                 {
-                    npc.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, map.Widht, this.map.Height);
+                    npc.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, this.map.Widht, this.map.Height);
                 }
             }
 
@@ -272,7 +314,7 @@
 
                 for (int i = startTileIndex; i <= endTileIndex; i++)
                 {
-                    rocket.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, map.Widht, this.map.Height);
+                    rocket.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, this.map.Widht, this.map.Height);
                 }
             }
         }
@@ -289,35 +331,35 @@
         private void InitializeEnemies()
         {
             Skeleton enemy1 = new Skeleton(new Vector2(910, 450), 350);
-            bossL1 = new Boss_L1(new Vector2(5250, 450), 100);
+            this.bossL1 = new Boss_L1(new Vector2(5250, 450), 100);
 
             Skeleton enemy2 = new Skeleton(new Vector2(1100, 500), 50);
             Skeleton enemy4 = new Skeleton(new Vector2(710, 200), 70);
             Skeleton enemy5 = new Skeleton(new Vector2(1800, 100), 200);
-          //  Skeleton enemy6 = new Skeleton(new Vector2(2200, 155), 50);
+            //  Skeleton enemy6 = new Skeleton(new Vector2(2200, 155), 50);
             Skeleton enemy7 = new Skeleton(new Vector2(1950, 155), 40);
             Skeleton enemy8 = new Skeleton(new Vector2(2400, 200), 75);
             Skeleton enemy9 = new Skeleton(new Vector2(2600, 155), 150);
-           // Skeleton enemy10 = new Skeleton(new Vector2(2800, 155), 100);
+            // Skeleton enemy10 = new Skeleton(new Vector2(2800, 155), 100);
             //Skeleton enemy11 = new Skeleton(new Vector2(3000, 320), 100);
             Skeleton enemy12 = new Skeleton(new Vector2(3800, 340), 150);
             Skeleton enemy13 = new Skeleton(new Vector2(4100, 190), 25);
             Skeleton enemy14 = new Skeleton(new Vector2(4300, 190), 75);
 
-            npcs.Add(enemy1);
-            npcs.Add(enemy2);
-            npcs.Add(enemy4);
-            npcs.Add(enemy5);
-           // npcs.Add(enemy6);
-            npcs.Add(enemy7);
-            npcs.Add(enemy8);
-            npcs.Add(enemy9);
-           // npcs.Add(enemy10);
-           // npcs.Add(enemy11);
-            npcs.Add(enemy12);
-            npcs.Add(enemy13);
-            npcs.Add(enemy14);
-            npcs.Add(bossL1);
+            this.npcs.Add(enemy1);
+            this.npcs.Add(enemy2);
+            this.npcs.Add(enemy4);
+            this.npcs.Add(enemy5);
+            // npcs.Add(enemy6);
+            this.npcs.Add(enemy7);
+            this.npcs.Add(enemy8);
+            this.npcs.Add(enemy9);
+            // npcs.Add(enemy10);
+            // npcs.Add(enemy11);
+            this.npcs.Add(enemy12);
+            this.npcs.Add(enemy13);
+            this.npcs.Add(enemy14);
+            this.npcs.Add(bossL1);
         }
 
         public void InitializeCollectables()
@@ -330,64 +372,20 @@
             HealthRestoreBig healthRestore6 = new HealthRestoreBig(new Vector2(4400, 100));
             Chest chest1 = new Chest(new Vector2(5450, 518));
             RocketShootingBooster rocketShootingBooster = new RocketShootingBooster(new Vector2(750, 225));
-            collectableItems.Add(healthRestore1);
-            collectableItems.Add(healthRestore2);
-            collectableItems.Add(jumpBooster2);
-            collectableItems.Add(jumpBooster1);
-            collectableItems.Add(healthRestore5);
-            collectableItems.Add(healthRestore6);
-            collectableItems.Add(chest1);
-            collectableItems.Add(rocketShootingBooster);
+            this.collectableItems.Add(healthRestore1);
+            this.collectableItems.Add(healthRestore2);
+            this.collectableItems.Add(jumpBooster2);
+            this.collectableItems.Add(jumpBooster1);
+            this.collectableItems.Add(healthRestore5);
+            this.collectableItems.Add(healthRestore6);
+            this.collectableItems.Add(chest1);
+            this.collectableItems.Add(rocketShootingBooster);
         }
-
-        private void MediaPlayer_MediaStateChanged(object sender, System.EventArgs e)
-        {
-            // 0.0f is silent, 1.0f is full volume
-            MediaPlayer.Volume -= 0.1f;
-            MediaPlayer.Play(song);
-        }
-
-        protected override void Draw(GameTime gameTime)
-        {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-            //the same as the update, here we draw only the active menu
-            if (GameMenuManager.mainMenuOn)
-            {
-                startGameScreen.Draw(spriteBatch);
-            }
-            else if (GameMenuManager.endGameMenuOn)
-            {
-                endGameScreen.Draw(spriteBatch);
-            }
-            else if (GameMenuManager.pauseMenuOn)
-            {
-                pauseGameScreen.Draw(spriteBatch);
-            }
-            else if (GameMenuManager.creditsMenuOn)
-            {
-                creditsScreen.Draw(spriteBatch);
-            }
-            else 
-            {
-                spriteBatch.Begin(SpriteSortMode.Deferred,
-                                 BlendState.AlphaBlend, null, null, null, null, camera.Transform);
-
-                map.Draw(spriteBatch);
-                player.Draw(spriteBatch);
-
-                gameUI.Draw(spriteBatch, player);
-                foreach (var rocket in player.Rockets)
-                    rocket.Draw(spriteBatch);
-
-                foreach (var enemy in npcs)
-                      enemy.Draw(spriteBatch);
-
-                foreach (var collectable in collectableItems)
-                    collectable.Draw(spriteBatch);
-
-                spriteBatch.End();
-            }
-            base.Draw(gameTime);
-        }
+        //private void MediaPlayer_MediaStateChanged(object sender, System.EventArgs e)
+        //{
+        //    // 0.0f is silent, 1.0f is full volume
+        //    MediaPlayer.Volume -= 0.1f;
+        //    MediaPlayer.Play(song);
+        //}
     }
 }

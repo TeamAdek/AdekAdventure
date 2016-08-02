@@ -12,10 +12,10 @@
         private Button resumeGameButton = new Button("Resume Game", new Rectangle(440, 240, 400, 80));
         private Button mainMenuButton = new Button("Main Menu", new Rectangle(440, 350, 400, 80));
         private Button quitButton = new Button("Quit", new Rectangle(440, 460, 400, 80));
-
-        /*----------------------------------------------------------------------------------------------
-        Loads the content for the menu
-        ----------------------------------------------------------------------------------------------*/
+        /// <summary>
+        /// Loads the content for the menu
+        /// </summary>
+        /// <param name="content"></param>
         public override void Load(ContentManager content)
         {
             base.Load(content);
@@ -23,10 +23,12 @@
             this.mainMenuButton.Load(content);
             this.quitButton.Load(content);
         }
-        /*--------------------------------------------------------------------------------------------
-        Updates the pause menu when it is active
-        ---------------------------------------------------------------------------------------------*/
-        public override void Update(GameTime gameTime, MainGame game)
+        /// <summary>
+        /// Updates the pause menu when it is active
+        /// </summary>
+        /// <param name="gameTime"></param>
+        /// <param name="game"></param>
+       public override void Update(GameTime gameTime, MainGame game)
         {
             if (this.resumeGameButton.Location.Contains(Mouse.GetState(game.Window).Position))
             {
@@ -82,10 +84,11 @@
                 }
             }
         }
-        /*------------------------------------------------------------------------------------------
-        Draws the pause menu screen when it is active
-        ------------------------------------------------------------------------------------------*/
-        public override void Draw(SpriteBatch spriteBatch)
+        /// <summary>
+        ///  Draws the pause menu screen when it is active
+        /// </summary>
+        /// <param name="spriteBatch"></param>
+       public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
             spriteBatch.Begin();
