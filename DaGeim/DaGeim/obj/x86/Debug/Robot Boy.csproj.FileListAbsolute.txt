@@ -711,3 +711,10 @@ D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XInput.xml
 D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.xml
 D:\SoftUni\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 D:\SoftUni\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\Robot Boy.csprojResolveAssemblyReference.cache
+D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\blastEdit.xnb
+D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Chest.xnb
+D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\chestBig.xnb
+D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\gun.xnb
+D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\icycleLeft.xnb
+D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\icycleRight.xnb
+D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheetEnemy2.xnb
