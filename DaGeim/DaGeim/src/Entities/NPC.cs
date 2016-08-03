@@ -192,7 +192,7 @@ namespace RobotBoy.Entities
         {
             if (CollisionBox.Intersects(ammunition.CollisionBox))
             {
-                Health -= 50;
+                Health -= 35;
 
                 if (Health <= 0)
                 {

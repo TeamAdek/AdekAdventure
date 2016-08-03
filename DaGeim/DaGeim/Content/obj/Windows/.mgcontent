@@ -4,49 +4,49 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Ammunition/IcycleLeft.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Ammunition/IcycleRight.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Ammunition/Laser.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Ammunition/RocketLeft.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Ammunition/RocketRight.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Audio/Jump.ogg</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Audio/Lasershot.wav</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Audio/Stone.wav</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Audio/Sweep.wav</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Audio/Theme1.mp3</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Audio/Theme1.ogg</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Audio/Theme2.ogg</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Collectibles/BigChest.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Collectibles/BigHeart.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Collectibles/Chest.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Collectibles/Gun.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Collectibles/Pow.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Collectibles/SmallHeart.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Collectibles/Star.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Fonts/CreditsFont.spritefont</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Fonts/Font.spritefont</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Fonts/GameNameFont.spritefont</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Fonts/MainFont.spritefont</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Fonts/NewSpriteFont.spritefont</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/GUI/HealthBar.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/GUI/Hud.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Level/Background.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Level/Tile1.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Level/Tile2.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Level/Tile3.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Level/Tile4.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Level/Tile5.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Level/Tile6.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Menu/Background.jpg</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Menu/DarkButton.jpg</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Menu/HighlightedButton.jpg</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/SpriteSheets/Boss.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/SpriteSheets/PlayerAnimation.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/SpriteSheets/Skeleton.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/SpriteSheets/SpriteSheet.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Utils/Icon.ico</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Utils/Red.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Menu/Star.png</File>
-    <File>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Utils/Robot.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Ammunition/IcycleLeft.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Ammunition/IcycleRight.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Ammunition/Laser.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Ammunition/RocketLeft.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Ammunition/RocketRight.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Audio/Jump.ogg</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Audio/Lasershot.wav</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Audio/Stone.wav</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Audio/Sweep.wav</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Audio/Theme1.mp3</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Audio/Theme1.ogg</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Audio/Theme2.ogg</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Collectibles/BigChest.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Collectibles/BigHeart.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Collectibles/Chest.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Collectibles/Gun.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Collectibles/Pow.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Collectibles/SmallHeart.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Collectibles/Star.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Fonts/CreditsFont.spritefont</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Fonts/Font.spritefont</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Fonts/GameNameFont.spritefont</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Fonts/MainFont.spritefont</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Fonts/NewSpriteFont.spritefont</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/GUI/HealthBar.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/GUI/Hud.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Level/Background.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Level/Tile1.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Level/Tile2.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Level/Tile3.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Level/Tile4.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Level/Tile5.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Level/Tile6.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Menu/Background.jpg</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Menu/DarkButton.jpg</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Menu/HighlightedButton.jpg</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/SpriteSheets/Boss.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/SpriteSheets/PlayerAnimation.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/SpriteSheets/Skeleton.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/SpriteSheets/SpriteSheet.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Utils/Icon.ico</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Utils/Red.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Menu/Star.png</File>
+    <File>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Utils/Robot.png</File>
   </SourceFiles>
 </SourceFileCollection>

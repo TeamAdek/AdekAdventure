@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Fonts/NewSpriteFont.spritefont</SourceFile>
-  <SourceTime>2016-08-03T10:09:38.2847571+03:00</SourceTime>
-  <DestFile>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/Fonts/NewSpriteFont.xnb</DestFile>
-  <DestTime>2016-08-03T11:27:24.9499921+03:00</DestTime>
+  <SourceFile>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Fonts/NewSpriteFont.spritefont</SourceFile>
+  <SourceTime>2016-08-03T22:03:06.5958558+03:00</SourceTime>
+  <DestFile>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/Fonts/NewSpriteFont.xnb</DestFile>
+  <DestTime>2016-08-03T22:06:18.9420303+03:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2016-03-30T09:36:08+03:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

@@ -64,7 +64,7 @@ namespace RobotBoy.Game
             map = new Map();
             gameUI = new HUD();
 
-            player = new Player(new Vector2(150, 465));
+            player = new Player(new Vector2(3150, 465));
 
             InitializeEnemies();
             InitializeCollectables();
@@ -320,6 +320,8 @@ namespace RobotBoy.Game
             Skeleton enemy12 = new Skeleton(new Vector2(3800, 340), 150);
             Skeleton enemy13 = new Skeleton(new Vector2(4100, 190), 25);
             Skeleton enemy14 = new Skeleton(new Vector2(4300, 190), 75);
+            Skeleton enemy15 = new Skeleton(new Vector2(3350, 150), 75);
+            Skeleton enemy16 = new Skeleton(new Vector2(3800, 0), 75);
 
             npcs.Add(enemy1);
             npcs.Add(enemy2);
@@ -334,6 +336,8 @@ namespace RobotBoy.Game
             npcs.Add(enemy12);
             npcs.Add(enemy13);
             npcs.Add(enemy14);
+            npcs.Add(enemy15);
+            npcs.Add(enemy16);
             npcs.Add(bossL1);
         }
 

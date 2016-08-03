@@ -24,7 +24,7 @@ namespace RobotBoy.Entities.Player
         private readonly List<Rocket> rockets;
 
         private int jumpBoostJumpBoostTimer = 0;
-        private float rocketFrequencyShootingTimer = 50.0f;
+        private float rocketFrequencyShootingTimer = 20.0f;
 
         public Player(Vector2 position)
             : base(position)

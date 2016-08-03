@@ -12,7 +12,7 @@ namespace RobotBoy.Entities.Bosses
 
         public Boss_L1(Vector2 position, int range): base(position, range)
         {
-            Health = 180;
+            Health = 175;
             FramesPerSecond = 15;
             ammoType = typeof(Laser);
             LoadAnimations();
