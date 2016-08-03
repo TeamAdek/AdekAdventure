@@ -64,7 +64,7 @@ namespace RobotBoy.Game
             map = new Map();
             gameUI = new HUD();
 
-            player = new Player(new Vector2(3150, 465));
+            player = new Player(new Vector2(150, 465));
 
             InitializeEnemies();
             InitializeCollectables();
