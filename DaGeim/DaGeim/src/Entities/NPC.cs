@@ -125,7 +125,7 @@ namespace RobotBoy.Entities
                         entityOrientation = Orientations.Right;
 
                     Ammunition.Ammunition currentAmmo;
-                    switch (ammoType.FullName)
+                    switch (ammoType.Name)
                     {
                         case "Laser":
                             currentAmmo = new Laser(new Vector2(entityPosition.X -15, entityPosition.Y + 35), "left", ammoLeft);
