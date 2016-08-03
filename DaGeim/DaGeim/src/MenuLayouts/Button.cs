@@ -4,7 +4,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace RobotBoy.MenuLayouts
 {
-    public class Button
+    using RobotBoy.Interfaces;
+
+    public class Button : IButton
     {
         private Texture2D highlightedImage;
         private Texture2D darkImage;
