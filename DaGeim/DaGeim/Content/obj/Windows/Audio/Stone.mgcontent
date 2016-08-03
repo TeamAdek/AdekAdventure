@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/Audio/Stone.wav</SourceFile>
+  <SourceTime>2016-08-03T10:09:39.2438867+03:00</SourceTime>
+  <DestFile>E:/CG Stuff/Programming/Projects - University/SoftUni/C# Teamwork/Adek v4/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/Audio/Stone.xnb</DestFile>
+  <DestTime>2016-08-03T11:27:22.2689128+03:00</DestTime>
+  <Importer>WavImporter</Importer>
+  <ImporterTime>2016-03-30T09:36:08+03:00</ImporterTime>
+  <Processor>SoundEffectProcessor</Processor>
+  <ProcessorTime>2016-03-30T09:36:08+03:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

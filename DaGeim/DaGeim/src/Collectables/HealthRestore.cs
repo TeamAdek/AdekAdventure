@@ -1,9 +1,9 @@
-﻿namespace DaGeim.src.Collectable
-{
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Content;
-    using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
+namespace RobotBoy.Collectables
+{
     /// <summary>
     /// Healthrestore is a collectable item, it has a position, itemType and restoreHealthPoints.
     /// It has function Load - loading texture
@@ -19,7 +19,7 @@
 
         public override void Load(ContentManager content)
         {
-            spriteTexture = content.Load<Texture2D>("Corazon");
+            spriteTexture = content.Load<Texture2D>("Collectibles/SmallHeart");
         }
     }
 }

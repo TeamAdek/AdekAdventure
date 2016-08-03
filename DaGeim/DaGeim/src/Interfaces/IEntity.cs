@@ -1,12 +1,10 @@
-﻿using DaGeim;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using RobotBoy.Helper_Classes;
 
-namespace Game.src.Entities
+namespace RobotBoy.Interfaces
 {
-    using System.Collections.Generic;
-
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
-
     public interface IEntity
     {
         /// <summary>

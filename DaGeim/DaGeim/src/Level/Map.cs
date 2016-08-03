@@ -1,13 +1,10 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 
-namespace DaGeim
+namespace RobotBoy.Level
 {
-    using Microsoft.Xna.Framework.Content;
-    using Game = Microsoft.Xna.Framework.Game;
     class Map 
         {
         private int tileSize;
@@ -48,7 +45,7 @@ namespace DaGeim
         public void Load(Map map, ContentManager Content)
         {
             backRect = new Rectangle(0, 0, 6000, 700);
-            backText = Content.Load<Texture2D>("background");
+            backText = Content.Load<Texture2D>("Level/Background");
             map.Generate(new int[,]{
 
                       { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5},

@@ -1,5 +1,5 @@
 ﻿//helper class used to store the scores in the scoreboard
-namespace DaGeim
+namespace RobotBoy.Helper_Classes
 {
     public class Score
     {

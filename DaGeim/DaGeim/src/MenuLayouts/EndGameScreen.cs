@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
-using DaGeim.Game;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using RobotBoy.Game;
 
-namespace DaGeim.MenuLayouts
+namespace RobotBoy.MenuLayouts
 {
     public class EndGameScreen : MenuScreen
     {
@@ -29,7 +29,7 @@ namespace DaGeim.MenuLayouts
         {
             base.Load(content);
             //load the content for the scoreboard
-            this.star = content.Load<Texture2D>("bluestar");
+            this.star = content.Load<Texture2D>("Menu/Star");
             this.newGameButton.Load(content);
             this.mainMenuButton.Load(content);
             this.quitButton.Load(content);

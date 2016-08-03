@@ -9,8 +9,8 @@
     <ProjectGuid>{BF3A7601-66E5-4949-8283-F8ED35C07B61}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DaGeim</RootNamespace>
-    <AssemblyName>DaGeim</AssemblyName>
+    <RootNamespace>RobotBoy</RootNamespace>
+    <AssemblyName>Robot Boy</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>Windows</MonoGamePlatform>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -43,6 +43,7 @@
     <Compile Include="src\Entities\Ammunition\Icycle.cs" />
     <Compile Include="src\Entities\Ammunition\Laser.cs" />
     <Compile Include="src\Entities\Bosses\Boss_L1.cs" />
+    <Compile Include="src\GUI\EnemyHealthBar.cs" />
     <Compile Include="src\Interfaces\ICollectable.cs" />
     <Compile Include="src\Interfaces\ICollecting.cs" />
     <Compile Include="src\Interfaces\IJumpboostable.cs" />
@@ -65,7 +66,7 @@
     <Compile Include="src\Collectables\JumpBooster.cs" />
     <Compile Include="src\Helper Classes\Lasers.cs" />
     <Compile Include="src\Helper Classes\Rockets.cs" />
-    <Compile Include="src\Level\HUD.cs" />
+    <Compile Include="src\GUI\HUD.cs" />
     <Compile Include="src\MenuLayouts\Button.cs" />
     <Compile Include="src\Level\Camera.cs" />
     <Compile Include="src\Helper Classes\DrawRect.cs" />

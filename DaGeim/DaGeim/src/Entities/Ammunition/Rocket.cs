@@ -1,10 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using DaGeim;
 
-namespace DaGeim.src.Entities.New_Code
+namespace RobotBoy.Entities.Ammunition
 {
     public class Rocket : Ammunition
     {

@@ -1,9 +1,9 @@
-﻿using DaGeim.Game;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using RobotBoy.Game;
 
-namespace DaGeim.MenuLayouts
+namespace RobotBoy.MenuLayouts
 {
     public class MenuScreen : MainGame
     {
@@ -68,12 +68,12 @@ namespace DaGeim.MenuLayouts
 
         public virtual void Load(ContentManager content)
         {
-            this.background = content.Load<Texture2D>("background2");
-            this.robotImage = content.Load<Texture2D>("Idle");
-            this.Font = content.Load<SpriteFont>("Font");
-            this.GameNameFont = content.Load<SpriteFont>("GameNameFont");
-            this.MainFont = content.Load<SpriteFont>("MainFont");
-            this.CreditsFont = content.Load<SpriteFont>("CreditsFont");
+            this.background = content.Load<Texture2D>("Menu/Background");
+            this.robotImage = content.Load<Texture2D>("Utils/Robot");
+            this.Font = content.Load<SpriteFont>("Fonts/Font");
+            this.GameNameFont = content.Load<SpriteFont>("Fonts/GameNameFont");
+            this.MainFont = content.Load<SpriteFont>("Fonts/MainFont");
+            this.CreditsFont = content.Load<SpriteFont>("Fonts/CreditsFont");
         }
 
         public virtual void Update(GameTime gameTime, MainGame game)

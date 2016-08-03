@@ -1,6 +1,6 @@
 ﻿//helper class used to select the buttons
 
-namespace DaGeim
+namespace RobotBoy.Helper_Classes
 {
     public class Selector
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DaGeim.Game
+namespace RobotBoy.Game
 {
 #if WINDOWS || LINUX
     public static class Launcher

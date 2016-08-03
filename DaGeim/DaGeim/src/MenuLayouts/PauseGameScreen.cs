@@ -1,11 +1,11 @@
 ﻿using System.Threading;
-using DaGeim.Game;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using RobotBoy.Game;
 
-namespace DaGeim.MenuLayouts
+namespace RobotBoy.MenuLayouts
 {
     public class PauseGameScreen : MenuScreen
     {

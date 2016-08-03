@@ -1,10 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
-
-namespace DaGeim
+namespace RobotBoy.Level
 {
     class Tiles
     {
@@ -34,7 +33,7 @@ namespace DaGeim
     {
         public CollisionTiles(int i, Rectangle newRectangle)
         {
-            texture = Content.Load<Texture2D>("Tile" + i);
+            texture = Content.Load<Texture2D>("Level/Tile" + i);
             this.Rectangle = newRectangle;
         }
 

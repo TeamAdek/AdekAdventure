@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace DaGeim.Interfaces
+namespace RobotBoy.Interfaces
 {
     public interface IPatrolable
     {

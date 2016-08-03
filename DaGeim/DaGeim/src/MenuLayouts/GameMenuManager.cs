@@ -1,5 +1,5 @@
 ﻿//class that we use to turn off the unused the menus in the game
-namespace DaGeim
+namespace RobotBoy.MenuLayouts
 {
 
     public static class GameMenuManager

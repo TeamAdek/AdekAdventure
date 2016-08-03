@@ -1,10 +1,9 @@
-﻿namespace DaGeim
-{
-    using DaGeim.src.Collectable;
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Content;
-    using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
+namespace RobotBoy.Collectables
+{
     /// <summary>
     /// JumpBooster is a collectable item, it has a position, itemType and value of jumpBooster power.
     /// It has function Load - loading texture
@@ -21,7 +20,7 @@
 
         public override void Load(ContentManager content)
         {
-            spriteTexture = content.Load<Texture2D>("pow");
+            spriteTexture = content.Load<Texture2D>("Collectibles/Pow");
         }
     }
 }

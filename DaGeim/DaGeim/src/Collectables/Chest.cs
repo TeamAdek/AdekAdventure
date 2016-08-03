@@ -1,6 +1,5 @@
-﻿namespace DaGeim.Collectables
+﻿namespace RobotBoy.Collectables
 {
-    using DaGeim.src.Collectable;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Content;
     using Microsoft.Xna.Framework.Graphics;
@@ -15,7 +14,7 @@
 
         public override void Load(ContentManager content)
         {
-            spriteTexture = content.Load<Texture2D>("chestBig");
+            spriteTexture = content.Load<Texture2D>("Collectibles/BigChest");
             //spriteTexture = content.Load<Texture2D>("gun");
         }
     }

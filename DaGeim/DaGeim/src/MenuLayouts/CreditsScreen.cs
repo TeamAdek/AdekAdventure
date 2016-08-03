@@ -1,11 +1,11 @@
 ﻿using System.Threading;
-using DaGeim.Game;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using RobotBoy.Game;
 
-namespace DaGeim.MenuLayouts
+namespace RobotBoy.MenuLayouts
 {
     public class CreditsScreen : MenuScreen
     {
@@ -76,13 +76,13 @@ namespace DaGeim.MenuLayouts
             spriteBatch.DrawString(base.CreditsFont, "Menu design:", new Vector2(300, 230), Color.Ivory);
             spriteBatch.DrawString(base.CreditsFont, "Yovko Gospodinov & Iskren Penev", new Vector2(400, 260), Color.Ivory);
             spriteBatch.DrawString(base.CreditsFont, "Enemy design:", new Vector2(300, 290), Color.Ivory);
-            spriteBatch.DrawString(base.CreditsFont, "Simeon Mandazhiev", new Vector2(400, 320), Color.Ivory);
+            spriteBatch.DrawString(base.CreditsFont, "Hristo Hentov & Denis Angelov", new Vector2(400, 320), Color.Ivory);
             spriteBatch.DrawString(base.CreditsFont, "Level design:", new Vector2(300, 350), Color.Ivory);
-            spriteBatch.DrawString(base.CreditsFont, "Stefan Todorov", new Vector2(400, 380), Color.Ivory);
+            spriteBatch.DrawString(base.CreditsFont, "Stefan Todorov & Denis Angelov", new Vector2(400, 380), Color.Ivory);
             spriteBatch.DrawString(base.CreditsFont, "Sound effects:", new Vector2(300, 410), Color.Ivory);
             spriteBatch.DrawString(base.CreditsFont, "Ivan Nikolov", new Vector2(400, 440), Color.Ivory);
             spriteBatch.DrawString(base.CreditsFont, "Collision:", new Vector2(300, 470), Color.Ivory);
-            spriteBatch.DrawString(base.CreditsFont, "Alexander Markov", new Vector2(400, 500), Color.Ivory);
+            spriteBatch.DrawString(base.CreditsFont, "Alexander Markov & Hristo Hentov", new Vector2(400, 500), Color.Ivory);
             spriteBatch.DrawString(base.CreditsFont, "Boss design:", new Vector2(300, 530), Color.Ivory);
             spriteBatch.DrawString(base.CreditsFont, "Denis Angelov", new Vector2(400, 560), Color.Ivory);
 

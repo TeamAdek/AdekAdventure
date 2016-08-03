@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using DaGeim.Collectables;
-using DaGeim.Interfaces;
-using DaGeim.MenuLayouts;
-using DaGeim.src.Collectable;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using RobotBoy.Collectables;
+using RobotBoy.Entities;
+using RobotBoy.Entities.Bosses;
+using RobotBoy.Entities.Enemies;
+using RobotBoy.Entities.Player;
+using RobotBoy.GUI;
+using RobotBoy.Helper_Classes;
+using RobotBoy.Interfaces;
+using RobotBoy.Level;
+using RobotBoy.MenuLayouts;
 
-namespace DaGeim.Game
+namespace RobotBoy.Game
 {
     using Game = Microsoft.Xna.Framework.Game;
 
@@ -50,17 +56,14 @@ namespace DaGeim.Game
 
         protected override void Initialize()
         {
-            //GameMenuManager.mainMenuOn = true;
             startGameScreen = new StartGameScreen();
             endGameScreen = new EndGameScreen();
             pauseGameScreen = new PauseGameScreen();
             creditsScreen = new CreditsScreen();
 
-            //GameMenuManager.mainMenuOn = true;
             map = new Map();
             gameUI = new HUD();
 
-            
             player = new Player(new Vector2(150, 465));
 
             InitializeEnemies();
@@ -87,7 +90,7 @@ namespace DaGeim.Game
             {
                 npc.LoadContent(Content);
             }
-            
+
             foreach (var collectable in collectableItems)
             {
                 collectable.Load(Content);
@@ -96,7 +99,7 @@ namespace DaGeim.Game
             DrawRect.LoadContent(Content);
             gameUI.Load(Content);
 
-            song = Content.Load<Song>("theme1");
+            //song = Content.Load<Song>("theme1");
             MediaPlayer.Play(song);
             MediaPlayer.Volume = 0.1f;
             MediaPlayer.IsRepeating = true;
@@ -133,7 +136,7 @@ namespace DaGeim.Game
                 //update the pause game screen
                 pauseGameScreen.Update(gameTime, this);
             }
-            else  
+            else
             {
                 IsMouseVisible = false;
                 //pressing esc we call the pause game screen
@@ -148,7 +151,7 @@ namespace DaGeim.Game
                 map.Update(player.Position);
                 player.Update(gameTime);
 
-                if(bossL1.isPushing)
+                if (bossL1.isPushing)
                     player.PushedByBoss();
 
                 foreach (var npc in npcs)
@@ -157,13 +160,13 @@ namespace DaGeim.Game
                     npc.Shoot(player);
                 }
 
-		int tempScore = 0;
+                int tempScore = 0;
                 for (int i = 0; i < npcs.Count; i++)
                 {
                     if (npcs[i].Dead)
                     {
                         deadEnemies.Add(i);
-                 	tempScore += 50;       
+                        tempScore += 50;
                     }
                 }
                 player.Score = tempScore;
@@ -204,7 +207,7 @@ namespace DaGeim.Game
                     if (ammonition.CollisionBox.Intersects(player.CollisionBox))
                     {
                         ammonition.IsVisible = false;
-                        player.Health -= 20;
+                        player.Health -= 15;
                     }
                 }
             }
@@ -258,7 +261,7 @@ namespace DaGeim.Game
                 startTileIndex = this.CalculateStartTileIndex(npc.Position);
                 endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 40);
 
-                for ( int i = startTileIndex; i <= endTileIndex; i++)
+                for (int i = startTileIndex; i <= endTileIndex; i++)
                 {
                     npc.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, map.Widht, this.map.Height);
                 }
@@ -273,6 +276,20 @@ namespace DaGeim.Game
                 for (int i = startTileIndex; i <= endTileIndex; i++)
                 {
                     rocket.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, map.Widht, this.map.Height);
+                }
+            }
+
+            foreach (var npc in npcs)
+            {
+                foreach (var ammonition in npc.ammo)
+                {
+                    startTileIndex = this.CalculateStartTileIndex(ammonition.Position);
+                    endTileIndex = Math.Min(this.map.CollisionTiles.Count - 1, startTileIndex + 40);
+                    for (int i = startTileIndex; i < endTileIndex; i++)
+                    {
+                        ammonition.CollisionWithMap(this.map.CollisionTiles[i].Rectangle, map.Widht, this.map.Height);
+
+                    }
                 }
             }
         }
@@ -294,11 +311,11 @@ namespace DaGeim.Game
             Skeleton enemy2 = new Skeleton(new Vector2(1100, 500), 50);
             Skeleton enemy4 = new Skeleton(new Vector2(710, 200), 70);
             Skeleton enemy5 = new Skeleton(new Vector2(1800, 100), 200);
-          //  Skeleton enemy6 = new Skeleton(new Vector2(2200, 155), 50);
+            //  Skeleton enemy6 = new Skeleton(new Vector2(2200, 155), 50);
             Skeleton enemy7 = new Skeleton(new Vector2(1950, 155), 40);
             Skeleton enemy8 = new Skeleton(new Vector2(2400, 200), 75);
             Skeleton enemy9 = new Skeleton(new Vector2(2600, 155), 150);
-           // Skeleton enemy10 = new Skeleton(new Vector2(2800, 155), 100);
+            // Skeleton enemy10 = new Skeleton(new Vector2(2800, 155), 100);
             //Skeleton enemy11 = new Skeleton(new Vector2(3000, 320), 100);
             Skeleton enemy12 = new Skeleton(new Vector2(3800, 340), 150);
             Skeleton enemy13 = new Skeleton(new Vector2(4100, 190), 25);
@@ -308,12 +325,12 @@ namespace DaGeim.Game
             npcs.Add(enemy2);
             npcs.Add(enemy4);
             npcs.Add(enemy5);
-           // npcs.Add(enemy6);
+            // npcs.Add(enemy6);
             npcs.Add(enemy7);
             npcs.Add(enemy8);
             npcs.Add(enemy9);
-           // npcs.Add(enemy10);
-           // npcs.Add(enemy11);
+            // npcs.Add(enemy10);
+            // npcs.Add(enemy11);
             npcs.Add(enemy12);
             npcs.Add(enemy13);
             npcs.Add(enemy14);
@@ -367,7 +384,7 @@ namespace DaGeim.Game
             {
                 creditsScreen.Draw(spriteBatch);
             }
-            else 
+            else
             {
                 spriteBatch.Begin(SpriteSortMode.Deferred,
                                  BlendState.AlphaBlend, null, null, null, null, camera.Transform);
@@ -380,7 +397,7 @@ namespace DaGeim.Game
                     rocket.Draw(spriteBatch);
 
                 foreach (var enemy in npcs)
-                      enemy.Draw(spriteBatch);
+                    enemy.Draw(spriteBatch);
 
                 foreach (var collectable in collectableItems)
                     collectable.Draw(spriteBatch);

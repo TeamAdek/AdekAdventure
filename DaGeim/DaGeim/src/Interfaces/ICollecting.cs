@@ -1,4 +1,4 @@
-﻿namespace DaGeim.Interfaces
+﻿namespace RobotBoy.Interfaces
 {
     /// <summary>
     /// Every character who can collect items mast implement this interface.

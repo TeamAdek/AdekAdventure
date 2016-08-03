@@ -1,4 +1,4 @@
-﻿namespace DaGeim.Interfaces
+﻿namespace RobotBoy.Interfaces
 {
     /// <summary>
     /// every character that can collect jumpBoosting items mast implement this interface

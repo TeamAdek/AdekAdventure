@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace DaGeim
+namespace RobotBoy.MenuLayouts
 {
     public class Button
     {
@@ -46,8 +46,8 @@ namespace DaGeim
 
         public void Load(ContentManager content)
         {
-            this.highlightedImage = content.Load<Texture2D>("highlightedButton");
-            this.darkImage = content.Load<Texture2D>("darkButton");
+            this.highlightedImage = content.Load<Texture2D>("Menu/HighlightedButton");
+            this.darkImage = content.Load<Texture2D>("Menu/DarkButton");
         }
 
         public void DrawButton(SpriteBatch spriteBatch, SpriteFont font)

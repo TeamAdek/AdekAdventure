@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Game.src.Entities
+namespace RobotBoy.Entities
 {
 
     public abstract class AnimatedSprite

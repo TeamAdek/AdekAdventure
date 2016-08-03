@@ -1,10 +1,11 @@
-﻿namespace DaGeim.src.Collectable
-{
-    using DaGeim.Interfaces;
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Content;
-    using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using RobotBoy.Entities;
+using RobotBoy.Interfaces;
 
+namespace RobotBoy.Collectables
+{
     /// <summary>
     /// CollectableItem is a base, abstract class for any collectable items.
     /// </summary>

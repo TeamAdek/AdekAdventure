@@ -1,14 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DaGeim.src.Entities.New_Code;
+using RobotBoy.Entities.Ammunition;
+using RobotBoy.Helper_Classes;
+using RobotBoy.Level;
 
-namespace DaGeim
+namespace RobotBoy.Entities.Bosses
 {
     public class Boss : AnimatedBoss
     {
@@ -60,8 +58,8 @@ namespace DaGeim
 
         public void Load(ContentManager Content)
         {
-            spriteTexture = Content.Load<Texture2D>("SpriteSheetBoss");
-            shootTextureLeft = Content.Load<Texture2D>("rocketLeft");
+            spriteTexture = Content.Load<Texture2D>("SpriteSheets/Boss");
+            shootTextureLeft = Content.Load<Texture2D>("Ammunition/Laser");
         }
 
         public void Update(GameTime gameTime, Vector2 playerPosition)

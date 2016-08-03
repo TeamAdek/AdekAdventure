@@ -718,3 +718,74 @@ D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\gun
 D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\icycleLeft.xnb
 D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\icycleRight.xnb
 D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheetEnemy2.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\MonoGame.Framework.dll
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.dll
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XInput.dll
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\MonoGame.Framework.xml
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.xml
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XInput.xml
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\Robot Boy.csprojResolveAssemblyReference.cache
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Robot Boy.exe
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Robot Boy.pdb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\Robot Boy.exe
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\Robot Boy.pdb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Ammunition\IcycleLeft.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Ammunition\IcycleRight.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Ammunition\Laser.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Ammunition\RocketLeft.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Ammunition\RocketRight.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Audio\Jump.wma
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Audio\Jump.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Audio\Lasershot.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Audio\Stone.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Audio\Sweep.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Audio\Theme1.wma
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Audio\Theme1.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Audio\Theme2.wma
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Audio\Theme2.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Collectibles\BigChest.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Collectibles\BigHeart.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Collectibles\Chest.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Collectibles\Gun.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Collectibles\Pow.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Collectibles\SmallHeart.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Collectibles\Star.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Fonts\CreditsFont.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Fonts\Font.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Fonts\GameNameFont.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Fonts\MainFont.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Fonts\NewSpriteFont.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\GUI\HealthBar.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\GUI\Hud.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Level\Background.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Level\Tile1.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Level\Tile2.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Level\Tile3.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Level\Tile4.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Level\Tile5.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Level\Tile6.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Menu\Background.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Menu\DarkButton.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Menu\HighlightedButton.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Menu\Star.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheets\Boss.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheets\PlayerAnimation.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheets\Skeleton.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheets\SpriteSheet.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Utils\Icon.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Utils\Red.xnb
+E:\CG Stuff\Programming\Projects - University\SoftUni\C# Teamwork\Adek v4\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Utils\Robot.xnb

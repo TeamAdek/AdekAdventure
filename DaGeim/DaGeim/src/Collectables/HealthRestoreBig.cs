@@ -1,9 +1,9 @@
-﻿namespace DaGeim.src.Collectable
-{
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Content;
-    using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
+namespace RobotBoy.Collectables
+{
     /// <summary>
     /// HealthrestoreBig is a collectable item.
     /// HealthrestoreBig inherits Healthrestore. 
@@ -20,7 +20,7 @@
 
         public override void Load(ContentManager content)
         {
-            spriteTexture = content.Load<Texture2D>("heart");
+            spriteTexture = content.Load<Texture2D>("Collectibles/BigHeart");
         }
 
 
