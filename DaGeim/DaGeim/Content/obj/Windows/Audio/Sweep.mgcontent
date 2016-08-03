@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/Audio/Sweep.wav</SourceFile>
-  <SourceTime>2016-08-03T22:03:06.5479189+03:00</SourceTime>
-  <DestFile>D:/Projects/GitHub/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/Audio/Sweep.xnb</DestFile>
-  <DestTime>2016-08-03T22:06:16.7453484+03:00</DestTime>
+  <SourceFile>D:/Other/DL/AdekAdventure/DaGeim/DaGeim/Content/Audio/Sweep.wav</SourceFile>
+  <SourceTime>2016-08-03T23:24:42.0426993+03:00</SourceTime>
+  <DestFile>D:/Other/DL/AdekAdventure/DaGeim/DaGeim/Content/bin/Windows/Audio/Sweep.xnb</DestFile>
+  <DestTime>2016-08-03T23:32:27.5349095+03:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2016-03-30T09:36:08+03:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

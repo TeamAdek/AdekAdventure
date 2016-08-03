@@ -783,3 +783,74 @@ D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Uti
 D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Utils\Robot.xnb
 D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Robot Boy.exe
 D:\Projects\GitHub\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Robot Boy.pdb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\Robot Boy.exe
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\Robot Boy.pdb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Ammunition\IcycleLeft.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Ammunition\IcycleRight.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Ammunition\Laser.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Ammunition\RocketLeft.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Ammunition\RocketRight.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Audio\Jump.wma
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Audio\Jump.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Audio\Lasershot.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Audio\Stone.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Audio\Sweep.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Audio\Theme1.wma
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Audio\Theme1.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Audio\Theme2.wma
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Audio\Theme2.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Collectibles\BigChest.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Collectibles\BigHeart.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Collectibles\Chest.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Collectibles\Gun.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Collectibles\Pow.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Collectibles\SmallHeart.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Collectibles\Star.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Fonts\CreditsFont.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Fonts\Font.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Fonts\GameNameFont.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Fonts\MainFont.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Fonts\NewSpriteFont.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\GUI\HealthBar.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\GUI\Hud.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Level\Background.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Level\Tile1.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Level\Tile2.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Level\Tile3.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Level\Tile4.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Level\Tile5.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Level\Tile6.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Menu\Background.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Menu\DarkButton.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Menu\HighlightedButton.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Menu\Star.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheets\Boss.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheets\PlayerAnimation.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheets\Skeleton.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\SpriteSheets\SpriteSheet.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Utils\Icon.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Utils\Red.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Content\Utils\Robot.xnb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Robot Boy.exe
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Robot Boy.pdb
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\MonoGame.Framework.dll
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.dll
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XInput.dll
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\MonoGame.Framework.xml
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.xml
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.XInput.xml
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+D:\Other\DL\AdekAdventure\DaGeim\DaGeim\obj\x86\Debug\Robot Boy.csprojResolveAssemblyReference.cache

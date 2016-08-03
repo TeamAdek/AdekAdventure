@@ -44,9 +44,11 @@
     <Compile Include="src\Entities\Ammunition\Laser.cs" />
     <Compile Include="src\Entities\Bosses\Boss_L1.cs" />
     <Compile Include="src\GUI\EnemyHealthBar.cs" />
+    <Compile Include="src\Interfaces\IButton.cs" />
     <Compile Include="src\Interfaces\ICollectable.cs" />
     <Compile Include="src\Interfaces\ICollecting.cs" />
     <Compile Include="src\Interfaces\IJumpboostable.cs" />
+    <Compile Include="src\Interfaces\IMenu.cs" />
     <Compile Include="src\Interfaces\IPatrolable.cs" />
     <Compile Include="src\Collectables\HealthRestore.cs" />
     <Compile Include="src\Collectables\CollectableItem.cs" />

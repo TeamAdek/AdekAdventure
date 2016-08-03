@@ -75,7 +75,7 @@ namespace RobotBoy.MenuLayouts
             }
             if (this.quitButton.IsSelected)
             {
-                //the quit button exits the game (you dont say!?!)
+                //the quit button exits the game
                 if (Mouse.GetState(game.Window).LeftButton == ButtonState.Pressed)
                 {
                     game.Exit();

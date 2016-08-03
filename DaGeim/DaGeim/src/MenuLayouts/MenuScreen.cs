@@ -1,11 +1,12 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using RobotBoy.Game;
-
-namespace RobotBoy.MenuLayouts
+﻿namespace RobotBoy.MenuLayouts
 {
-    public class MenuScreen : MainGame
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Graphics;
+    using RobotBoy.Game;
+    using RobotBoy.Interfaces;
+
+    public abstract class MenuScreen : MainGame, IMenu
     {
         private Texture2D background;
         private Texture2D robotImage;
@@ -14,7 +15,7 @@ namespace RobotBoy.MenuLayouts
         private SpriteFont mainFont;
         private SpriteFont creditsFont;
 
-        protected SpriteFont CreditsFont
+        public SpriteFont CreditsFont
         {
             get
             {
@@ -27,7 +28,7 @@ namespace RobotBoy.MenuLayouts
             }
         }
 
-        protected SpriteFont MainFont
+        public SpriteFont MainFont
         {
             get
             {
@@ -40,7 +41,7 @@ namespace RobotBoy.MenuLayouts
             }
         }
 
-        protected SpriteFont Font
+        public SpriteFont Font
         {
             get
             {
@@ -53,7 +54,7 @@ namespace RobotBoy.MenuLayouts
             }
         }
 
-        protected SpriteFont GameNameFont
+        public SpriteFont GameNameFont
         {
             get
             {
@@ -76,9 +77,7 @@ namespace RobotBoy.MenuLayouts
             this.CreditsFont = content.Load<SpriteFont>("Fonts/CreditsFont");
         }
 
-        public virtual void Update(GameTime gameTime, MainGame game)
-        {
-        }
+        public abstract void Update(GameTime gameTime, MainGame game);
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {

@@ -40,9 +40,9 @@ namespace RobotBoy.Game
 
         private Player player;
         private Boss_L1 bossL1;
-        private List<NPC> npcs = new List<NPC>();
-        private List<ICollectable> collectableItems = new List<ICollectable>();
-        private List<int> deadEnemies = new List<int>();
+        private List<NPC> npcs;
+        private List<ICollectable> collectableItems;
+        private List<int> deadEnemies;
 
         public MainGame()
         {
@@ -60,7 +60,9 @@ namespace RobotBoy.Game
             endGameScreen = new EndGameScreen();
             pauseGameScreen = new PauseGameScreen();
             creditsScreen = new CreditsScreen();
-
+            npcs = new List<NPC>();
+            collectableItems = new List<ICollectable>();
+            deadEnemies = new List<int>();
             map = new Map();
             gameUI = new HUD();
 
@@ -99,7 +101,7 @@ namespace RobotBoy.Game
             DrawRect.LoadContent(Content);
             gameUI.Load(Content);
 
-            //song = Content.Load<Song>("theme1");
+           // song = Content.Load<Song>("theme1");
             MediaPlayer.Play(song);
             MediaPlayer.Volume = 0.1f;
             MediaPlayer.IsRepeating = true;

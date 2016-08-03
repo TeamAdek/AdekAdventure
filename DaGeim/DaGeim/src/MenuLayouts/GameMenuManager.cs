@@ -1,5 +1,4 @@
-﻿//class that we use to turn off the unused the menus in the game
-namespace RobotBoy.MenuLayouts
+﻿namespace RobotBoy.MenuLayouts
 {
 
     public static class GameMenuManager
@@ -9,11 +8,7 @@ namespace RobotBoy.MenuLayouts
         public static bool endGameMenuOn;
         public static bool gameOn;
         public static bool creditsMenuOn;
-
-        /*----------------------------------------------------------------------------------------------------
-        turn off the menus we dont need on screen right now;
-        it is called in the update method of each menu
-        ----------------------------------------------------------------------------------------------------*/
+        
         public static void TurnOtherMenusOff()
         {
             if (mainMenuOn)
