@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -18,6 +20,10 @@ namespace RobotBoy.Entities.Ammunition
             Load(left, right);
             Sprite = direction == "left" ? LeftTexture : RightTexture;
         }
+
+        [Required]
+        [Column("Id")]
+        public int Id { get; set; }
     
         public override void LoadContent(ContentManager content)
         {

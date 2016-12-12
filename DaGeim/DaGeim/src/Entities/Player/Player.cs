@@ -6,10 +6,14 @@ using Microsoft.Xna.Framework.Input;
 using RobotBoy.Entities.Ammunition;
 using RobotBoy.Helper_Classes;
 using RobotBoy.Interfaces;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.Build.Framework;
+
 
 namespace RobotBoy.Entities.Player
 {
-    internal sealed class Player : Entity, ICollecting, IJumpboostable
+    public sealed class Player : Entity, ICollecting, IJumpboostable
     {
         private float slideCDTimer;
         private float rocketCDTimer;
@@ -45,6 +49,9 @@ namespace RobotBoy.Entities.Player
             entityOrientation = Orientations.Right;
         }
 
+        [Required]
+        [Column("Id")]
+        public int Id { get; set; }
         public int JumpBoostTimer
         {
             get { return jumpBoostJumpBoostTimer; }
