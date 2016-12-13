@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Threading;
@@ -73,6 +74,7 @@ namespace RobotBoy.Game
 
             this.player = new Player(new Vector2(150, 465));
             this.context = new RobotBoyGameContext();
+
             // If context don`t has any players we add player
             if (!this.context.Players.Any())
             {
@@ -83,8 +85,13 @@ namespace RobotBoy.Game
                     Score = 0,
 
                 });
-                
+
                 context.SaveChanges();
+            }
+            else
+            {
+               player.Score = context.Database.SqlQuery<int>("SELECT p.Score FROM PLAYERS AS p WHERE p.Id = 1").FirstOrDefault<int>();
+                
             }
 
             InitializeEnemies();
@@ -220,6 +227,20 @@ namespace RobotBoy.Game
             //Player temPlayer = context.Players.First();
             //context.Players.First();
             //context.SaveChanges();
+
+            //context.Entry(player).State =EntityState.Modified;
+            //context.SaveChanges();
+
+            // var original = context.Players.FirstOrDefault();
+
+
+            //if (original != null)
+            {
+                // original.Score = player.Score;
+
+                //context.SaveChanges();
+            }
+
             base.Update(gameTime);
         }
 
