@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
+using System.Linq;
 using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using RobotBoy.Collectables;
+using RobotBoy.Context;
 using RobotBoy.Entities;
 using RobotBoy.Entities.Bosses;
 using RobotBoy.Entities.Enemies;
@@ -44,6 +47,8 @@ namespace RobotBoy.Game
         private List<ICollectable> collectableItems;
         private List<int> deadEnemies;
 
+        private RobotBoyGameContext context;
+
         public MainGame()
         {
             Content.RootDirectory = "Content";
@@ -66,10 +71,25 @@ namespace RobotBoy.Game
             map = new Map();
             gameUI = new HUD();
 
-            player = new Player(new Vector2(150, 465));
+            this.player = new Player(new Vector2(150, 465));
+            this.context = new RobotBoyGameContext();
+            // If context don`t has any players we add player
+            if (!this.context.Players.Any())
+            {
+                this.context.Players.Add(new Player(new Vector2(150, 465))
+                {
+                    Health = 300,
+                    JumpBoostTimer = 0,
+                    Score = 0,
+
+                });
+                
+                context.SaveChanges();
+            }
 
             InitializeEnemies();
             InitializeCollectables();
+
             base.Initialize();
         }
 
@@ -101,7 +121,7 @@ namespace RobotBoy.Game
             DrawRect.LoadContent(Content);
             gameUI.Load(Content);
 
-           // song = Content.Load<Song>("theme1");
+            // song = Content.Load<Song>("theme1");
             MediaPlayer.Play(song);
             MediaPlayer.Volume = 0.1f;
             MediaPlayer.IsRepeating = true;
@@ -196,7 +216,10 @@ namespace RobotBoy.Game
                     GameMenuManager.TurnOtherMenusOff();
                 }
             }
-
+            // context.Players.First().Score = context.Players.First().Score + 1;
+            //Player temPlayer = context.Players.First();
+            //context.Players.First();
+            //context.SaveChanges();
             base.Update(gameTime);
         }
 

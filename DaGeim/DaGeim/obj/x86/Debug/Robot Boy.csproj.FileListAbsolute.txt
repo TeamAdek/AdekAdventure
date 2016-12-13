@@ -924,3 +924,8 @@ D:\IntroCSharp\DataBases Applications\AdekAdventure\DaGeim\DaGeim\bin\Windows\x8
 D:\IntroCSharp\DataBases Applications\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\EntityFramework.SqlServer.dll
 D:\IntroCSharp\DataBases Applications\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\EntityFramework.xml
 D:\IntroCSharp\DataBases Applications\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\EntityFramework.SqlServer.xml
+C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\Robot Boy.exe.config
+C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\EntityFramework.dll
+C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\EntityFramework.SqlServer.dll
+C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\EntityFramework.xml
+C:\Users\Simeon\Desktop\GitHubAdek\AdekAdventure\DaGeim\DaGeim\bin\Windows\x86\Debug\EntityFramework.SqlServer.xml
